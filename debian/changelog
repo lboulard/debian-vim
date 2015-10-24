@@ -1,5 +1,14 @@
-vim (2:7.4.826-2) UNRELEASED; urgency=medium
+vim (2:7.4.898-1) UNRELEASED; urgency=medium
 
+  * Merge upstream tag v7.4.898.
+    + Remove merged patches:
+      - Typo in Spanish translation of swapfile recovery.
+    + Highlighted changes:
+      - 7.4.849: New Insert mode command to maintain the undo sequence across
+        cursor movements (c.f., :help i_CTRL-G_U).
+      - 7.4.858: New quickfix-related commands (:ldo, :lfdo, :cdo, and :cfdo).
+      - indent/yaml.vim: Maintain indent of mapping key when mapping is
+        contained in a list.  (Closes: #713066)
   * Rewrite vim-tiny's help.txt.
     + Clarify the reasoning for the package and why the help isn't available.
     + Explicitly mention what the more featureful Vim packages are.
