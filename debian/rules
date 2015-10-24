@@ -153,8 +153,6 @@ NAME:=vim
 # Convert x.y.z to x.y
 VERSION:=$(basename $(DEB_VERSION_UPSTREAM))
 VIMCUR:=$(NAME)$(subst .,,$(VERSION))
-EXPORT_DIR ?= ..
-ORIG_SOURCE := $(EXPORT_DIR)/$(NAME)_$(DEB_VERSION_UPSTREAM).orig.tar.gz
 PER_VARIANT_FILES := install postinst prerm links lintian-overrides
 LANGS := fr it pl ru ja
 
@@ -171,23 +169,6 @@ DOT_IN_DEPS_TINY := debian/tiny/vimrc.tiny
 
 # nothing to do per default
 all: 
-
-$(ORIG_SOURCE):
-	if hg root >/dev/null 2>&1; then \
-	    hg archive -t tgz -X .hg\* --prefix=$(NAME)-$(DEB_VERSION_UPSTREAM)/ -r v$$(echo $(DEB_VERSION_UPSTREAM) | sed 's/\./-/g') $(ORIG_SOURCE); \
-	fi
-
-update-orig: $(ORIG_SOURCE)
-
-# You only need to run this immediately after checking out the package from
-# version control.
-quilt-setup: export QUILT_PATCHES=debian/patches
-quilt-setup:
-	[ ! -d .pc ]
-	set -e; for patch in $$(quilt series | tac); do \
-		patch -Rp1 --no-backup-if-mismatch <"debian/patches/$$patch"; \
-	done
-	quilt push -a
 
 clean: $(foreach v,$(VARIANTS),clean-$(v))
 	dh_testdir
@@ -565,7 +546,7 @@ binary-arch-%: install-stamp-%
 	dh_builddeb -- -Zxz
 
 binary: beginlog binary-indep binary-arch endlog
-.PHONY: patch unpatch extract clean build install binary-indep binary-arch binary update-orig quilt-setup
+.PHONY: patch unpatch extract clean build install binary-indep binary-arch binary
 
 .PHONY: beginlog endlog
 beginlog:
