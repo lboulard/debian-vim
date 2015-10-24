@@ -24,7 +24,7 @@ else
   DEB_VERSION_UPSTREAM := $(shell dpkg-parsechangelog -SVersion)
 endif
 
-BUILDER := $(shell echo $${DEBEMAIL:-$${EMAIL:-$$(echo $$LOGNAME@$$(cat /etc/mailname 2> /dev/null))}})
+BUILDER := pkg-vim-maintainers@lists.alioth.debian.org
 
 MAKETEST := no
 ifeq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
@@ -39,7 +39,7 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
 
 CFGFLAGS := --prefix=/usr --mandir='$${prefix}'/share/man --without-local-dir
-CFGFLAGS += --with-modified-by="pkg-vim-maintainers@lists.alioth.debian.org"
+CFGFLAGS += --with-modified-by="$(BUILDER)"
 CFGFLAGS += --with-compiledby="$(BUILDER)"
 CFGFLAGS += --enable-fail-if-missing
 
