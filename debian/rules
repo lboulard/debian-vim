@@ -170,6 +170,10 @@ DOT_IN_DEPS_TINY := debian/tiny/vimrc.tiny
 # nothing to do per default
 all: 
 
+update-changelog:
+	dh_testdir
+	wget -O debian/changelog.upstream http://ftp.vim.org/pub/vim/patches/$(VERSION)/README
+
 clean: $(foreach v,$(VARIANTS),clean-$(v))
 	dh_testdir
 	dh_testroot
@@ -275,7 +279,7 @@ install-stamp-indep: build-stamp-indep
 	dh_testroot
 	dh_installdirs
 	dh_install
-	dh_installchangelogs
+	dh_installchangelogs debian/changelog.upstream
 	dh_installdocs
 	touch $@
 
@@ -413,7 +417,7 @@ install-stamp-vim-basic: build-stamp-vim-basic $(DOT_IN_DEPS)
 	dh_link
 	
 	 # all excepts vim
-	dh_installchangelogs -Nvim -pvim-dbg
+	dh_installchangelogs -Nvim -pvim-dbg debian/changelog.upstream
 	dh_installdocs -pvim-dbg
 	dh_installmime
 	
