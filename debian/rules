@@ -21,7 +21,7 @@ else
     CFLAGS += -O2
   endif
 
-  DEB_VERSION_UPSTREAM := $(shell dpkg-parsechangelog | sed -n '/^Version:/{s/Version: *\([^:]*:\)\?\([^-]*\)-.*/\2/;p;q}')
+  DEB_VERSION_UPSTREAM := $(shell dpkg-parsechangelog -SVersion)
 endif
 
 BUILDER := $(shell echo $${DEBEMAIL:-$${EMAIL:-$$(echo $$LOGNAME@$$(cat /etc/mailname 2> /dev/null))}})
