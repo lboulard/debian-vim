@@ -16,6 +16,8 @@ vim (2:7.4.898-1) UNRELEASED; urgency=medium
       updated.
   * Update Vcs-* URLs to point to Git.
   * Install upstream's patchlist as the changelog.  (Closes: #622827)
+  * Fix a typo in vim-policy.  Thanks to Jakuyo Friel for the patch.  (Closes:
+    #773531)
 
  -- James McCoy <jamessan@debian.org>  Sun, 30 Aug 2015 22:45:03 -0400
 
