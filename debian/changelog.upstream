@@ -920,3 +920,68 @@ Individual patches for Vim 7.4:
   2387  7.4.896  editing a URL, which netrw should handle, doesn't work
   1776  7.4.897  freeze and crash when there is a sleep in a remote command
   1419  7.4.898  the 'fixendofline' option is set on with ":edit"
+  4930  7.4.899  README file is not optimal
+  2100  7.4.900  (after 7.4.899) README file can still be improved
+  2150  7.4.901  BufLeave autocommand an corrupt undo
+ 13294  7.4.902  problems with using the MS-Windows console
+  1820  7.4.903  MS-Windows: expandinig wildcards may cause bad memory access
+ 10391  7.4.904  Vim does not provide .desktop files
+  8728  7.4.905  Python interface misses some functions on vim.message
+  2927  7.4.906  MS-Windows: viminfo file is (always) given hidden attribute
+ 17429  7.4.907  dynamically loaded libs can only be defined at compile time
+  1639  7.4.908  (after 7.4.907) build error with MingW compiler
+  2331  7.4.909  "make install" fails
+  1784  7.4.910  (after 7.4.905) compiler complains about type punned pointer
+  1425  7.4.911  t_Ce and t_Cs are documented but not supported
+  2179  7.4.912  wrong indenting for C++ constructor
+ 12094  7.4.913  no utf-8 support for the hangul input feature
+  1384  7.4.914  new compiler warning: logical-not-parentheses
+  2528  7.4.915  comma goes missing when removing from 'path' and then adding
+  1516  7.4.916  when running out of memory, memory may be freed twice
+  1529  7.4.917  compiler warning for comparing signed and unsigned
+  3223  7.4.918  (after 7.4.907) a digit in an option name has problems
+  7041  7.4.919  the dll options are not in the options window
+  1505  7.4.920  the rubydll option is not in the options window
+  1505  7.4.921  (after 7.4.906) missing proto file update
+  1361  7.4.922  leaking memory with ":helpt {dir-not-exists}"
+  2745  7.4.923  prototypes not always generated
+  2817  7.4.924  DEVELOPER_DIR gets reset by configure
+  5768  7.4.925  user may yank or put using the register being recorded in
+  4328  7.4.926  completing longest match doesn'thandle multi-byte chars
+  3376  7.4.927  Ruby crashes when there is a runtime error
+  1891  7.4.928  a clientserver message interrupts handling keys of a mapping
+  2457  7.4.929  "gv" after paste selects one char less if 'sel' is "exclusive"
+  2135  7.4.930  MS-Windows: Most users appear not to like the window border
+  1446  7.4.931  (after 7.4.929) test 94 fails on some systems
+  3398  7.4.932  (after 7.4.926) test_utf8 has confusing dummy command
+  1411  7.4.933  (after 7.4.926) crash using longest match in completion
+  1381  7.4.934  Appveyor also builds on a tag push
+  3041  7.4.935  test_utf8 fails on MS-Windows when executed with gvim
+  2168  7.4.936  crash when dragging with the mouse
+  1555  7.4.937  segfault reading unitialized memory
+  2626  7.4.938  X11 and GTK have moure mouse buttons than Vim supports
+  1695  7.4.939  memory leak when encountering a syntax error
+  4766  7.4.940  vt52 terminal codes are not correct
+ 25376  7.4.941  there is no way to ignore case only for tag searches
+  1372  7.4.942  (after 7.4.941) test_tagcase breaks for small builds
+  4211  7.4.943  test_writefile tests are not run
+ 14800  7.4.944  writing tests for Vim script is hard
+ 13039  7.4.945  (after 7.4.944) new style testing is incomplete
+  9161  7.4.946  (after 7.4.945) missing changes in source file
+  1718  7.4.947  test_listchars fails with MingW
+  1793  7.4.948  can't build when the insert_expand feature is disabled
+  6173  7.4.949  highlighting wrong for 'colorcolumn' with a fullwidth sign
+  1520  7.4.950  v:errors is not initialized
+  5628  7.4.951  sorting number strings does not work as expected
+  9868  7.4.952  'lispwords' is tested in the old way
+  1602  7.4.953  a test may create the .res file with a wrong name
+  2104  7.4.954  when using Lua there may be a crash (issue #468)
+  1878  7.4.955  Vim doesn't recognize .pl6 and .pod6 files
+  3136  7.4.956  a few more file name extensions not recognized
+  1394  7.4.957  test_tagcase fails when using another language than English
+  2061  7.4.958  Vim checks if the directory "$TMPDIR" exists
+  1467  7.4.959  when setting 'term' the clipboard ownership is lost
+  8759  7.4.960  detecting every version of nmake is clumsy
+  3189  7.4.961  test107 fails in some circunstances
+  4477  7.4.962  cannot run the tests with gvim and individual new tests
+  3221  7.4.963  test_listlbr_utf8 sometimes fails
