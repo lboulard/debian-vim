@@ -48,7 +48,7 @@ Description: Vi IMproved - Common GUI files
  .
  This package contains files shared by all GUI-enabled vim
  variants available in Debian.  Examples of such shared files are:
- gvimtutor, icons, desktop environments settings, and menu entries.
+ gvimtutor, icons, and desktop environments settings.
 
 Package: vim-runtime
 Architecture: all

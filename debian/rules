@@ -452,7 +452,6 @@ install-stamp-vim-tiny: build-stamp-vim-tiny $(DOT_IN_DEPS_TINY)
 	echo "debian/tiny/vimrc.tiny	etc/vim" >> debian/vim-tiny.install
 	echo "etc/vim/vimrc.tiny	usr/share/vim/vimrc.tiny" >> debian/vim-tiny.links
 	dh_install
-	dh_installmenu
 	dh_link
 	dh_bugfiles -A
 	
@@ -488,7 +487,6 @@ install-stamp-%: build-stamp-%
 	done
 	sed -i "/@LANG_ALTS@/d" debian/$*.postinst
 	dh_install
-	dh_installmenu
 	dh_link
 	dh_bugfiles -A
 	
