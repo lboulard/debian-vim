@@ -41,6 +41,7 @@ Description: Vi IMproved - Common files
 
 Package: vim-gui-common
 Architecture: all
+Multi-Arch: foreign
 Recommends: vim-gnome | vim-gtk | vim-athena
 Depends: ${misc:Depends}
 Description: Vi IMproved - Common GUI files
@@ -52,6 +53,7 @@ Description: Vi IMproved - Common GUI files
 
 Package: vim-runtime
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 # Upgrades across major versions need to update vim-tiny first, otherwise
 # vim-runtime's removal of the old diversions will fail
