@@ -1,6 +1,6 @@
-vim (2:7.4.898-1) UNRELEASED; urgency=medium
+vim (2:7.4.963-1) UNRELEASED; urgency=medium
 
-  * Merge upstream tag v7.4.898.
+  * Merge upstream tag v7.4.963.
     + Remove merged patches:
       - Typo in Spanish translation of swapfile recovery.
     + Highlighted changes:
@@ -9,6 +9,8 @@ vim (2:7.4.898-1) UNRELEASED; urgency=medium
       - 7.4.858: New quickfix-related commands (:ldo, :lfdo, :cdo, and :cfdo).
       - indent/yaml.vim: Maintain indent of mapping key when mapping is
         contained in a list.  (Closes: #713066)
+      - 7.4.941: New 'tagcase' option to control whether tag searches are case
+        insensitive.
   * Rewrite vim-tiny's help.txt.
     + Clarify the reasoning for the package and why the help isn't available.
     + Explicitly mention what the more featureful Vim packages are.
