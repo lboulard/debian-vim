@@ -1,4 +1,4 @@
-vim (2:7.4.963-1) UNRELEASED; urgency=medium
+vim (2:7.4.963-1) unstable; urgency=medium
 
   * Merge upstream tag v7.4.963.
     + Remove merged patches:
@@ -25,7 +25,7 @@ vim (2:7.4.963-1) UNRELEASED; urgency=medium
   * Install upstream's desktop files and drop the ones from debian/.
   * Mark vim-runtime/vim-gui-common as Multi-Arch: foreign.  (Closes: #806535)
 
- -- James McCoy <jamessan@debian.org>  Sun, 30 Aug 2015 22:45:03 -0400
+ -- James McCoy <jamessan@debian.org>  Wed, 09 Dec 2015 23:31:36 -0500
 
 vim (2:7.4.826-1) unstable; urgency=medium
 
