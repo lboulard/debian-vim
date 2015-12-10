@@ -292,14 +292,18 @@ install-stamp-vim-basic: build-stamp-vim-basic $(DOT_IN_DEPS)
 	dh_installdirs
 	
 	# UPSTREAM INSTALLATION
-	
+	mkdir -p $(DESTDIR)/usr/share/applications
+	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/48x48/apps
+	mkdir -p $(DESTDIR)/usr/share/icons/locolor/32x32/apps
+	mkdir -p $(DESTDIR)/usr/share/icons/locolor/16x16/apps
 	$(MAKE) -C src/vim-basic STRIP=: DESTDIR=$(DESTDIR) \
 	    installvimbin \
 	    installtutorbin \
 	    installgtutorbin \
 	    installruntime \
 	    installtools \
-	    install-languages
+	    install-languages \
+	    install-icons
 	
 # Tests need to be run in series, otherwise the terminal requests may not see
 # proper responses.
@@ -373,15 +377,14 @@ install-stamp-vim-basic: build-stamp-vim-basic $(DOT_IN_DEPS)
 	# Icons
 	for sz in 16 32 48; do \
 	  cp runtime/vim$${sz}x$${sz}.xpm debian/vim-common/usr/share/pixmaps/vim-$${sz}.xpm; \
-	  cp runtime/vim$${sz}x$${sz}.png debian/vim-common/usr/share/icons/hicolor/$${sz}x$${sz}/apps/vim.png; \
 	done
 	gs -sDefaultCMYKProfile=ps_cmyk.icc -sOutputICCProfile=ps_rgb.icc \
 	    -dSAFER -dEPSCrop -dBATCH -dNOPAUSE \
 	    -sDEVICE=ps2write -sOutputFile=debian/tmplogo.ps runtime/vimlogo.eps
 	ps2pdf debian/tmplogo.ps debian/tmplogo.pdf
-	pdf2svg debian/tmplogo.pdf debian/vim-common/usr/share/pixmaps/vim.svg
-	cp debian/vim-common/usr/share/pixmaps/vim.svg \
-	   debian/vim-common/usr/share/icons/hicolor/scalable/apps/vim.svg
+	pdf2svg debian/tmplogo.pdf debian/vim-common/usr/share/pixmaps/gvim.svg
+	cp debian/vim-common/usr/share/pixmaps/gvim.svg \
+	   debian/vim-common/usr/share/icons/hicolor/scalable/apps/gvim.svg
 	
 	dh_installman
 	dh_install --fail-missing -X/tools/

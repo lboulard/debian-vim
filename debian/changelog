@@ -22,6 +22,7 @@ vim (2:7.4.963-1) UNRELEASED; urgency=medium
     #773531)
   * Fix FTBFS when running “dpkg-buildpackage -A”.  (Closes: #806785)
   * Stop installing menu files.
+  * Install upstream's desktop files and drop the ones from debian/.
 
  -- James McCoy <jamessan@debian.org>  Sun, 30 Aug 2015 22:45:03 -0400
 
