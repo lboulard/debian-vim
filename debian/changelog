@@ -20,7 +20,7 @@ vim (2:7.4.963-1) unstable; urgency=medium
   * Install upstream's patchlist as the changelog.  (Closes: #622827)
   * Fix a typo in vim-policy.  Thanks to Jakuyo Friel for the patch.  (Closes:
     #773531)
-  * Fix FTBFS when running “dpkg-buildpackage -A”.  (Closes: #806785)
+  * Fix FTBFS when running “dpkg-buildpackage -A”.  (Closes: #806875)
   * Stop installing menu files.
   * Install upstream's desktop files and drop the ones from debian/.
   * Mark vim-runtime/vim-gui-common as Multi-Arch: foreign.  (Closes: #806535)
