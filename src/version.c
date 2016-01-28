@@ -43,11 +43,17 @@ make_version(void)
      * VAX C can't catenate strings in the preprocessor.
      */
     strcpy(longVersion, VIM_VERSION_LONG_DATE);
+#ifdef BUILD_DATE
+    strcat(longVersion, BUILD_DATE);
+#else
     strcat(longVersion, __DATE__);
     strcat(longVersion, " ");
     strcat(longVersion, __TIME__);
+#endif
     strcat(longVersion, ")");
 }
+# elif defined(BUILD_DATE)
+char	*longVersion = VIM_VERSION_LONG_DATE BUILD_DATE ")";
 # else
 char	*longVersion = VIM_VERSION_LONG_DATE __DATE__ " " __TIME__ ")";
 # endif
