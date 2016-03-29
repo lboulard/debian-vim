@@ -434,8 +434,8 @@ install-stamp-vim-basic: build-stamp-vim-basic $(DOT_IN_DEPS)
 	dh_link
 	
 	 # all excepts vim
-	dh_installchangelogs -Nvim -pvim-dbg debian/changelog.upstream
-	dh_installdocs -pvim-dbg
+	dh_installchangelogs -Nvim debian/changelog.upstream
+	dh_installdocs
 	dh_installmime
 	
 	env -u DH_OPTIONS dh_bugfiles -A -pvim
@@ -524,23 +524,13 @@ binary-indep: install-stamp-vim-basic install-stamp-indep
 	dh_md5sums
 	dh_builddeb -- -Zxz
 
-binary-arch: export DH_OPTIONS=-pvim-dbg
 binary-arch: $(foreach v,$(VARIANTS),binary-arch-$(v))
-	dh_testdir
-	dh_testroot
-	dh_compress
-	dh_fixperms
-	dh_lintian
-	dh_installdeb
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb -- -Zxz
 
 binary-arch-vim-basic: export DH_OPTIONS=-pvim-common -pvim
 binary-arch-vim-basic: install-stamp-vim-basic
 	dh_testdir
 	dh_testroot
-	dh_strip --dbg-package=vim-dbg
+	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1683-1~)'
 	dh_compress
 	dh_fixperms
 	dh_lintian
@@ -554,7 +544,7 @@ binary-arch-%: export DH_OPTIONS=-p$* $(foreach v,$(VARIANTS_SKIP),-N$(v))
 binary-arch-%: install-stamp-%
 	dh_testdir
 	dh_testroot
-	dh_strip --dbg-package=vim-dbg
+	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1683-1~)'
 	dh_compress
 	dh_fixperms
 	dh_lintian
