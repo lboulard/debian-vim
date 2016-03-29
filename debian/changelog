@@ -1,3 +1,23 @@
+vim (2:7.4.1683-1) UNRELEASED; urgency=medium
+
+  * Merge upstream tag v7.4.1683.
+    + Highlighted changes:
+      - 7.4.1142: “:syn iskeyword” command to define the set of keyword
+        characters for syntax highlighting, rather than changing the buffer's
+        'iskeyword' option.
+      - 7.4.1154 et.al.: Support converting between JSON
+        and VimL.  See json_decode(), json_encode(), js_decode(), and
+        js_encode().
+      - 7.4.1169 et.al.: Support async communication with external processes
+        using the new channel and job features.
+      - 7.4.1384 et.al.: Provide native support for managing Vim
+        addons/packages with the :packadd command and 'packpath' option.
+      - 7.4.1402: GTK3 GUI support
+      - 7.4.1578: Support running a function on a periodic basis with the
+        timer_start()/timer_start() functions.
+
+ -- James McCoy <jamessan@debian.org>  Mon, 28 Mar 2016 21:14:49 -0400
+
 vim (2:7.4.963-1) unstable; urgency=medium
 
   * Merge upstream tag v7.4.963.

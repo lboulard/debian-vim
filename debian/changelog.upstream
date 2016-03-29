@@ -924,7 +924,7 @@ Individual patches for Vim 7.4:
   2100  7.4.900  (after 7.4.899) README file can still be improved
   2150  7.4.901  BufLeave autocommand an corrupt undo
  13294  7.4.902  problems with using the MS-Windows console
-  1820  7.4.903  MS-Windows: expandinig wildcards may cause bad memory access
+  1820  7.4.903  MS-Windows: expanding wildcards may cause bad memory access
  10391  7.4.904  Vim does not provide .desktop files
   8728  7.4.905  Python interface misses some functions on vim.message
   2927  7.4.906  MS-Windows: viminfo file is (always) given hidden attribute
@@ -985,3 +985,718 @@ Individual patches for Vim 7.4:
   3189  7.4.961  test107 fails in some circunstances
   4477  7.4.962  cannot run the tests with gvim and individual new tests
   3221  7.4.963  test_listlbr_utf8 sometimes fails
+  2454  7.4.964  test 87 doesn't work in a shadow directory
+  1722  7.4.965  on FreeBSD /dev/fd/ files are special
+ 18882  7.4.966  configure doesn't work with a space in a path
+  3142  7.4.967  cross compilation on MS-windows doesn't work well
+  2148  7.4.968  test86 and test87 are flaky in Appveyor
+  1776  7.4.969  compiler warnings on Windowx x64 build
+  1880  7.4.970  rare crash in getvcol()
+  1987  7.4.971  the asin() function can't be used
+  1533  7.4.972  memory leak when there is an error in setting an option
+  3832  7.4.973  pasting on the command line line inserts <CR> characters
+  2578  7.4.974  when using :diffsplit the cursor jumps to the first line
+  1857  7.4.975  using ":sort" on a very big file may cause corrupted text
+  3304  7.4.976  when compiling for MSYS2 the Win32 clipboard is not enabled
+  7135  7.4.977  problem with 'linebreak' set and using "space" in 'listchars'
+  1738  7.4.978  test_cdo fails when using another language than English
+  1891  7.4.979  when crypt key changes blocks read from disk are not decrypted
+ 17049  7.4.980  tests for :cdo, :ldo, etc. are outdated
+  2519  7.4.981  an error in a test script goes unnoticed
+ 28211  7.4.982  keeping the list of tests updated is a hassle
+  8225  7.4.983  executing one test after "make testclean" doesn't work
+  8427  7.4.984  searchpos() always starts searching in the first column
+  8008  7.4.985  can't build with Ruby 2.3.0
+  2551  7.4.986  test49 doesn't work on MS-Windows, test70 is listed twice
+  2394  7.4.987  (after 7.4.985) can't build with Ruby 1.9.2
+  3273  7.4.988  (after 7.4.982) default test target is test49.out
+  1668  7.4.989  leaking memory when hash_add() fails; Coverity error 99126
+  1803  7.4.990  test 86 fails on AppVeyor
+  7178  7.4.991  when running new style tests the output is not visible
+ 10272  7.4.992  makefiles for MS-Windows in src/po are outdated
+  2531  7.4.993  test 87 is flaky on AppVeyor
+  3360  7.4.994  new style tests are not run on MS-Windows
+ 40522  7.4.995  gdk_pixbuf_new_from_inline() is deprecated
+  4784  7.4.996  new files missing from distro, outdated PC build instructions
+  2956  7.4.997  "make shadow" was sometimes broken
+  2803  7.4.998  running tests in shadow directory fails; test 49 fails
+  1366  7.4.999  "make shadow" creates a broken link
+ 23744  7.4.1000  test 49 is slow and doesn't work on MS-Windows
+  1371  7.4.1001  (after 7.4.1000) change in makefile missing
+  1894  7.4.1002  cannot run an individual test on MS-Windows
+  3048  7.4.1003  Travis could check a few more things
+  1626  7.4.1004  warnings when using Makefile without auto/config.mk
+ 10231  7.4.1005  Vim users are not always happy
+  4320  7.4.1006  the fix in patch 7.3.192 is not tested
+  2537  7.4.1007  swapfile wrong when symbolic link points to file in root dir
+ 77315  7.4.1008  OS/2 code pollutes the source while nobody uses it these days
+  8490  7.4.1009  there are still #ifdefs for ARCHIE
+  2093  7.4.1010  some developers are unhappy while running tests
+  2505  7.4.1011  can't build with Strawberry Perl
+  2024  7.4.1012  Vim overwrites the value of $PYTHONHOME
+  3335  7.4.1013  local value of 'errorformat' not used for :lexpr and :cexpr
+  1950  7.4.1014  fnamemodify('.', ':.') returns an empty string in Cygwin
+  4269  7.4.1015  matchparen plugin does not restore column in Insert mode
+  4777  7.4.1016  still a few OS/2 pieces remain
+  4525  7.4.1017  when there is a backslash in an option ":set -=" doesn't work
+  1361  7.4.1018  (after 7.4.1017) failure running tests
+  6463  7.4.1019  directory listing of "src" is too long
+  1380  7.4.1020  on MS-Windows there is no target to run tests with gvim
+  3200  7.4.1021  some makefiles are outdated
+  3500  7.4.1022  the README file contains some outdated information
+ 16050  7.4.1023  MS-Windows distribution files use CR-LF instead of LF
+  2250  7.4.1024  interfaces for MS-Windows are outdated
+  3670  7.4.1025  version in installer needs to be updated manually
+  3843  7.4.1026  running tests with MingW leaves directory behind
+ 40082  7.4.1027  no support for binary numbers
+  1536  7.4.1028  Nsis version file missing from the distribution
+  1930  7.4.1029  (after 7.4.1027) test_increment fails with 32 bit long
+ 27245  7.4.1030  test49 is still slow
+  9385  7.4.1031  can't build with Python interface using MingW
+  2416  7.4.1032  message from assert_false() does not look nice
+  4311  7.4.1033  memory use on MS-Windows is very conservative
+  3550  7.4.1034  there is no test for the 'backspace' option behavior
+  3134  7.4.1035  non-line number Ex range gets adjusted for folded lines
+  2689  7.4.1036  only terminals with up to 256 colors work properly
+  8591  7.4.1037  need to repeat "q!" when there is a modified hidden buffer
+  3585  7.4.1038  still get a deprecation warning with gdk-pixbuf 2.31
+  1351  7.4.1039  (after 7.4.1037) test 31 fails with small build
+  4712  7.4.1040  the tee command can't be build on MS-Windows
+  2698  7.4.1041  various small things
+ 20144  7.4.1042  there is no way to get the word count in a script
+  2846  7.4.1043  another small thing
+  1473  7.4.1044  (after 7.4.1042) can't build without the +eval feature
+  2314  7.4.1045  can't see coverage if shadow and coverage on the same build
+  1919  7.4.1046  no test coverage for menus
+  1313  7.4.1047  (after patch 7.4.1042) tests fail on MS-Windows
+  1795  7.4.1048  (after patch 7.4.1047) test still fails on MS-Windows
+  1712  7.4.1049  (after patch 7.4.1048) test still still fails on MS-Windows
+  3619  7.4.1050  warning for unused var with tiny features
+  3758  7.4.1051  segfault when unletting "count"
+  2463  7.4.1052  illegal memory access with weird syntax command
+ 10050  7.4.1053  insufficient testing for quickfix commands
+  1495  7.4.1054  illegal memory access
+  3525  7.4.1055  running "make newtests" in src/testdir has no output
+ 11108  7.4.1056  don't know why finding spell suggestions is slow
+  2151  7.4.1057  typos in the :options window
+  8986  7.4.1058  not possible to test behavior when memory allocation fails
+  1352  7.4.1059  code is never executed
+  3961  7.4.1060  instructions for writing tests are outdated
+  2799  7.4.1061  compiler warning for ignoring return value of fwrite()
+  4105  7.4.1062  building with Ruby on MS-Windows requires a lot of arguments
+  2259  7.4.1063  TCL variables are not set when building with Cygwin and MingW
+  7842  7.4.1064  with single letter compounding spell suggestions are slow
+ 13599  7.4.1065  cannot use the "dll" options on MS-Windows
+  2890  7.4.1066  (after 7.4.1065) build fails on MS-Windows
+  2723  7.4.1067  (after 7.4.1065) Can't build with MingW+Python on MS-Windows
+  2880  7.4.1068  wrong way to check for unletting internal variables
+  2244  7.4.1069  compiler warning for unused argument
+ 22364  7.4.1070  the Tcl interface can't be loaded dynamically on Unix
+  2913  7.4.1071  new style tests are executed in arbitrary order
+ 27621  7.4.1072  increment test is old style
+  7927  7.4.1073  alloc_id depends on numbers, may use the same one twice
+  1525  7.4.1074  warning from VX2015 compiler
+  1890  7.4.1075  crash when using an invalid command
+  3552  7.4.1076  CTRL-A does not work well in right-left mode
+ 16900  7.4.1077  the build instructions for MS-Windows are incomplete
+  1631  7.4.1078  MSVC: "make clean" doesn't cleanup in the tee directory
+  2641  7.4.1079  (after 7.4.1073) file missing from distribution
+  1865  7.4.1080  VS2015 HandleToLong() is shadowed by a Vim macro
+  1617  7.4.1081  no test for what previously caused a crash
+  1374  7.4.1082  the Tcl interface is always skipping memory free on exit
+  2672  7.4.1083  building GvimExt with VS2015 may fail
+  2963  7.4.1084  repeating CTRL-A in Visual mode increments the wrong numbers
+  3938  7.4.1085  the CTRL-A and CTRL-X commands do not update '[ and '] marks
+  1464  7.4.1086  crash with an extremely long buffer name
+ 33779  7.4.1087  CTRL-A and CTRL-X work badly with blockwise visual selection
+  4334  7.4.1088  Coverity warns for uninitialized variables
+  2506  7.4.1089  repeating CTRL-A doesn't work
+  4054  7.4.1090  no tests for :hardcopy and related options
+  1945  7.4.1091  2 sec delay when making change while need_wait_return is set
+  6884  7.4.1092  is not simple to test for an exception
+  4690  7.4.1093  typo in test goes unnoticed
+  2163  7.4.1094  test for :hardcopy fails on MS-Windows
+  2089  7.4.1095  can't build GvimExt with SDK 7.1
+  8454  7.4.1096  need several lines to verify a command produces an error
+  3138  7.4.1097  looking up the alloc ID for tests fails
+  8123  7.4.1098  still using old style C function declarations
+  5136  7.4.1100  Cygwin makefiles are unused
+  1787  7.4.1101  cursor in wrong position with 'rightleft' and concealing
+ 16478  7.4.1102  debugger has no stack backtrace support
+  1334  7.4.1103  removed file still in distribution
+ 66134  7.4.1104  various problems building with MzScheme/Racket
+  3911  7.4.1105  with slices there is a mixup of variable name and namespace
+  7623  7.4.1106  the nsis script can't be used from the appveyor build
+ 11125  7.4.1107  Vim can create a directory but not delete it
+  5251  7.4.1108  expanding "~" halfway a file name
+  2549  7.4.1109  (after 7.4.1107) MS-Windows doesn't have rmdir()
+  1261  7.4.1110  test 108 fails when language is French
+  4008  7.4.1111  test_expand fails on MS-Windows
+  1941  7.4.1112  no error is reported for ":next" with an illegal file name
+  3248  7.4.1113  (after 7.4.1105) using {ns} in variable name does not work
+  7989  7.4.1114  (after 7.4.1107) delete() does not handle symbolic links
+  1643  7.4.1115  MS-Windows: make clean in testdir doesn't clean everything
+  4697  7.4.1116  delete(x, 'rf') does not delete files starting with a dot
+  3673  7.4.1117  (after 7.4.1116) no longer get "." and ".." in directory list
+  1515  7.4.1118  tests hang in 24 line terminal
+  2878  7.4.1119  argidx() has a wrong value after ":%argdelete"
+  3505  7.4.1120  delete(x, 'rf') fails if a directory is empty
+  1931  7.4.1121  test_expand leaves files behind
+  4831  7.4.1122  test 92 and 93 fail with gvim on system with non utf-8 locale
+  3513  7.4.1123  using ":argadd" makes wrong arg the current one
+  7088  7.4.1124  MS-Windows: dead key behavior is not ideal
+ 17310  7.4.1125  there is no perleval()
+ 18360  7.4.1126  can only get the directory of the current window
+  5343  7.4.1127  both old and new style tests for Perl
+  5906  7.4.1128  MS-Windows: delete() does not recognize junctions
+  3123  7.4.1129  Python None value can't be converted to a Vim value
+  1550  7.4.1130  memory leak in :vimgrep
+ 10012  7.4.1131  new lines in the viminfo file are dropped
+332180  7.4.1133  generated function prototypes still have __ARGS()
+  1846  7.4.1134  the arglist test fails on MS-Windows
+  1654  7.4.1135  one more arglist test fails on MS-Windows
+  2379  7.4.1136  wrong argument to assert_exception() causes a crash
+  2012  7.4.1137  illegal memory access when using :copen and :cclose
+  1919  7.4.1138  when running gvim in the foreground some icons are missing
+  4507  7.4.1139  MS-Windows: getftype() returns "file for symlink to directory
+  1802  7.4.1140  recognizing <sid> does not work when the language is Turkish
+  1677  7.4.1141  searchpair() with a syntax skip expression may not work
+ 14719  7.4.1142  cannot define keyword characters for a syntax file
+ 16382  7.4.1143  can't sort on floating point numbers
+  1414  7.4.1144  (after 7.4.1143) can't build on several systems
+  4215  7.4.1145  default features are conservative
+  3103  7.4.1146  can't build with Python 3 interface using MingW
+ 15538  7.4.1147  conflict for "chartab"
+  2751  7.4.1148  default for MingW and Cygwin is still "normal"
+  3709  7.4.1149  (after 7.4.1013) problem with using local value of 'efm'
+  6220  7.4.1150  'langmap' applies to the first character typed in Select mode
+  1952  7.4.1151  (after 7.4.1150) missing change to eval.c
+  1289  7.4.1152  (after 7.4.1150) langmap test fails with normal build
+  2743  7.4.1153  autocommands for quickfix cannot always get current title
+ 55330  7.4.1154  no support for JSON
+  1596  7.4.1155  (after 7.4.1154) build with normal features fails
+  1953  7.4.1156  Coverity warns for NULL pointer and ignoring return value
+  3787  7.4.1157  type() does not work for v:true, v:none, etc.
+ 74145  7.4.1158  still using __ARGS()
+ 16118  7.4.1159  automatically generated function prototypes use __ARGS
+  1360  7.4.1160  no error for jsondecode('"')
+  3333  7.4.1161  ":argadd" without argument does not work as documented
+  1710  7.4.1162  missing error number in MzScheme
+  3935  7.4.1163  expressions "0 + v:true" and "'' . v:true" cause an error
+  5677  7.4.1164  can't compare special vars; jsondecode() doesn't report error
+  4780  7.4.1165  build fails when defining DYNAMIC_ICONV_DLL in the makefile
+  6664  7.4.1166  jsonencode() doesn't handle Funcref and repeated list right
+  2213  7.4.1167  no tests for "is" and "isnot" with the new variables
+  2678  7.4.1168  this doesn't give the right result: eval(string(v:true))
+ 35041  7.4.1169  the socket I/O is intertwined with the netbeans code
+  5990  7.4.1170  (after 7.4.1169) missing changes in src/Makefile, Filelist
+ 45145  7.4.1171  Makefile dependencies are outdated
+  3160  7.4.1172  (after 7.4.1169) configure is overly positive
+  1661  7.4.1173  (after 7.4.1168) no test for new behavior of v:true et al.
+  4024  7.4.1174  netbeans contains dead code insde #ifndef INIT_SOCKETS
+  1317  7.4.1175  (after 7.4.1169) can't build with Mingw and Cygwin
+  1745  7.4.1176  missing change to proto file
+  1335  7.4.1177  the +channel feature is not in :version output
+  2064  7.4.1178  empty() doesn't work for the new special variables
+  3461  7.4.1179  test_writefile and test_viml do not delete the tempfile
+  2503  7.4.1180  crash with invalid argument to glob2regpat()
+  2015  7.4.1181  free_tv() can't handle special variables
+ 44537  7.4.1182  still socket code intertwined with netbeans
+  1726  7.4.1183  (after 7.4.1182) MS-Windows build is broken
+  1575  7.4.1184  MS-Windows build is still broken
+  4866  7.4.1185  can't build with TCL on some systems
+  2549  7.4.1186  error messages for security context are hard to translate
+  3976  7.4.1187  MS-Windows channel code only supports one channel
+  4016  7.4.1188  using older JSON standard
+  1922  7.4.1189  (after 7.4.1165) can't use another language on MS-Windows
+  6783  7.4.1190  on OSX the default flag for dlopen() is different
+ 39635  7.4.1191  the channel feature isn't working yet
+  1496  7.4.1192  can't build with FEAT_EVAL but without FEAT_MBYTE
+  1486  7.4.1193  can't build the channel feature on MS-Windows
+  3392  7.4.1194  compiler warning for not using return value of fwrite()
+  8082  7.4.1195  the channel feature does not work in the MS-Windows console
+ 61502  7.4.1196  still using __ARGS
+ 62132  7.4.1197  still using __ARGS (fixed)
+ 98165  7.4.1198  still using __ARGS
+141118  7.4.1199  still using __ARGS
+  3902  7.4.1201  still using __ARGS
+  3652  7.4.1202  can't build on Mac
+ 21663  7.4.1203  still using __ARGS (corrected patch)
+  1835  7.4.1204  latin1 characters cause encoding conversion
+414547  7.4.1205  using old style function declarations
+271505  7.4.1206  using old style function declarations
+205336  7.4.1207  using old style function declarations
+147428  7.4.1208  using old style function declarations
+  7098  7.4.1209  (after 7.4.1207) can't build with Athena
+169183  7.4.1210  using old style function declarations
+292164  7.4.1211  using old style function declarations
+  1448  7.4.1212  (after 7.4.1207) can't build with Motif
+219134  7.4.1213  using old style function declarations
+285046  7.4.1214  using old style function declarations
+ 76252  7.4.1215  using old style function declarations
+  7344  7.4.1216  still using HAVE_STDARG_H
+ 14109  7.4.1217  execution of command on channel doesn't work yet
+  5288  7.4.1218  missing change in configure, more changes for function style
+  1660  7.4.1219  build fails with +channel but without +float
+  2075  7.4.1220  warnings for unused variables in tiny build
+  6278  7.4.1221  tiny and small builds include too many features
+ 15218  7.4.1222  ":normal" command and others missing in tiny build (fixed 2)
+  3568  7.4.1223  crash when setting v:errors to a number
+  2475  7.4.1224  build problems with GTK on BSD
+ 15599  7.4.1225  still a few old style function declarations
+  2684  7.4.1226  GRESOURCE_HDR is unused
+  2443  7.4.1227  compiler warnings
+  2207  7.4.1228  copy() and deepcopy() fail with special variables
+ 21628  7.4.1229  "eval" and "expr" channel commands don't work yet
+  2258  7.4.1230  Win32: opening channel may hang, messages not handled
+ 24711  7.4.1231  JSON messages are not parsed properly
+  1600  7.4.1232  compiler warnings when the Sniff feature is enabled
+  1567  7.4.1233  channel command may cause a crash
+  5758  7.4.1234  demo server only runs with Python 2
+  4850  7.4.1235  (after 7.4.1231) missing change to eval.c
+  2556  7.4.1236  with "syntax manual" switching buffers removes highlighting
+  2230  7.4.1237  can't translate message without adding a line break
+ 34251  7.4.1238  can't handle two messages right after each other (fixed)
+  4601  7.4.1239  JSON message after the first one is dropped
+  2964  7.4.1240  Visual studio tools are noisy
+  2105  7.4.1241  missing change in Makefile due to diff mismatch
+  1745  7.4.1242  json_test fails without the eval feature
+  1546  7.4.1243  compiler warning for uninitialized variable
+ 21372  7.4.1244  the channel functions don't sort together
+  1414  7.4.1245  file missing from distribution
+ 16263  7.4.1246  the channel functionality isn't tested
+  3980  7.4.1247  the channel test doesn't run on MS-Windows
+  2746  7.4.1248  can't reliably start and stop the channel test server
+  8008  7.4.1249  crash when the process a channel is connected to exits
+  1645  7.4.1250  running tests in shadow directory fails
+  1361  7.4.1251  new test file missing from distribution
+  6903  7.4.1252  the channel test server may receive two messages concatenated
+  4434  7.4.1253  Python test server not displaying second of two commands
+  7916  7.4.1254  opening a second channel causes a crash
+  4811  7.4.1255  crash for channel "eval" command without third argument
+  2618  7.4.1256  on Mac sys.exit(0) doesn't kill the test server
+  1842  7.4.1257  channel test fails in some configurations
+  1934  7.4.1258  the channel test can fail if messages arrive later
+  1840  7.4.1259  no test for what patch 7.3.414 fixed
+  3938  7.4.1260  the channel feature doesn't work on Win32 GUI
+  3463  7.4.1261  crash on garbage collection, leaking memory
+ 10824  7.4.1262  the channel callback is not invoked
+ 31504  7.4.1263  ch_open() hangs when the server isn't running
+  4731  7.4.1264  crash when receiving an empty array
+  4642  7.4.1265  not all channel commands are tested
+  2477  7.4.1266  a BufAdd autocommand may cause an ml_get error
+ 14468  7.4.1267  easy to miss handling all types of variables
+  1645  7.4.1268  waittime is used as seconds instead of milliseconds
+  4793  7.4.1269  encoding {'key':v:none} to JSON doesn't give an error
+  2674  7.4.1270  warnings for missing values in switch
+  2003  7.4.1271  assert_false(v:false) reports an error
+  1681  7.4.1272  using future enum value
+ 32888  7.4.1274  cannot run a job
+  2034  7.4.1275  (after 7.4.1274) build fails on MS-Windows
+  3454  7.4.1276  warning for not using return value of fcntl()
+  2170  7.4.1277  compiler can complain about missing enum value in switch
+  7603  7.4.1278  when jsonencode() fails it still returns something
+ 52706  7.4.1279  jsonencode() is not producing strict JSON
+  1519  7.4.1280  missing case value
+  2425  7.4.1281  no test for skipping over code that isn't evaluated
+  1559  7.4.1282  crash when evaluating the pattern of ":catch" causes an error
+  5184  7.4.1283  the job feature isn't available on MS-Windows
+  2134  7.4.1284  (after 7.4.1282) test 49 fails
+  5215  7.4.1285  cannot measure elapsed time
+  3664  7.4.1286  ch_open() with a timeout doesn't work correctly
+  1869  7.4.1287  (after 7.4.1286) channel test fails
+  3546  7.4.1288  ch_sendexpr() does not use JS encoding
+  2299  7.4.1289  channel test fails on MS-Windows, connect() takes too long
+  1400  7.4.1290  Coverity complains about uneccessary check for NULL
+  1808  7.4.1291  on MS-Windows the channel test server doesn't quit
+  2239  7.4.1292  some compilers complain about uninitialzed variable
+  4709  7.4.1293  a channel may hang waiting for a discarded message
+  1960  7.4.1294  job_stop() only kills the started process
+  1853  7.4.1295  string(job) doesn't work well on MS-Windows
+  1652  7.4.1296  cursor changes column with up motion when not supposed to
+  2883  7.4.1297  on Mac test_channel leaves python instances running
+  7301  7.4.1298  when the channel test fails the server keeps running
+  4920  7.4.1299  when server sends zero ID message channel handler not invoked
+  6089  7.4.1300  cannot test CursorMovedI because there is typeahead
+  1672  7.4.1301  missing options in ch_open()
+  3806  7.4.1302  typo in struct field name
+  4596  7.4.1303  a Funcref is not accepted as a callback
+ 33319  7.4.1304  function names are difficult to read
+  4094  7.4.1305  "\%1l^#.*" does not match on a line starting with "#"
+ 10114  7.4.1306  job control doesn't work well on MS-Windows
+  2107  7.4.1307  some channel tests fail on MS-Windows
+  1599  7.4.1308  (after 7.4.1307) typo in test
+  5727  7.4.1309  when a test fails not all relevant info is listed
+ 76009  7.4.1310  jobs don't open a channel
+  1847  7.4.1311  (after 7.4.1310) sock_T is defined too late
+  1704  7.4.1312  (after 7.4.1311) sock_T not defined without +channel feature
+  2518  7.4.1313  MS-Windows: Using socket after closed causes an exception
+  1537  7.4.1314  warning for uninitialzed variable
+103578  7.4.1315  using channel handle does not allow for freeing when unused
+  3091  7.4.1316  can't build MS-Windows console version
+  1551  7.4.1317  MS-Windows: channel test fails
+ 35549  7.4.1318  channel with pipes doesn't work in GUI
+ 15447  7.4.1319  tests fail on MS-Windows and on Unix with GUI
+  1594  7.4.1320  Cygwin/MingW build fails with channel but without Netbeans
+  1373  7.4.1321  compiler complains about missing statement
+  4971  7.4.1322  crash when unletting the variable that holds the channel
+  1732  7.4.1323  do not get warnings when building with MingW
+ 22670  7.4.1324  channels with pipes don't work on MS-Windows
+  4039  7.4.1325  channel test fails on Unix/DOS line endings difference
+  1624  7.4.1326  build rules are bit too complicated
+  3569  7.4.1327  channel test doesn't work if Python executable is python.exe
+  3629  7.4.1328  can't compile with +job but without +channel
+  3714  7.4.1329  crash when using channel that failed to open
+  2760  7.4.1330  fd_read() has an unused argument
+  4098  7.4.1331  crash when closing the channel in a callback
+  1848  7.4.1332  problem using Python3 when compiled with MingW
+  3250  7.4.1333  channel test fails on non-darwin builds
+ 57703  7.4.1334  many compiler warnings with MingW
+  2420  7.4.1335  can't build on MS-Windows with +job but without +channel
+ 14759  7.4.1336  channel NL mode is not supported yet
+  6711  7.4.1337  (after 7.4.1336) part of the change missing
+  1980  7.4.1338  (after 7.4.1336) another part of the change is missing
+ 23706  7.4.1339  warnings when building the GUI with MingW
+  1242  7.4.1340  (after 7.4.1339) merge left extra #endif behind
+ 21723  7.4.1341  difficult to add more arguments to ch_sendraw()/ch_sendexpr()
+ 10172  7.4.1342  on Mac OS/X the waittime must be > 0 for connect to work
+  4577  7.4.1343  can't compile with +job but without +channel
+  1687  7.4.1344  can't compile Win32 GUI with tiny features
+  2279  7.4.1345  a few more compiler warnings
+  8883  7.4.1346  compiler warnings in build with -O2
+  1590  7.4.1347  when there is any error Vim will use a non-zero exit code
+  3191  7.4.1348  more compiler warnings
+  2250  7.4.1349  and some more MingW compiler warnings
+  2468  7.4.1350  when the test server fails to start Vim hangs
+ 32197  7.4.1351  ch_open() may fail instead of waiting for the specified time
+  1991  7.4.1352  the test script lists all functions before executing them
+  1616  7.4.1353  Test_connect_waittime is skipped for MS-Windows
+  4470  7.4.1354  MS-Windows: Mismatching default compile options
+  9162  7.4.1355  Win32 console and GUI handle channels differently
+ 16221  7.4.1356  job and channel options parsing is scattered
+  1519  7.4.1357  (after 7.4.1356) error for returning value from void function
+  1580  7.4.1358  compiler warning when not building with +crypt
+  1873  7.4.1359  (after 7.4.1356) channel test ch_sendexpr() times out
+  3477  7.4.1360  can't remove a callback with ch_setoptions()
+  2138  7.4.1361  channel test fails on Solaris
+  1422  7.4.1362  (after 7.4.1356) using unitinialized value
+  2907  7.4.1363  compiler warnings with tiny build
+306584  7.4.1364  the Win 16 code is not maintained and unused
+  2305  7.4.1365  cannot execute a single test function
+  2017  7.4.1366  typo in test and resulting error in test result
+  1636  7.4.1367  compiler warning for unreachable code
+  1830  7.4.1368  one more Win16 file remains
+ 67480  7.4.1369  channels don't have a queue for stderr
+  1515  7.4.1370  the Python test script may keep on running
+  5541  7.4.1371  X11 GUI callbacks don't specify the part of the channel
+ 14982  7.4.1372  Channel read implementation is incomplete
+ 13828  7.4.1373  must turn args into string when calling Vim channel function
+  2407  7.4.1374  channel test hangs on MS-Windows
+ 19093  7.4.1375  still some Win16 code
+ 41297  7.4.1376  ch_setoptions() cannot set all options
+  2743  7.4.1377  Test_connect_waittime() is flaky
+ 11813  7.4.1378  can't change job settings after it started
+  4248  7.4.1379  channel test fails on Win32 console
+ 11895  7.4.1380  the job exit callback is not implemented
+  2007  7.4.1381  (after 7.4.1380) exit value not available on MS-Windows
+ 27514  7.4.1382  can't get the job of a channel
+  3905  7.4.1383  GvimExt only loads the old libintl.dll
+ 16713  7.4.1384  it is not easy to use a set of plugins and their dependencies
+  1821  7.4.1385  compiler warning for using array
+  2908  7.4.1386  job may be freed when the Job exit callback is invoked
+  1845  7.4.1387  Win16 docs still referenced
+  1840  7.4.1388  compiler warning
+  1517  7.4.1389  incomplete function declaration
+  5404  7.4.1390  if glib-compile-resources cannot be found building Vim fails
+  1712  7.4.1391  warning for uninitialzed variable
+  1984  7.4.1392  some tests fail for Win32 console version
+  1961  7.4.1393  starting a job hangs in the GUI
+ 15733  7.4.1394  can't sort inside a sort function
+  3060  7.4.1395  DETACH in quotes is not compatible with Netbeans interface
+  1946  7.4.1396  compiler warnings for conversions
+  1799  7.4.1397  sort test fails on MS-Windows
+ 13147  7.4.1398  the close-cb option is not implemented yet
+198260  7.4.1399  the MS-DOS code does not build (fixed 2)
+  2202  7.4.1400  Perl eval doesn't work properly on 64-bit big-endian machine
+  1877  7.4.1401  'autochdir' set during startup with diff mode doesn't work
+215313  7.4.1402  GTK 3 is not supported
+  3013  7.4.1403  can't build without the quickfix feature
+ 10511  7.4.1404  ch_read() doesn't time out on MS-Windows
+  5435  7.4.1405  completion menu flickers
+  1908  7.4.1406  leaking memory in cs_print_tags_priv()
+  7064  7.4.1407  json_encode() does not handle NaN and inf properly
+  3354  7.4.1408  MS-Windows doesn't have isnan() and isinf()
+  1736  7.4.1409  configure includes GUI despite --disable-gui flag
+  1600  7.4.1410  leaking memory in cscope interface
+  1544  7.4.1411  compiler warning for indent
+  1767  7.4.1412  compiler warning for indent
+  4800  7.4.1413  when calling ch_close() the close callback is invoked
+  5190  7.4.1414  Appveyor only builds one feature set
+  1783  7.4.1415  (after 7.4.1414) dropped the skip-tags setting
+  2323  7.4.1416  using "u_char" intead of "char_u", doesn't work everywhere
+  1612  7.4.1417  (after 7.4.1414) missing appveyor.bat from the distribution
+  5248  7.4.1418  job_stop() on MS-Windows does not really stop the job
+ 11240  7.4.1419  tests slowed down because of the "not a terminal" warning
+  1337  7.4.1420  (after 7.4.1419) missing makefile
+  4197  7.4.1421  may free a channel when a callback may need to be invoked
+  5587  7.4.1422  keeping channel open after job stops results in test failing
+  2603  7.4.1423  channel test fails on MS-Windows
+  1485  7.4.1424  not using --not-a-term when running tests on MS-Windows
+ 81739  7.4.1425  there are still references to MS-DOS support
+ 23351  7.4.1426  the "out-io" option for jobs is not implemented yet
+  1859  7.4.1427  trailing comma in enums is not ANSI C
+  2001  7.4.1428  compiler warning for non-virtual destructor
+  1902  7.4.1429  MS-Windows: when not using directx drawing emoji is broken
+  6433  7.4.1430  not useful to encode NaN and Infinity as null for JSON
+  1766  7.4.1431  including header files twice
+  1933  7.4.1432  typo in button text
+ 72821  7.4.1433  the Sniff interface is no longer useful
+  6751  7.4.1434  JSON encoding doesn't handle surrogate pair
+ 29141  7.4.1435  confusing that ch_sendexpr()/ch_sendraw() wait for a response
+  1594  7.4.1436  (after 7.4.1433) Sniff files still referenced in distribution
+  7821  7.4.1437  old system doesn't have isinf() and NAN
+  8681  7.4.1438  can't get buffer number of a channel
+  2684  7.4.1439  (after 7.4.1434) using uninitialzed variable
+  3145  7.4.1440  (after 7.4.1437) can't build on Windows
+  1697  7.4.1441  using empty name instead of no name for channel buffer
+  1736  7.4.1442  MS-Windows: more compilation warnings for destructor
+  4797  7.4.1443  can't build GTK3 with small features
+  1841  7.4.1444  can't build with JSON but without multi-byte
+  4344  7.4.1445  memory corruption when 'encoding' is not utf-8
+  1645  7.4.1446  crash when using json_decode()
+  7566  7.4.1447  memory leak when using ch_read(); log messages missing
+  1627  7.4.1448  JSON tests fail if 'encoding' is not utf-8
+  1486  7.4.1449  build fails with job feature but without channel feature
+  2366  7.4.1450  json encoding still fails when encoding is not utf-8
+  3542  7.4.1451  Vim hangs when a channel has a callback but isn't referenced
+  1886  7.4.1452  screen and cursor not updated after a callback was invoked
+  1848  7.4.1453  missing --not-a-term
+  2208  7.4.1454  the exit callback test is flaky
+  2950  7.4.1455  JSON decoding test for surrogate pairs is in the wrong place
+  2501  7.4.1456  test 87 fails with Python 3.5
+  5719  7.4.1457  opening a channel with select() is not done properly
+  6156  7.4.1458  when a JSON channel has a callback it may never be cleared
+  3244  7.4.1459  (after 7.4.1457) MS-Windows doesn't know socklen_t
+  2447  7.4.1460  syntax error in rarily used code
+  1642  7.4.1461  MS-Windows: all parts of a job command are put in quotes
+  2426  7.4.1462  two more rarily used functions with errors
+  5612  7.4.1463  configure doesn't find isinf() and isnan() on some systems
+  3063  7.4.1464  when the argument of sort() is zero or empty it fails
+  4963  7.4.1465  may use NULL pointer when using buffer output and JSON mode
+  1436  7.4.1466  Coverity reports dead code
+  2033  7.4.1467  can't build without the float feature
+  2174  7.4.1468  sort test doesn't test with "1" argument
+  2891  7.4.1469  channel test sometimes fails, especially on OS/X
+  2486  7.4.1470  Coverity reports missing restore
+  1571  7.4.1471  missing out-of-memory check, Coverity warning
+  1752  7.4.1472  Coverity warning for not using return value
+  3275  7.4.1473  can't build without the autocommand feature
+  2461  7.4.1474  compiler warnings without the float feature
+  1884  7.4.1475  using hangulinput with utf-8 CSI character is misintepreted
+  5226  7.4.1476  function arguments marked as unused while they are not
+  3047  7.4.1477  Test_reltime is flaky, it depends on timing
+  3210  7.4.1478  ":loadplugin" doesn't take care of ftdetect files
+  4124  7.4.1479  no test for ":loadplugin"
+ 17392  7.4.1480  cannot add a pack direcory without loading a plugin
+  2113  7.4.1481  can't build with small features
+  7105  7.4.1482  "timeout" option not supported on ch_eval*()
+  7947  7.4.1483  a one-time callback is not used for a raw channel
+  8593  7.4.1484  channel "err-io" value "out" is not supported
+ 13014  7.4.1485  job input from buffer is not implemented
+ 17982  7.4.1486  ":loadplugin" is not optimal, some people find it confusing
+  1547  7.4.1487  for WIN32 isinf() is defined as a macro
+  2180  7.4.1488  not using key if result from hangul_string_convert() is NULL
+  1933  7.4.1489  (after 7.4.1487) "inline" is not supported by old MSVC
+  1654  7.4.1490  compiler warning for unused function
+  2593  7.4.1491  Visual-block shift breaks multi-byte characters
+  5957  7.4.1492  no command line completion for ":packadd"
+  6344  7.4.1493  wrong callback invoked for zero-id messages
+  4204  7.4.1494  clr_history() does not work properly
+  4176  7.4.1495  compiler warnings with job but without channel feature
+  1656  7.4.1496  crash when built with GUI but it's not active
+  3547  7.4.1497  cursor drawing problem with GTK 3
+  1540  7.4.1498  error for locked item when using json_decode()
+  6652  7.4.1499  no error message when :packadd does not find anything
+  1907  7.4.1500  should_free flag set to FALSE
+  1617  7.4.1501  garbage collection with an open channel is not tested
+ 11155  7.4.1502  writing last-but-one buffer line to channel not implemented
+  2394  7.4.1503  crash when using ch_getjob()
+  3569  7.4.1504  (after 7.4.1502) no test for reading last-but-one line
+  3392  7.4.1505  get too many "looking for messages" channel log entries
+  8311  7.4.1506  job cannot read from a file
+  1663  7.4.1507  crash when starting a job fails
+  2102  7.4.1508  can't build GvimExt with MingW
+  4088  7.4.1509  keeping both a job and channel variable is a hassle
+  2586  7.4.1510  channel test fails on AppVeyor
+  1607  7.4.1511  statusline highlighting is sometimes wrong
+  3979  7.4.1512  channel input from file not supported on MS-Windows
+  3195  7.4.1513  "J" fails if there are not enough lines
+  9398  7.4.1514  channel output to file not implemented yet
+ 17914  7.4.1515  channel test is a bit flaky
+  6145  7.4.1516  cannot change file permissions
+  1633  7.4.1517  compiler warning with 64bit compiler
+ 14503  7.4.1518  channel with disconnected in/out/err is not supported
+  7607  7.4.1519  (after 7.4.1514) file output not implemented for MS-Windows
+  1777  7.4.1520  channel test: Waiting for a file to appear doesn't work
+  1974  7.4.1521  (after 7.4.1516) file permission test fails on MS-Windows
+  5440  7.4.1522  cannot write channel err to a buffer
+  2227  7.4.1523  writing channel to a file fails on MS-Windows
+  7637  7.4.1524  channel test fails on BSD
+  2801  7.4.1525  on a high resolution screen the toolbar icons are too small
+ 10098  7.4.1526  MS-Windows channel: missing writing to file + not connecting 
+  5195  7.4.1527  channel test is flaky on MS-Windows
+  7728  7.4.1528  using "ever" for packages is confusing
+ 11462  7.4.1529  specifying buffer number for channel not implemented yet
+  1672  7.4.1530  MS-Windows job_start() closes wrong handle
+  1912  7.4.1531  compiler warning for unitinialized variable
+  5209  7.4.1532  MS-Windows channel leaks file descriptor
+  3479  7.4.1533  using feedkeys() with an empty string disregards 'x' option
+  1731  7.4.1534  compiler warning for shadowed variable
+  1572  7.4.1535  the feedkeys test has a one second delay
+ 12113  7.4.1536  cannot re-use a channel for another job
+ 45289  7.4.1537  too many feature flags for pipes, jobs and channels
+  2741  7.4.1538  selection with the mouse does not work in command line mode
+ 69836  7.4.1539  too much code in eval.c
+  2476  7.4.1540  channel test is a bit flaky
+  8271  7.4.1541  missing job_info()
+  1704  7.4.1542  job_start() with a list is not tested
+  2343  7.4.1543  channel log methods are not tested
+  1881  7.4.1544  on Win32 escaping the command does not work properly
+  3121  7.4.1545  GTK3: horizontal cursor movement in Visual selection not good
+  5247  7.4.1546  sticky type checking is more annoying than useful
+  3860  7.4.1547  get "-1" when getting not set cterm highlight attribute
+  2631  7.4.1548  (after 7.4.1546) two tests fail
+  2153  7.4.1549  (after 7.4.1547) syntax attributes test fails in Win32 GUI
+  4596  7.4.1550  cannot load packages early
+ 11865  7.4.1551  cannot generate help tags in all doc directories
+ 18133  7.4.1552  ":colorscheme" does not use 'packpath'
+  8737  7.4.1553  ":runtime" does not use 'packpath'
+  7071  7.4.1554  completion for :colorscheme does not use 'packpath'
+  3136  7.4.1555  list of test targets incomplete
+  2041  7.4.1556  "make install" changes the help tags file
+ 12671  7.4.1557  windows cannot be identified
+  5422  7.4.1558  it is not easy to find out what windows display a buffer
+ 58946  7.4.1559  passing cookie to a callback is clumsy
+ 43110  7.4.1560  Dict options with a dash are more difficult to use
+  2076  7.4.1561  (after 7.4.1559) missing update to proto file
+  1282  7.4.1562  ":helptags ALL" crashes
+  1478  7.4.1563  partial test fails on windows
+  4971  7.4.1564  an empty list in function() causes an error
+  2049  7.4.1565  crash when assert_equal() runs into a NULL string
+  1385  7.4.1566  compiler warning for shadowed variable
+  2215  7.4.1567  crash in assert_fails()
+  1479  7.4.1568  using CTRL-] in help on option in parentheses doesn't work
+  5418  7.4.1569  using old style tests for quickfix
+  4589  7.4.1570  there is no way to avoid the message when editing a file
+  2202  7.4.1571  no test for ":help"
+  1451  7.4.1572  setting 'compatible' in test influences following tests
+  1903  7.4.1573  tests get stuck at the more prompt
+  3063  7.4.1574  ":undo 0" does not work
+  1806  7.4.1575  using wrong size for struct
+  2833  7.4.1576  write error of viminfo file is not handled properly
+  5645  7.4.1577  cannot pass "dict.Myfunc" around as a partial
+ 20899  7.4.1578  there is no way to invoke a function later or periodically
+  2673  7.4.1579  (after 7.4.1578) missing changes in channel.c
+  1916  7.4.1580  crash when using function reference
+ 11918  7.4.1581  ":call dict.func()" where function is a partial does not work
+ 11135  7.4.1582  get E923 when using function(dict.func, [], dict)
+  1572  7.4.1583  warning for unitinialized variable
+  2823  7.4.1584  timers don't work for Win32 console
+  2184  7.4.1585  partial is not recognized everywhere
+  5356  7.4.1586  nesting partials doesn't work
+  1985  7.4.1587  compiler warnings with 64 bit compiler
+  9095  7.4.1588  old style test for quickfix
+  5792  7.4.1589  combining dict and args with partial doesn't always work
+  1566  7.4.1590  warning for shadowed variable
+  3316  7.4.1591  the quickfix title is truncated
+  3328  7.4.1592  quickfix code using memory after being freed
+  1483  7.4.1593  using channel timeout instead of request timeout
+  3015  7.4.1594  timers don't work on Unix
+  2202  7.4.1595  not checking for failed open()
+  1263  7.4.1596  memory leak
+  1588  7.4.1597  memory leak when out of memory
+  3145  7.4.1598  when starting the GUI fails a swap file is left behind
+  1636  7.4.1599  no link to Coverity
+ 18981  7.4.1600  libs directory is not useful
+ 61498  7.4.1601  README files take a lot of space in the top directory
+ 14853  7.4.1602  info files take space in the top directory
+  3059  7.4.1603  timer with an ":echo" command messes up display
+  9167  7.4.1604  emoji characters are not treated as full width
+  1585  7.4.1605  catching exception that won't be thrown
+  2241  7.4.1606  type() handling plain Funcref and partial differently
+  5469  7.4.1607  comparing function on two dicts is not backwards compatible
+  3620  7.4.1608  string() doesn't handle a partial
+  3741  7.4.1609  Contents file is only for Amiga distro
+ 96222  7.4.1611  the versplit feature makes the code uneccessary complicated
+  5931  7.4.1612  (after 7.4.1611) can't build with small features
+  2264  7.4.1613  (after 7.4.1612) still can't build with small features
+ 15963  7.4.1614  still quickfix test in old style
+  3023  7.4.1615  build fails with tiny features
+  5699  7.4.1616  malformed channel request causes a hang
+ 17818  7.4.1617  when a JSON message is split it isn't decoded
+  2119  7.4.1618  start job with buffer output changes option in current buffer
+  1612  7.4.1619  'fileformats' does not apply to the initial buffer
+  9085  7.4.1620  emoji characters are not considered a kind of word character
+ 16682  7.4.1621  channel test doesn't work with Python 2.6
+  3858  7.4.1622  channel demo doesn't work with Python 2.6
+  3602  7.4.1623  all Channels share the message ID, it keeps getting bigger
+ 12060  7.4.1624  can't get info about a channel
+  1824  7.4.1625  trying to close file descriptor that isn't open
+  2439  7.4.1626  (after 7.4.1624) missing changes to structs
+  2155  7.4.1627  channel out_cb and err_cb are not tested
+  1485  7.4.1628  64-bit Compiler warning
+ 21807  7.4.1629  handling emoji chars as full width not backwards compatibile
+  1691  7.4.1630  Unicode table for double width is outdated
+  1592  7.4.1631  compiler doesn't understand switch on all enum values
+  4293  7.4.1632  list of test targets is outdated
+  2991  7.4.1633  if the help tags file was removed "make install" fails
+  2006  7.4.1634  vertical movement after CTRL-A ends up in the wrong column
+  1461  7.4.1635  channel test is a bit flaky
+  1957  7.4.1636  missing prompt for crypt key when 'F' is in 'shortmess'
+  1739  7.4.1637  can't build with older MinGW compiler
+  3564  7.4.1638  when binding function to dict the reference count is wrong
+  4759  7.4.1639  invoking garbage collection may cause a double free
+  4926  7.4.1640  crash when an autocommand changes a quickfix list
+  2575  7.4.1641  using unterminated string
+  3299  7.4.1642  handling emoji chars as full width not backwards compatibile
+  2708  7.4.1643  (after 7.4.1641) terminating file name has side effects
+  5680  7.4.1644  error when using string() on partial with recursive reference
+  2293  7.4.1645  partial in a dict can't be redefined as a function
+  2809  7.4.1646  using Python vim.bindeval() on a partial doesn't work
+  2597  7.4.1647  using freed memory after setqflist() and ":caddbuffer"
+  2728  7.4.1648  compiler has a problem copying a string into di_key[]
+124628  7.4.1649  the matchit plugin needs to be copied to be used
+  1530  7.4.1650  quickfix test fails
+  5180  7.4.1651  some dead (MSDOS) code remains
+  8475  7.4.1652  old style test for fnamemodify()
+  1892  7.4.1653  (after 7.4.1649) can't load matchit.vim from the old location
+  2230  7.4.1654  crash when using expand('%:S') in a buffer without a name
+  1474  7.4.1655  remote_expr() hangs
+  1970  7.4.1656  crash when using partial with a timer
+  6849  7.4.1657  Unix in a terminal: channel messages not handled right away
+  4888  7.4.1658  one canot know when VimEnter autocmds were already triggered
+  1487  7.4.1659  (after 7.4.1657) compiler warning for argument type
+  3263  7.4.1660  has('patch-7.4.1') doesn't work
+  6195  7.4.1661  no test for special characters in channel eval command
+  3347  7.4.1662  no test for an invalid Ex command on a channel
+ 13972  7.4.1663  in tests it's often useful to check if a pattern matches
+  2149  7.4.1664  crash in :cgetexpr
+  2061  7.4.1665  crash when calling job_start() with a NULL string
+  9445  7.4.1666  when reading JSON from a channel all readahead is used
+  2469  7.4.1667  Win32: waiting on a pipe with fixed sleep time
+  3286  7.4.1668  channel_get_all() does multiple allocations
+ 24738  7.4.1669  when writing buffer lines to a pipe Vim may block
+  1558  7.4.1670  completion doesn't work well for a variable containing "#"
+  2985  7.4.1671  adding @ab to help tag completion may be unnecessary
+  8535  7.4.1672  the Dvorak support is a bit difficult to install
+ 23583  7.4.1673  the justify plugin has to be copied or sourced to be used
+ 11414  7.4.1674  the editexisting plugin has to be copied/sourced to be used
+  4614  7.4.1675  the swapmous plugin has to be copied or sourced to be used
+ 11092  7.4.1676  the shellmenu plugin has to be copied or sourced to be used
+  2921  7.4.1677  a reference to the removed file_select plugin remains
+  1514  7.4.1678  warning for unused argument
+  1640  7.4.1679  Coverity: copying value of v_lock without initializing it
+  1835  7.4.1680  Coverity warns for not checking name length (false positive)
+  1543  7.4.1681  Coverity warns for fixed size buffer length (false positive)
+  1880  7.4.1682  Coverity: no check for NULL
+  1868  7.4.1683  generated .bat files do not support --nofork
