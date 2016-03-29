@@ -15,6 +15,7 @@ vim (2:7.4.1683-1) UNRELEASED; urgency=medium
       - 7.4.1402: GTK3 GUI support
       - 7.4.1578: Support running a function on a periodic basis with the
         timer_start()/timer_start() functions.
+  * Add a vim-gtk3 package.  (Closes: #815750)
 
  -- James McCoy <jamessan@debian.org>  Mon, 28 Mar 2016 21:14:49 -0400
 
