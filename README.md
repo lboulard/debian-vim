@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/vim/vim.svg?branch=master)](https://travis-ci.org/vim/vim)
 [![Coverage Status](https://coveralls.io/repos/vim/vim/badge.svg?branch=master&service=github)](https://coveralls.io/github/vim/vim?branch=master)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/o2qht2kjm02sgghk?svg=true)](https://ci.appveyor.com/project/chrisbra/vim)
+[![Coverity Scan](https://scan.coverity.com/projects/241/badge.svg)](https://scan.coverity.com/projects/vim)
 
 
 ## What is Vim? ##
@@ -17,9 +18,10 @@ All commands are given with normal keyboard characters, so those who can type
 with ten fingers can work very fast.  Additionally, function keys can be
 defined by the user, and the mouse can be used.
 
-Vim runs under Amiga DOS, MS-DOS, MS-Windows (95, 98, Me, NT, 2000, XP, Vista,
-7), Atari MiNT, Macintosh, BeOS, VMS, RISC OS, OS/2 and almost all flavours of
-UNIX.  Porting to other systems should not be very difficult.
+Vim runs under MS-DOS, MS-Windows (NT, 2000, XP, Vista, 7, 8, 10), Macintosh,
+VMS and almost all flavours of UNIX.  Porting to other systems should not be
+very difficult.  Older versions of Vim run on MS-Windows 95/98/Me, Amiga DOS,
+Atari MiNT, BeOS, RISC OS and OS/2.  These are no longer maintained.
 
 
 ## Distribution ##
@@ -89,7 +91,6 @@ See one of these files for system-specific instructions:
 	README_ami.txt		Amiga
 	README_unix.txt		Unix
 	README_dos.txt		MS-DOS and MS-Windows
-	README_os2.txt		OS/2
 	README_mac.txt		Macintosh
 	README_vms.txt		VMS
 

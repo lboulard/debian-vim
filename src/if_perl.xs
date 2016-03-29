@@ -49,6 +49,12 @@
 # define __inline__ __inline
 #endif
 
+#ifdef __GNUC__
+# pragma GCC diagnostic push
+# pragma GCC diagnostic ignored "-Wunused-variable"
+# pragma GCC diagnostic ignored "-Wmaybe-uninitialized"
+#endif
+
 #include <EXTERN.h>
 #include <perl.h>
 #include <XSUB.h>
@@ -117,15 +123,17 @@
 #if (PERL_REVISION == 5) && (PERL_VERSION >= 14) && defined(_MSC_VER)
 /* Using PL_errgv to get the error message after perl_eval_sv() causes a crash
  * with MSVC and Perl version 5.14. */
-# define AVOID_PL_ERRGV
+#   define CHECK_EVAL_ERR(len)	SvPV(perl_get_sv("@", GV_ADD), (len));
+#else
+#   define CHECK_EVAL_ERR(len)	SvPV(GvSV(PL_errgv), (len));
 #endif
 
 /* Compatibility hacks over */
 
 static PerlInterpreter *perl_interp = NULL;
-static void xs_init __ARGS((pTHX));
-static void VIM_init __ARGS((void));
-EXTERN_C void boot_DynaLoader __ARGS((pTHX_ CV*));
+static void xs_init(pTHX);
+static void VIM_init(void);
+EXTERN_C void boot_DynaLoader(pTHX_ CV*);
 
 /*
  * For dynamic linked perl.
@@ -279,6 +287,13 @@ typedef int perl_key;
 #   define PL_thr_key *dll_PL_thr_key
 #  endif
 # endif
+# define Perl_hv_iternext_flags dll_Perl_hv_iternext_flags
+# define Perl_hv_iterinit dll_Perl_hv_iterinit
+# define Perl_hv_iterkey dll_Perl_hv_iterkey
+# define Perl_hv_iterval dll_Perl_hv_iterval
+# define Perl_av_fetch dll_Perl_av_fetch
+# define Perl_av_len dll_Perl_av_len
+# define Perl_sv_2nv_flags dll_Perl_sv_2nv_flags
 
 /*
  * Declare HANDLE for perl.dll and function pointers.
@@ -422,6 +437,13 @@ static SV* (*Perl_Isv_yes_ptr)(register PerlInterpreter*);
 static perl_key* (*Perl_Gthr_key_ptr)_((pTHX));
 #endif
 static void (*boot_DynaLoader)_((pTHX_ CV*));
+static HE * (*Perl_hv_iternext_flags)(pTHX_ HV *, I32);
+static I32 (*Perl_hv_iterinit)(pTHX_ HV *);
+static char * (*Perl_hv_iterkey)(pTHX_ HE *, I32 *);
+static SV * (*Perl_hv_iterval)(pTHX_ HV *, HE *);
+static SV** (*Perl_av_fetch)(pTHX_ AV *, SSize_t, I32);
+static SSize_t (*Perl_av_len)(pTHX_ AV *);
+static NV (*Perl_sv_2nv_flags)(pTHX_ SV *const, const I32);
 
 /*
  * Table of name to function pointer of perl.
@@ -554,6 +576,13 @@ static struct {
     {"Perl_Gthr_key_ptr", (PERL_PROC*)&Perl_Gthr_key_ptr},
 #endif
     {"boot_DynaLoader", (PERL_PROC*)&boot_DynaLoader},
+    {"Perl_hv_iternext_flags", (PERL_PROC*)&Perl_hv_iternext_flags},
+    {"Perl_hv_iterinit", (PERL_PROC*)&Perl_hv_iterinit},
+    {"Perl_hv_iterkey", (PERL_PROC*)&Perl_hv_iterkey},
+    {"Perl_hv_iterval", (PERL_PROC*)&Perl_hv_iterval},
+    {"Perl_av_fetch", (PERL_PROC*)&Perl_av_fetch},
+    {"Perl_av_len", (PERL_PROC*)&Perl_av_len},
+    {"Perl_sv_2nv_flags", (PERL_PROC*)&Perl_sv_2nv_flags},
     {"", NULL},
 };
 
@@ -608,15 +637,9 @@ perl_runtime_link_init(char *libname, int verbose)
  * There were no DLL loaded, return FALSE.
  */
     int
-perl_enabled(verbose)
-    int		verbose;
+perl_enabled(int verbose)
 {
-#ifdef WIN3264
-    char *dll = DYNAMIC_PERL_DLL;
-#else
-    char *dll = *p_perldll ? (char *)p_perldll : DYNAMIC_PERL_DLL;
-#endif
-    return perl_runtime_link_init(dll, verbose) == OK;
+    return perl_runtime_link_init((char *)p_perldll, verbose) == OK;
 }
 #endif /* DYNAMIC_PERL */
 
@@ -626,7 +649,7 @@ perl_enabled(verbose)
  * there's nothing to actually parse.
  */
     static void
-perl_init()
+perl_init(void)
 {
     char *bootargs[] = { "VI", NULL };
     int argc = 3;
@@ -652,7 +675,7 @@ perl_init()
  * perl_end(): clean up after ourselves
  */
     void
-perl_end()
+perl_end(void)
 {
     if (perl_interp)
     {
@@ -661,7 +684,7 @@ perl_end()
 	perl_free(perl_interp);
 	perl_interp = NULL;
 #if (PERL_REVISION == 5) && (PERL_VERSION >= 10)
-        Perl_sys_term();
+	Perl_sys_term();
 #endif
     }
 #ifdef DYNAMIC_PERL
@@ -678,9 +701,9 @@ perl_end()
  * split at '\n' first though.
  */
     void
-msg_split(s, attr)
-    char_u	*s;
-    int		attr;	/* highlighting attributes */
+msg_split(
+    char_u	*s,
+    int		attr)	/* highlighting attributes */
 {
     char *next;
     char *token = (char *)s;
@@ -701,10 +724,10 @@ msg_split(s, attr)
  * work properly.
  */
     char_u *
-eval_to_string(arg, nextcmd, dolist)
-    char_u	*arg UNUSED;
-    char_u	**nextcmd UNUSED;
-    int		dolist UNUSED;
+eval_to_string(
+    char_u	*arg UNUSED,
+    char_u	**nextcmd UNUSED,
+    int		dolist UNUSED)
 {
     return NULL;
 }
@@ -722,9 +745,7 @@ eval_to_string(arg, nextcmd, dolist)
  */
 
     static SV *
-newWINrv(rv, ptr)
-    SV	    *rv;
-    win_T   *ptr;
+newWINrv(SV *rv, win_T *ptr)
 {
     sv_upgrade(rv, SVt_RV);
     if (ptr->w_perl_private == NULL)
@@ -740,9 +761,7 @@ newWINrv(rv, ptr)
 }
 
     static SV *
-newBUFrv(rv, ptr)
-    SV	    *rv;
-    buf_T   *ptr;
+newBUFrv(SV *rv, buf_T *ptr)
 {
     sv_upgrade(rv, SVt_RV);
     if (ptr->b_perl_private == NULL)
@@ -762,8 +781,7 @@ newBUFrv(rv, ptr)
  *	Remove all references to the window to be destroyed
  */
     void
-perl_win_free(wp)
-    win_T *wp;
+perl_win_free(win_T *wp)
 {
     if (wp->w_perl_private)
 	sv_setiv((SV *)wp->w_perl_private, 0);
@@ -771,8 +789,7 @@ perl_win_free(wp)
 }
 
     void
-perl_buf_free(bp)
-    buf_T *bp;
+perl_buf_free(buf_T *bp)
 {
     if (bp->b_perl_private)
 	sv_setiv((SV *)bp->b_perl_private, 0);
@@ -816,7 +833,7 @@ struct ufuncs cb_funcs = { cur_val, 0, 1 };
  * Make the magical main::curwin and main::curbuf variables
  */
     static void
-VIM_init()
+VIM_init(void)
 {
     static char cw[] = "main::curwin";
     static char cb[] = "main::curbuf";
@@ -848,8 +865,7 @@ static char *e_noperl = N_("Sorry, this command is disabled: the Perl library co
  * ":perl"
  */
     void
-ex_perl(eap)
-    exarg_T	*eap;
+ex_perl(exarg_T *eap)
 {
     char	*err;
     char	*script;
@@ -915,11 +931,7 @@ ex_perl(eap)
 
     SvREFCNT_dec(sv);
 
-#ifdef AVOID_PL_ERRGV
-    err = SvPV(perl_get_sv("@", GV_ADD), length);
-#else
-    err = SvPV(GvSV(PL_errgv), length);
-#endif
+    err = CHECK_EVAL_ERR(length);
 
     FREETMPS;
     LEAVE;
@@ -933,8 +945,7 @@ ex_perl(eap)
 }
 
     static int
-replace_line(line, end)
-    linenr_T	*line, *end;
+replace_line(linenr_T *line, linenr_T *end)
 {
     char *str;
 
@@ -954,12 +965,275 @@ replace_line(line, end)
     return OK;
 }
 
+static struct ref_map_S {
+    void *vim_ref;
+    SV   *perl_ref;
+    struct ref_map_S *next;
+} *ref_map = NULL;
+
+    static void
+ref_map_free(void)
+{
+    struct ref_map_S *tofree;
+    struct ref_map_S *refs = ref_map;
+
+    while (refs) {
+	tofree = refs;
+	refs = refs->next;
+	vim_free(tofree);
+    }
+    ref_map = NULL;
+}
+
+    static struct ref_map_S *
+ref_map_find_SV(SV *const sv)
+{
+    struct ref_map_S *refs = ref_map;
+    int count = 350;
+
+    while (refs) {
+	if (refs->perl_ref == sv)
+	    break;
+	refs = refs->next;
+	count--;
+    }
+
+    if (!refs && count > 0) {
+	refs = (struct ref_map_S *)alloc(sizeof(struct ref_map_S));
+	if (!refs)
+	    return NULL;
+	refs->perl_ref = sv;
+	refs->vim_ref = NULL;
+	refs->next = ref_map;
+	ref_map = refs;
+    }
+
+    return refs;
+}
+
+    static int
+perl_to_vim(SV *sv, typval_T *rettv)
+{
+    if (SvROK(sv))
+	sv = SvRV(sv);
+
+    switch (SvTYPE(sv)) {
+	case SVt_NULL:
+	    break;
+	case SVt_NV:	/* float */
+#ifdef FEAT_FLOAT
+	    rettv->v_type	= VAR_FLOAT;
+	    rettv->vval.v_float = SvNV(sv);
+	    break;
+#endif
+	case SVt_IV:	/* integer */
+	    if (!SvROK(sv)) { /* references should be string */
+		rettv->vval.v_number = SvIV(sv);
+		break;
+	    }
+	case SVt_PV:	/* string */
+	{
+	    size_t  len		= 0;
+	    char *  str_from	= SvPV(sv, len);
+	    char_u *str_to	= (char_u*)alloc(sizeof(char_u) * (len + 1));
+
+	    if (str_to) {
+		str_to[len] = '\0';
+
+		while (len--) {
+		    if (str_from[len] == '\0')
+			str_to[len] = '\n';
+		    else
+			str_to[len] = str_from[len];
+		}
+	    }
+
+	    rettv->v_type	    = VAR_STRING;
+	    rettv->vval.v_string    = str_to;
+	    break;
+	}
+	case SVt_PVAV:	/* list */
+	{
+	    SSize_t		size;
+	    listitem_T *	item;
+	    SV **		item2;
+	    list_T *		list;
+	    struct ref_map_S *	refs;
+
+	    if ((refs = ref_map_find_SV(sv)) == NULL)
+		return FAIL;
+
+	    if (refs->vim_ref)
+		list = (list_T *) refs->vim_ref;
+	    else
+	    {
+		if ((list = list_alloc()) == NULL)
+		    return FAIL;
+		refs->vim_ref = list;
+
+		for (size = av_len((AV*)sv); size >= 0; size--)
+		{
+		    if ((item = listitem_alloc()) == NULL)
+			break;
+
+		    item->li_tv.v_type		= VAR_NUMBER;
+		    item->li_tv.v_lock		= 0;
+		    item->li_tv.vval.v_number	= 0;
+		    list_insert(list, item, list->lv_first);
+
+		    item2 = av_fetch((AV *)sv, size, 0);
+
+		    if (item2 == NULL || *item2 == NULL ||
+				    perl_to_vim(*item2, &item->li_tv) == FAIL)
+			break;
+		}
+	    }
+
+	    list->lv_refcount++;
+	    rettv->v_type	= VAR_LIST;
+	    rettv->vval.v_list	= list;
+	    break;
+	}
+	case SVt_PVHV:	/* dictionary */
+	{
+	    HE *		entry;
+	    I32			key_len;
+	    char *		key;
+	    dictitem_T *	item;
+	    SV *		item2;
+	    dict_T *		dict;
+	    struct ref_map_S *	refs;
+
+	    if ((refs = ref_map_find_SV(sv)) == NULL)
+		return FAIL;
+
+	    if (refs->vim_ref)
+		dict = (dict_T *) refs->vim_ref;
+	    else
+	    {
+
+		if ((dict = dict_alloc()) == NULL)
+		    return FAIL;
+		refs->vim_ref = dict;
+
+		hv_iterinit((HV *)sv);
+
+		for (entry = hv_iternext((HV *)sv); entry; entry = hv_iternext((HV *)sv))
+		{
+		    key_len = 0;
+		    key = hv_iterkey(entry, &key_len);
+
+		    if (!key || !key_len || strlen(key) < (size_t)key_len) {
+			EMSG2("Malformed key Dictionary '%s'", key && *key ? key : "(empty)");
+			break;
+		    }
+
+		    if ((item = dictitem_alloc((char_u *)key)) == NULL)
+			break;
+
+		    item->di_tv.v_type		= VAR_NUMBER;
+		    item->di_tv.v_lock		= 0;
+		    item->di_tv.vval.v_number	= 0;
+
+		    if (dict_add(dict, item) == FAIL) {
+			dictitem_free(item);
+			break;
+		    }
+		    item2 = hv_iterval((HV *)sv, entry);
+		    if (item2 == NULL || perl_to_vim(item2, &item->di_tv) == FAIL)
+			break;
+		}
+	    }
+
+	    dict->dv_refcount++;
+	    rettv->v_type	= VAR_DICT;
+	    rettv->vval.v_dict	= dict;
+	    break;
+	}
+	default:	/* not convertible */
+	{
+	    char *val	    = SvPV_nolen(sv);
+	    rettv->v_type   = VAR_STRING;
+	    rettv->vval.v_string = val ? vim_strsave((char_u *)val) : NULL;
+	    break;
+	}
+    }
+    return OK;
+}
+
+/*
+ * "perleval()"
+ */
+    void
+do_perleval(char_u *str, typval_T *rettv)
+{
+    char	*err = NULL;
+    STRLEN	err_len = 0;
+    SV		*sv = NULL;
+#ifdef HAVE_SANDBOX
+    SV		*safe;
+#endif
+
+    if (perl_interp == NULL)
+    {
+#ifdef DYNAMIC_PERL
+	if (!perl_enabled(TRUE))
+	{
+	    EMSG(_(e_noperl));
+	    return;
+	}
+#endif
+	perl_init();
+    }
+
+    {
+	dSP;
+	ENTER;
+	SAVETMPS;
+
+#ifdef HAVE_SANDBOX
+	if (sandbox)
+	{
+	    safe = get_sv("VIM::safe", FALSE);
+# ifndef MAKE_TEST  /* avoid a warning for unreachable code */
+	    if (safe == NULL || !SvTRUE(safe))
+		EMSG(_("E299: Perl evaluation forbidden in sandbox without the Safe module"));
+	    else
+# endif
+	    {
+		sv = newSVpv((char *)str, 0);
+		PUSHMARK(SP);
+		XPUSHs(safe);
+		XPUSHs(sv);
+		PUTBACK;
+		call_method("reval", G_SCALAR);
+		SPAGAIN;
+		SvREFCNT_dec(sv);
+		sv = POPs;
+	    }
+	}
+	else
+#endif /* HAVE_SANDBOX */
+	    sv = eval_pv((char *)str, 0);
+
+	if (sv) {
+	    perl_to_vim(sv, rettv);
+	    ref_map_free();
+	    err = CHECK_EVAL_ERR(err_len);
+	}
+	PUTBACK;
+	FREETMPS;
+	LEAVE;
+    }
+    if (err_len)
+	msg_split((char_u *)err, highlight_attr[HLF_E]);
+}
+
 /*
  * ":perldo".
  */
     void
-ex_perldo(eap)
-    exarg_T	*eap;
+ex_perldo(exarg_T *eap)
 {
     STRLEN	length;
     SV		*sv;
@@ -989,11 +1263,7 @@ ex_perldo(eap)
     sv_catpvn(sv, "}", 1);
     perl_eval_sv(sv, G_DISCARD | G_NOARGS);
     SvREFCNT_dec(sv);
-#ifdef AVOID_PL_ERRGV
-    str = SvPV(perl_get_sv("@", GV_ADD), length);
-#else
-    str = SvPV(GvSV(PL_errgv), length);
-#endif
+    str = CHECK_EVAL_ERR(length);
     if (length)
 	goto err;
 
@@ -1007,11 +1277,7 @@ ex_perldo(eap)
 	sv_setpv(GvSV(PL_defgv), (char *)ml_get(i));
 	PUSHMARK(sp);
 	perl_call_pv("VIM::perldo", G_SCALAR | G_EVAL);
-#ifdef AVOID_PL_ERRGV
-	str = SvPV(perl_get_sv("@", GV_ADD), length);
-#else
-	str = SvPV(GvSV(PL_errgv), length);
-#endif
+	str = CHECK_EVAL_ERR(length);
 	if (length)
 	    break;
 	SPAGAIN;
@@ -1039,9 +1305,21 @@ err:
 }
 
 #ifndef FEAT_WINDOWS
-int win_valid(win_T *w) { return TRUE; }
-int win_count() { return 1; }
-win_T *win_find_nr(int n) { return curwin; }
+    int
+win_valid(win_T *w)
+{
+    return TRUE;
+}
+    int
+win_count(void)
+{
+    return 1;
+}
+    win_T *
+win_find_nr(int n)
+{
+    return curwin;
+}
 #endif
 
 XS(boot_VIM);
@@ -1238,8 +1516,7 @@ SetHeight(win, height)
     curwin = savewin;
 
 void
-Cursor(win, ...)
-    VIWIN win
+Cursor(VIWIN win, ...)
 
     PPCODE:
     if (items == 1)
@@ -1459,3 +1736,6 @@ Append(vimbuf, ...)
 	}
     }
 
+#ifdef __GNUC__
+# pragma GCC diagnostic pop
+#endif
