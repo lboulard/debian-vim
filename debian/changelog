@@ -20,6 +20,7 @@ vim (2:7.4.1689-1) UNRELEASED; urgency=medium
     + Use $SOURCE_DATE_EPOCH to set the compilation time displayed in :version
     + Set a static value for configure's --with-compiledby argument
   * Migrate to automatic -dbgsym packages
+  * Declare compliance with Policy 3.9.7, no changes needed.
 
  -- James McCoy <jamessan@debian.org>  Mon, 28 Mar 2016 21:14:49 -0400
 

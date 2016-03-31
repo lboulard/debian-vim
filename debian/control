@@ -3,7 +3,7 @@ Section: editors
 Priority: optional
 Maintainer: Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
 Uploaders: James McCoy <jamessan@debian.org>
-Standards-Version: 3.9.6
+Standards-Version: 3.9.7
 Build-Depends: libacl1-dev, libgpmg1-dev [linux-any], autoconf,
 # Building Vim's svg icons
  pdf2svg, ghostscript,
