@@ -1,6 +1,6 @@
-vim (2:7.4.1683-1) UNRELEASED; urgency=medium
+vim (2:7.4.1689-1) UNRELEASED; urgency=medium
 
-  * Merge upstream tag v7.4.1683.
+  * Merge upstream tag v7.4.1689.
     + Highlighted changes:
       - 7.4.1142: “:syn iskeyword” command to define the set of keyword
         characters for syntax highlighting, rather than changing the buffer's
