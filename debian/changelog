@@ -15,6 +15,12 @@ vim (2:7.4.1689-1) UNRELEASED; urgency=medium
       - 7.4.1402: GTK3 GUI support
       - 7.4.1578: Support running a function on a periodic basis with the
         timer_start()/timer_start() functions.
+      - runtime/syntax/sh.vim
+        + Fix incorrect highlighting when case/esac are embedded in a word.
+          (Closes: #818137)
+      - runtime/syntax/sshdconfig.vim
+        + Update with recent keywords, including VersionAddendum.  (Closes:
+          #776834)
   * Add a vim-gtk3 package.  (Closes: #815750)
   * Improve reproducibility of Vim builds.  (Closes: #787327)
     + Use $SOURCE_DATE_EPOCH to set the compilation time displayed in :version
