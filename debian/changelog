@@ -1,4 +1,4 @@
-vim (2:7.4.1689-1) UNRELEASED; urgency=medium
+vim (2:7.4.1689-1) unstable; urgency=medium
 
   * Merge upstream tag v7.4.1689.
     + Highlighted changes:
@@ -30,7 +30,7 @@ vim (2:7.4.1689-1) UNRELEASED; urgency=medium
   * Stop installing empty icon directories in vim-common.  Thanks to Elimar
     Riesebieter for the patch.  (Closes: #819653)
 
- -- James McCoy <jamessan@debian.org>  Mon, 28 Mar 2016 21:14:49 -0400
+ -- James McCoy <jamessan@debian.org>  Thu, 31 Mar 2016 21:57:48 -0400
 
 vim (2:7.4.963-1) unstable; urgency=medium
 

@@ -530,7 +530,7 @@ binary-arch-vim-basic: export DH_OPTIONS=-pvim-common -pvim
 binary-arch-vim-basic: install-stamp-vim-basic
 	dh_testdir
 	dh_testroot
-	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1683-1~)'
+	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1689-1~)'
 	dh_compress
 	dh_fixperms
 	dh_lintian
@@ -544,7 +544,7 @@ binary-arch-%: export DH_OPTIONS=-p$* $(foreach v,$(VARIANTS_SKIP),-N$(v))
 binary-arch-%: install-stamp-%
 	dh_testdir
 	dh_testroot
-	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1683-1~)'
+	dh_strip --dbgsym-migration='vim-dbg (<< 2:7.4.1689-1~)'
 	dh_compress
 	dh_fixperms
 	dh_lintian
