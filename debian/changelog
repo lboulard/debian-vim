@@ -27,6 +27,8 @@ vim (2:7.4.1689-1) UNRELEASED; urgency=medium
     + Set a static value for configure's --with-compiledby argument
   * Migrate to automatic -dbgsym packages
   * Declare compliance with Policy 3.9.7, no changes needed.
+  * Stop installing empty icon directories in vim-common.  Thanks to Elimar
+    Riesebieter for the patch.  (Closes: #819653)
 
  -- James McCoy <jamessan@debian.org>  Mon, 28 Mar 2016 21:14:49 -0400
 
