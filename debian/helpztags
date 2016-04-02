@@ -52,7 +52,7 @@ my $startdir=getcwd();
 my %tags;
 
 foreach my $dir (@ARGV) {
-  chdir $dir || die "Error: $dir: no such directory\n";
+  chdir $dir or next;
   print "Processing ".$dir."\n";
   foreach my $file (<*.{gz,txt,??x}>) {
     next unless $file =~ m/^[\w.-]+\.(?:txt|([[:alpha:]]{2})x)(?:.gz)?$/;
