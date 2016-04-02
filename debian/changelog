@@ -2,6 +2,9 @@ vim (2:7.4.1689-2) UNRELEASED; urgency=medium
 
   * Stop installing a dangling symlink at
     /usr/share/vim/addons/doc/matchit.txt.  (Closes: #819764)
+  * Lintian:
+    + Provide more details in vim-doc's long description.  Thanks to Elimar
+      Riesebieter for the patch.  (Closes: #819733)
 
  -- James McCoy <jamessan@debian.org>  Fri, 01 Apr 2016 20:43:40 -0400
 

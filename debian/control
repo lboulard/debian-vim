@@ -76,7 +76,8 @@ Depends: ${misc:Depends}
 Description: Vi IMproved - HTML documentation
  Vim is an almost compatible version of the UNIX editor Vi.
  .
- This package contains the HTML version of the online documentation.
+ This package contains the HTML version of the online documentation.  It is
+ built from the runtime/doc directory of the source tree.
 
 Package: vim-tiny
 Priority: important
