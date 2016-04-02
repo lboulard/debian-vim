@@ -60,7 +60,7 @@ foreach my $dir (@ARGV) {
     if ($1) {
       $suffix = "-$1";
     }
-    do { open(GZ, "zcat $file|") if ($file =~ /\.gz$/) } or open(GZ,$file);
+    do { open(GZ, "zcat $file|") if ($file =~ /\.gz$/) } or open(GZ,$file) or next;
     while (<GZ>) {
         # From vim73/src/ex_cmds.c, helptags_one, lines 6443-6445
         # 
