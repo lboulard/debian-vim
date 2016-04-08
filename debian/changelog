@@ -1,9 +1,9 @@
-vim (2:7.4.1689-3) UNRELEASED; urgency=medium
+vim (2:7.4.1689-3) unstable; urgency=medium
 
   * helpztags: Fix regression in previous upload where the doc file isn't
     opened, so no tags file is generated.  (Closes: #820313)
 
- -- James McCoy <jamessan@debian.org>  Thu, 07 Apr 2016 22:25:40 -0400
+ -- James McCoy <jamessan@debian.org>  Thu, 07 Apr 2016 22:37:20 -0400
 
 vim (2:7.4.1689-2) unstable; urgency=medium
 
