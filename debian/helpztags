@@ -60,7 +60,7 @@ foreach my $dir (@ARGV) {
     if ($1) {
       $suffix = "-$1";
     }
-    my $open = do { open(GZ, "zcat $file|") if ($file =~ /\.gz$/) } or open(GZ,$file);
+    my $open = ($file =~ /\.gz$/) ? open(GZ, '-|', 'zcat', $file) : open(GZ, $file);
     if (!$open) {
       chdir $startdir;
       next;
