@@ -36,3 +36,57 @@ func Test_version()
   call assert_false(has('patch-9.1.0'))
   call assert_false(has('patch-9.9.1'))
 endfunc
+
+func Test_dict()
+  let d = {'': 'empty', 'a': 'a', 0: 'zero'}
+  call assert_equal('empty', d[''])
+  call assert_equal('a', d['a'])
+  call assert_equal('zero', d[0])
+  call assert_true(has_key(d, ''))
+  call assert_true(has_key(d, 'a'))
+
+  let d[''] = 'none'
+  let d['a'] = 'aaa'
+  call assert_equal('none', d[''])
+  call assert_equal('aaa', d['a'])
+endfunc
+
+func Test_strgetchar()
+  call assert_equal(char2nr('a'), strgetchar('axb', 0))
+  call assert_equal(char2nr('x'), strgetchar('axb', 1))
+  call assert_equal(char2nr('b'), strgetchar('axb', 2))
+
+  call assert_equal(-1, strgetchar('axb', -1))
+  call assert_equal(-1, strgetchar('axb', 3))
+  call assert_equal(-1, strgetchar('', 0))
+endfunc
+
+func Test_strcharpart()
+  call assert_equal('a', strcharpart('axb', 0, 1))
+  call assert_equal('x', strcharpart('axb', 1, 1))
+  call assert_equal('b', strcharpart('axb', 2, 1))
+  call assert_equal('xb', strcharpart('axb', 1))
+
+  call assert_equal('', strcharpart('axb', 1, 0))
+  call assert_equal('', strcharpart('axb', 1, -1))
+  call assert_equal('', strcharpart('axb', -1, 1))
+  call assert_equal('', strcharpart('axb', -2, 2))
+
+  call assert_equal('a', strcharpart('axb', -1, 2))
+endfunc
+
+func Test_getreg_empty_list()
+  call assert_equal('', getreg('x'))
+  call assert_equal([], getreg('x', 1, 1))
+  let x = getreg('x', 1, 1)
+  let y = x
+  call add(x, 'foo')
+  call assert_equal(['foo'], y)
+endfunc
+
+func Test_loop_over_null_list()
+  let null_list = submatch(1, 1)
+  for i in null_list
+    call assert_true(0, 'should not get here')
+  endfor
+endfunc
