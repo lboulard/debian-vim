@@ -1,3 +1,14 @@
+vim (2:7.4.1819-1) UNRELEASED; urgency=medium
+
+  * Merge upstream tag v7.4.1819
+    + 7.4.1713: Force use of X11 backend under Wayland.  (Closes: #819954)
+    + 7.4.1802: Improve handling of long lines in quickfix lists.  (Closes:
+      #815976)
+    + LogiPat plugin's :ELP command renamed to :LPE, so it doesn't shadow :E.
+      (Closes: #796075)
+
+ -- James McCoy <jamessan@debian.org>  Thu, 05 May 2016 23:09:19 -0400
+
 vim (2:7.4.1689-3) unstable; urgency=medium
 
   * helpztags: Fix regression in previous upload where the doc file isn't
