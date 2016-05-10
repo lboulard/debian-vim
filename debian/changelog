@@ -1,6 +1,6 @@
-vim (2:7.4.1819-1) UNRELEASED; urgency=medium
+vim (2:7.4.1829-1) UNRELEASED; urgency=medium
 
-  * Merge upstream tag v7.4.1819
+  * Merge upstream tag v7.4.1829
     + 7.4.1713: Force use of X11 backend under Wayland.  (Closes: #819954)
     + 7.4.1802: Improve handling of long lines in quickfix lists.  (Closes:
       #815976)

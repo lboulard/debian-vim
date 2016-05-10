@@ -1700,3 +1700,149 @@ Individual patches for Vim 7.4:
   1543  7.4.1681  Coverity warns for fixed size buffer length (false positive)
   1880  7.4.1682  Coverity: no check for NULL
   1868  7.4.1683  generated .bat files do not support --nofork
+  9790  7.4.1684  README text is slightly outdated
+  8269  7.4.1685  there is no easy way to get all the information about a match
+  2927  7.4.1686  when running tests $HOME/.viminfo is written
+  2591  7.4.1687  the channel close_cb option does not work
+  2365  7.4.1688  MzScheme does not support partial
+  5484  7.4.1689  Ruby interface has inconsistent coding style
+  2643  7.4.1690  can't compile with the conceal feature but without multi-byte
+  1858  7.4.1691  ml_get error when going to new buffer and automd sets syntax
+  1896  7.4.1692  feedkeys('i', 'x') gets stuck, waits for typing a character
+  3707  7.4.1693  building the Perl interface gives compiler warnings
+  1718  7.4.1694  Win32 gvim doesn't work with "dvorakj" input method
+  1848  7.4.1695  ":syn reset" clears the effect ":syn iskeyword"
+  2657  7.4.1696  using :stopinsert in silent mapping doesn't clear "INSERT" 
+ 17226  7.4.1697  display problems when char width doesn't match terminal
+  1974  7.4.1698  two tests fail when running tests with MinGW
+  2739  7.4.1699  :packadd does not work the same when used early or late
+  6599  7.4.1700  equivalence classes are not properly tested
+  6727  7.4.1701  equivalence classes still tested in old style tests
+  4133  7.4.1702  using freed memory when parsing 'printoptions' fails
+ 12835  7.4.1703  can't assert for not equal and not matching
+  2123  7.4.1704  using freed memory with "wincmd p"
+  5277  7.4.1705  the 'guifont' option does not allow for a quality setting
+  1863  7.4.1706  old style function declaration breaks build
+  3975  7.4.1707  cannot use empty dictionary key, even though it can be useful
+ 28965  7.4.1708  new regexp engine does not work properly with EBCDIC
+  1565  7.4.1709  mistake in #ifdef
+  2630  7.4.1710  not all output of an external command is read
+  4514  7.4.1711  eror caught with try/catch in 'statusline' handled as error
+  6236  7.4.1712  for plugins in packages need to take care of all dependencies
+  1499  7.4.1713  GTK GUI doesn't work on Wayland
+  4993  7.4.1714  non-GUI specific settings in the gvimrc_example file
+  5662  7.4.1715  double free when a partial is in a cycle with a list or dict
+  1543  7.4.1716  'autochdir' doesn't work for the first file
+ 11457  7.4.1717  leaking memory when opening a channel fails
+  1482  7.4.1718  Coverity: not using return value of set_ref_in_item()
+ 34105  7.4.1719  leaking memory with a cycle involving a job and a partial
+  2075  7.4.1720  tests fail without the job feature
+ 51998  7.4.1721  the vimtbar files are unused.
+  1762  7.4.1722  crash when calling garbagecollect() after starting a job
+  4103  7.4.1723  eror caught with try/catch in 'tabline' handled as error 
+  1734  7.4.1724  (after 7.4.1723) tabline test fails in GUI
+  1924  7.4.1725  compiler errors for non-ANSI compilers
+  3879  7.4.1726  ANSI compiler complains about string length
+ 18821  7.4.1727  cannot detect crash in tests when caused by garbagecollect()
+ 48724  7.4.1728  the help for functions require a space after the "("
+  6114  7.4.1729  Perl: cannot use 'print' for writing directly in standard IO
+  6738  7.4.1730  it is not easy to get a character out of a string
+ 60581  7.4.1731  Python: turns partial into simple funcref
+  2640  7.4.1732  folds may close when using autocomplete
+  6675  7.4.1733  "make install" doesn't know about cross-compiling
+  3859  7.4.1734  (after 7.4.1730) test fails when not using utf-8
+  6094  7.4.1735  it is not possible to clear or see part of message history
+  1417  7.4.1736  (after 7.4.1731) unused variable
+  1388  7.4.1737  argument marked as unused is used
+  2122  7.4.1738  count for ":messages" depends on number of lines
+  3996  7.4.1739  messages test fails on MS-Windows
+ 25188  7.4.1740  syn-cchar defined with matchadd() does not always appear
+  2034  7.4.1741  not testing utf-8 characters
+  3365  7.4.1742  strgetchar() does not work correctly
+  1479  7.4.1743  Clang warns for uninitialzed variable
+  2161  7.4.1744  Python: Converting a sequence may leak memory
+  2367  7.4.1745  README file is not clear about where to get Vim
+  3729  7.4.1746  memory leak in Perl
+  1684  7.4.1747  Coverity: missing check for NULL pointer
+  2780  7.4.1748  "gD" does not find match in first column of first line
+  2475  7.4.1749  when using GTK 3.20 there are a few warnings
+  3030  7.4.1750  messed up screen if buffer updated while in command line mode
+  2569  7.4.1751  crash when 'tagstack' is off
+  6376  7.4.1752  when adding to the quickfix list current position is reset
+  3193  7.4.1753  "noinsert" in 'completeopt' is sometimes ignored
+  3956  7.4.1754  syntax not set when using ":buf" and 'filetype' set manually
+  2520  7.4.1755  using getreg() on non-existing register NULL list is returned
+  6691  7.4.1756  "dll" options are not expanded
+  2661  7.4.1757  'modified' may be set by complete() when nothing changed
+  2843  7.4.1758  triggering CursorHoldI when in CTRL-X mode causes problems
+  7136  7.4.1759  using feedkeys() in a timer does not break wait loop
+  1407  7.4.1760  (after 7.4.1759) compiler warning for unused variable
+  1861  7.4.1761  Coverity complains about ignoring return value
+  1893  7.4.1762  Coverity: useless assignments
+  1496  7.4.1763  Coverity: useless assignment
+  2154  7.4.1764  C++ style comment
+  2921  7.4.1765  undo options are not together in the options window
+ 10120  7.4.1766  building instructions for MS-Windows are outdated
+ 11520  7.4.1767  when installing on a GTK system the icon cache is not updated
+  8859  7.4.1768  arguments of setqflist() are not checked properly
+  7407  7.4.1769  no "closed"/"errors"/"encoding" attribute on Python output
+ 57527  7.4.1770  cannot use true color in the terminal
+  1886  7.4.1771  (after 7.4.1768) warning for unused variable
+  2641  7.4.1772  (after 7.4.1767) installation fails when env var is empty
+  3831  7.4.1773  (after 7.4.1770) compiler warnings
+  6750  7.4.1774  (after 7.4.1770) cterm true color feature has warnings
+  1940  7.4.1775  the rgb.txt file is not installed
+  1843  7.4.1776  using wrong buffer length
+  2351  7.4.1777  newly added features can escape the sandbox
+  3028  7.4.1778  with the term truecolor feature, t_8f/t_8b are not set
+  1834  7.4.1779  using negative index in strcharpart()
+  4664  7.4.1780  warnings reported by cppcheck
+  1397  7.4.1781  synIDattr() does not respect 'guicolors'
+  2815  7.4.1782  strcharpart() has problems with some multi-byte characters
+  6286  7.4.1783  old regexp engine doesn't handle character classes correctly
+  4530  7.4.1784  the termtruecolor feature is enabled differently
+  1579  7.4.1785  (after 7.4.1783) regexp test fails on windows
+  5912  7.4.1786  compiled-in colors do not match rgb.txt
+ 13107  7.4.1787  channel close callback is invoked before other callbacks
+  2247  7.4.1788  NSIS script is missing packages
+ 13064  7.4.1789  cannot use ch_read() in the close callback
+  1495  7.4.1790  leading white space in a job command matters
+  4242  7.4.1791  channel could be garbage collected too early
+ 26373  7.4.1792  color name decoding is implemented several times
+  3975  7.4.1793  character classes differ between systems, on OS/X test fails
+  1426  7.4.1794  (after 7.4.1792) can't build on MS-Windows
+  8426  7.4.1795  compiler warning for redefining RGB
+  8456  7.4.1796  (after 7.4.1795) colors are wrong on MS-Windows
+  1682  7.4.1797  warning from Windows 64 bit compiler
+  1468  7.4.1798  still compiler warning for unused return value
+ 88738  7.4.1799  'guicolors' is a confusing option name
+  1756  7.4.1800  unnecessary #ifdef
+  1874  7.4.1801  make uninstall leaves file behind
+ 34025  7.4.1802  quickfix doesn't handle long lines well, they are split
+  1538  7.4.1803  GTK3 doesn't handle menu separators properly
+  4159  7.4.1804  can't use Vim as MANPAGER
+  1403  7.4.1805  running tests in shadow dir fails
+  2199  7.4.1806  'termguicolors' option missing from the options window
+  3627  7.4.1807  Test_out_close_cb sometimes fails
+  1781  7.4.1808  (after 7.4.1806) using wrong feature name
+  1989  7.4.1809  (after 7.4.1808) using wrong short option name
+  5150  7.4.1810  sending DETACH after a channel was closed isn't useful
+  2521  7.4.1811  netbeans channel gets garbage collected
+  3177  7.4.1812  failure on startup with Athena and Motif
+  3475  7.4.1813  memory access error when running test_quickfix
+  3900  7.4.1814  channel may be garbage collected while being used by a job
+  1792  7.4.1815  compiler warnings for unused variables
+  2222  7.4.1816  looping over a null list throws an error
+  1794  7.4.1817  screen not updated if callback invoked when closing channel
+  2937  7.4.1818  help completion adds @en to all matches except the first one
+  4631  7.4.1819  compiler warnings when sprintf() is a macro
+  6683  7.4.1820  removing language from help tags too often
+  4458  7.4.1821  (after 7.4.1820) test fails on MS-Windows
+  1677  7.4.1822  redirecting stdout of a channel to "null" doesn't work
+  1843  7.4.1823  warning from 64 bit compiler
+  2375  7.4.1824  process remains defunc if job is not referenced
+  2374  7.4.1825  when job writes to buffer nothing is written
+  4104  7.4.1826  callbacks are invoked when it's not safe
+  4193  7.4.1827  no error when invoking a callback when it's not safe
+  6598  7.4.1828  may try to access buffer that's already freed
+  1821  7.4.1829  (after 7.4.1828) no channel log message when buffer was freed
