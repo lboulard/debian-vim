@@ -81,9 +81,6 @@ typedef struct
 #ifdef FEAT_DIFF
     int		diff_mode;		/* start with 'diff' set */
 #endif
-#ifdef SYS_TINYRC_FILE
-    int		vi_mode;		/* started as "vi" */
-#endif
 } mparm_T;
 
 /* Values for edit_type. */
@@ -1683,10 +1680,6 @@ parse_command_name(mparm_T *parmp)
     }
     else if (STRNICMP(initstr, "vim", 3) == 0)
 	initstr += 3;
-#ifdef SYS_TINYRC_FILE
-    else if (STRNICMP(initstr, "vi", 2) == 0)
-	parmp->vi_mode = TRUE;
-#endif
 
     /* Catch "[r][g]vimdiff" and "[r][g]viewdiff". */
     if (STRICMP(initstr, "diff") == 0)
@@ -3013,12 +3006,7 @@ source_startup_scripts(mparm_T *parmp)
 	 * Get system wide defaults, if the file name is defined.
 	 */
 #ifdef SYS_VIMRC_FILE
-# if defined(SYS_TINYRC_FILE) && defined(TINY_VIMRC)
-	if (parmp->vi_mode)
-	    (void)do_source((char_u *)SYS_TINYRC_FILE, FALSE, DOSO_NONE);
-	else
-# endif
-	    (void)do_source((char_u *)SYS_VIMRC_FILE, FALSE, DOSO_NONE);
+	(void)do_source((char_u *)SYS_VIMRC_FILE, FALSE, DOSO_NONE);
 #endif
 #ifdef MACOS_X
 	(void)do_source((char_u *)"$VIMRUNTIME/macmap.vim", FALSE, DOSO_NONE);
