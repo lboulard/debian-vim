@@ -1,3 +1,17 @@
+vim (2:7.4.2181-1) UNRELEASED; urgency=medium
+
+  * Merge upstream tag v7.4.2181
+    + Highlighted changes:
+      - 7.4.1976: Support 64-bit number variables in VimL.  Use has('num64') to
+        test for presence of the functionality.  (Closes: #788055)
+      - runtime/ftplugin/man.vim:
+        + Use the width of the current window when formatting a man page.
+          (Closes: #827634)
+      - runtime/syntax/rst.vim:
+        + Use underline for emphasized text.  (Closes: #547537)
+
+ -- James McCoy <jamessan@debian.org>  Sun, 07 Aug 2016 23:46:52 -0400
+
 vim (2:7.4.1829-1) unstable; urgency=medium
 
   * Merge upstream tag v7.4.1829
