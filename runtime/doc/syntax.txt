@@ -1,4 +1,4 @@
-*syntax.txt*	For Vim version 7.4.  Last change: 2016 Apr 10
+*syntax.txt*	For Vim version 7.4.  Last change: 2016 May 28
 
 
 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
@@ -1042,6 +1042,21 @@ This works immediately.
 
 
 CLOJURE							*ft-clojure-syntax*
+
+The default syntax groups can be augmented through the
+*g:clojure_syntax_keywords* and *b:clojure_syntax_keywords* variables. The
+value should be a |Dictionary| of syntax group names to a |List| of custom
+identifiers:
+>
+	let g:clojure_syntax_keywords = {
+	    \ 'clojureMacro': ["defproject", "defcustom"],
+	    \ 'clojureFunc': ["string/join", "string/replace"]
+	    \ }
+<
+Refer to the Clojure syntax script for valid syntax group names.
+
+If the |buffer-variable| *b:clojure_syntax_without_core_keywords* is set, only
+language constants and special forms are matched.
 
 Setting *g:clojure_fold* enables folding Clojure code via the syntax engine.
 Any list, vector, or map that extends over more than one line can be folded
@@ -4779,6 +4794,10 @@ font={font-name}					*highlight-font*
 	All fonts used, except for Menu and Tooltip, should be of the same
 	character size as the default font!  Otherwise redrawing problems will
 	occur.
+	To use a font name with an embedded space or other special character,
+	put it in single quotes.  The single quote cannot be used then.
+	Example: >
+	    :hi comment font='Monospace 10'
 
 guifg={color-name}					*highlight-guifg*
 guibg={color-name}					*highlight-guibg*

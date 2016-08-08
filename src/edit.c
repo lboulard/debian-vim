@@ -649,7 +649,11 @@ edit(
 	if (update_Insstart_orig)
 	    Insstart_orig = Insstart;
 
-	if (stop_insert_mode)
+	if (stop_insert_mode
+#ifdef FEAT_INS_EXPAND
+		&& !pum_visible()
+#endif
+		)
 	{
 	    /* ":stopinsert" used or 'insertmode' reset */
 	    count = 0;
@@ -2770,7 +2774,7 @@ ins_compl_make_cyclic(void)
  * 'completeopt' value.
  */
     void
-completeopt_was_set()
+completeopt_was_set(void)
 {
     compl_no_insert = FALSE;
     compl_no_select = FALSE;
@@ -2827,6 +2831,7 @@ set_completion(colnr_T startcol, list_T *list)
     }
     else
 	ins_complete(Ctrl_N, FALSE);
+    compl_enter_selects = compl_no_insert;
 
     /* Lazily show the popup menu, unless we got interrupted. */
     if (!compl_interrupted)
@@ -3886,8 +3891,9 @@ ins_compl_prep(int c)
 		    && pum_visible())
 		retval = TRUE;
 
-	    /* CTRL-E means completion is Ended, go back to the typed text. */
-	    if (c == Ctrl_E)
+	    /* CTRL-E means completion is Ended, go back to the typed text.
+	     * but only do this, if the Popup is still visible */
+	    if (c == Ctrl_E && pum_visible())
 	    {
 		ins_compl_delete();
 		if (compl_leader != NULL)
@@ -4234,7 +4240,7 @@ ins_compl_get_exp(pos_T *ini)
 
     if (!compl_started)
     {
-	for (ins_buf = firstbuf; ins_buf != NULL; ins_buf = ins_buf->b_next)
+	FOR_ALL_BUFFERS(ins_buf)
 	    ins_buf->b_scanned = 0;
 	found_all = FALSE;
 	ins_buf = curbuf;
@@ -4676,6 +4682,7 @@ ins_compl_insert(void)
 		    EMPTY_IF_NULL(compl_shown_match->cp_text[CPT_INFO]));
     }
     set_vim_var_dict(VV_COMPLETED_ITEM, dict);
+    compl_curr_match = compl_shown_match;
 }
 
 /*
