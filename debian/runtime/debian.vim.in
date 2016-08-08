@@ -28,10 +28,6 @@ endif
 
 " Some Debian-specific things
 if has("autocmd")
-  " set mail filetype for reportbug's temp files
-  augroup debian
-    au BufRead reportbug-*		set ft=mail
-  augroup END
   if has('gui')
     " Make shift-insert work like in Xterm
     autocmd GUIEnter * if empty(maparg("<S-Insert>", "nvso")) | execute "map <S-Insert> <MiddleMouse>" | endif
