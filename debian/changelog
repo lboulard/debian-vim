@@ -9,6 +9,8 @@ vim (2:7.4.2181-1) UNRELEASED; urgency=medium
           (Closes: #827634)
       - runtime/syntax/rst.vim:
         + Use underline for emphasized text.  (Closes: #547537)
+  * Switch from Python2 to Python3 language bindings.  All packaged
+    addons which use Python support both 2 & 3.  (Closes: #729924)
 
  -- James McCoy <jamessan@debian.org>  Sun, 07 Aug 2016 23:46:52 -0400
 
