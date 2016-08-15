@@ -3,19 +3,31 @@ this package should build normally after extracting with dpkg-source -x.
 The rest of this file gives some hints about generating source packages
 from the packaging git repository.
 
-This repository has patches to upstream source included in the packaging
-branch.  In order to generate a source package, you have several choices:
+This repository maintains patches to upstream source using gbp-pq.  These
+patches are serialized to debian/patches/.
 
-To generate an old-style single patch package, you can use dpkg-source or
-e.g. gitpkg without any special preparation (with the possible exception
-of adding "single-debian-patch" to debian/source/local-options).
+In order to modify an existing patch, simply run “gbp pq import”.  This will
+create a local branch with the commits that were used to create the patches.
+Edit or amend the commits as necessary.
 
-In order to have patches exported individually at source package creation
-time, you can enable git-debcherry. After installing gitpkg-0.25 or later,
-see /usr/share/gitpkg/hooks/debcherry-deb-export-hook and its associated
-documentation in the gitpkg(1) and git-debcherry(1) man pages.
+In order to create a new patch, switch to the patch using “gbp pq import” as
+before. If a patch file exists, use “gbp pg apply --topic={upstream,debian}
+patchfile” to apply the patch (works like “git am”).  If the patch is intended
+to be upstreamed, it should be applied before any Debian-specific patches and
+use the "upstream" topic.  Alternatively, if the patch is not intended to be
+upstreamed, it should use the "debian" topic and be applied after any upstream
+patches.
 
-The main development branch is debian/sid, with corresponding branches for
-backports to previous releases.  Tagging follows upstream's naming
-convention, so the first Debian upload of the upstream tag vX.Y.Z should
-be tagged vX.Y.Z-1.
+When updating to a new version of upstream code, the “gbp pg rebase” command
+will rebase the patch queue against the new upstream code.
+
+Whenever the patch queue branch is modified, those changes need to be exported
+back to the packaging branch.  “gbp pq switch” will change from the patch queue
+branch to the packaging branch.  At that point, “gbp pq export” will update
+debian/patches/ with the current state of the patch queue.  This needs to be
+commited just like any other change.
+
+There are hooks setup in the git repo to avoid pushing the patch queue
+branches, but it's also wise to remove the local branch when done with the
+changes.  The repository's configuration is set to delete the branch
+automatically after running “gbp pq export” in order to help enforce this.
