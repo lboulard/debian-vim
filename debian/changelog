@@ -15,6 +15,9 @@ vim (2:7.4.2295-1) UNRELEASED; urgency=medium
   [ James McCoy ]
   * Switch from Python2 to Python3 language bindings.  All packaged
     addons which use Python support both 2 & 3.  (Closes: #729924)
+  * Add mips64el as a recognized architecture in debcontrol files.  Thanks to
+    Reiner Herrmann for the patch.  (Closes: #830545)
+  * Update supported Ubuntu releases in debsources files.
 
  -- James McCoy <jamessan@debian.org>  Tue, 30 Aug 2016 21:28:21 -0400
 

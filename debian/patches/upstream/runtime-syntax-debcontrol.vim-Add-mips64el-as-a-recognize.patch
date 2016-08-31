@@ -1,0 +1,23 @@
+From: James McCoy <jamessan@debian.org>
+Date: Tue, 30 Aug 2016 22:13:45 -0400
+Subject: runtime/syntax/debcontrol.vim: Add mips64el as a recognized arch
+
+Closes: #830545
+Signed-off-by: James McCoy <jamessan@debian.org>
+---
+ runtime/syntax/debcontrol.vim | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/runtime/syntax/debcontrol.vim b/runtime/syntax/debcontrol.vim
+index 9729981..b52c496 100644
+--- a/runtime/syntax/debcontrol.vim
++++ b/runtime/syntax/debcontrol.vim
+@@ -26,7 +26,7 @@ syn match debControlSpace " "
+ 
+ let s:kernels = '\%(linux\|hurd\|kfreebsd\|knetbsd\|kopensolaris\|netbsd\)'
+ let s:archs = '\%(alpha\|amd64\|armeb\|armel\|armhf\|arm64\|avr32\|hppa\|i386'
+-      \ . '\|ia64\|lpia\|m32r\|m68k\|mipsel\|mips\|powerpcspe\|powerpc\|ppc64el'
++      \ . '\|ia64\|lpia\|m32r\|m68k\|mipsel\|mips64el\|mips\|powerpcspe\|powerpc\|ppc64el'
+       \ . '\|ppc64\|s390x\|s390\|sh3eb\|sh3\|sh4eb\|sh4\|sh\|sparc64\|sparc\|x32\)'
+ let s:pairs = 'hurd-i386\|kfreebsd-i386\|kfreebsd-amd64\|knetbsd-i386\|kopensolaris-i386\|netbsd-alpha\|netbsd-i386'
+ 

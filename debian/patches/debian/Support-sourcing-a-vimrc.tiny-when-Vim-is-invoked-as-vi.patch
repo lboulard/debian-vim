@@ -17,7 +17,7 @@ Signed-off-by: James Vega <jamessan@debian.org>
  3 files changed, 16 insertions(+), 1 deletion(-)
 
 diff --git a/src/main.c b/src/main.c
-index c694532..d518f46 100644
+index acc51f1..50dbff8 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -1729,6 +1729,10 @@ parse_command_name(mparm_T *parmp)
@@ -46,7 +46,7 @@ index c694532..d518f46 100644
  #ifdef MACOS_X
  	(void)do_source((char_u *)"$VIMRUNTIME/macmap.vim", FALSE, DOSO_NONE);
 diff --git a/src/os_unix.h b/src/os_unix.h
-index 4b3a3f1..36d14fd 100644
+index 1070746..0020c58 100644
 --- a/src/os_unix.h
 +++ b/src/os_unix.h
 @@ -217,6 +217,9 @@ typedef struct dsc$descriptor   DESC;
@@ -60,10 +60,10 @@ index 4b3a3f1..36d14fd 100644
  # define SYS_VIMRC_FILE "$VIM/vimrc"
  #endif
 diff --git a/src/structs.h b/src/structs.h
-index b56282f..b8f790f 100644
+index ebeefd0..90760f3 100644
 --- a/src/structs.h
 +++ b/src/structs.h
-@@ -3231,6 +3231,9 @@ typedef struct
+@@ -3243,6 +3243,9 @@ typedef struct
  #ifdef FEAT_DIFF
      int		diff_mode;		/* start with 'diff' set */
  #endif
