@@ -1505,3 +1505,52 @@ func Test_duplicate_buf()
 
   call delete('Xgrepthis')
 endfunc
+
+" Quickfix/Location list set/get properties tests
+function Xproperty_tests(cchar)
+    call s:setup_commands(a:cchar)
+
+    " Error cases
+    call assert_fails('call g:Xgetlist(99)', 'E715:')
+    call assert_fails('call g:Xsetlist(99)', 'E714:')
+    call assert_fails('call g:Xsetlist([], "a", [])', 'E715:')
+
+    " Set and get the title
+    Xopen
+    wincmd p
+    call g:Xsetlist([{'filename':'foo', 'lnum':27}])
+    call g:Xsetlist([], 'a', {'title' : 'Sample'})
+    let d = g:Xgetlist({"title":1})
+    call assert_equal('Sample', d.title)
+
+    Xopen
+    call assert_equal('Sample', w:quickfix_title)
+    Xclose
+
+    " Tests for action argument
+    silent! Xolder 999
+    let qfnr = g:Xgetlist({'all':1}).nr
+    call g:Xsetlist([], 'r', {'title' : 'N1'})
+    call assert_equal('N1', g:Xgetlist({'all':1}).title)
+    call g:Xsetlist([], ' ', {'title' : 'N2'})
+    call assert_equal(qfnr + 1, g:Xgetlist({'all':1}).nr)
+    call g:Xsetlist([], ' ', {'title' : 'N3'})
+    call assert_equal('N2', g:Xgetlist({'nr':2, 'title':1}).title)
+
+    " Invalid arguments
+    call assert_fails('call g:Xgetlist([])', 'E715')
+    call assert_fails('call g:Xsetlist([], "a", [])', 'E715')
+    let s = g:Xsetlist([], 'a', {'abc':1})
+    call assert_equal(-1, s)
+
+    call assert_equal({}, g:Xgetlist({'abc':1}))
+
+    if a:cchar == 'l'
+	call assert_equal({}, getloclist(99, ['title']))
+    endif
+endfunction
+
+function Test_qf_property()
+    call Xproperty_tests('c')
+    call Xproperty_tests('l')
+endfunction

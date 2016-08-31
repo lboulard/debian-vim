@@ -94,6 +94,10 @@ func Test_getcompletion()
   call assert_true(index(l, 'runtest.vim') >= 0)
   let l = getcompletion('walk', 'file')
   call assert_equal([], l)
+  set wildignore=*.vim
+  let l = getcompletion('run', 'file', 1)
+  call assert_true(index(l, 'runtest.vim') < 0)
+  set wildignore&
 
   let l = getcompletion('ha', 'filetype')
   call assert_true(index(l, 'hamster') >= 0)
@@ -175,4 +179,13 @@ func Test_getcompletion()
   call delete('Xtags')
 
   call assert_fails('call getcompletion("", "burp")', 'E475:')
+endfunc
+
+func Test_expand_star_star()
+  call mkdir('a/b', 'p')
+  call writefile(['asdfasdf'], 'a/b/fileXname')
+  call feedkeys(":find **/fileXname\<Tab>\<CR>", 'xt')
+  call assert_equal('find a/b/fileXname', getreg(':'))
+  bwipe!
+  call delete('a', 'rf')
 endfunc

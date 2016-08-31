@@ -1,4 +1,4 @@
-/* vi:set ts=8 sts=4 sw=4:
+/* vi:set ts=8 sts=4 sw=4 noet:
  *
  * VIM - Vi IMproved		by Bram Moolenaar
  *				Motif support by Robert Webb
@@ -16,7 +16,7 @@
 # include <X11/StringDefs.h>
 #endif
 
-#ifdef FEAT_BEVAL
+#if defined(FEAT_BEVAL) || defined(PROTO)
 # include "gui_beval.h"
 #endif
 

@@ -1,4 +1,4 @@
-/* vi:set ts=8 sts=4 sw=4:
+/* vi:set ts=8 sts=4 sw=4 noet:
  *
  * VIM - Vi IMproved	by Bram Moolenaar
  *
@@ -410,7 +410,11 @@ typedef __int64 off_T;
 #  define vim_ftell _ftelli64
 # endif
 #else
+# ifdef PROTO
+typedef long off_T;
+# else
 typedef off_t off_T;
+# endif
 # ifdef HAVE_FSEEKO
 #  define vim_lseek lseek
 #  define vim_ftell ftello
@@ -980,7 +984,8 @@ extern char *(*dyn_libintl_textdomain)(const char *domainname);
 #define READ_STDIN	0x04	/* read from stdin */
 #define READ_BUFFER	0x08	/* read from curbuf (converting stdin) */
 #define READ_DUMMY	0x10	/* reading into a dummy buffer */
-#define READ_KEEP_UNDO	0x20	/* keep undo info*/
+#define READ_KEEP_UNDO	0x20	/* keep undo info */
+#define READ_FIFO	0x40	/* read from fifo or socket */
 
 /* Values for change_indent() */
 #define INDENT_SET	1	/* set indent */
@@ -1362,7 +1367,8 @@ typedef enum
 {
     HLF_8 = 0	    /* Meta & special keys listed with ":map", text that is
 		       displayed different from what it is */
-    , HLF_AT	    /* @ and ~ characters at end of screen, characters that
+    , HLF_EOB	    /* after the last line in the buffer */
+    , HLF_AT	    /* @ characters at end of screen, characters that
 		       don't really exist in the text */
     , HLF_D	    /* directories in CTRL-D listing */
     , HLF_E	    /* error messages */
@@ -1409,7 +1415,7 @@ typedef enum
 
 /* The HL_FLAGS must be in the same order as the HLF_ enums!
  * When changing this also adjust the default for 'highlight'. */
-#define HL_FLAGS {'8', '@', 'd', 'e', 'h', 'i', 'l', 'm', 'M', \
+#define HL_FLAGS {'8', '~', '@', 'd', 'e', 'h', 'i', 'l', 'm', 'M', \
 		  'n', 'N', 'r', 's', 'S', 'c', 't', 'v', 'V', 'w', 'W', \
 		  'f', 'F', 'A', 'C', 'D', 'T', '-', '>', \
 		  'B', 'P', 'R', 'L', \
@@ -1630,14 +1636,14 @@ typedef UINT32_TYPEDEF UINT32_T;
 #  define GUI_FUNCTION2(f, pixel)   (gui.in_use \
 				    ?  ((pixel) != INVALCOLOR \
 					? gui_##f((pixel)) \
-					: (long_u)INVALCOLOR) \
+					: INVALCOLOR) \
 				    : termgui_##f((pixel)))
 #  define USE_24BIT		    (gui.in_use || p_tgc)
 # else
 #  define GUI_FUNCTION(f)	    gui_##f
 #  define GUI_FUNCTION2(f,pixel)    ((pixel) != INVALCOLOR \
 				     ? gui_##f((pixel)) \
-				     : (long_u)INVALCOLOR)
+				     : INVALCOLOR)
 #  define USE_24BIT		    gui.in_use
 # endif
 #else
@@ -1807,10 +1813,14 @@ typedef int proftime_T;	    /* dummy for function prototypes */
  * bits elsewhere.  That causes memory corruption.  Define time_T and use it
  * for global variables to avoid that.
  */
-#ifdef WIN3264
-typedef __time64_t  time_T;
+#ifdef PROTO
+typedef long  time_T;
 #else
+# ifdef WIN3264
+typedef __time64_t  time_T;
+# else
 typedef time_t	    time_T;
+# endif
 #endif
 
 #ifdef _WIN64
@@ -2108,7 +2118,7 @@ typedef enum
  * been seen at that stage.  But it must be before globals.h, where error_ga
  * is declared. */
 #if !defined(FEAT_GUI_W32) && !defined(FEAT_GUI_X11) \
-	&& !defined(FEAT_GUI_GTK) && !defined(FEAT_GUI_MAC)
+	&& !defined(FEAT_GUI_GTK) && !defined(FEAT_GUI_MAC) && !defined(PROTO)
 # define mch_errmsg(str)	fprintf(stderr, "%s", (str))
 # define display_errors()	fflush(stderr)
 # define mch_msg(str)		printf("%s", (str))
@@ -2438,9 +2448,7 @@ typedef enum
 /* Options for json_encode() and json_decode. */
 #define JSON_JS		1   /* use JS instead of JSON */
 #define JSON_NO_NONE	2   /* v:none item not allowed */
-
-/* This is in main.c, cproto can't handle it. */
-int vim_main2(void);
+#define JSON_NL		4   /* append a NL */
 
 /* Used for flags of do_in_path() */
 #define DIP_ALL	    0x01	/* all matches, not just the first one */
@@ -2485,5 +2493,9 @@ int vim_main2(void);
 /* flags for find_name_end() */
 #define FNE_INCL_BR	1	/* include [] in name */
 #define FNE_CHECK_START	2	/* check name starts with valid character */
+
+#if (defined(sun) || defined(__FreeBSD__)) && defined(S_ISCHR)
+# define OPEN_CHR_FILES
+#endif
 
 #endif /* VIM__H */

@@ -1,4 +1,4 @@
-/* vi:set ts=8 sts=4 sw=4:
+/* vi:set ts=8 sts=4 sw=4 noet:
  *
  * VIM - Vi IMproved	by Bram Moolenaar
  *
@@ -1099,22 +1099,53 @@ func_free(ufunc_T *fp, int force)
     vim_free(fp);
 }
 
+/*
+ * There are two kinds of function names:
+ * 1. ordinary names, function defined with :function
+ * 2. numbered functions and lambdas
+ * For the first we only count the name stored in func_hashtab as a reference,
+ * using function() does not count as a reference, because the function is
+ * looked up by name.
+ */
+    static int
+func_name_refcount(char_u *name)
+{
+    return isdigit(*name) || *name == '<';
+}
+
 #if defined(EXITFREE) || defined(PROTO)
     void
 free_all_functions(void)
 {
     hashitem_T	*hi;
+    ufunc_T	*fp;
+    long_u	skipped = 0;
+    long_u	todo;
 
     /* Need to start all over every time, because func_free() may change the
      * hash table. */
-    while (func_hashtab.ht_used > 0)
-	for (hi = func_hashtab.ht_array; ; ++hi)
+    while (func_hashtab.ht_used > skipped)
+    {
+	todo = func_hashtab.ht_used;
+	for (hi = func_hashtab.ht_array; todo > 0; ++hi)
 	    if (!HASHITEM_EMPTY(hi))
 	    {
-		func_free(HI2UF(hi), TRUE);
-		break;
+		--todo;
+		/* Only free functions that are not refcounted, those are
+		 * supposed to be freed when no longer referenced. */
+		fp = HI2UF(hi);
+		if (func_name_refcount(fp->uf_name))
+		    ++skipped;
+		else
+		{
+		    func_free(fp, TRUE);
+		    skipped = 0;
+		    break;
+		}
 	    }
-    hash_clear(&func_hashtab);
+    }
+    if (skipped == 0)
+	hash_clear(&func_hashtab);
 }
 #endif
 
@@ -1669,20 +1700,6 @@ theend:
 }
 
 /*
- * There are two kinds of function names:
- * 1. ordinary names, function defined with :function
- * 2. numbered functions and lambdas
- * For the first we only count the name stored in func_hashtab as a reference,
- * using function() does not count as a reference, because the function is
- * looked up by name.
- */
-    static int
-func_name_refcount(char_u *name)
-{
-    return isdigit(*name) || *name == '<';
-}
-
-/*
  * ":function"
  */
     void
@@ -1938,7 +1955,7 @@ ex_function(exarg_T *eap)
 	    p += 7;
 	    if (current_funccal == NULL)
 	    {
-		emsg_funcname(N_("E932 Closure function should not be at top level: %s"),
+		emsg_funcname(N_("E932: Closure function should not be at top level: %s"),
 			name == NULL ? (char_u *)"" : name);
 		goto erret;
 	    }
@@ -2721,7 +2738,7 @@ ex_delfunction(exarg_T *eap)
 	    /* A normal function (not a numbered function or lambda) has a
 	     * refcount of 1 for the entry in the hashtable.  When deleting
 	     * it and the refcount is more than one, it should be kept.
-	     * A numbered function and lambda snould be kept if the refcount is
+	     * A numbered function and lambda should be kept if the refcount is
 	     * one or more. */
 	    if (fp->uf_refcount > (func_name_refcount(fp->uf_name) ? 0 : 1))
 	    {
@@ -3462,7 +3479,7 @@ free_unref_funccal(int copyID, int testing)
 }
 
 /*
- * Get function call environment based on bactrace debug level
+ * Get function call environment based on backtrace debug level
  */
     static funccall_T *
 get_funccal(void)

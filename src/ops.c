@@ -1,4 +1,4 @@
-/* vi:set ts=8 sts=4 sw=4:
+/* vi:set ts=8 sts=4 sw=4 noet:
  *
  * VIM - Vi IMproved	by Bram Moolenaar
  *
@@ -6283,7 +6283,7 @@ write_viminfo_registers(FILE *fp)
  * 'permanent' of the two), otherwise the PRIMARY one.
  * For now, use a hard-coded sanity limit of 1Mb of data.
  */
-#if defined(FEAT_X11) && defined(FEAT_CLIPBOARD)
+#if (defined(FEAT_X11) && defined(FEAT_CLIPBOARD)) || defined(PROTO)
     void
 x11_export_final_selection(void)
 {

@@ -109,19 +109,31 @@ func s:kill_server(cmd)
 endfunc
 
 " Wait for up to a second for "expr" to become true.
-" Return time slept in milliseconds.
+" Return time slept in milliseconds.  With the +reltime feature this can be
+" more than the actual waiting time.  Without +reltime it can also be less.
 func WaitFor(expr)
-  let slept = 0
+  " using reltime() is more accurate, but not always available
+  if has('reltime')
+    let start = reltime()
+  else
+    let slept = 0
+  endif
   for i in range(100)
     try
       if eval(a:expr)
+	if has('reltime')
+	  return float2nr(reltimefloat(reltime(start)) * 1000)
+	endif
 	return slept
       endif
     catch
     endtry
-    let slept += 10
+    if !has('reltime')
+      let slept += 10
+    endif
     sleep 10m
   endfor
+  return 1000
 endfunc
 
 " Run Vim, using the "vimcmd" file and "-u NORC".
@@ -130,7 +142,7 @@ endfunc
 " Plugins are not loaded, unless 'loadplugins' is set in "before".
 " Return 1 if Vim could be executed.
 func RunVim(before, after, arguments)
-  call RunVimPiped(a:before, a:after, a:arguments, '')
+  return RunVimPiped(a:before, a:after, a:arguments, '')
 endfunc
 
 func RunVimPiped(before, after, arguments, pipecmd)
