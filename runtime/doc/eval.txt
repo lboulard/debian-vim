@@ -1,4 +1,4 @@
-*eval.txt*	For Vim version 7.4.  Last change: 2016 Aug 29
+*eval.txt*	For Vim version 7.4.  Last change: 2016 Sep 01
 
 
 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
@@ -643,13 +643,17 @@ It's possible to form a variable name with curly braces, see
 
 Expression syntax summary, from least to most significant:
 
-|expr1|   expr2 ? expr1 : expr1	if-then-else
+|expr1|   expr2
+	expr2 ? expr1 : expr1	if-then-else
 
-|expr2|	expr3 || expr3 ..	logical OR
+|expr2|	expr3
+	expr3 || expr3 ..	logical OR
 
-|expr3|	expr4 && expr4 ..	logical AND
+|expr3|	expr4
+	expr4 && expr4 ..	logical AND
 
-|expr4|	expr5 == expr5		equal
+|expr4|	expr5
+	expr5 == expr5		equal
 	expr5 != expr5		not equal
 	expr5 >	 expr5		greater than
 	expr5 >= expr5		greater than or equal
@@ -666,24 +670,28 @@ Expression syntax summary, from least to most significant:
 	expr5 is expr5		same |List| instance
 	expr5 isnot expr5	different |List| instance
 
-|expr5|	expr6 +	 expr6 ..	number addition or list concatenation
+|expr5|	expr6
+	expr6 +	 expr6 ..	number addition or list concatenation
 	expr6 -	 expr6 ..	number subtraction
 	expr6 .	 expr6 ..	string concatenation
 
-|expr6|	expr7 *	 expr7 ..	number multiplication
+|expr6|	expr7
+	expr7 *	 expr7 ..	number multiplication
 	expr7 /	 expr7 ..	number division
 	expr7 %	 expr7 ..	number modulo
 
-|expr7|	! expr7			logical NOT
+|expr7|	expr8
+	! expr7			logical NOT
 	- expr7			unary minus
 	+ expr7			unary plus
 
-|expr8|	expr8[expr1]		byte of a String or item of a |List|
+|expr8|	expr9
+	expr8[expr1]		byte of a String or item of a |List|
 	expr8[expr1 : expr1]	substring of a String or sublist of a |List|
 	expr8.name		entry in a |Dictionary|
 	expr8(expr1, ...)	function call with |Funcref| variable
 
-|expr9| number			number constant
+|expr9|   number		number constant
 	"string"		string constant, backslash is special
 	'string'		string constant, ' is doubled
 	[expr1, ...]		|List|
@@ -2001,6 +2009,7 @@ call({func}, {arglist} [, {dict}])
 				any	call {func} with arguments {arglist}
 ceil({expr})			Float	round {expr} up
 ch_close({handle})		none	close {handle}
+ch_close_in({handle})		none	close in part of {handle}
 ch_evalexpr({handle}, {expr} [, {options}])
 				any	evaluate {expr} on JSON {handle}
 ch_evalraw({handle}, {string} [, {options}])
@@ -2972,6 +2981,14 @@ confirm({msg} [, {choices} [, {default} [, {type}]]])
 ch_close({handle})						*ch_close()*
 		Close {handle}.  See |channel-close|.
 		{handle} can be Channel or a Job that has a Channel.
+		A close callback is not invoked.
+
+		{only available when compiled with the |+channel| feature}
+
+ch_close_in({handle})						*ch_close_in()*
+		Close the "in" part of {handle}.  See |channel-close-in|.
+		{handle} can be Channel or a Job that has a Channel.
+		A close callback is not invoked.
 
 		{only available when compiled with the |+channel| feature}
 
@@ -7770,7 +7787,7 @@ timer_start({time}, {callback} [, {options}])
 		busy or Vim is not waiting for input the time will be longer.
 
 		{callback} is the function to call.  It can be the name of a
-		function or a Funcref.  It is called with one argument, which
+		function or a |Funcref|.  It is called with one argument, which
 		is the timer ID.  The callback is only invoked when Vim is
 		waiting for input.
 
