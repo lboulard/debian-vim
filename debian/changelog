@@ -18,6 +18,8 @@ vim (2:7.4.2295-1) UNRELEASED; urgency=medium
   * Add mips64el as a recognized architecture in debcontrol files.  Thanks to
     Reiner Herrmann for the patch.  (Closes: #830545)
   * Update supported Ubuntu releases in debsources files.
+  * Remove vim-gnome (which uses deprecated gnome2 libraries) in favor of
+    vim-gtk3.  (Closes: #820239)
 
  -- James McCoy <jamessan@debian.org>  Tue, 30 Aug 2016 21:28:21 -0400
 

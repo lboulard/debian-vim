@@ -87,13 +87,6 @@ GTK3FLAGS+=--disable-motif-check
 GTK3FLAGS+=--disable-athena-check
 GTK3FLAGS+=--disable-fontset
 
-GNOMEFLAGS:=--enable-gui=gnome2
-GNOMEFLAGS+=--disable-gtk2-check
-GNOMEFLAGS+=--enable-gnome-check
-GNOMEFLAGS+=--disable-motif-check
-GNOMEFLAGS+=--disable-athena-check
-GNOMEFLAGS+=--disable-fontset
-
 ATHENAFLAGS:=--enable-gui=athena
 ATHENAFLAGS+=--disable-gtk2-check
 ATHENAFLAGS+=--disable-gtk3-check
@@ -133,7 +126,6 @@ ALLINTERPFLAGS+=--with-tclsh=/usr/bin/tclsh
 VARIANTS+=vim-tiny
 VARIANTS+=vim-gtk
 VARIANTS+=vim-gtk3
-VARIANTS+=vim-gnome
 VARIANTS+=vim-athena
 VARIANTS+=vim-nox
 VARIANTS+=vim-basic
@@ -153,9 +145,6 @@ CFGFLAGS_vim-gtk:=$(CFGFLAGS) $(OPTFLAGS) $(GUIFLAGS) $(GTK2FLAGS) $(ALLINTERPFL
 
 CFLAGS_vim-gtk3:=$(CFLAGS)
 CFGFLAGS_vim-gtk3:=$(CFGFLAGS) $(OPTFLAGS) $(GUIFLAGS) $(GTK3FLAGS) $(ALLINTERPFLAGS)
-
-CFLAGS_vim-gnome:=$(CFLAGS)
-CFGFLAGS_vim-gnome:=$(CFGFLAGS) $(OPTFLAGS) $(GUIFLAGS) $(GNOMEFLAGS) $(ALLINTERPFLAGS)
 
 CFLAGS_vim-athena:=$(CFLAGS)
 CFGFLAGS_vim-athena:=$(CFGFLAGS) $(OPTFLAGS) $(GUIFLAGS) $(ATHENAFLAGS) $(ALLINTERPFLAGS)
