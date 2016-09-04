@@ -1846,3 +1846,504 @@ Individual patches for Vim 7.4:
   4193  7.4.1827  no error when invoking a callback when it's not safe
   6598  7.4.1828  may try to access buffer that's already freed
   1821  7.4.1829  (after 7.4.1828) no channel log message when buffer was freed
+  2725  7.4.1830  non-antialiased misnamed
+  1719  7.4.1831  no proper error message for wrong argument to timer_stop()
+  1730  7.4.1832  memory leak in debug commands
+  4769  7.4.1833  cannot use an Ex command for 'keywordprg'
+  1425  7.4.1834  possible crash when conceal is active
+  4692  7.4.1835  when splitting and closing a window the status height changes
+  8955  7.4.1836  when using partial on dict it's always bound to that dict
+  4561  7.4.1837  the BufUnload event may be triggered twice
+ 14247  7.4.1838  functions specifically for testing do not sort together
+  3633  7.4.1839  cannot get the items stored in a partial
+  4897  7.4.1840  when using packages an "after" directory cannot be used
+  6145  7.4.1841  code to reallocate the buffer used for quickfix is repeated
+  5036  7.4.1842  (after 7.4.1839) get() works for Partial but not for Funcref
+ 28265  7.4.1843  tests involving Python are flaky
+ 15744  7.4.1844  more functions should start with test_
+  4674  7.4.1845  mentioning NetBeans when reading from channel
+  2529  7.4.1846  ubsan detects a multiplication overflow
+  3475  7.4.1847  using NULL dict or list crashes Vim
+  4210  7.4.1848  can't build with Strawberry Perl 5.24
+  1908  7.4.1849  still trying to read from channel that is going to be closed
+  1980  7.4.1850  GUI freezes when using a job
+  2533  7.4.1851  test_syn_attr fails when using the GUI
+  5752  7.4.1852  Unix: Cannot run all tests with the GUI
+  1752  7.4.1853  crash when job and channel in same dict while using partials
+  2861  7.4.1854  when setting 'termguicolors' Ignore highlighting doesn't work
+  4209  7.4.1855  valgrind reports memory leak for job that is not freed
+  1940  7.4.1856  failing job test fails on MS-Windows
+ 12921  7.4.1857  channel can append to a buffer that is 'nomodifiable'
+  3993  7.4.1858  channel writing to buffer doesn't find it by the short name
+  2989  7.4.1859  cannot use a function reference for "exit_cb"
+  3759  7.4.1860  using a partial for timer_start() may cause a crash
+  2556  7.4.1861  compiler warnings with 64 bit compiler
+ 22001  7.4.1862  eval() can't handle result from string() with repeated item
+  5216  7.4.1863  compiler warnings on Win64
+  1582  7.4.1864  Python: encoding error with Python 2
+  1600  7.4.1865  memory leaks in test49
+  2279  7.4.1866  invalid memory access when exiting with EXITFREE defined
+  1567  7.4.1867  memory leak in test_matchstrpos
+  3598  7.4.1868  setting really_exiting causes memory leaks to be reported
+  1748  7.4.1869  can't build with old version of Perl
+  1950  7.4.1870  (after 7.4.1863) one more Win64 compiler warning
+ 13569  7.4.1871  appending to quickfix list is slow if quickfix window is open
+  1458  7.4.1872  still build problem with old version of Perl
+  7495  7.4.1873  GUI: when a callback adds a timer it is not used until later
+  1309  7.4.1874  unused variable in Win32 code
+  8249  7.4.1875  comparing functions and partials doesn't work well
+  1786  7.4.1876  typing "k" at the hit-enter prompt has no effect
+  2872  7.4.1877  no test for invoking "close_cb" when writing to a buffer
+  4193  7.4.1878  exited job isn't detected until a character is typed
+  1889  7.4.1879  (after 7.4.1877) channel test is flaky
+  1807  7.4.1880  MS-Windows console build defaults to not having +channel
+ 15175  7.4.1881  appending to a long quickfix list is slow
+  1629  7.4.1882  check for line break at end of line wrong
+  2126  7.4.1883  cppcheck found 2 incorrect printf formats
+  6332  7.4.1884  updating marks in long quickfix list is very slow
+  1516  7.4.1885  MinGW console build defaults to not having +channel
+ 13782  7.4.1886  mapping times out when interrupted by receiving data
+  7052  7.4.1887  when receiving channel data 'updatetime' is not respected
+  2512  7.4.1888  wrong computation of remaining wait time in RealWaitForChar()
+  2182  7.4.1889  when umask is set to 0177 Vim can't create temp files
+  6161  7.4.1890  GUI: cursor blinking interrupted when channel data received
+  8326  7.4.1891  channel reading very long lines is slow
+  4055  7.4.1892  balloon eval only gets the window number, not the ID
+  4736  7.4.1893  cannot easily get the window ID for a buffer
+  5057  7.4.1894  cannot get the window ID for a mouse click
+ 11328  7.4.1895  cannot use a window ID where a window number is expected
+  3440  7.4.1896  invoking mark_adjust() when it is pointless
+  8595  7.4.1897  various typos, long lines and style mistakes
+  8285  7.4.1898  user commands don't support modifiers
+  2191  7.4.1899  GTK 3: cursor blinking doesn't work well
+  2149  7.4.1900  using CTRL-] in the help on "{address}." doesn't work
+  1860  7.4.1901  Win32: the "Disabled" menu items would appear enabled
+  3076  7.4.1902  no test for collapsing channel buffers; some text is lost
+ 31848  7.4.1903  recent history items may be dropped when writing viminfo
+  2219  7.4.1904  (after 7.4.1903) build fails
+  1558  7.4.1905  (after 7.4.1903) some compilers can't handle double semicolon
+ 14566  7.4.1906  collapsing channel buffers does not work properly
+  1925  7.4.1907  warnings from 64 bit compiler
+  3480  7.4.1908  Netbeans uses uninitialzed pointer and freed memory
+  5786  7.4.1909  doubled semicolons
+  5490  7.4.1910  tests using external command to delete directory
+ 11568  7.4.1911  recent history lines may be lost when exiting Vim
+  2773  7.4.1912  no test for using setqflist() on an older quickfix list
+  6074  7.4.1913  after ":doautocmd" modelines are always processed
+  1853  7.4.1914  crash when executing autocommands when on the signal stack
+  1534  7.4.1915  effect of the PopupMenu autocommand isn't directly visible
+  1753  7.4.1916  (after 7.4.1906) no proper test for what 7.4.1906 fixes
+  3858  7.4.1917  history lines read from viminfo are not converted
+  3933  7.4.1918  not enough testing for parsing viminfo lines
+ 40242  7.4.1919  register contents is not merged when writing viminfo
+  3456  7.4.1920  (after 7.4.1919) missing test changes
+  1523  7.4.1921  (after 7.4.1919) vim_time() not included when needed
+  2481  7.4.1922  Ruby 2.4.0 unifies Fixnum and Bignum into Integer
+  2394  7.4.1923  command line editing is not tested much
+  5163  7.4.1924  missing "void" for functions without argument
+ 20207  7.4.1925  viminfo does not merge file marks properly
+  1533  7.4.1926  possible crash with many history items
+  1691  7.4.1927  compiler warning for signed/unsigned
+  2177  7.4.1928  overwriting pointer argument
+  3290  7.4.1929  inconsistent indenting and weird name
+  1695  7.4.1930  can't build without +spell but with +quickfix
+  1774  7.4.1931  using both old and new style file mark lines from viminfo
+  4131  7.4.1932  jumplist is not merged with the one in the viminfo file
+  1379  7.4.1933  compiler warning about uninitialzed variable
+  5045  7.4.1934  new style tests not executed with MinGW compiler
+  1947  7.4.1935  with GUI search/replace second match is skipped
+  1558  7.4.1936  off-by-one error in bounds check
+ 11233  7.4.1937  no test for directory stack in quickfix
+  2420  7.4.1938  when writing viminfo numbered marks were duplicated
+  2798  7.4.1939  memory access error when reading viminfo
+  3317  7.4.1940  "gd" hangs in some situations
+ 33597  7.4.1941  not all quickfix tests are also done with the location lists
+  1707  7.4.1942  background is not drawn properly when 'termguicolors' is set
+  1893  7.4.1943  Coverity warns for unreachable code
+243580  7.4.1944  Win32: Cannot compile with XPM feature using VC2015
+  6792  7.4.1945  the Man plugin doesn't work that well
+  1541  7.4.1946  (after 7.4.1944) file list does not include new XPM libraries
+  6533  7.4.1947  viminfo continuation line with wrong length isn't skipped
+  5258  7.4.1948  Ctrl-A with double-byte encoding may result in garbled text
+  2794  7.4.1949  minor problems with the quickfix code
+  1472  7.4.1950  quickfix long lines test not executed for buffer
+  4793  7.4.1951  Ruby test is old style
+  7383  7.4.1952  Cscope interface does not support finding assignments
+ 52369  7.4.1953  not all parts of the quickfix code are tested
+  2691  7.4.1954  (after 7.4.1948) no test for what 7.4.1948 fixes
+  9625  7.4.1955  using 32-bit Perl with 64-bit time_t causes memory corruption
+  3362  7.4.1956  when file doesn't load with CTRL-W f new window is not closed
+  3101  7.4.1957  Perl interface has obsolete workaround
+ 27270  7.4.1958  Perl interface preprocessor statements not nicely indented
+  5056  7.4.1959  crash when running test_channel.vim on Windows
+ 10242  7.4.1960  Unicode standard 9 was released
+  4492  7.4.1961  popup menu remains if 'insertmode' is reset during completion
+  5936  7.4.1962  two test files for increment/decrement
+ 13194  7.4.1963  running Win32 Vim in mintty does not work
+ 16365  7.4.1964  the quickfix init function is too big
+  3757  7.4.1965  job in raw mode appends garbage characterss to buffer
+  2233  7.4.1966  Coverity reports a resource leak
+  5838  7.4.1967  falling back from NFA to old regexp engine has problems
+  2053  7.4.1968  invalid memory access with "\<C-">
+  2039  7.4.1969  crash when the netbeans channel is closed
+  2696  7.4.1970  using ":insert" in an empty buffer sets the jump mark
+  4005  7.4.1971  not easy to see error lines below the current error position
+  1732  7.4.1972  on Solaris select() does not work as expected with typeahead 
+  2224  7.4.1973  on MS-Windows package directory added to 'rtp' at the end
+  1542  7.4.1974  GUI has a problem with some termcodes
+ 69654  7.4.1975  on MS-Windows large files (> 2Gbyte) cause problems
+ 89057  7.4.1976  number variables are not 64 bits while they could be
+  2599  7.4.1977  with 64 bit changes don't need three calls to sprintf()
+  1855  7.4.1978  (after 7.4.1975) large file test does not delete its output
+  2299  7.4.1979  (after 7.4.1976) getting value of binary option is wrong
+ 21082  7.4.1980  'errorformat' is parsed for every call to ":caddexpr"
+ 30172  7.4.1981  no testing for Farsi code
+  1939  7.4.1982  viminfo file contains duplicate change marks
+ 22518  7.4.1983  farsi.c and arabic.c are included in a strange way
+  7829  7.4.1984  not all quickfix features are tested
+  4939  7.4.1985  (after 7.4.1983) missing changes in VMS build file
+  1497  7.4.1986  compiler warns for loss of data
+  1977  7.4.1987  viminfo may have useless continuation lines
+ 14954  7.4.1988  when updating viminfo with file marks there is no time order
+ 16681  7.4.1989  filter() and map() only accept a string argument
+  3148  7.4.1990  (after 7.4.1952) cscope items are not sorted
+  1580  7.4.1991  glob() does not add symbolic link when there are no wildcards
+ 47623  7.4.1992  values for true and false can be confusing
+  2170  7.4.1993  not all TRUE and FALSE arguments are tested
+  2100  7.4.1994  (after 7.4.1993) true-false test fails
+  6361  7.4.1995  GUI: cursor drawn in wrong place when using a timer callback
+  5994  7.4.1996  capturing the output of a command takes a few commands
+  6029  7.4.1997  cannot easily scroll the quickfix window
+  5051  7.4.1998  no NL to NUL conversion when writing buffer lines to a job
+  8274  7.4.1999  evalcmd() doesn't work recursively
+  1372  7.4.2000  (after 7.4.1999) evalcmd test fails
+  1442  7.4.2001  (after 7.4.2000) tiny build fails
+  3543  7.4.2002  crash when passing number to filter() or map()
+  2889  7.4.2003  still cursor flickering when a callback updates the screen
+  1436  7.4.2004  GUI: cursor displayed in the wrong position
+  1501  7.4.2005  after using evalcmd() message output is in the wrong position
+  3235  7.4.2006  crash when using tabnext in BufUnload autocmd
+  1400  7.4.2007  running the tests leaves a viminfo file behind
+ 21334  7.4.2008  evalcmd() has a confusing name
+  2216  7.4.2009  (after 7.4.2008) messages test fails
+  8393  7.4.2010  there is a :cbottom command but no :lbottom command
+  7883  7.4.2011  it is not easy to get a list of command arguments
+  2589  7.4.2012  (after 7.4.2011) test for getcompletion() may fail
+  3872  7.4.2013  using "noinsert" in 'completeopt' breaks redo
+  2122  7.4.2014  using "noinsert" in 'completeopt' does not insert match
+  6545  7.4.2015  when file gets a name when writing it 'acd' is not effective
+  1977  7.4.2016  warning from MinGW about _WIN32_WINNT redefined
+ 10649  7.4.2017  adding many errors to the quickfix list takes a long time
+ 17873  7.4.2018  buf_valid() can be slow when there are many buffers
+  1439  7.4.2019  when ignoring case utf_fold() may consume a lot of time
+  1997  7.4.2020  can't build without +autocmd feature
+  7783  7.4.2021  still too many buf_valid() calls
+  2352  7.4.2022  warnings from 64 bit compiler
+  3125  7.4.2023  buflist_findname_stat() may find a dummy buffer
+ 61795  7.4.2024  more buf_valid() calls can be optimized
+  2690  7.4.2025  cursor blinking irregular when using channel or timer
+ 10910  7.4.2026  reference counting for callbacks isn't right
+  1609  7.4.2027  can't build with +eval but without +menu
+  1486  7.4.2028  cppcheck warns for using index before limits check
+  1977  7.4.2029  printf() does not work with 64 bit numbers
+  4070  7.4.2030  ARCH must be set properly when using MinGW
+  3706  7.4.2031  list_lbr_utf8 test fails because of user setting
+  1479  7.4.2032  (after 7.4.2030) build fails with 64 bit MinGW
+  3186  7.4.2033  'cscopequickfix' option does not accept new value "a"
+  1751  7.4.2034  build fails with some version of MinGW
+  2389  7.4.2035  on Solaris with ZFS the ACL may get removed
+  4661  7.4.2036  looking up a buffer by number is slow if there are many
+  1864  7.4.2037  (after 7.4.2036) small build fails
+  2218  7.4.2038  (after 7.4.2036) small build still fails
+ 50211  7.4.2039  the Netbeans integration is not tested
+  1346  7.4.2040  new files missing from distribution
+  2111  7.4.2041  netbeans file authentication not tested
+  2221  7.4.2042  GTK: display updating is not done properly and can be slow
+  3663  7.4.2043  setbufvar() causes a screen redraw
+ 21666  7.4.2044  filter() and map() either require a string or a function
+  1632  7.4.2045  memory leak when using a function callback
+ 20324  7.4.2046  the qf_init_ext() function is too big
+  1974  7.4.2047  compiler warning for initializing a struct
+ 55267  7.4.2048  there is still code and help for unsupported systems
+  7416  7.4.2049  there is no way to get a list of the error lists
+  3915  7.4.2050  when using ":vimgrep" may end up with duplicate buffers
+ 28748  7.4.2051  no proper testing of trunc_string()
+  3118  7.4.2052  coverage report is messed up by the unittests
+  1890  7.4.2053  can't run scripttests in the top directory
+  2280  7.4.2054  (after 7.4.2048) wrong part of #ifdef removed
+ 59152  7.4.2055  eval.c is too big
+  1996  7.4.2056  (after 7.4.2055) build fails
+ 51532  7.4.2057  eval.c is too big
+232701  7.4.2058  eval.c is too big
+ 13545  7.4.2059  non-Unix builds fail
+  1468  7.4.2060  (after 7.4.2059) typo in build file
+ 25065  7.4.2061  qf_init_ext() is too big
+  3699  7.4.2062  using dummy variable to compute struct member offset
+698729  7.4.2063  eval.c is still too big
+  1709  7.4.2064  Coverity warns for possible buffer overflow
+  1753  7.4.2065  compiler warns for uninitialzed variable
+  3458  7.4.2066  getcompletion() not well tested
+  1768  7.4.2067  compiler warning for char/char_u conversion, inefficient code
+  7136  7.4.2068  memory access error when running the message tests
+520360  7.4.2069  spell.c is too big
+  1623  7.4.2070  (after 7.4.2069) missing change to include file
+ 11470  7.4.2071  the return value of type() is difficult to use
+ 13279  7.4.2072  substitute() does not support a Funcref argument
+ 23617  7.4.2073  rgb.txt is read for every color name
+  1936  7.4.2074  one more place using a dummy variable
+ 11189  7.4.2075  no autocommand event to initialize a window or tab page
+  2320  7.4.2076  syntax error when dict has '>' key
+  5630  7.4.2077  cannot update 'tabline' when a tab was closed
+  2152  7.4.2078  running checks in po diretory fails
+  2057  7.4.2079  Netbeans test fails on non-Unix systems
+  2838  7.4.2080  PERROR() on some systems does not trigger assert_fails()
+  4355  7.4.2081  line numbers in the error list are not always adjusted
+ 16617  7.4.2082  not much test coverage for digraphs
+  2128  7.4.2083  Coverity complains about not restoring a value
+  3362  7.4.2084  (after 7.4.2081) new digraph test makes testing hang
+  3465  7.4.2085  digraph tests fails on some systems
+  6999  7.4.2086  using the system default encoding makes tests unpredictable
+  2572  7.4.2087  digraph code test coverage is still low
+  1515  7.4.2088  (after 7.4.2087) keymap test fails with normal features
+ 22910  7.4.2089  color handling of X11 GUIs is too complicated
+ 19171  7.4.2090  using submatch() in lambda passed to substitute() is verbose
+  1416  7.4.2091  Coverity reports a resource leak when out of memory
+  2205  7.4.2092  GTK 3 build fails with older GTK version
+  2018  7.4.2093  Netbeans test fails once in a while; leaving log file behind
+  8814  7.4.2094  the color allocation in X11 is overly complicated
+ 10873  7.4.2095  Man test fails when run with the GUI
+  2246  7.4.2096  lambda functions show up with completion
+  2979  7.4.2097  warning from 64 bit compiler
+  5489  7.4.2098  text object tests are old style
+  4652  7.4.2099  when a keymap is active only "(lang)" is displayed
+ 10044  7.4.2100  "cgn" and "dgn" do not always work correctly
+ 61881  7.4.2101  looping over windows, buffers and tab pages is inconsistant
+  1638  7.4.2102  (after 7.4.2101) tiny build with GUI fails
+ 10505  7.4.2103  can't have "augroup END" right after ":au!"
+  2669  7.4.2104  code duplication when unreferencing a function
+  5347  7.4.2105  configure reports "normal" default features while its "huge"
+  3897  7.4.2106  clang warns about missing field in initializer
+  1821  7.4.2107  (after 7.4.2106) misplaced equal sign
+  1405  7.4.2108  Netbeans test is flaky
+  5025  7.4.2109  'display=lastline" is too drastic, without it not nice
+  2818  7.4.2110  with CmdUndefined errof for missing autocmd is E464
+ 27495  7.4.2111  defaults are very conservative
+  6974  7.4.2112  getcompletion(.., 'dir') returns trailing "*" without matches
+ 15890  7.4.2113  test for undo is flaky
+  1555  7.4.2114  (after 7.4.2113) tiny build fails
+  4300  7.4.2115  loading defaults.vim with -C argument
+  1896  7.4.2116  the default vimrc for Windows is very conservative
+  6259  7.4.2117  no warning when deleting an augroup that still has autocmds
+  1793  7.4.2118  Mac: can't build with tiny features
+ 29783  7.4.2119  closures are not supported
+ 12302  7.4.2120  user defined functions can't be a closure
+  2231  7.4.2121  no easy way to check if lambda and closure are supported
+  2580  7.4.2122  (after 7.4.2118) Mac: don't get +clipboard in huge build
+ 10470  7.4.2123  no new style test for diff mode
+  1411  7.4.2124  diffmode test leaves files behind, breaking another test
+  1349  7.4.2125  compiler warning for loss of data
+  2287  7.4.2126  no tests for :diffget and :diffput
+  4345  7.4.2127  short form of ":noswapfile" is ":noswap" instead of ":nos"
+  1448  7.4.2128  memory leak when saving for undo fails
+  1561  7.4.2129  memory leak when using timer_start()
+  3536  7.4.2130  pending timers cause false memory leak reports
+  2294  7.4.2131  more memory leaks when using partial, e.g. for "exit-cb"
+  2682  7.4.2132  test_partial has memory leaks reported
+  1498  7.4.2133  (after 7.4.2128) can't build with tiny features
+  7884  7.4.2134  no error for using function() badly
+  6036  7.4.2135  various tiny issues
+  9838  7.4.2136  closure function fails
+ 57255  7.4.2137  using function() with a name will find redefined function
+  1474  7.4.2138  test 86 and 87 fail
+  2452  7.4.2139  :delfunction causes illegal memory access
+  1645  7.4.2140  tiny build fails
+  6471  7.4.2141  Coverity reports bogus NULL check
+ 11310  7.4.2142  leaking memory when redefining a function
+ 13393  7.4.2143  a funccal is garbage collected while it can still be used
+  3702  7.4.2144  on MS-Windows quickix mishandles CR-LF line with 1023 bytes
+  1961  7.4.2145  Win32: Using CreateThread/ExitThread is not safe
+ 10944  7.4.2146  Not enough testing for popup menu; problem with CTRL-E
+  1301  7.4.2147  (after 7.4.2146) test_alot fails
+  6658  7.4.2148  not much testing for cscope
+  2167  7.4.2149  if a test leaves a window open a following test may fail
+  1722  7.4.2150  warning with MinGW 64
+  1438  7.4.2151  quickfix test fails on MS-Windows
+  8923  7.4.2152  no proper translation of messages with a count
+  5760  7.4.2153  GUI test isn't testing much
+  1621  7.4.2154  Test_communicate() fails sometimes
+  1753  7.4.2155  quotes make GUI test fail on MS-Windows
+  1471  7.4.2156  compiler warning
+  3636  7.4.2157  Test_job_start_fails() is expected to report memory leaks
+  3393  7.4.2158  getcompletion('', 'cscope') depends on previous completion
+  6399  7.4.2159  insufficient testing for cscope
+  3195  7.4.2160  setmatches() mixes up values
+  2066  7.4.2161  (after 7.4.2160) expr test fails without conceal feature
+  2894  7.4.2162  getcompletion('', 'sign') depends on previous completion
+ 18828  7.4.2163  match() and related functions tested with old style test
+ 11439  7.4.2164  cannot use "after" directory to tune behavior of a package
+  2303  7.4.2165  (after 7.4.2164) startup test fails on MS-Windows
+  1660  7.4.2166  (after 7.4.2164) small build can't run startup test
+  1679  7.4.2167  (after 7.4.2164) small build can't run tests
+  2896  7.4.2168  not running the startup test on MS-Windows
+  2269  7.4.2169  (after 7.4.2168) startup test gets stuck on MS-Windows
+  8362  7.4.2170  cannot get information about timers
+  1788  7.4.2171  (after 7.4.2170) MS-Windows build fails
+  4098  7.4.2172  no test for "vim --help"
+  1654  7.4.2173  (after 7.4.2172) can't test help on MS-Windows
+  5475  7.4.2174  adding duplicate flags to 'whichwrap' leaves commas behind
+ 18936  7.4.2175  insufficient testing of cscope
+ 13393  7.4.2176  #ifdefs in main() are complicated
+  5098  7.4.2177  no testing for command line flags and file arguments
+  3299  7.4.2178  no test for reading from stdin
+  1822  7.4.2179  (after 7.4.2178) reading from stdin test fails on MS-Windows
+ 13261  7.4.2180  can't stop all timers; can't pause a timer
+  1556  7.4.2181  compiler warning for unused variable
+  1676  7.4.2182  color Grey40 used in startup but not in the short list
+  7111  7.4.2183  sign tests are old style
+  1760  7.4.2184  tests that use RunVim() do not actually perform the test
+  2461  7.4.2185  test glob2regpat does not test much
+  1817  7.4.2186  timers test is flaky
+  2896  7.4.2187  (after 7.4.2185) glob2regpat test fails on Windows
+  2921  7.4.2188  (after 7.4.2146) completion does not work properly
+ 14118  7.4.2189  Cannot detect encoding in a fifo
+  2933  7.4.2190  startup test failure is unclear, GUI test fails with Gnome
+  2756  7.4.2191  no automatic prototype for vim_main2()
+  7867  7.4.2192  generating prototypes with Cygwin doesn't work well
+  3955  7.4.2193  with Gnome when the GUI can't start test_startup hangs
+  1936  7.4.2194  sign tests don't cover enough
+  4268  7.4.2195  MS-Windows: The vimrun program does not support Unicode
+  2490  7.4.2196  glob2regpat test doesn't test everything on MS-Windows
+  3557  7.4.2197  all functions are freed on exit, which may hide leaks
+  2332  7.4.2198  test alot sometimes fails under valgrind
+  6830  7.4.2199  GUI: cursor flickers when redrawing any window
+ 28902  7.4.2200  cannot get all information about a quickfix list
+ 12229  7.4.2201  the sign column disappears when the last sign is deleted
+  2051  7.4.2202  build fails with small features
+  1640  7.4.2203  test fails with normal features
+ 25208  7.4.2204  not easy to get information about buffers, windows, tabpages
+  5235  7.4.2205  'wildignore' always applies to getcompletion()
+  2092  7.4.2206  warning for unused function
+  1791  7.4.2207  the +xpm feature is not sorted properly in :version output
+  8268  7.4.2208  test for mappings is old style
+  9662  7.4.2209  cannot map <M-">
+  3432  7.4.2210  OSX: configure mixes up Python framework and Unix layout
+  2124  7.4.2211  mouse support is not automatically enabled with simple term
+  4268  7.4.2212  mark " is not set when closing a window in another tab
+ 10540  7.4.2213  cannot highlight "~" lines at the end of window differently
+  3263  7.4.2214  a font that uses ligatures messes up the screen display
+  8185  7.4.2215  not easy to find out if window is quickfix or location list
+  2068  7.4.2216  (after 7.4.2215) test fails without the +sign feature
+  5399  7.4.2217  matchaddpos() can highlight character after end of the line
+  1965  7.4.2218  can't build with +timers when +digraph is not included
+ 17071  7.4.2219  recursive call to substitute gets stuck in sandbox
+  6176  7.4.2220  printf() gives error when argument for %s is not a string
+ 10510  7.4.2221  printf() does not support binary format
+  5197  7.4.2222  sourcing script where 0x80 used as second byte does not work
+ 11445  7.4.2223  buffer overflow when using latin1 character with feedkeys()
+  3367  7.4.2224  compiler warnings with older compiler and 64 bit numbers
+  2311  7.4.2225  crash when placing a sign in a deleted buffer
+  9090  7.4.2226  field names used by getbuf/tab/wininfo() are not consistent
+ 17935  7.4.2227  tab page tests are old style
+  6313  7.4.2228  test files have inconsistent modelines
+  3826  7.4.2229  startup test fails on Solaris
+ 15965  7.4.2230  there is no equivalent of 'smartcase' for a tag search
+  8660  7.4.2231  ":oldfiles" output is a very long list
+  1919  7.4.2232  the default ttimeoutlen is very long
+  2593  7.4.2233  crash when using funcref() with invalid name
+  3814  7.4.2234  can't build with +eval but without +quickfix
+  2502  7.4.2235  submatch() does not check for a valid argument
+ 11330  7.4.2236  the 'langnoremap' option leads to double negatives
+  6285  7.4.2237  can't use "." and "$" with ":tab"
+  2683  7.4.2238  with SGR mouse reporting release and scroll is confused
+  5461  7.4.2239  warning for missing declaration of skip_vimgrep_pat()
+  4605  7.4.2240  tests using the sleep time can be flaky
+  1645  7.4.2241  (after 7.4.2240) timer test sometimes fails
+  1595  7.4.2242  (after 7.4.2240) timer test sometimes fails
+ 22559  7.4.2243  warning for assigning negative value to unsigned
+ 13119  7.4.2244  adding pattern to ":oldfiles" is not a generic solution
+  2160  7.4.2245  (after 7.4.2244) filter test fails
+  2685  7.4.2246  (after 7.4.2244) oldfiles test fails
+  1503  7.4.2247  (after 7.4.2244) tiny build fails
+  3051  7.4.2248  after :ptjump prompt preview window opened for later command
+  2867  7.4.2249  missing colon in error message
+  8840  7.4.2250  some error message cannot be translated
+  5244  7.4.2251  in rare cases diffing 4 buffers is not enough
+  2117  7.4.2252  compiler warnings for signed/unsigned in expression
+  4956  7.4.2253  check for Windows 3.1 will always return false
+  2773  7.4.2254  compiler warnings in MzScheme code
+  4447  7.4.2255  the script that checks translations can't handle plurals
+  1518  7.4.2256  Coverity complains about null pointer check
+  1854  7.4.2257  Coverity complains about not checking for NULL
+  9569  7.4.2258  two JSON messages are sent without a separator
+ 18834  7.4.2259  with 'incsearch' can only see the next match
+  2385  7.4.2260  (after 7.4.2258) channel test is flaky
+  1594  7.4.2261  (after 7.4.2259) build fails with small features
+  2210  7.4.2262  fail to read register with long string from viminfo
+  7455  7.4.2263  :filter doesn't work for many commands, can only list matches
+  3451  7.4.2264  when adding entries to empty quickfix list title is reset
+  5217  7.4.2265  printf() isn't tested much
+  3510  7.4.2266  (after 7.4.2265) printf() test fails on Windows; no "-inf" 
+  1278  7.4.2267  (after 7.4.2266) can't build on MS-Windows
+ 20992  7.4.2268  (after 7.4.2259) CTRL-N/ CTRL-P incsearch shadows completion
+  3980  7.4.2269  'hlsearch' highlight instead of matchpos without search match
+  2799  7.4.2270  insufficient testing for NUL bytes on a raw channel
+  1650  7.4.2271  Netbeans test doesn't read settings from file
+  3385  7.4.2272  getbufinfo(), getwininfo() and gettabinfo() are inefficient
+ 13180  7.4.2273  getwininfo() and getbufinfo() are inefficient
+  3478  7.4.2274  cmdline completion on "find **/filename" drops sub-directory
+  2353  7.4.2275  ":diffoff!" does not remove filler lines
+  1444  7.4.2276  command line test fails on Windows when run twice
+  1657  7.4.2277  memory leak in getbufinfo() when there is a sign
+  2072  7.4.2278  new users have no idea of the 'scrolloff' option
+  3238  7.4.2279  starting diff mode might end up only showing one closed fold
+ 12332  7.4.2280  printf() doesn't handle infinity float values correctly
+  2746  7.4.2281  timer test fails sometimes
+  2541  7.4.2282  noticeable delay when a child process is very fast
+  1410  7.4.2283  part of ":oldfiles" command isn't cleared
+  1774  7.4.2284  comment in scope header file is outdated
+ 12754  7.4.2285  generated files are outdated
+ 12196  7.4.2286  tee program isn't included; Makefile has build outdated lines
+  2858  7.4.2287  the callback passed to ch_sendraw() is not used
+  4385  7.4.2288  MS-Windows build instructions clumsy; "dosbin" doesn't build
+  2483  7.4.2289  not installing icons when $DESTDIR is set
+  1587  7.4.2290  compiler warning in tiny build
+ 17269  7.4.2291  printf() handles floats wrong when there is a sign
+  1665  7.4.2292  (after 7.4.2291) not all systems understand %F in printf()
+ 59440  7.4.2293  modelines in source code are inconsistent
+  2392  7.4.2294  sign test fails on MS-Windows when using the zip archives
+  2470  7.4.2295  (after 7.4.2293) cscope test fails
+  2107  7.4.2296  no tests for :undolist and "U" command
+  3720  7.4.2297  job that reads from a buffer when reaching the end it hangs
+ 12901  7.4.2298  it is not possible to close the "in" part of a channel
+  6646  7.4.2299  quickfix autocommands are not always triggered
+  2862  7.4.2300  warning for deleting autocmd group when autocmd just deleted
+  8491  7.4.2301  MS-Windows: some files remain after testing
+  4076  7.4.2302  default interface versions for MS-Windows are outdated
+  1493  7.4.2303  when using "is" the mode isn't always updated
+  3579  7.4.2304  in timer callback the timer itself can't be found or stopped
+  9928  7.4.2305  marks, writefile and nested function tests are old style
+  2266  7.4.2306  default value for 'langremap' is wrong
+ 12819  7.4.2307  several tests are old style
+  1442  7.4.2308  (after 7.4.2307) old charsearch test still listed in Makefile
+  4298  7.4.2309  crash when doing tabnext in a BufUnload autocmd
+  1600  7.4.2310  (after 7.4.2304) accessing freed memory if timer not repeats
+  4098  7.4.2311  Appveyor 64 bit build still using Python 3.4
+  7919  7.4.2312  crash when autocommand moves to another tab
+  5494  7.4.2313  crash when deleting an augroup and listing an autocommand
+  2376  7.4.2314  no error when deleting an augroup while it's the current one
+ 58834  7.4.2315  insufficient testing for Normal mode commands
+  1521  7.4.2316  channel sort test is flaky
+  3434  7.4.2317  (after 7.4.2315) normal mode tests fail on MS-Windows
+  2020  7.4.2318  when 'incsearch' not set CTRL-T/CTRL-G not inserted as before
+  2690  7.4.2319  no way for a system wide vimrc to stop loading defaults.vim
+ 12290  7.4.2320  redraw problem when using 'incsearch'
+  6218  7.4.2321  when a test is commented out we forget about it
+  2051  7.4.2322  access memory beyond the end of the line
+  3131  7.4.2323  using freed memory when using 'formatexpr'
+ 18349  7.4.2324  crash when BufUnload autocommand wipes out the new buffer
+  1659  7.4.2325  (after 7.4.2324) tiny build fails
+  2774  7.4.2326  illegal memory access when invalid Visual selection position
+  2705  7.4.2327  freeing a variable that is on the stack
+  2835  7.4.2328  crash when BufWinLeave autocmd goes to another tab page
+  2066  7.4.2329  error for min() and max() contains %s
+  2321  7.4.2330  coverity complains about not checking curwin to be NULL

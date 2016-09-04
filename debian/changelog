@@ -1,4 +1,4 @@
-vim (2:7.4.2295-1) UNRELEASED; urgency=medium
+vim (2:7.4.2330-1) UNRELEASED; urgency=medium
 
   [ upstream ]
   * Highlighted changes:
@@ -21,7 +21,7 @@ vim (2:7.4.2295-1) UNRELEASED; urgency=medium
   * Remove vim-gnome (which uses deprecated gnome2 libraries) in favor of
     vim-gtk3.  (Closes: #820239)
 
- -- James McCoy <jamessan@debian.org>  Tue, 30 Aug 2016 21:28:21 -0400
+ -- James McCoy <jamessan@debian.org>  Sun, 04 Sep 2016 18:51:31 -0400
 
 vim (2:7.4.1829-1) unstable; urgency=medium
 
