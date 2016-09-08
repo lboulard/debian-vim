@@ -1,4 +1,4 @@
-vim (2:7.4.2330-1) UNRELEASED; urgency=medium
+vim (2:7.4.2330-1) unstable; urgency=medium
 
   [ upstream ]
   * Highlighted changes:
@@ -23,7 +23,7 @@ vim (2:7.4.2330-1) UNRELEASED; urgency=medium
   * Run tests during build targets to avoid test failures related to running
     as (fake)root.
 
- -- James McCoy <jamessan@debian.org>  Sun, 04 Sep 2016 18:51:31 -0400
+ -- James McCoy <jamessan@debian.org>  Wed, 07 Sep 2016 22:12:11 -0400
 
 vim (2:7.4.1829-1) unstable; urgency=medium
 
