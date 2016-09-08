@@ -272,7 +272,7 @@ build-stamp-%: configure-stamp-%
 	dh_prep -p $*
 	@echo "*** DEBIAN *** BUILDING VARIANT $*"
 	$(MAKE) -C src/$(SHADOWDIR)
-	[ $(MAKETEST) != "yes" ] || $(MAKE) -j1 -C src/$(SHADOWDIR) test
+	[ $(MAKETEST) != "yes" ] || flock debian $(MAKE) -j1 -C src/$(SHADOWDIR) test
 	touch $@
 
 install: $(foreach v,$(VARIANTS),install-stamp-$(v))
