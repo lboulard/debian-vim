@@ -1,4 +1,4 @@
-*help.txt*	For Vim version 7.4.  Last change: 2015 Aug 30
+*help.txt*	For Vim version 7.4.  Last change: 2016 Sep 07
 
 		  VIM - fake help file for vim-tiny
 
@@ -18,7 +18,7 @@ HOW TO GET A BETTER VIM
 
 To get a more featureful Vim binary (and a vim command, rather than just vi),
 install one of the following packages: vim, vim-nox, vim-athena, vim-gtk, or
-vim-gnome.
+vim-gtk3.
 
 HOW TO OBTAIN HELP
 
