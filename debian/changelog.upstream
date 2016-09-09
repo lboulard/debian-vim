@@ -2347,3 +2347,19 @@ Individual patches for Vim 7.4:
   2835  7.4.2328  crash when BufWinLeave autocmd goes to another tab page
   2066  7.4.2329  error for min() and max() contains %s
   2321  7.4.2330  coverity complains about not checking curwin to be NULL
+  7305  7.4.2331  C-X C-V in Insert mode fails after entering expression
+ 14165  7.4.2332  crash when stop_timer() usd in callback of a callback
+  3956  7.4.2333  outdated comments in normal mode test
+  1456  7.4.2334  on MS-Windows test_getcwd leaves Xtopdir behind
+  1770  7.4.2335  taglist() is slow
+  1545  7.4.2336  running normal mode tests leave a couple of files behind
+  1623  7.4.2337  taglist() is still slow
+  2185  7.4.2338  (after 7.4.2335) can't build with small features
+  1569  7.4.2339  tab page test fails when run as fake root
+ 11451  7.4.2340  MS-Windows: Building with Ruby uses old version
+  2949  7.4.2341  tiny things; test doesn't clean up properly
+  2306  7.4.2342  typo in MS-Windows build script
+ 17372  7.4.2343  too many old style tests  
+ 33498  7.4.2344  the "Reading from channel output..." message can be unwanted
+ 12381  7.4.2345  (after 7.4.2340) using old versions in MS-Windows makefiles
+  1732  7.4.2346  autocommand test fails when run directly

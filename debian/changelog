@@ -1,3 +1,10 @@
+vim (2:7.4.2347-1) UNRELEASED; urgency=medium
+
+  [ upstream ]
+  * Fix test failure due to relying on modelines.  (Closes: #837130)
+
+ -- James McCoy <jamessan@debian.org>  Thu, 08 Sep 2016 20:34:26 -0400
+
 vim (2:7.4.2330-1) unstable; urgency=medium
 
   [ upstream ]
