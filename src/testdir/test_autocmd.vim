@@ -13,6 +13,9 @@ if has('timers')
   endfunc
 
   func Test_cursorhold_insert()
+    " Need to move the cursor.
+    call feedkeys("ggG", "xt")
+
     let g:triggered = 0
     au CursorHoldI * let g:triggered += 1
     set updatetime=20
@@ -20,6 +23,7 @@ if has('timers')
     call feedkeys('a', 'x!')
     call assert_equal(1, g:triggered)
     au! CursorHoldI
+    set updatetime&
   endfunc
 
   func Test_cursorhold_insert_ctrl_x()
@@ -31,6 +35,7 @@ if has('timers')
     call feedkeys("a\<C-X>", 'x!')
     call assert_equal(0, g:triggered)
     au! CursorHoldI
+    set updatetime&
   endfunc
 endif
 
@@ -91,6 +96,7 @@ function Test_autocmd_bufwinleave_with_tabfirst()
   augroup END
   call setline(1, ['a', 'b', 'c'])
   edit! a.txt
+  tabclose
 endfunc
 
 " SEGV occurs in older versions.  (At least 7.4.2321 or older)
@@ -220,6 +226,7 @@ func Test_augroup_warning()
   augroup Another
   augroup END
   call assert_true(match(execute('au VimEnter'), "-Deleted-.*VimEnter") >= 0)
+  augroup! Another
 
   " no warning for postpone aucmd delete
   augroup StartOK
