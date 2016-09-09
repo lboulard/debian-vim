@@ -5,8 +5,6 @@ Maintainer: Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
 Uploaders: James McCoy <jamessan@debian.org>
 Standards-Version: 3.9.7
 Build-Depends: libacl1-dev, libgpmg1-dev [linux-any], autoconf,
-# Building Vim's svg icons
- pdf2svg, ghostscript,
  debhelper (>= 9), libtinfo-dev | libncurses5-dev, libselinux1-dev [linux-any],
 # B-D for dpkg-vendor
  dpkg-dev (>= 1.15.1),
@@ -19,15 +17,17 @@ Build-Depends: libacl1-dev, libgpmg1-dev [linux-any], autoconf,
 # ruby/ruby1.8-dev or ruby1.8/ruby-dev pairs get installed due to a mismatch in
 # the ruby binary version and the library version
 Build-Conflicts: ruby1.8 (<< 1.8.7.358-8), ruby1.8-dev (<< 1.8.7.358-8), autoconf2.13
-Build-Depends-Indep: docbook-xml, docbook-utils
+Build-Depends-Indep: docbook-xml, docbook-utils,
+# Building Vim's svg icons
+ pdf2svg, ghostscript
 Vcs-Git: https://anonscm.debian.org/cgit/pkg-vim/vim.git/
 Vcs-Browser: https://anonscm.debian.org/cgit/pkg-vim/vim.git
 Homepage: http://www.vim.org/
 
 Package: vim-common
 Priority: important
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Architecture: all
+Depends: xxd, ${misc:Depends}, ${shlibs:Depends}
 Recommends: vim | vim-gtk | vim-gtk3 | vim-athena | vim-nox | vim-tiny
 # Move vim icon from vim-gui-common to vim-common
 Breaks: vim-gui-common (<< 2:7.4.488-4~)
@@ -36,8 +36,8 @@ Description: Vi IMproved - Common files
  Vim is an almost compatible version of the UNIX editor Vi.
  .
  This package contains files shared by all non GUI-enabled vim variants
- available in Debian.  Examples of such shared files are: manpages,
- common executables like xxd, and configuration files.
+ available in Debian.  Examples of such shared files are: manpages and
+ configuration files.
 
 Package: vim-gui-common
 Architecture: all
@@ -82,7 +82,7 @@ Description: Vi IMproved - HTML documentation
 Package: vim-tiny
 Priority: important
 Architecture: any
-Depends: vim-common (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 # Vim automatically invokes the indent program if it isn't built with internal
 # indenting support (as is the case with vim-tiny) and the 'equalprg' option
 # isn't set.
@@ -100,7 +100,7 @@ Description: Vi IMproved - enhanced vi editor - compact version
 
 Package: vim
 Architecture: any
-Depends: vim-common (= ${binary:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-common (= ${source:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: ctags, vim-doc, vim-scripts
 Provides: editor
 Description: Vi IMproved - enhanced vi editor
@@ -118,7 +118,7 @@ Description: Vi IMproved - enhanced vi editor
 Package: vim-gtk
 Priority: extra
 Architecture: any
-Depends: vim-gui-common (= ${source:Version}), vim-common (= ${binary:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-gui-common (= ${source:Version}), vim-common (= ${source:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: cscope, vim-doc, fonts-dejavu, gnome-icon-theme
 Provides: vim, gvim, editor, vim-perl, vim-python, vim-ruby, vim-tcl, vim-lua
 Description: Vi IMproved - enhanced vi editor - with GTK2 GUI
@@ -134,7 +134,7 @@ Description: Vi IMproved - enhanced vi editor - with GTK2 GUI
 Package: vim-gtk3
 Priority: extra
 Architecture: any
-Depends: vim-gui-common (= ${source:Version}), vim-common (= ${binary:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-gui-common (= ${source:Version}), vim-common (= ${source:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: cscope, vim-doc, fonts-dejavu, gnome-icon-theme
 Provides: vim, gvim, editor, vim-perl, vim-python, vim-ruby, vim-tcl, vim-lua
 Description: Vi IMproved - enhanced vi editor - with GTK3 GUI
@@ -150,7 +150,7 @@ Description: Vi IMproved - enhanced vi editor - with GTK3 GUI
 Package: vim-nox
 Priority: extra
 Architecture: any
-Depends: vim-common (= ${binary:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-common (= ${source:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: cscope, vim-doc
 Provides: vim, editor, vim-perl, vim-python, vim-ruby, vim-tcl, vim-lua
 Description: Vi IMproved - enhanced vi editor - with scripting languages support
@@ -166,7 +166,7 @@ Description: Vi IMproved - enhanced vi editor - with scripting languages support
 Package: vim-athena
 Priority: extra
 Architecture: any
-Depends: vim-gui-common (= ${source:Version}), vim-common (= ${binary:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
+Depends: vim-gui-common (= ${source:Version}), vim-common (= ${source:Version}), vim-runtime (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: cscope, vim-doc
 Provides: vim, gvim, editor, vim-perl, vim-python, vim-ruby, vim-tcl, vim-lua
 Description: Vi IMproved - enhanced vi editor - with Athena GUI
@@ -187,3 +187,13 @@ Section: oldlibs
 Description: Vi IMproved - enhanced vi editor (dummy package)
  This is a transitional package to install the vim-gtk3 package.  You may
  remove this package if nothing depends on it.
+
+Package: xxd
+Priority: extra
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Breaks: vim-common (<< 2:7.4.2347-1~)
+Replaces: vim-common (<< 2:7.4.2347-1~)
+Description: tool to make (or reverse) a hex dump
+ xxd creates a hex dump of a given file or standard input.  It can also convert
+ a hex dump back to its original binary form.
