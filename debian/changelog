@@ -7,6 +7,8 @@ vim (2:7.4.2347-1) UNRELEASED; urgency=medium
   * Move xxd into its own package.  This allows other packages to express a
     relationship on xxd itself, rather than vim-common, and also enables
     turning vim-common into an Arch: all package.
+  * Remove dpkg-dev Build-Depends, since the version is satisifed prior to
+    oldstable.
 
  -- James McCoy <jamessan@debian.org>  Thu, 08 Sep 2016 20:34:26 -0400
 
