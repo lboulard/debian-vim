@@ -18,8 +18,16 @@ use the "upstream" topic.  Alternatively, if the patch is not intended to be
 upstreamed, it should use the "debian" topic and be applied after any upstream
 patches.
 
-When updating to a new version of upstream code, the “gbp pg rebase” command
-will rebase the patch queue against the new upstream code.
+When updating to a new version of upstream code, the patches need to be rebased
+on the new upstream code.  The process is
+
+* Create the patch-queue branch -- gbp pq import
+* Switch back to the packaging branch -- gbp pq switch
+* Merge the upstream tag -- git merge vX.Y.ZZZZ
+* Rebase the patches -- gbp pq rebase
+  * Make any adjustments/fixups, as necessary
+* Switch back to the packaging branch -- gbp pq switch
+* Export the patches -- gbp pq export
 
 Whenever the patch queue branch is modified, those changes need to be exported
 back to the packaging branch.  “gbp pq switch” will change from the patch queue
