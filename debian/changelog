@@ -1,10 +1,10 @@
-vim (2:8.0.0003-1) UNRELEASED; urgency=medium
+vim (2:8.0.0003-1) unstable; urgency=medium
 
   [ upstream ]
   * Vim 8 released!
   * v8.0.0003: Fix test failures on big-endian architectures.
 
- -- James McCoy <jamessan@debian.org>  Mon, 12 Sep 2016 21:04:13 -0400
+ -- James McCoy <jamessan@debian.org>  Mon, 12 Sep 2016 21:54:12 -0400
 
 vim (2:7.4.2347-1) unstable; urgency=medium
 
