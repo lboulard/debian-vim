@@ -58,7 +58,7 @@ index c0a60b2..53650eb 100644
  
  AC_MSG_CHECKING(--enable-fail-if-missing argument)
 diff --git a/src/version.c b/src/version.c
-index dcf02c2..4c15ca7 100644
+index 4fd2982..f40e771 100644
 --- a/src/version.c
 +++ b/src/version.c
 @@ -44,11 +44,17 @@ make_version(void)

@@ -1,4 +1,4 @@
-vim (2:8.0.0003-2) unstable; urgency=medium
+vim (2:8.0.0022-1) unstable; urgency=medium
 
   Vim now ships with a defaults.vim file which, when the user has no vimrc,
   enables some options that have historically been disabled by default.  This
