@@ -1,4 +1,4 @@
-vim (2:8.0.0022-1) UNRELEASED; urgency=medium
+vim (2:8.0.0022-1) unstable; urgency=medium
 
   * syntax/debsources: Recognize https URLs.  Thanks to Joe Stein for the
     patch!
@@ -9,7 +9,7 @@ vim (2:8.0.0022-1) UNRELEASED; urgency=medium
   * Bump priority of vim-tiny's vi alternative, so it's higher than e3vi.
     (Closes: #839265)
 
- -- James McCoy <jamessan@debian.org>  Tue, 04 Oct 2016 22:57:43 -0400
+ -- James McCoy <jamessan@debian.org>  Tue, 04 Oct 2016 23:34:23 -0400
 
 vim (2:8.0.0003-1) unstable; urgency=medium
 
