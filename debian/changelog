@@ -2,6 +2,8 @@ vim (2:8.0.0003-2) UNRELEASED; urgency=medium
 
   * syntax/debsources: Recognize https URLs.  Thanks to Joe Stein for the
     patch!
+  * Add information about defaults.vim to NEWS.Debian and /etc/vim/vimrc.
+    (Closes: #837761)
 
  -- James McCoy <jamessan@debian.org>  Tue, 27 Sep 2016 22:02:22 -0400
 

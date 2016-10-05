@@ -1,3 +1,19 @@
+vim (2:8.0.0003-2) unstable; urgency=medium
+
+  Vim now ships with a defaults.vim file which, when the user has no vimrc,
+  enables some options that have historically been disabled by default.  This
+  is described in more detail at ":help defaults.vim".
+
+  Since defaults.vim is loaded when the user's vimrc would typically be
+  loaded, it will override any settings in /etc/vim/vimrc(.local).  In order
+  to disable the loading of defaults.vim, add
+
+    let g:skip_defaults_vim = 1
+
+  to /etc/vim/vimrc(.local).
+
+ -- James McCoy <jamessan@debian.org>  Tue, 04 Oct 2016 20:28:02 -0400
+
 vim (2:7.3.154+hg~74503f6ee649-1) unstable; urgency=low
 
   The vim-lesstif package has been removed in favor of the new vim-athena
