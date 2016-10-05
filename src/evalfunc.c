@@ -514,7 +514,7 @@ static struct fst
     {"ch_sendexpr",	2, 3, f_ch_sendexpr},
     {"ch_sendraw",	2, 3, f_ch_sendraw},
     {"ch_setoptions",	2, 2, f_ch_setoptions},
-    {"ch_status",	1, 1, f_ch_status},
+    {"ch_status",	1, 2, f_ch_status},
 #endif
     {"changenr",	0, 0, f_changenr},
     {"char2nr",		1, 2, f_char2nr},
@@ -1985,13 +1985,24 @@ f_ch_setoptions(typval_T *argvars, typval_T *rettv UNUSED)
 f_ch_status(typval_T *argvars, typval_T *rettv)
 {
     channel_T	*channel;
+    jobopt_T	opt;
+    int		part = -1;
 
     /* return an empty string by default */
     rettv->v_type = VAR_STRING;
     rettv->vval.v_string = NULL;
 
     channel = get_channel_arg(&argvars[0], FALSE, FALSE, 0);
-    rettv->vval.v_string = vim_strsave((char_u *)channel_status(channel));
+
+    if (argvars[1].v_type != VAR_UNKNOWN)
+    {
+	clear_job_options(&opt);
+	if (get_job_options(&argvars[1], &opt, JO_PART) == OK
+						     && (opt.jo_set & JO_PART))
+	    part = opt.jo_part;
+    }
+
+    rettv->vval.v_string = vim_strsave((char_u *)channel_status(channel, part));
 }
 #endif
 
@@ -3612,7 +3623,7 @@ common_function(typval_T *argvars, typval_T *rettv, int is_funcref)
 
     if (s == NULL || *s == NUL || (use_string && VIM_ISDIGIT(*s))
 					 || (is_funcref && trans_name == NULL))
-	EMSG2(_(e_invarg2), s);
+	EMSG2(_(e_invarg2), use_string ? get_tv_string(&argvars[0]) : s);
     /* Don't check an autoload name for existence here. */
     else if (trans_name != NULL && (is_funcref
 				? find_func(trans_name) == NULL
@@ -6874,7 +6885,7 @@ libcall_common(typval_T *argvars, typval_T *rettv, int type)
 	return;
 
 #ifdef FEAT_LIBCALL
-    /* The first two args must be strings, otherwise its meaningless */
+    /* The first two args must be strings, otherwise it's meaningless */
     if (argvars[0].v_type == VAR_STRING && argvars[1].v_type == VAR_STRING)
     {
 	string_in = NULL;

@@ -1,4 +1,4 @@
-*syntax.txt*	For Vim version 8.0.  Last change: 2016 Sep 12
+*syntax.txt*	For Vim version 8.0.  Last change: 2016 Sep 29
 
 
 		  VIM REFERENCE MANUAL	  by Bram Moolenaar
@@ -3521,8 +3521,8 @@ SYNTAX ISKEYWORD SETTING				*:syn-iskeyword*
 	and also determines where |:syn-keyword| will be checked for a new
 	match.
 
-	It is recommended when writing syntax files, to use this command
-	to the correct value for the specific syntax language and not change
+	It is recommended when writing syntax files, to use this command to
+	set the correct value for the specific syntax language and not change
 	the 'iskeyword' option.
 
 DEFINING KEYWORDS					*:syn-keyword*
@@ -3580,7 +3580,11 @@ DEFINING KEYWORDS					*:syn-keyword*
 
 DEFINING MATCHES					*:syn-match*
 
-:sy[ntax] match {group-name} [{options}] [excludenl] {pattern} [{options}]
+:sy[ntax] match {group-name} [{options}]
+		[excludenl]
+		[keepend]
+		{pattern}
+		[{options}]
 
 	This defines one match.
 
@@ -3589,6 +3593,9 @@ DEFINING MATCHES					*:syn-match*
 	[excludenl]		Don't make a pattern with the end-of-line "$"
 				extend a containing match or region.  Must be
 				given before the pattern. |:syn-excludenl|
+	keepend			Don't allow contained matches to go past a
+				match with the end pattern.  See
+				|:syn-keepend|.
 	{pattern}		The search pattern that defines the match.
 				See |:syn-pattern| below.
 				Note that the pattern may match more than one
