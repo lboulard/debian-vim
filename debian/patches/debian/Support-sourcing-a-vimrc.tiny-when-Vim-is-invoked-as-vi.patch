@@ -11,13 +11,13 @@ Closes: #222138
 Signed-off-by: Stefano Zacchiroli <zack@debian.org>
 Signed-off-by: James Vega <jamessan@debian.org>
 ---
- src/main.c    | 11 ++++++++++-
+ src/main.c    | 14 +++++++++++++-
  src/os_unix.h |  3 +++
  src/structs.h |  3 +++
- 3 files changed, 16 insertions(+), 1 deletion(-)
+ 3 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/src/main.c b/src/main.c
-index acc51f1..50dbff8 100644
+index acc51f1..3c47df2 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -1729,6 +1729,10 @@ parse_command_name(mparm_T *parmp)
@@ -45,6 +45,16 @@ index acc51f1..50dbff8 100644
  #endif
  #ifdef MACOS_X
  	(void)do_source((char_u *)"$VIMRUNTIME/macmap.vim", FALSE, DOSO_NONE);
+@@ -3003,6 +3012,9 @@ source_startup_scripts(mparm_T *parmp)
+ #ifdef USR_EXRC_FILE2
+ 		&& do_source((char_u *)USR_EXRC_FILE2, FALSE, DOSO_NONE) == FAIL
+ #endif
++#if defined(SYS_TINYRC_FILE) && defined(TINY_VIMRC)
++		&& !parmp->vi_mode
++#endif
+ 		&& !has_dash_c_arg)
+ 	    {
+ 		/* When no .vimrc file was found: source defaults.vim. */
 diff --git a/src/os_unix.h b/src/os_unix.h
 index 1070746..0020c58 100644
 --- a/src/os_unix.h

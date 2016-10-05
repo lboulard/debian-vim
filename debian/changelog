@@ -4,6 +4,8 @@ vim (2:8.0.0003-2) UNRELEASED; urgency=medium
     patch!
   * Add information about defaults.vim to NEWS.Debian and /etc/vim/vimrc.
     (Closes: #837761)
+  * Update vim-tiny patch to not source defaults.vim when vim.tiny is invoked
+    as vi.
 
  -- James McCoy <jamessan@debian.org>  Tue, 27 Sep 2016 22:02:22 -0400
 
