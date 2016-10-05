@@ -39,7 +39,7 @@ add_gui_variant_alternative () {
 
 case "$pkg" in
   vim-tiny)
-    add_variant_alternative 10
+    add_variant_alternative 15
     ;;
   vim)
     add_variant_alternative 30
