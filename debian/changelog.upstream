@@ -46,3 +46,30 @@ Individual patches for Vim 8.0:
  86459  8.0.0020  the regexp engines are not reentrant
   1734  8.0.0021  GUI: cursor may be drawn on second half of double byte char
   5008  8.0.0022  if channel is missing final NL remaining chars are dropped
+ 10912  8.0.0023  "gd" and "gD" may find a match in a comment or string
+  2437  8.0.0024  when netbeans channel closes, "DETACH" is put in output part
+ 10551  8.0.0025  inconsistent use of spaces vs tabs in gd test
+  5078  8.0.0026  error format with %W, %C and %Z does not work
+ 47686  8.0.0027  channel is closed when there may still be something to read
+  1800  8.0.0028  superfluous semicolons
+119305  8.0.0029  exceptions for old systems make MS-Windows code complicated
+  1680  8.0.0030  mouse mode is not automatically detected for tmux
+  3962  8.0.0031  after ":bwipeout" 'fileformat' is not set to the default
+  3521  8.0.0032  tests may change the input file when something goes wrong
+  2996  8.0.0033  cannot use overlapping positions with matchaddpos()
+  4951  8.0.0034  no completion for ":messages"
+ 16444  8.0.0035  order of matches for 'omnifunc' is messed up
+ 13336  8.0.0036  detecting that a job has finished may take a while
+  2597  8.0.0037  get E924 when switching tabs
+  1807  8.0.0038  OPEN_CHR_FILES not defined for FreeBSD/Debian mix
+  3492  8.0.0039  when Vim 8 reads an old viminfo next time marks are not read
+  4622  8.0.0040  (after 8.0.0033) matchaddpos() whole line highlighting broken
+  3574  8.0.0041  get undo item with Insert mode completion without inserting
+  2457  8.0.0042  (after 8.0.0041) Insert mode completion is not saved for undo
+  4037  8.0.0043  (after 8.0.0041) Insert mode completion is not saved for undo
+  7877  8.0.0044  ml_get error In diff mode
+  8476  8.0.0045  calling job_stop() right after job_start() does not work
+  2559  8.0.0046  using NUL instead of NULL
+  1719  8.0.0047  crash when using the preview window from an unnamed buffer
+  5148  8.0.0048  on Windows job_stop() stops cmd.exe, not processes it runs
+  2839  8.0.0049  concealing and match highlighting interfere
