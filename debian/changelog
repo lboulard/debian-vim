@@ -6,6 +6,9 @@ vim (2:8.0.0049-1) UNRELEASED; urgency=medium
   * Disable Perl bindings for kfreebsd-* until #827319 is resolved since the
     FTBFS was blocking bootstrapping of kfreebsd systems.
   * Add Zesty Zapus to deb{changelog,sources} syntax files
+  * Cherry-pick two proposed patches to fix vim-gtk3's widget sizing, while
+    upstream Vim and Gtk figure out what the right fix is.  (Related to
+    #842070)
 
  -- James McCoy <jamessan@debian.org>  Sat, 05 Nov 2016 22:14:40 -0400
 
