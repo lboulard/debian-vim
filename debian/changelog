@@ -2,6 +2,7 @@ vim (2:8.0.0022-2) UNRELEASED; urgency=medium
 
   * Disable Perl bindings for kfreebsd-* until #827319 is resolved since the
     FTBFS was blocking bootstrapping of kfreebsd systems.
+  * Add Zesty Zapus to deb{changelog,sources} syntax files
 
  -- James McCoy <jamessan@debian.org>  Sat, 05 Nov 2016 22:14:40 -0400
 
