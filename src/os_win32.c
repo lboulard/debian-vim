@@ -4705,12 +4705,24 @@ mch_call_shell(
 #if defined(FEAT_GUI_W32)
 		if (need_vimrun_warning)
 		{
-		    MessageBox(NULL,
-			    _("VIMRUN.EXE not found in your $PATH.\n"
-				"External commands will not pause after completion.\n"
-				"See  :help win32-vimrun  for more information."),
-			    _("Vim Warning"),
-			    MB_ICONWARNING);
+		    char *msg = _("VIMRUN.EXE not found in your $PATH.\n"
+			"External commands will not pause after completion.\n"
+			"See  :help win32-vimrun  for more information.");
+		    char *title = _("Vim Warning");
+# ifdef FEAT_MBYTE
+		    if (enc_codepage >= 0 && (int)GetACP() != enc_codepage)
+		    {
+			WCHAR *wmsg = enc_to_utf16((char_u *)msg, NULL);
+			WCHAR *wtitle = enc_to_utf16((char_u *)title, NULL);
+
+			if (wmsg != NULL && wtitle != NULL)
+			    MessageBoxW(NULL, wmsg, wtitle, MB_ICONWARNING);
+			vim_free(wmsg);
+			vim_free(wtitle);
+		    }
+		    else
+# endif
+			MessageBox(NULL, msg, title, MB_ICONWARNING);
 		    need_vimrun_warning = FALSE;
 		}
 		if (!s_dont_use_vimrun && p_stmp)
@@ -4800,6 +4812,7 @@ mch_start_job(char *cmd, job_T *job, jobopt_T *options)
 {
     STARTUPINFO		si;
     PROCESS_INFORMATION	pi;
+    HANDLE		jo;
     SECURITY_ATTRIBUTES saAttr;
     channel_T		*channel = NULL;
     HANDLE		ifd[2];
@@ -4823,6 +4836,13 @@ mch_start_job(char *cmd, job_T *job, jobopt_T *options)
     ofd[1] = INVALID_HANDLE_VALUE;
     efd[0] = INVALID_HANDLE_VALUE;
     efd[1] = INVALID_HANDLE_VALUE;
+
+    jo = CreateJobObject(NULL, NULL);
+    if (jo == NULL)
+    {
+	job->jv_status = JOB_FAILED;
+	goto failed;
+    }
 
     ZeroMemory(&pi, sizeof(pi));
     ZeroMemory(&si, sizeof(si));
@@ -4908,17 +4928,28 @@ mch_start_job(char *cmd, job_T *job, jobopt_T *options)
     }
 
     if (!vim_create_process(cmd, TRUE,
+	    CREATE_SUSPENDED |
 	    CREATE_DEFAULT_ERROR_MODE |
 	    CREATE_NEW_PROCESS_GROUP |
 	    CREATE_NEW_CONSOLE,
 	    &si, &pi))
     {
+	CloseHandle(jo);
 	job->jv_status = JOB_FAILED;
 	goto failed;
     }
 
+    if (!AssignProcessToJobObject(jo, pi.hProcess))
+    {
+	/* if failing, switch the way to terminate
+	 * process with TerminateProcess. */
+	CloseHandle(jo);
+	jo = NULL;
+    }
+    ResumeThread(pi.hThread);
     CloseHandle(pi.hThread);
     job->jv_proc_info = pi;
+    job->jv_job_object = jo;
     job->jv_status = JOB_STARTED;
 
     CloseHandle(ifd[0]);
@@ -4959,7 +4990,7 @@ mch_job_status(job_T *job)
 	    || dwExitCode != STILL_ACTIVE)
     {
 	job->jv_exitval = (int)dwExitCode;
-	if (job->jv_status != JOB_ENDED)
+	if (job->jv_status < JOB_ENDED)
 	{
 	    ch_log(job->jv_channel, "Job ended");
 	    job->jv_status = JOB_ENDED;
@@ -5015,12 +5046,12 @@ terminate_all(HANDLE process, int code)
     if (pid != 0)
     {
 	h = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-	if (h == INVALID_HANDLE_VALUE)
-	    goto theend;
-
-	pe.dwSize = sizeof(PROCESSENTRY32);
-	if (Process32First(h, &pe))
+	if (h != INVALID_HANDLE_VALUE)
 	{
+	    pe.dwSize = sizeof(PROCESSENTRY32);
+	    if (!Process32First(h, &pe))
+		goto theend;
+
 	    do
 	    {
 		if (pe.th32ParentProcessID == pid)
@@ -5034,15 +5065,19 @@ terminate_all(HANDLE process, int code)
 		    }
 		}
 	    } while (Process32Next(h, &pe));
-	}
 
-	CloseHandle(h);
+	    CloseHandle(h);
+	}
     }
 
 theend:
     return TerminateProcess(process, code);
 }
 
+/*
+ * Send a (deadly) signal to "job".
+ * Return FAIL if it didn't work.
+ */
     int
 mch_stop_job(job_T *job, char_u *how)
 {
@@ -5050,6 +5085,9 @@ mch_stop_job(job_T *job, char_u *how)
 
     if (STRCMP(how, "term") == 0 || STRCMP(how, "kill") == 0 || *how == NUL)
     {
+	/* deadly signal */
+	if (job->jv_job_object != NULL)
+	    return TerminateJobObject(job->jv_job_object, 0) ? OK : FAIL;
 	return terminate_all(job->jv_proc_info.hProcess, 0) ? OK : FAIL;
     }
 
@@ -5071,6 +5109,8 @@ mch_clear_job(job_T *job)
 {
     if (job->jv_status != JOB_FAILED)
     {
+	if (job->jv_job_object != NULL)
+	    CloseHandle(job->jv_job_object);
 	CloseHandle(job->jv_proc_info.hProcess);
     }
 }
