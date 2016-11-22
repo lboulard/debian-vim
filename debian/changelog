@@ -1,4 +1,4 @@
-vim (2:8.0.0095-1) UNRELEASED; urgency=high
+vim (2:8.0.0095-1) unstable; urgency=high
 
   * Merge upstream tag v8.0.0095
     + 8.0.0056: Only allow valid characters in 'filetype', 'syntax' and
@@ -6,7 +6,7 @@ vim (2:8.0.0095-1) UNRELEASED; urgency=high
     + 8.0.0089: Fix problems with Gtk 3.22.2. This replaces the proposed
       patches applied earlier.  (#842070)
 
- -- James McCoy <jamessan@debian.org>  Tue, 22 Nov 2016 11:54:01 -0500
+ -- James McCoy <jamessan@debian.org>  Tue, 22 Nov 2016 13:23:07 -0500
 
 vim (2:8.0.0049-1) unstable; urgency=medium
 
