@@ -73,3 +73,49 @@ Individual patches for Vim 8.0:
   1719  8.0.0047  crash when using the preview window from an unnamed buffer
   5148  8.0.0048  on Windows job_stop() stops cmd.exe, not processes it runs
   2839  8.0.0049  concealing and match highlighting interfere
+ 12736  8.0.0050  an exiting job is detected with a large latency
+  4939  8.0.0051  (after 8.0.0048) job_stop() change breaks tests
+  1701  8.0.0052  (after 8.0.0049) conceal test passes even without the bug fix
+  2684  8.0.0053  (after 8.0.0047) no test for what 8.0.0047 fixes
+  3649  8.0.0054  (after 8.0.0051) Windows: job_stop() does not stop processes
+  3450  8.0.0055  minor comment and style deficiencies
+  4920  8.0.0056  when setting 'filetype' there is no check for a valid name
+  2356  8.0.0057  (after 8.0.0056) tests fail without the 'keymap' features
+  4871  8.0.0058  positioning of the popup menu is not good
+ 20700  8.0.0059  Vim does not build on VMS systems
+  3176  8.0.0060  when 'keywordprg' is an Ex command it is shell-escaped
+  1437  8.0.0061  (after 8.0.0058) compiler warning for unused variable
+  2433  8.0.0062  no digraph for HORIZONTAL ELLIPSIS
+  1681  8.0.0063  compiler warning for comparing with unsigned
+  1771  8.0.0064  (after 8.0.0060) normal test fails on MS-Windows
+  1727  8.0.0065  (after 8.0.0056) compiler warning for unused function
+  4158  8.0.0066  calling an operator function without 'linebreak' set
+  2184  8.0.0067  VMS has a problem with infinity
+  5802  8.0.0068  checking did_throw after executing autocommands is wrong
+  8650  8.0.0069  compiler warning for self-comparison
+  1843  8.0.0070  tests referred in Makefile that no longer exist
+  3054  8.0.0071  exit value from a shell command is wrong
+  1600  8.0.0072  MS-Windows: Crash with long font name
+  7228  8.0.0073  (after 8.0.0069) more comparisons between firstwin & lastwin
+ 36284  8.0.0074  cannot make Vim fail on an internal error
+  5460  8.0.0075  using number for exception type lacks type checking
+  1906  8.0.0076  channel log has double parens ()()
+  1683  8.0.0077  GUI is not tested on Travis CI
+  2550  8.0.0078  accessing freed memory in quickfix
+ 30894  8.0.0079  accessing freed memory in quickfix
+  1740  8.0.0080  Travis CI fails for OS X
+ 16764  8.0.0081  inconsistent function names
+309315  8.0.0082  extension for configure should be ".ac"
+  2446  8.0.0083  using freed memory with win_getid()
+  3153  8.0.0084  using freed memory when adding to a quickfix list
+  3977  8.0.0085  using freed memory with recursive function call
+  7394  8.0.0086  cannot add a comment after ":hide"
+ 14140  8.0.0087  channel callback may get job info after it was deleted
+  2355  8.0.0088  when a test fails in Setup/Teardown problem is not reported
+ 13532  8.0.0089  various problems with GTK 3.22.2
+ 17957  8.0.0090  cursor moved after last character when using 'breakindent'
+  6000  8.0.0091  test_help_complete sometimes fails in MS-Windows console
+  3075  8.0.0092  C indent does not support nested namespaces that C++ 17 has
+  1842  8.0.0093  not using multiprocess build feature
+  2397  8.0.0094  if vimrun.exe not found error message is not properly encoded
+  3684  8.0.0095  problems with GTK 3.22.2 fixed in 3.22.4

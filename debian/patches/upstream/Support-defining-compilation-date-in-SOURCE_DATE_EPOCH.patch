@@ -18,12 +18,12 @@ preprocessor's __DATE__/__TIME__ symbols will be used.
 [1]: https://reproducible-builds.org/specs/source-date-epoch/
 ---
  src/config.h.in  |  3 +++
- src/configure.in | 10 ++++++++++
+ src/configure.ac | 10 ++++++++++
  src/version.c    |  6 ++++++
  3 files changed, 19 insertions(+)
 
 diff --git a/src/config.h.in b/src/config.h.in
-index 62427e2..2bbf548 100644
+index 5baac7d..59b6c0b 100644
 --- a/src/config.h.in
 +++ b/src/config.h.in
 @@ -30,6 +30,9 @@
@@ -36,10 +36,10 @@ index 62427e2..2bbf548 100644
  /* Define when __attribute__((unused)) can be used */
  #undef HAVE_ATTRIBUTE_UNUSED
  
-diff --git a/src/configure.in b/src/configure.in
-index 43bf9ad..503ca02 100644
---- a/src/configure.in
-+++ b/src/configure.in
+diff --git a/src/configure.ac b/src/configure.ac
+index f6a4469..17a4a48 100644
+--- a/src/configure.ac
++++ b/src/configure.ac
 @@ -29,6 +29,16 @@ dnl in autoconf needs it, where it uses STDC_HEADERS.
  AC_HEADER_STDC
  AC_HEADER_SYS_WAIT
@@ -58,7 +58,7 @@ index 43bf9ad..503ca02 100644
  
  AC_MSG_CHECKING(--enable-fail-if-missing argument)
 diff --git a/src/version.c b/src/version.c
-index 6fdf9f4..f8397d3 100644
+index 731a685..0253dc4 100644
 --- a/src/version.c
 +++ b/src/version.c
 @@ -44,11 +44,17 @@ make_version(void)
