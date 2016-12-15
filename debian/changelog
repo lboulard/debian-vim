@@ -2,6 +2,8 @@ vim (2:8.0.0095-2) UNRELEASED; urgency=medium
 
   * Bump minimum version of debhelper for --dbgsym-migration option.  (Closes:
     #846183)
+  * debian/rules: Remove '=' from "define" directive to maintain compatibility
+    with make < 3.82.  (Closes: #846312)
 
  -- James McCoy <jamessan@debian.org>  Tue, 29 Nov 2016 23:06:47 -0500
 

@@ -294,7 +294,7 @@ install: install-stamp-xxd $(foreach v,$(VARIANTS),install-stamp-$(v))
 
 # Use UTF-8 manpages for all languages
 # If a .UTF-8 directory doesn't exist, then the $L directory is already UTF-8.
-define munge-man-directories =
+define munge-man-directories
 for L in $(LANGS); do \
   if [ -d "$(DESTDIR)/usr/share/man/$$L.UTF-8" ]; then \
     rm -rf "$(DESTDIR)/usr/share/man/$$L"; \
