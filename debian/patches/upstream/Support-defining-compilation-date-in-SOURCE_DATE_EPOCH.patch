@@ -23,7 +23,7 @@ preprocessor's __DATE__/__TIME__ symbols will be used.
  3 files changed, 19 insertions(+)
 
 diff --git a/src/config.h.in b/src/config.h.in
-index 5baac7d6b..59b6c0b57 100644
+index 38b0ccf53..ab8f20207 100644
 --- a/src/config.h.in
 +++ b/src/config.h.in
 @@ -30,6 +30,9 @@
@@ -37,7 +37,7 @@ index 5baac7d6b..59b6c0b57 100644
  #undef HAVE_ATTRIBUTE_UNUSED
  
 diff --git a/src/configure.ac b/src/configure.ac
-index f6a44691f..17a4a48f6 100644
+index 1706a8d9a..9cf8b9615 100644
 --- a/src/configure.ac
 +++ b/src/configure.ac
 @@ -29,6 +29,16 @@ dnl in autoconf needs it, where it uses STDC_HEADERS.
@@ -58,7 +58,7 @@ index f6a44691f..17a4a48f6 100644
  
  AC_MSG_CHECKING(--enable-fail-if-missing argument)
 diff --git a/src/version.c b/src/version.c
-index 731a6850d..0253dc461 100644
+index 723544ff4..4bcadad21 100644
 --- a/src/version.c
 +++ b/src/version.c
 @@ -44,11 +44,17 @@ make_version(void)
