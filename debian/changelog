@@ -7,6 +7,8 @@ vim (2:8.0.0134-1) UNRELEASED; urgency=medium
     with make < 3.82.  (Closes: #846312)
   * syntax/debcontrol.vim: Add sections for Rust and JavaScript.  Thanks to
     Josh Triplett for the patch!  (Closes: #847539)
+  * Add an (old) NEWS.Debian entry describing the switch from py2 -> py3 for
+    Vim's python language bindings.
 
  -- James McCoy <jamessan@debian.org>  Wed, 14 Dec 2016 21:55:40 -0500
 
