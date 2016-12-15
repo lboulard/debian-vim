@@ -17,7 +17,7 @@ Signed-off-by: James Vega <jamessan@debian.org>
  3 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/src/main.c b/src/main.c
-index acc51f1..3c47df2 100644
+index acc51f182..3c47df2eb 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -1729,6 +1729,10 @@ parse_command_name(mparm_T *parmp)
@@ -56,7 +56,7 @@ index acc51f1..3c47df2 100644
  	    {
  		/* When no .vimrc file was found: source defaults.vim. */
 diff --git a/src/os_unix.h b/src/os_unix.h
-index d28aa4d..3a00e05 100644
+index d28aa4dde..3a00e05df 100644
 --- a/src/os_unix.h
 +++ b/src/os_unix.h
 @@ -213,6 +213,9 @@ typedef struct dsc$descriptor   DESC;
@@ -70,7 +70,7 @@ index d28aa4d..3a00e05 100644
  # define SYS_VIMRC_FILE "$VIM/vimrc"
  #endif
 diff --git a/src/structs.h b/src/structs.h
-index c749a36..ce8632d 100644
+index c749a3691..ce8632dde 100644
 --- a/src/structs.h
 +++ b/src/structs.h
 @@ -3257,6 +3257,9 @@ typedef struct

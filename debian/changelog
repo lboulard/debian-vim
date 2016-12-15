@@ -4,6 +4,8 @@ vim (2:8.0.0095-2) UNRELEASED; urgency=medium
     #846183)
   * debian/rules: Remove '=' from "define" directive to maintain compatibility
     with make < 3.82.  (Closes: #846312)
+  * syntax/debcontrol.vim: Add sections for Rust and JavaScript.  Thanks to
+    Josh Triplett for the patch!  (Closes: #847539)
 
  -- James McCoy <jamessan@debian.org>  Tue, 29 Nov 2016 23:06:47 -0500
 

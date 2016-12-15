@@ -13,7 +13,7 @@ Signed-off-by: James McCoy <jamessan@debian.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/runtime/filetype.vim b/runtime/filetype.vim
-index df8f7fd..17db842 100644
+index df8f7fdd9..17db84276 100644
 --- a/runtime/filetype.vim
 +++ b/runtime/filetype.vim
 @@ -2224,7 +2224,7 @@ func! s:FTtex()
