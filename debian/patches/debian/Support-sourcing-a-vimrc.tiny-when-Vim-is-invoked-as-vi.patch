@@ -70,10 +70,10 @@ index d28aa4dde..3a00e05df 100644
  # define SYS_VIMRC_FILE "$VIM/vimrc"
  #endif
 diff --git a/src/structs.h b/src/structs.h
-index 3fdfb5fcd..1e778d0b0 100644
+index 9c0e0468b..988ce660f 100644
 --- a/src/structs.h
 +++ b/src/structs.h
-@@ -3260,6 +3260,9 @@ typedef struct
+@@ -3261,6 +3261,9 @@ typedef struct
  #ifdef FEAT_DIFF
      int		diff_mode;		/* start with 'diff' set */
  #endif
