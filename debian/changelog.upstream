@@ -170,9 +170,9 @@ Individual patches for Vim 8.0:
   1345  8.0.0144  when using MSVC the GvimExt directory is cleaned twice
   3293  8.0.0145  running tests on MS-Windows is noisy
   2023  8.0.0146  termguicolors uses wrong colors on MS-Windows with ConEmu
-  3164  8.0.0147  searchpair() fails when 'magic' is off
+  3113  8.0.0147  searchpair() fails when 'magic' is off
   7263  8.0.0148  wrong indent in C preprocessor with line continuation
-  3406  8.0.0149  :earlier does not work after reading the undo file
+  3343  8.0.0149  :earlier does not work after reading the undo file
   3206  8.0.0150  completion for :filter does not skip the pattern
   6000  8.0.0151  passing buffer content to system() is clumsy
   1390  8.0.0152  stray channellog created when running tests
@@ -180,19 +180,19 @@ Individual patches for Vim 8.0:
   2439  8.0.0154  (after 8.0.0151) system() test fails on OS/X
   1875  8.0.0155  ubsan complains about NULL pointer
  10791  8.0.0156  not enough test coverage for float functions
-  4275  8.0.0157  no completion for :syntax spell and :syntax sync
+  4214  8.0.0157  no completion for :syntax spell and :syntax sync
  19641  8.0.0158  (after 8.0.0156) float function test fails on MS-Windows
-  2570  8.0.0159  crash on startup when updating tabline
+  2519  8.0.0159  crash on startup when updating tabline
   3936  8.0.0160  EMSG() is sometimes used where it should be IEMSG()
   1956  8.0.0161  (after 8.0.0159) can't build with small features
   1635  8.0.0162  build error on Fedora 23
   1978  8.0.0163  cannot build with Ruby 2.4
   5660  8.0.0164  outdated and misplaced comments
   2573  8.0.0165  ubsan warns for integer overflow
-  6545  8.0.0166  JSON with a duplicate key gives an internal error
+  6483  8.0.0166  JSON with a duplicate key gives an internal error
   5691  8.0.0167  str2nr()/str2float() fail with negative values
-  9316  8.0.0168  not all float functionality is tested
- 19133  8.0.0169  json_decode() may run out of stack space
+  9266  8.0.0168  not all float functionality is tested
+ 19080  8.0.0169  json_decode() may run out of stack space
   1576  8.0.0170  crash in channel test
   5678  8.0.0171  JS style JSON does not support single quotes
   3145  8.0.0172  command line window does not work
@@ -201,20 +201,23 @@ Individual patches for Vim 8.0:
  12312  8.0.0175  setting language on MS-Windows does not always work
   4907  8.0.0176  cannot use :change inside a function definition
   7235  8.0.0177  BufEnter autocommand not fired for a directory
-  1913  8.0.0178  command count test fails on MS-Windows
+  1862  8.0.0178  command count test fails on MS-Windows
   8495  8.0.0179  cannot have a local value for 'formatprg'
-  2783  8.0.0180  error E937 is used twice
+  2746  8.0.0180  error E937 is used twice
   1683  8.0.0181  with cursorbind set cursor column highlighting is off
   1746  8.0.0182  cursor ilne not update when 'cursorbind' is set
-  2211  8.0.0183  ubsan warns for unaligned address
+  2165  8.0.0183  ubsan warns for unaligned address
   3557  8.0.0184  when an error is caught Vim still exits with non-zero result
   1679  8.0.0185  (after 8.0.0184) system() test fails on MS-Windows
   3072  8.0.0186  confusing error message from assert_notequal()
   1503  8.0.0187  cant build with new Ruby version
   2382  8.0.0188  (after 8.0.0182) redrawing for 'cursorbind' is inefficient
-  7123  8.0.0189  profile commands are not tested
+  7079  8.0.0189  profile commands are not tested
  14608  8.0.0190  finding duplicate tags uses a slow linear search
   2848  8.0.0191  (after 8.0.0187) can't build with Ruby on some systems
   2365  8.0.0192  (after 8.0.0190) cannot build with tiny features
   1622  8.0.0193  (after 8.0.0188) accidentally removed #ifdef
   2204  8.0.0194  (after 8.0.0189) profile test fails if times are equal
+  4685  8.0.0195  (after 8.0.0190) fail to jump to static tag in current file
+  8101  8.0.0196  profile test is slow and does not work on MS-Windows
+  4234  8.0.0197  system() test skips some parts for MS-Windows
