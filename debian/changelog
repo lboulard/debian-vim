@@ -1,10 +1,10 @@
-vim (2:8.0.0197-3) UNRELEASED; urgency=high
+vim (2:8.0.0197-3) unstable; urgency=high
 
   * Backport upstream patches v8.0.0377 & v8.0.0378, to fix buffer overflows
     when reading corrupted undo files.  (Closes: #856266, CVE-2017-6349,
     CVE-2017-6350)
 
- -- James McCoy <jamessan@debian.org>  Mon, 06 Mar 2017 20:50:18 -0500
+ -- James McCoy <jamessan@debian.org>  Mon, 06 Mar 2017 22:33:23 -0500
 
 vim (2:8.0.0197-2) unstable; urgency=high
 
