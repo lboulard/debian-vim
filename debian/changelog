@@ -2,6 +2,10 @@ vim (2:8.0.0197-4) UNRELEASED; urgency=medium
 
   * Backport upstream patch v8.0.0550 to fix a regression in tag lookups for
     ctags-generated emacs style tags files.  (Closes: #859426)
+  * Add Artful Aardvark, jessie-backports-sloppy, and
+    stretch-backports/security to deb{changelog,sources} syntax files.
+  * debsources.vim: Require word boundaries around distribution name.
+    (Closes: #859247)
 
  -- James McCoy <jamessan@debian.org>  Sat, 22 Apr 2017 13:45:28 -0400
 
