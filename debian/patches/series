@@ -8,3 +8,4 @@ upstream/debcontrol.vim-Add-sections-for-Rust-and-JavaScript.patch
 upstream/patch-8.0.0322-possible-overflow-with-corrupted-spell-fil.patch
 upstream/patch-8.0.0377-possible-overflow-when-reading-corrupted-u.patch
 upstream/patch-8.0.0378-possible-overflow-when-reading-corrupted-u.patch
+upstream/patch-8.0.0550-cannot-parse-some-etags-format-tags-file.patch
