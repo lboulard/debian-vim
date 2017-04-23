@@ -287,7 +287,8 @@ build-stamp-%: configure-stamp-%
 	dh_prep -p $(PKG)
 	@echo "*** DEBIAN *** BUILDING VARIANT $*"
 	$(MAKE) -C src/$(SHADOWDIR)
-	[ $(MAKETEST) != "yes" ] || flock debian $(MAKE) -j1 -C src/$(SHADOWDIR) test
+	# Ensure $TERM is set to a sane value for testing
+	[ $(MAKETEST) != "yes" ] || flock debian env TERM=xterm $(MAKE) -j1 -C src/$(SHADOWDIR) test
 	touch $@
 
 install: install-stamp-xxd $(foreach v,$(VARIANTS),install-stamp-$(v))

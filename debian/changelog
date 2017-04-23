@@ -6,6 +6,8 @@ vim (2:8.0.0197-4) UNRELEASED; urgency=medium
     stretch-backports/security to deb{changelog,sources} syntax files.
   * debsources.vim: Require word boundaries around distribution name.
     (Closes: #859247)
+  * Set $TERM to a known sane value when running tests to avoid test failures
+    due to an unknown $TERM.
 
  -- James McCoy <jamessan@debian.org>  Sat, 22 Apr 2017 13:45:28 -0400
 
