@@ -1,4 +1,4 @@
-vim (2:8.0.0197-4) UNRELEASED; urgency=medium
+vim (2:8.0.0197-4) unstable; urgency=medium
 
   * Backport upstream patch v8.0.0550 to fix a regression in tag lookups for
     ctags-generated emacs style tags files.  (Closes: #859426)
@@ -9,7 +9,7 @@ vim (2:8.0.0197-4) UNRELEASED; urgency=medium
   * Set $TERM to a known sane value when running tests to avoid test failures
     due to an unknown $TERM.
 
- -- James McCoy <jamessan@debian.org>  Sat, 22 Apr 2017 13:45:28 -0400
+ -- James McCoy <jamessan@debian.org>  Sun, 23 Apr 2017 08:10:29 -0400
 
 vim (2:8.0.0197-3) unstable; urgency=high
 
