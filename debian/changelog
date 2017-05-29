@@ -1,3 +1,12 @@
+vim (2:8.0.0606-1) UNRELEASED; urgency=medium
+
+  [ upstream ]
+  * 8.0.0210 et.al.: Add support for bracketed paste.  (Closes: #504244)
+  * 8.0.0421: Fix display in diff mode when adding a line at the end of a
+    buffer.  (Closes: #846993)
+
+ -- James McCoy <jamessan@debian.org>  Mon, 29 May 2017 14:20:09 -0400
+
 vim (2:8.0.0197-4) unstable; urgency=medium
 
   * Backport upstream patch v8.0.0550 to fix a regression in tag lookups for
