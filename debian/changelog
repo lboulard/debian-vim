@@ -5,6 +5,11 @@ vim (2:8.0.0606-1) UNRELEASED; urgency=medium
   * 8.0.0421: Fix display in diff mode when adding a line at the end of a
     buffer.  (Closes: #846993)
 
+  [ James McCoy ]
+  * vim-policy:
+    + Specify the "addon", not "name", field is used to declare the addon.
+      Thanks to Reiner Herrmann.
+
  -- James McCoy <jamessan@debian.org>  Mon, 29 May 2017 14:20:09 -0400
 
 vim (2:8.0.0197-4) unstable; urgency=medium
