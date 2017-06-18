@@ -17,10 +17,10 @@ Signed-off-by: James Vega <jamessan@debian.org>
  3 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/src/main.c b/src/main.c
-index 883c9cc..d62e1c9 100644
+index e30701c..249314a 100644
 --- a/src/main.c
 +++ b/src/main.c
-@@ -1750,6 +1750,10 @@ parse_command_name(mparm_T *parmp)
+@@ -1763,6 +1763,10 @@ parse_command_name(mparm_T *parmp)
      }
      else if (STRNICMP(initstr, "vim", 3) == 0)
  	initstr += 3;
@@ -31,7 +31,7 @@ index 883c9cc..d62e1c9 100644
  
      /* Catch "[r][g]vimdiff" and "[r][g]viewdiff". */
      if (STRICMP(initstr, "diff") == 0)
-@@ -2993,7 +2997,12 @@ source_startup_scripts(mparm_T *parmp)
+@@ -3006,7 +3010,12 @@ source_startup_scripts(mparm_T *parmp)
  	 * Get system wide defaults, if the file name is defined.
  	 */
  #ifdef SYS_VIMRC_FILE
@@ -45,7 +45,7 @@ index 883c9cc..d62e1c9 100644
  #endif
  #ifdef MACOS_X
  	(void)do_source((char_u *)"$VIMRUNTIME/macmap.vim", FALSE, DOSO_NONE);
-@@ -3029,6 +3038,9 @@ source_startup_scripts(mparm_T *parmp)
+@@ -3042,6 +3051,9 @@ source_startup_scripts(mparm_T *parmp)
  #ifdef USR_EXRC_FILE2
  		&& do_source((char_u *)USR_EXRC_FILE2, FALSE, DOSO_NONE) == FAIL
  #endif
@@ -70,10 +70,10 @@ index 695affa..b6e7e59 100644
  # define SYS_VIMRC_FILE "$VIM/vimrc"
  #endif
 diff --git a/src/structs.h b/src/structs.h
-index 0175017..532f3bd 100644
+index d79b225..36f4006 100644
 --- a/src/structs.h
 +++ b/src/structs.h
-@@ -3295,6 +3295,9 @@ typedef struct
+@@ -3297,6 +3297,9 @@ typedef struct
  #ifdef FEAT_DIFF
      int		diff_mode;		/* start with 'diff' set */
  #endif
