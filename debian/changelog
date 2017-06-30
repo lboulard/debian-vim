@@ -12,7 +12,8 @@ vim (2:8.0.0691-1) UNRELEASED; urgency=medium
   * Merge changes from Ubuntu, dependent on DEB_VENDOR=Ubuntu:
     + Remove --disable-python3interp on Ubuntu for vim-basic
     + Disable ruby for vim-gtk3
-  * d/rules: Remove *.pyc files leftover from tests
+  * d/rules:
+    + Remove src/po/vim.pot and *.pyc during clean
 
  -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
 
