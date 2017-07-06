@@ -14,6 +14,8 @@ vim (2:8.0.0691-1) UNRELEASED; urgency=medium
     + Disable ruby for vim-gtk3
   * d/rules:
     + Remove src/po/vim.pot and *.pyc during clean
+  * debcontrol.vim:
+    + Add highlighting for Build-(Depends|Conflicts)-Arch
 
  -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
 
