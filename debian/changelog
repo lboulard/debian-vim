@@ -17,6 +17,8 @@ vim (2:8.0.0691-1) UNRELEASED; urgency=medium
   * debcontrol.vim:
     + Add highlighting for Build-(Depends|Conflicts)-Arch
     + Fix syntax highlighting of "javascript" section.  (Closes: #867307)
+  * Rewrite d/copyright in machine readable format.  (Closes: #819734)
+    + Properly document xxd's license.  (Closes: #776191)
 
  -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
 
