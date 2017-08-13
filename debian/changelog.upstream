@@ -945,3 +945,5 @@ Individual patches for Vim 8.0:
   1619  8.0.0919  cursor color isn't set on startup
   2112  8.0.0920  cursor wrong after switching altscreen in terminal
  10013  8.0.0921  terminal window cursor shape not supported in the GUI
+ 16130  8.0.0922  quickfix list always added after current one
+  4452  8.0.0923  crash in GUI when terminal job exits
