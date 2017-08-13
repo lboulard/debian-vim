@@ -85,9 +85,11 @@ ifeq ($(DEB_VENDOR),Ubuntu)
 	NOINTERPFLAGS+=--enable-python3interp --with-python3-config-dir=$(shell python3-config --configdir)
 	NOINTERPFLAGS+=--disable-pythoninterp
 	GTK3FLAGS+=--disable-rubyinterp
+	RUBY_SUBSTVARS=
 else
 	NOINTERPFLAGS+=--disable-pythoninterp
 	NOINTERPFLAGS+=--disable-python3interp
+	RUBY_SUBSTVARS=-Vvim:Ruby-Provides=vim-ruby -Vvim:Ruby-Desc=" Ruby,"
 endif
 NOINTERPFLAGS+=--disable-rubyinterp
 NOINTERPFLAGS+=--disable-tclinterp
@@ -97,10 +99,10 @@ ALLINTERPFLAGS+=--disable-mzschemeinterp
 ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
   # Until #827319 is resolved
   ALLINTERPFLAGS+=--disable-perlinterp
-  PERL_SUBSTVAR=
+  PERL_SUBSTVARS=
 else
   ALLINTERPFLAGS+=--enable-perlinterp
-  PERL_SUBSTVAR=-Vvim:Perl-Provides=vim-perl
+  PERL_SUBSTVARS=-Vvim:Perl-Provides=vim-perl -Vvim:Perl-Desc=" Perl,"
 endif
 ALLINTERPFLAGS+=--enable-python3interp --with-python3-config-dir=$(shell python3-config --configdir)
 ALLINTERPFLAGS+=--disable-pythoninterp
@@ -464,7 +466,7 @@ binary-arch-%: install-stamp-%
 	dh_lintian
 	dh_installdeb
 	dh_shlibdeps
-	dh_gencontrol -- $(PERL_SUBSTVAR)
+	dh_gencontrol -- $(PERL_SUBSTVARS) $(RUBY_SUBSTVARS)
 	dh_md5sums
 	dh_builddeb -- -Zxz
 
