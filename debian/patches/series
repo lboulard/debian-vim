@@ -3,13 +3,5 @@ debian/Support-sourcing-a-vimrc.tiny-when-Vim-is-invoked-as-vi.patch
 debian/Detect-the-rst-filetype-using-the-contents-of-the-file.patch
 debian/Add-recognition-of-more-LaTeX-commands-for-tex-filetype-d.patch
 debian/Document-Debian-s-decision-to-disable-modelines-by-defaul.patch
-upstream/Add-Zesty-Zapus-to-deb-changelog-sources-syntax-files.patch
-upstream/debcontrol.vim-Add-sections-for-Rust-and-JavaScript.patch
-upstream/patch-8.0.0322-possible-overflow-with-corrupted-spell-fil.patch
-upstream/patch-8.0.0377-possible-overflow-when-reading-corrupted-u.patch
-upstream/patch-8.0.0378-possible-overflow-when-reading-corrupted-u.patch
-upstream/patch-8.0.0550-cannot-parse-some-etags-format-tags-file.patch
-upstream/Update-releases-in-deb-changelog-sources-syntax-files.patch
-upstream/patch-8.0.0703-illegal-memory-access-with-empty-doau-comm.patch
-upstream/patch-8.0.0706-crash-when-cancelling-the-cmdline-window-i.patch
-upstream/patch-8.0.0707-freeing-wrong-memory-with-certain-autocomm.patch
+upstream/debcontrol.vim-Add-support-for-Build-Depends-Conflicts-Ar.patch
+upstream/debcontrol.vim-Fix-highlighting-of-javascript-in-debcontr.patch

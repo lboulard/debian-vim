@@ -128,14 +128,14 @@ Individual patches for Vim 8.0:
   4876  8.0.0102  (after 8.0.0101) cannot set 'dictionary' to a path
   4425  8.0.0103  may not process channel readahead
   3602  8.0.0104  value of 'thesaurus' option not checked properly
- 16483  8.0.0105  can't tell difference between reading empty line or nothing
+ 14961  8.0.0105  can't tell difference between reading empty line or nothing
   2174  8.0.0106  (after 8.0.0100) cannot use a semicolon in 'backupext'
- 17300  8.0.0107  when reading channel output in timer messages may be missing
+ 16825  8.0.0107  when reading channel output in timer messages may be missing
   2747  8.0.0108  (after 8.0.0107) the channel "drop" option is not tested
   6083  8.0.0109  still checking if memcmp() exists, should be everywhere now
   2281  8.0.0110  drop command doesn't use existing window
   3528  8.0.0111  the :history command is not tested
- 13404  8.0.0112  tests 92 and 93 are old style
+ 13356  8.0.0112  tests 92 and 93 are old style
   5376  8.0.0113  MS-Windows: dialog for saving changes on the wrong monitor
   3510  8.0.0114  coding style not optimal
   1875  8.0.0115  when building with Cygwin libwinpthread isn't found
@@ -221,3 +221,412 @@ Individual patches for Vim 8.0:
   4685  8.0.0195  (after 8.0.0190) fail to jump to static tag in current file
   8101  8.0.0196  profile test is slow and does not work on MS-Windows
   4234  8.0.0197  system() test skips some parts for MS-Windows
+ 15518  8.0.0198  some syntax arguments take effect even after "if 0"
+  2860  8.0.0199  compiler warnings for libcall
+  3376  8.0.0200  some syntax arguments are not tested
+  6218  8.0.0201  completion of highlight groups includes cleared names
+  1874  8.0.0202  no test for invalid syntax group name
+  5103  8.0.0203  order of complication flags is sometimes wrong
+  1747  8.0.0204  compiler warns for uninitialized variable
+  2764  8.0.0205  wrong behavior after :undojoin
+  5444  8.0.0206  test coverage for :retab insufficient
+  1429  8.0.0207  leaking file descriptor when system() fails
+  2504  8.0.0208  internally used commands end up in history
+  1723  8.0.0209  cursor binding does not work with :substitute
+ 18326  8.0.0210  no support for bracketed paste
+  2461  8.0.0211  (after 8.0.0210) cannot build without the multi-byte feature
+  3318  8.0.0212  buffer for key name may be too small
+  2278  8.0.0213  Netbeans specialKeys command does not check argument length
+  1787  8.0.0214  leaking memory when syntax cluster id is unknown
+  2025  8.0.0215  NULL pointer use if cscope line looks like emacs tag
+  3357  8.0.0216  decoding js style json may fail
+  1839  8.0.0217  (after 8.0.0215) build fails without cscope feature
+  2321  8.0.0218  no completion for :cexpr and similar commands
+  8176  8.0.0219  ubsan reports errors for overflow
+  3450  8.0.0220  completion of highlight names misses a few values
+  1633  8.0.0221  unnecessary condition on PROTO
+  2783  8.0.0222  blockwise put on multi-byte character misplaced
+  2522  8.0.0223  Coverity warns for an uninitialized variable
+  3399  8.0.0224  change to 'fileformats' from autocmd does not take effect
+  2743  8.0.0225  put in Visual block mode terminates early
+  2101  8.0.0226  test for patch 8.0.0224 missing CR characters
+  2411  8.0.0227  crash with ff=dos when first line in file has no CR
+  3446  8.0.0228  pasting in xterm on the command line has PasteStart
+  1604  8.0.0229  local 'formatprg' option value leaks
+  1653  8.0.0230  bracketed paste does not support line breaks
+  4754  8.0.0231  bracketed paste mode is not tested
+  1807  8.0.0232  paste does not work when 'esckeys' is off
+  1580  8.0.0233  (after 8.0.0231) paste test fails in the GUI
+  3304  8.0.0234  (after 8.0.0225) crash when using put in Visual mode
+  2148  8.0.0235  memory leak in diff mode
+  2442  8.0.0236  (after 8.0.0234) gcc complains about uninitialized variable
+  2394  8.0.0237  when 'wildoptions' is "tagfile" completion may not work
+  2774  8.0.0238  bracketed paste does not disable autoindent
+  7028  8.0.0239  no CI with an address sanitizer
+  2354  8.0.0240  (after 8.0.0239) failure with one build on CI
+  4357  8.0.0241  fallback implementation of mch_memmove is unused
+  5272  8.0.0242  no tests for user command completion
+ 13660  8.0.0243  tolower() does not work if the byte count changes
+  1938  8.0.0244  making t_BE empty only has an effect before startup
+  2503  8.0.0245  zh_CN.cp936.po has a conversion error
+  1776  8.0.0246  compiler warnings for int to pointer conversion
+  4004  8.0.0247  need to type Ctrl-N twice to select a completion
+  1957  8.0.0248  vim_strcat() cannot handle overlapping arguments
+  1673  8.0.0249  CI failure when a submit is close to previous one
+  7214  8.0.0250  virtcol() does not work well for multi-byte characters
+ 34085  8.0.0251  not easy to select Python 2 or 3
+ 11565  8.0.0252  not properly recognizing word characters between 128 and 255
+  3039  8.0.0253  error when loading session if winminheight is 2
+  3951  8.0.0254  error message of assert functions is sometimes incomplete
+  6534  8.0.0255  setpos() does not use the buffer argument for all marks
+  2298  8.0.0256  (after 8.0.0255) missing changes to one file breaks test
+  1568  8.0.0257  (after 8.0.0252) test file missing in distribution
+  3289  8.0.0258  (after 8.0.0252) mksession test leaves file behind
+ 29178  8.0.0259  tab commands do not handle count correctly
+  5727  8.0.0260  build fails with tiny features
+  7063  8.0.0261  not enough test coverage for eval functions
+ 27088  8.0.0262  Farsi support is barely tested
+  6944  8.0.0263  Farsi support is not tested enough
+  1941  8.0.0264  memory error reported by ubsan
+  4752  8.0.0265  may get ml_get error when :pydo deletes lines
+  1362  8.0.0266  compiler warning for using uninitialized variable
+  1528  8.0.0267  channel test sometimes fails on Mac
+  4049  8.0.0268  may get ml_get error when :luado deletes lines
+  2936  8.0.0269  may get ml_get error when :perldo deletes lines
+  2709  8.0.0270  may get ml_get error when :rubydo deletes lines
+  3779  8.0.0271  may get ml_get error when :tcldo deletes lines
+  2505  8.0.0272  crash on exit is not detected when running tests
+  2819  8.0.0273  dead code detected by Coverity
+  2725  8.0.0274  possible recursive screen updating causes trouble
+  1864  8.0.0275  the screen may be updated at the wrong time
+  1541  8.0.0276  unnecessary #ifdefs
+  2395  8.0.0277  the GUI test may trigger fontconfig and take a long time
+  2112  8.0.0278  (after 8.0.0277) GUI test fails on MS-Windows
+  1905  8.0.0279  MSVC 2015 uses a different dll name
+  6559  8.0.0280  problem setting multi-byte environment var on MS-Windows
+ 23643  8.0.0281  some files are still using ARGSUSED instead of UNUSED
+  2099  8.0.0282  need to use CTRL-O twice when in Visual-Insert mode 
+  7048  8.0.0283  mode() does not indicate Insert mode completion
+  1897  8.0.0284  collapse buffers test failed once
+  2161  8.0.0285  (after 8.0.0277) tests fail with tiny build on Unix
+  5334  8.0.0286  not always redrawing after screen resize
+  1487  8.0.0287  debug mode: cannot access function arguments
+  1572  8.0.0288  (after 8.0.0284) errors reported while running tests
+  3731  8.0.0289  no test for "ga" and :ascii
+  2257  8.0.0290  cursor positioning wrong if wide character wraps
+  2416  8.0.0291  (after 8.0.0282) Visual block insert does not do all lines
+  4244  8.0.0292  the stat test is a bit slow
+  3179  8.0.0293  some tests have a one or three second wait
+  2196  8.0.0294  argument list is not stored correctly in a session file
+  1605  8.0.0295  (after 8.0.0293) test_viml hangs
+  6521  8.0.0296  bracketed paste can only append, not insert
+  7260  8.0.0297  double free on exit when using a closure
+  2556  8.0.0298  Ex command range with repeated search does not work
+  4367  8.0.0299  a window resize is sometimes not taking effect
+  3539  8.0.0300  cannot stop diffing hidden buffers
+  5370  8.0.0301  not enough testing for setting options
+  3498  8.0.0302  cannot set terminal key codes with :let
+  5979  8.0.0303  bracketed paste does not work in Visual mode
+  1841  8.0.0304  assign test fails in the GUI
+  2965  8.0.0305  invalid memory access when option has duplicate flag
+  4137  8.0.0306  mode() not sufficiently tested
+  3329  8.0.0307  asan detects a memory error when EXITFREE is defined
+  4890  8.0.0308 'runtimepath' not updated correctly when using symbolic link
+  2335  8.0.0309  cannot use an empty key in json
+  2490  8.0.0310  not enough testing for GUI functionality
+ 44867  8.0.0311  linebreak tests are old style
+  9065  8.0.0312  failure when a channel receives a split json message
+  3607  8.0.0313  (after 8.0.0310) not enough testing for GUI functionality
+  2511  8.0.0314  getcmd*() functions are not tested
+  2704  8.0.0315  :help :[range] does not work
+  2705  8.0.0316  :help z? does not work
+  3460  8.0.0317  no test for setting 'guifont'
+  1861  8.0.0318  small mistake in 7x13 font name
+  2972  8.0.0319  insert mode completion does not respect 'backspace'
+  1913  8.0.0320  warning for unused variable with small build
+  4716  8.0.0321  errors when trying to use scripts in tiny version
+  1503  8.0.0322  possible overflow with corrupted spell file
+  1805  8.0.0323  one second pause when running cmdline test
+  2630  8.0.0324  illegal memory access with a wrong yank range
+  1375  8.0.0325  packadd test does not clean up symlink
+  2061  8.0.0326  packadd test uses wrong directory name
+  1801  8.0.0327  error message in cmdline window is not translated
+  2066  8.0.0328  the "zero count" error doesn't have a number
+  6245  8.0.0329  xfontset and guifontwide are not tested
+  2256  8.0.0330  illegal memory access after "vapo"
+  3257  8.0.0331  restoring help snapshot accesses freed memory
+ 16678  8.0.0332  GUI test fails on some systems
+  2375  8.0.0333  illegal memory access when 'complete' ends in a backslash
+ 31136  8.0.0334  can't access b:changedtick from a dict reference
+  1835  8.0.0335  (after 8.0.0335) functions test fails
+  4355  8.0.0336  flags of :substitute not sufficiently tested
+  3833  8.0.0337  invalid memory access in :recover command
+  1601  8.0.0338  (after 8.0.0337) :recover test fails on MS-Windows
+  2024  8.0.0339  illegal memory access with vi'
+  1736  8.0.0340  not checking return valud of dict_add()
+  2228  8.0.0341  undo does not work properly when using completion
+  3653  8.0.0342  double free with EXITFREE and setting 'ttytype'
+  4108  8.0.0343  b:changedtick can be unlocked
+  1789  8.0.0344  unlet command leaks memory
+  4576  8.0.0345  islocked('d.changedtick') does not work
+  2270  8.0.0346  Vim relies on limits.h to be included indirectly
+  2758  8.0.0347  when using completion comment leader wont work
+  2009  8.0.0348  using shadow dir on Mac lack +clipboard
+  3264  8.0.0349  redrawing errors with GTK 3
+  5799  8.0.0350  not enough test coverage for Perl
+  1416  8.0.0351  no test for concatenating an empty string
+  5530  8.0.0352  not easy to see when a typval needs to be cleared
+  1602  8.0.0353  if [RO] is translated it may be truncated
+  1633  8.0.0354  test to check that setting termcap key fails sometimes
+  3938  8.0.0355  using uninitialized memory when 'isfname' is empty
+  1408  8.0.0356  (after 8.0.0342) leaking memory when setting 'ttytype'
+  3306  8.0.0357  crash when setting 'guicursor' to weird value
+  1966  8.0.0358  invalid memory access in C-indent code
+ 13775  8.0.0359  'number' and 'relativenumber' are not properly tested
+ 84421  8.0.0360  sometimes VimL is used instead of "Vim script"
+ 20246  8.0.0361  GUI initialisation is not sufficiently tested
+  1807  8.0.0362  (after 8.0.0361) tests fail on MS-Windows
+  1487  8.0.0363  Travis is too slow to keep up with patches
+  3904  8.0.0364  ]s does not move cursor with two spell errors in one line
+ 14739  8.0.0365  might free a dict item that wasn't allocated
+  1386  8.0.0366  (after 8.0.0365) build fails with tiny features
+  4008  8.0.0367  types in include files may be inconsistent
+ 12500  8.0.0368  not all options are tested with a range of values
+  4768  8.0.0369  a few options are not defined, depending on features
+  4004  8.0.0370  invalid memory access when setting wildchar empty
+  1542  8.0.0371  leaking memory when setting v:completed_item 
+ 17997  8.0.0372  more options are not always defined
+  1623  8.0.0373  build fails without +folding
+  2744  8.0.0374  invalid memory access when using :sc in Ex mode
+  2952  8.0.0375  the "+ register is not tested
+  2125  8.0.0376  size computations in spell file reading are off
+  2280  8.0.0377  possible overflow when reading corrupted undo file
+  2168  8.0.0378  another possible overflow when reading corrupted undo file
+  2648  8.0.0379  CTRL-Z and mouse click use CTRL-O unnecessary
+  3958  8.0.0380  with 'linebreak' double wide char wraps badly
+  2839  8.0.0381  diff mode is not sufficiently tested
+  2167  8.0.0382  (after 8.0.0380) warning in tiny build for unused variable
+  2027  8.0.0383  (after 8.0.0382) misplaced #ifdef
+  1434  8.0.0384  timer test failed for no apparent reason
+  4541  8.0.0385  no tests for arabic
+  2420  8.0.0386  tiny build has a problem with generating the options test
+  3077  8.0.0387  compiler warnings
+  5447  8.0.0388  filtering lines changes folds
+  6155  8.0.0389  test for arabic does not check what is displayed
+  4647  8.0.0390  when the window scrolls the popup menu may be garbled
+ 27150  8.0.0391  arabic support is verbose and not well tested
+  6164  8.0.0392  GUI test fails with Athena and Motif
+  7138  8.0.0393  (after 8.0.0190) order of duplicate tags is not preserved
+  5883  8.0.0394  tabs are not aligned when scrolling horizontally
+  4043  8.0.0395  testing the + register fails with Motif
+  7033  8.0.0396  'balloonexpr' only works synchronously
+  2051  8.0.0397  (after 8.0.0392) can't build with +viminfo but without +eval
+  1959  8.0.0398  illegal memory access with "t"
+  1975  8.0.0399  crash when using balloon_show() when not supported
+  1385  8.0.0400  some tests have a one second delay
+  1496  8.0.0401  test fails with missing balloon feature
+  3185  8.0.0402  :map completion does not have <special>
+  3206  8.0.0403  GUI tests may fail
+  4812  8.0.0404  not enough testing for quickfix
+  4738  8.0.0405  v:progpath may become invalid after :cd
+ 13541  8.0.0406  arabic shaping code is verbose
+  2047  8.0.0407  filtering folds with marker method not tested
+  7144  8.0.0408  updating folds does not always work properly
+  1405  8.0.0409  set_progpath is defined but not always used
+  2563  8.0.0410  newer gettext/iconv library has extra dll file
+  3043  8.0.0411  menu translations don't match when case is changed
+  1672  8.0.0412  (after 8.0.0411) menu test fails on MS-Windows
+  1693  8.0.0413  (after 8.0.0412) menu test fails on MS-Windows using gvim
+  5579  8.0.0414  balloon eval is not tested
+  2027  8.0.0415  (after 8.0.0414) balloon test fails on MS-Windows
+  8092  8.0.0416  setting v:progpath is not quite right
+  1355  8.0.0417  test for the clipboard fails sometimes
+  5462  8.0.0418  ASAN logs are disabled
+  3371  8.0.0419  test for v:progpath fails on MS-Windows
+ 26383  8.0.0420  text garbled when the system encoding differs from 'encoding'
+  5449  8.0.0421  diff mode wrong when adding line at end of buffer
+  4309  8.0.0422  Python test fails with Python 3.6
+  3427  8.0.0423  changing 'cinoptions' does not always work
+  1754  8.0.0424  compiler warnings on MS-Windows
+  3998  8.0.0425  build errors when building without folding
+ 10681  8.0.0426  insufficient testing for statusline
+  2327  8.0.0427  'makeencoding' missing from the options window
+ 23276  8.0.0428  git and hg see new files after running tests
+  4323  8.0.0429  (after 8.0.0428) options test does not always test everything
+  7387  8.0.0430  (after 8.0.0429) options test fails or hangs on MS-Windows
+  7944  8.0.0431  'cinoptions' cannot set indent for extern block
+  1795  8.0.0432  "make shadow" creates an invalid link
+ 11157  8.0.0433  beeps when running tests
+  7314  8.0.0434  clang version not correctly detected
+  9440  8.0.0435  some functions are not tested
+  1579  8.0.0436  running the options test sometimes resizes the terminal
+  1850  8.0.0437  packadd test does not fully work
+  1928  8.0.0438  the fnamemodify test may cause later tests to fail
+  2369  8.0.0439  ":%argdel" gives an error for an empty arglist
+ 58900  8.0.0440  not enough test coverage in Insert mode
+  1779  8.0.0441  dead code in #ifdef
+  2786  8.0.0442  patch shell command not well escaped
+  1497  8.0.0443  terminal width is set to 80 in test3
+  3899  8.0.0444  (after 8.0.0442) diffpatch fails when file name has a quote
+  5000  8.0.0445  getpgid is not supported on all systems
+  3360  8.0.0446  the ";" command does not work after some characters
+ 17171  8.0.0447  getting font name does not work on X11
+ 68909  8.0.0448  some macros are in lower case
+  3323  8.0.0449  (after 8.0.0448) part of fold patch accidentally included
+  2909  8.0.0450  v:progpath is not reliably set
+ 75599  8.0.0451  some macros are in lower case
+ 89169  8.0.0452  some macros are in lower case
+  4669  8.0.0453  adding fold marker creates new comment
+  2689  8.0.0454  compiler warnings for "always true" comparison
+  2094  8.0.0455  the mode test may hang
+  1676  8.0.0456  typo in MinGW test makefile
+ 18249  8.0.0457  using :move messes up manual folds
+  2240  8.0.0458  potential crash if adding list or dict to dict fails
+  2116  8.0.0459  (after 8.0.0457) old folding fix for :move no longer needed
+  2113  8.0.0460  can't build on HPUX
+  3904  8.0.0461  (after 8.0.0457) test 45 hangs on MS-Windows
+  1629  8.0.0462  failure of an MS-Windows test may go unnoticed
+  2351  8.0.0463  side effects from resetting 'compatible' in defaults.vim
+  5318  8.0.0464  can't find executable name on Solaris and FreeBSD
+  5506  8.0.0465  off-by-one error in using :move with folding
+ 89133  8.0.0466  still macros that should be all-caps
+  2045  8.0.0467  using g< after :for does not show the right output
+  7321  8.0.0468  after aborting an Ex command g< does not work
+  2113  8.0.0469  compiler warnings on MS-Windows
+  3390  8.0.0470  not enough testing for help commands
+  1511  8.0.0471  exit callback test sometimes fails
+  1864  8.0.0472  when a test fails another test may also fail
+  6263  8.0.0473  no test covering arg_all()
+  6516  8.0.0474  the client-server feature is not tested
+  8793  8.0.0475  not enough testing for the client-server feature
+  2772  8.0.0476  (after 8.0.0475) missing change to main.c
+ 16241  8.0.0477  the client-server test may hang when failing
+ 19473  8.0.0478  tests use assert_true(0) and assert_false(1) to report errors
+  2760  8.0.0479  remote_peek() is not tested
+  2853  8.0.0480  the remote_peek() test fails on MS-Windows
+  6323  8.0.0481  unnecessary if statement
+  2924  8.0.0482  the setbufvar() function may mess up the window layout
+  2043  8.0.0483  illegal memory access when using :all
+ 17065  8.0.0484  :lhelpgrep does not fail after a successful one
+ 14261  8.0.0485  not all windows commands are tested
+  6314  8.0.0486  crash and endless loop when closing windows in autocmd
+  1762  8.0.0487  the autocmd test hangs on MS-Windows
+  1920  8.0.0488  running tests leaves an "xxx" file behind
+  6401  8.0.0489  clipboard and "* register is not tested
+  3508  8.0.0490  vertical split makes 'winfixwidth' window smaller
+  1502  8.0.0491  quotestar test fails when features are missing
+ 24562  8.0.0492  a failing client-server request can make Vim hang
+  5933  8.0.0493  crash with cd command with very long argument
+  3265  8.0.0494  build failure with older compiler on MS-Windows
+  4891  8.0.0495  quotestar test uses timer instead of timeout
+  3628  8.0.0496  insufficient testing for folding
+  7652  8.0.0497  arabic support is not fully tested
+  5408  8.0.0498  two autocmd tests are skipped on MS-Windows
+  8222  8.0.0499  taglist() does not prioritize tags for a buffer
+  2295  8.0.0500  quotestar test is still a bit flaky
+  4535  8.0.0501  on MS-Windows ":!start" does not work as expected
+  1456  8.0.0502  Coverity complains about possible NULL pointer
+  1663  8.0.0503  endless loop in updating folds with 32 bit ints
+ 11457  8.0.0504  looking up an Ex command is a bit slow
+  1753  8.0.0505  failed window split for :stag not handled
+  1852  8.0.0506  can't build with ANSI C
+  2262  8.0.0507  client-server tests fail when $DISPLAY is not set
+  1530  8.0.0508  Coveralls no longer shows per-file coverage
+  2090  8.0.0509  no link to codecov.io results
+  2537  8.0.0510  (after 8.0.0509) typo in link to codecov.io results
+  2757  8.0.0511  message for skipping client-server tests is unclear
+  1601  8.0.0512  check for available characters takes too long
+  6138  8.0.0513  getting name of cleared highlight group is wrong
+  3416  8.0.0514  script for creating cmdidxs can be improved
+  3092  8.0.0515  ml_get errors in silent Ex mode
+  3764  8.0.0516  a large count on a normal command causes trouble
+ 12336  8.0.0517  there is no way to remove quickfix lists
+  4256  8.0.0518  bad fold text when a multi-byte char has a zero byte
+ 12471  8.0.0519  character classes are not well tested
+  9607  8.0.0520  using a function pointer while the function is known
+  8182  8.0.0521  GtkForm handling is outdated
+  5291  8.0.0522  Win32: when 'clipboard' is "unnamed" yyp does not work
+  2512  8.0.0523  dv} deletes part of a multi-byte character.
+  2130  8.0.0524  (after 8.0.0518) folds messed up
+  1596  8.0.0525  completion for user command argument not tested
+  2115  8.0.0526  Coverity complains about possible negative value
+  4049  8.0.0527  leftover file from RISC OS
+  1789  8.0.0528  highlight wrong text when 'wim' includes "longest"
+  3722  8.0.0529  line in test commented out
+  3656  8.0.0530  buffer overflow when 'columns' is very big
+  1488  8.0.0531  test with long directory name fails on non-unix systems
+  1512  8.0.0532  test with long directory name fails on Mac
+  2399  8.0.0533  abbreviation doesn't work after backspacing newline
+  2093  8.0.0534  defaults.vim does not work well with tiny features
+  5383  8.0.0535  memory leak when exiting from within a user function
+  5267  8.0.0536  quickfix window not updated when freeing quickfix stack
+  6654  8.0.0537  illegal memory access with :z and large count
+  1659  8.0.0538  no test for falling back to default term value
+  3254  8.0.0539  (after 8.0.0538) startup test fails on Mac
+  2353  8.0.0540  (after 8.0.0540) building unit tests fails
+  1579  8.0.0541  compiler warning on MS-Windows
+  3256  8.0.0542  getpos() can return a negative line number
+ 12057  8.0.0543  test_edit causes older xfce4-terminal to close
+  2915  8.0.0544  cppcheck warnings
+  2906  8.0.0545  edit test may fail on some systems
+  3848  8.0.0546  swap file exists briefly when opening the command window
+  2138  8.0.0547  extra line break in verbosefile
+  8508  8.0.0548  saving the redo buffer only works one time
+  3809  8.0.0549  no test for the 8g8 command
+  3889  8.0.0550  cannot parse some etags format tags file
+  3065  8.0.0551  the typeahead buffer is reallocated too often
+  3094  8.0.0552  toupper and tolower don't work properly for Turkish
+  2645  8.0.0553  toupper/tolower test fails on Mac
+  2613  8.0.0554  toupper and tolower don't work properly for Turkish
+  1690  8.0.0555  toupper/tolower test fails on OSX without Darwin
+  1856  8.0.0556  getting window position fails if GUI and term possible
+  3402  8.0.0557  GTK: using static gravities is not useful
+  2178  8.0.0558  :ownsyntax is not tested
+  2487  8.0.0559  setting ttytype to xxx does not always fail
+  1628  8.0.0560  :windo allows for ! but it's not supported
+  2560  8.0.0561  undefined behavior when using backslash after empty line
+  3779  8.0.0562  not enough test coverage for syntax commands
+  1390  8.0.0563  crash when getting the window position in tmux
+  2093  8.0.0564  cannot detect Bazel BUILD files on some systems
+  1650  8.0.0565  using freed memory in :caddbuf
+  2658  8.0.0566  setting nocompatible for the tiny version moves the cursor
+  2107  8.0.0567  call for requesting color and ambiwidth is too early
+  2280  8.0.0568  1gd may hang
+  2406  8.0.0569  bracketed paste is still enabled in a shell command
+ 38397  8.0.0570  can't run make with several jobs
+  2778  8.0.0571  negative line number when using :z^ in an empty buffer
+ 18801  8.0.0572  building the command table requires Perl
+  2883  8.0.0573  running parallel make after distclean fails
+  9080  8.0.0574  get only one quickfix list after :caddbuf
+  2613  8.0.0575  using freed memory when resetting 'indentexpr'
+  7547  8.0.0576  can't build when configure choses "install-sh"
+  1591  8.0.0577  warning for uninitialized variable
+  2412  8.0.0578  :simalt on MS-Windows does not work properly
+  1424  8.0.0579  duplicate test case for quickfix
+  3715  8.0.0580  cannot set the valid flag with setqflist()
+  6905  8.0.0581  moving folded text is sometimes not correct
+  6454  8.0.0582  illegal memory access with z= command
+  2578  8.0.0583  fold test hangs on MS-Windows
+  1378  8.0.0584  memory leak when executing quickfix tests
+  2227  8.0.0585  test_options fails when run in the GUI
+  1956  8.0.0586  no test for mapping timing out
+  5097  8.0.0587  configure check for return value of tgetent skipped
+  2259  8.0.0588  job_stop() often assumes the channel will be closed
+  2014  8.0.0589  (after 8.0.0578) :simalt still does not work
+  7364  8.0.0590  cannot add a context to locations
+ 41017  8.0.0591  changes to eval functionality not documented
+ 10763  8.0.0592  if a job writes to a buffer screen is not updated
+ 11715  8.0.0593  duplication of code for adding a list or dict return value
+  1450  8.0.0594  (after 8.0.0592) build failure when windows feature is missing
+  1834  8.0.0595  (after 8.0.0590) Coverity warning for not checking return value
+  6277  8.0.0596  crash when complete() called after complete_add()
+  3062  8.0.0597  off-by-one error in size computation
+  1452  8.0.0598  building with gcc 7.1 yields new warnings
+  7317  8.0.0599  diff mode is insufficiently tested
+  1583  8.0.0600  test_recover fails on some systems
+  1951  8.0.0601  no test coverage for :spellrepall
+  3323  8.0.0602  when gF fails to edit the file the cursor still moves
+  1630  8.0.0603  gF test fails on MS-Windows
+  1951  8.0.0604  gF test still fails on MS-Windows
+  2682  8.0.0605  the quickfix cached buffer may become invalid
+  4681  8.0.0606  cannot set the context for a specified quickfix list

@@ -1,3 +1,27 @@
+vim (2:8.0.0691-1) UNRELEASED; urgency=medium
+
+  [ upstream ]
+  * 8.0.0210 et.al.: Add support for bracketed paste.  (Closes: #504244)
+  * 8.0.0421: Fix display in diff mode when adding a line at the end of a
+    buffer.  (Closes: #846993)
+
+  [ James McCoy ]
+  * vim-policy:
+    + Specify the "addon", not "name", field is used to declare the addon.
+      Thanks to Reiner Herrmann.
+  * Merge changes from Ubuntu, dependent on DEB_VENDOR=Ubuntu:
+    + Remove --disable-python3interp on Ubuntu for vim-basic
+    + Disable ruby for vim-gtk3
+  * d/rules:
+    + Remove src/po/vim.pot and *.pyc during clean
+  * debcontrol.vim:
+    + Add highlighting for Build-(Depends|Conflicts)-Arch
+    + Fix syntax highlighting of "javascript" section.  (Closes: #867307)
+  * Rewrite d/copyright in machine readable format.  (Closes: #819734)
+    + Properly document xxd's license.  (Closes: #776191)
+
+ -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
+
 vim (2:8.0.0197-5) unstable; urgency=high
 
   * Backport upstream patches to fix CVE-2017-11109  (Closes: #867720)
