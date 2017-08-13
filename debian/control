@@ -150,7 +150,6 @@ Description: Vi IMproved - enhanced vi editor
  (or less).
 
 Package: vim-gtk
-Priority: optional
 Architecture: any
 Depends:
  vim-common (= ${source:Version}),
@@ -183,7 +182,6 @@ Description: Vi IMproved - enhanced vi editor - with GTK2 GUI
  and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
 
 Package: vim-gtk3
-Priority: optional
 Architecture: any
 Depends:
  vim-common (= ${source:Version}),
@@ -217,7 +215,6 @@ Description: Vi IMproved - enhanced vi editor - with GTK3 GUI
  Python 3,${vim:Ruby-Desc} and Tcl.
 
 Package: vim-nox
-Priority: optional
 Architecture: any
 Depends:
  vim-common (= ${source:Version}),
@@ -246,7 +243,6 @@ Description: Vi IMproved - enhanced vi editor - with scripting languages support
  scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
 
 Package: vim-athena
-Priority: optional
 Architecture: any
 Depends:
  vim-common (= ${source:Version}),
@@ -277,7 +273,6 @@ Description: Vi IMproved - enhanced vi editor - with Athena GUI
  and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
 
 Package: vim-gnome
-Priority: optional
 Architecture: all
 Depends:
  vim-gtk3,
@@ -288,7 +283,6 @@ Description: Vi IMproved - enhanced vi editor (dummy package)
  remove this package if nothing depends on it.
 
 Package: xxd
-Priority: optional
 Architecture: any
 Multi-Arch: foreign
 Depends:
