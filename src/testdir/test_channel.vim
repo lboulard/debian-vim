@@ -739,6 +739,38 @@ func Test_pipe_to_buffer_name_nomsg()
   call Run_test_pipe_to_buffer(1, 0, 1)
 endfunc
 
+func Test_close_output_buffer()
+  if !has('job')
+    return
+  endif
+  enew!
+  let test_lines = ['one', 'two']
+  call setline(1, test_lines)
+  call ch_log('Test_close_output_buffer()')
+  let options = {'out_io': 'buffer'}
+  let options['out_name'] = 'buffer-output'
+  let options['out_msg'] = 0
+  split buffer-output
+  let job = job_start(s:python . " test_channel_write.py", options)
+  call assert_equal("run", job_status(job))
+  try
+    call WaitFor('line("$") == 3')
+    call assert_equal(3, line('$'))
+    quit!
+    sleep 100m
+    " Make sure the write didn't happen to the wrong buffer.
+    call assert_equal(test_lines, getline(1, line('$')))
+    call assert_equal(-1, bufwinnr('buffer-output'))
+    sbuf buffer-output
+    call assert_notequal(-1, bufwinnr('buffer-output'))
+    sleep 100m
+    close  " no more writes
+    bwipe!
+  finally
+    call job_stop(job)
+  endtry
+endfunc
+
 func Run_test_pipe_err_to_buffer(use_name, nomod, do_msg)
   if !has('job')
     return
@@ -1630,6 +1662,45 @@ func Test_read_from_terminated_job()
   call job_start([s:python, '-c', arg], {'callback': 'MyLineCountCb'})
   call WaitFor('1 <= g:linecount')
   call assert_equal(1, g:linecount)
+endfunc
+
+func Test_env()
+  if !has('job')
+    return
+  endif
+
+  let s:envstr = ''
+  if has('win32')
+    call job_start(['cmd', '/c', 'echo %FOO%'], {'callback': {ch,msg->execute(":let s:envstr .= msg")}, 'env':{'FOO': 'bar'}})
+  else
+    call job_start([&shell, &shellcmdflag, 'echo $FOO'], {'callback': {ch,msg->execute(":let s:envstr .= msg")}, 'env':{'FOO': 'bar'}})
+  endif
+  call WaitFor('"" != s:envstr')
+  call assert_equal("bar", s:envstr)
+  unlet s:envstr
+endfunc
+
+func Test_cwd()
+  if !has('job')
+    return
+  endif
+
+  let s:envstr = ''
+  if has('win32')
+    let expect = $TEMP
+    call job_start(['cmd', '/c', 'echo %CD%'], {'callback': {ch,msg->execute(":let s:envstr .= msg")}, 'cwd': expect})
+  else
+    let expect = $HOME
+    call job_start(['pwd'], {'callback': {ch,msg->execute(":let s:envstr .= msg")}, 'cwd': expect})
+  endif
+  call WaitFor('"" != s:envstr')
+  let expect = substitute(expect, '[/\\]$', '', '')
+  let s:envstr = substitute(s:envstr, '[/\\]$', '', '')
+  if $CI != '' && stridx(s:envstr, '/private/') == 0
+    let s:envstr = s:envstr[8:]
+  endif
+  call assert_equal(expect, s:envstr)
+  unlet s:envstr
 endfunc
 
 function Ch_test_close_lambda(port)

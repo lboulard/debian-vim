@@ -618,7 +618,7 @@ Individual patches for Vim 8.0:
  10763  8.0.0592  if a job writes to a buffer screen is not updated
  11715  8.0.0593  duplication of code for adding a list or dict return value
   1450  8.0.0594  (after 8.0.0592) build failure when windows feature is missing
-  1834  8.0.0595  (after 8.0.0590) Coverity warning for not checking return value
+  1834  8.0.0595  (after 8.0.0590) Coverity warning for not checking return val
   6277  8.0.0596  crash when complete() called after complete_add()
   3062  8.0.0597  off-by-one error in size computation
   1452  8.0.0598  building with gcc 7.1 yields new warnings
@@ -630,3 +630,318 @@ Individual patches for Vim 8.0:
   1951  8.0.0604  gF test still fails on MS-Windows
   2682  8.0.0605  the quickfix cached buffer may become invalid
   4681  8.0.0606  cannot set the context for a specified quickfix list
+  8236  8.0.0607  after :bwipe + :new bufref might still be valid
+  9515  8.0.0608  cannot manipulate other than the current quickfix list
+  1849  8.0.0609  some people still don't know how to quit
+  2543  8.0.0610  the screen is redrawn when default 'background' is detected
+  2653  8.0.0611  the screen is not redrawn after sending t_u7
+  6776  8.0.0612  pack dirs are added to 'runtimepath' too late
+  4995  8.0.0613  the conf filetype is used before ftdetect from packages
+ 12602  8.0.0614  float2nr() is not exactly right
+  2059  8.0.0615  using % with :hardcopy wrongly escapes spaces
+  3518  8.0.0616  not always setting 'background' correctly after :hi Normal
+  1918  8.0.0617  (after 8.0.0615) hardcopy test hangs on MS-Windows
+  3972  8.0.0618  NFA regex engine handles [0-z] incorrectly
+  2790  8.0.0619  GUI gets stuck if timer uses feedkeys()
+ 15775  8.0.0620  checking for HAVE_GTK_MULTIHEAD is not needed
+ 11879  8.0.0621  :stag does not respect 'switchbuf'
+  4097  8.0.0622  selecting quoted text fails with 'selection' "exclusive"
+  3792  8.0.0623  error for invalid regexp is not very informative
+  1718  8.0.0624  (after 8.0.0623) warning for unused variable in tiny build
+  3242  8.0.0625  shellescape() always escapes a newline
+  1703  8.0.0626  in the GUI the cursor may flicker
+  8788  8.0.0627  "gn" selects only one character with 'nowrapscan'
+  2862  8.0.0628  cursor disappears after silent mapping
+  1813  8.0.0629  checking for ambigous width is not working
+  8527  8.0.0630  it is not easy to work on lines without a match
+  1946  8.0.0631  can't build with Perl 5.26
+  2011  8.0.0632  the quotestar test is still a bit flaky
+  2555  8.0.0633  the client-server test is still a bit flaky
+  9164  8.0.0634  cannot easily get to the last quickfix list
+ 21598  8.0.0635  when 'ignorecase' is set script detection is inaccurate
+  2588  8.0.0636  when reading the undo file fails may use uninitialized data
+  2091  8.0.0637  crash when using some version of GTK 3
+  8895  8.0.0638  cannot build with new MSVC version
+  2641  8.0.0639  the cursor position is set when editing a new commit message
+  1840  8.0.0640  mismatch between help and actual message
+  9380  8.0.0641  cannot set a separate highlighting for the quickfix line
+  4698  8.0.0642  writefile() continues after detecting an error
+ 36273  8.0.0643  when a pattern search is slow Vim becomes unusable
+  1667  8.0.0644  the timeout for 'hlsearch' is not tested
+  6062  8.0.0645  no error for illegal back reference in NFA engine
+  6889  8.0.0646  the hlsearch test fails on fast systems
+ 17435  8.0.0647  syntax highlighting can cause a freeze
+  1629  8.0.0648  possible use of NULL pointer
+  3822  8.0.0649  when opening a help file the filetype is set several times
+  2039  8.0.0650  for extra help files the filetype is set more than once
+  1534  8.0.0651  build failure without the auto command feature
+ 10036  8.0.0652  unicode information is outdated
+  2013  8.0.0653  the default highlight for QuickFixLine is not good
+  5188  8.0.0654  no warning for text after :endfunction
+  2677  8.0.0655  not easy to make sure a function does not exist
+  2329  8.0.0656  cannot use ! after some user commands
+ 13104  8.0.0657  cannot get and set quickfix list items
+ 47863  8.0.0658  spell test is old style
+  5884  8.0.0659  no test for conceal mode
+  1676  8.0.0660  silent install on MS-Windows shows dialog
+ 10750  8.0.0661  recognizing urxvt mouse codes does not work well
+  1828  8.0.0662  stray FIXME for fixed problem
+  5971  8.0.0663  unexpected error message only when 'verbose' is set
+  2373  8.0.0664  mouse does not work in tmux
+  1517  8.0.0665  warning for uninitialized variable
+  4110  8.0.0666  dead for loop
+  5896  8.0.0667  memory access error when command follows :endfunc
+  1689  8.0.0668  nsis installer script does not work
+  2927  8.0.0669  CTRL-N at start of the buffer does not work correctly
+  3607  8.0.0670  can't use input() in a timer callback
+  1600  8.0.0671  hang when typing CTRL-C in confirm() in timer
+  6001  8.0.0672  third item of synconcealed() changes too often
+  1260  8.0.0673  build failure without conceal feature
+  1751  8.0.0674  cannot build with eval but without timers
+  2638  8.0.0675  'colorcolumn' has a higher priority than 'hlsearch'
+  8830  8.0.0676  crash when closing quickfix window in autocmd
+  4177  8.0.0677  setting 'filetype' may switch buffers
+  3772  8.0.0678  closing a window does not trigger resizing
+  2223  8.0.0679  using freed memory
+ 10068  8.0.0680  plugins in start packages are sourced twice
+  2323  8.0.0681  unnamed register only contains the last deleted text
+  2786  8.0.0682  no test for synIDtrans()
+  4871  8.0.0683  visual bell flashes too quickly
+ 13990  8.0.0684  old style tests are not nice
+ 28918  8.0.0685  when conversion fails written file may be truncated
+  1479  8.0.0686  extra redraw when using CTRL-L in second window
+  6644  8.0.0687  minor issues related to quickfix
+  4317  8.0.0688  cannot resize the window in a FileType autocommand
+  2402  8.0.0689  ~ character not escaped when extending search pattern
+  2150  8.0.0690  compiler warning on non-Unix system
+  1267  8.0.0691  compiler warning without the linebreak feature
+  2964  8.0.0692  CTRL-G with 'incsearch' and ? goes in the wrong direction
+361923  8.0.0693  no terminal emulator support
+  2396  8.0.0694  building in shadow directory does not work
+  5003  8.0.0695  missing dependencies breaks parallel make
+  1309  8.0.0696  .inc files missing in git
+  9396  8.0.0697  recorded key sequences may become invalid
+  4219  8.0.0698  crash on exit when using Python function in timer.
+  1742  8.0.0699  checksum tests are not actually run
+  2709  8.0.0700  segfault with QuitPre autocommand closes the window
+  2900  8.0.0701  system test failing when using X11 forwarding
+  5191  8.0.0702  an error in a timer can make Vim unusable
+  3118  8.0.0703  illegal memory access with empty :doau command
+  2145  8.0.0704  problems with autocommands when opening help
+  3043  8.0.0705  crash when there is an error in a timer callback
+  1611  8.0.0706  crash when cancelling the cmdline window in Ex mode
+  1792  8.0.0707  freeing wrong memory with certain autocommands
+ 36722  8.0.0708  some tests are old style
+  8257  8.0.0709  libvterm cannot use vsnprintf()
+  3625  8.0.0710  a job that writes to a buffer clears completion
+  2024  8.0.0711  cannot build without the wildmenu feature
+  2931  8.0.0712  the terminal implementation is incomplete
+  1869  8.0.0713  'termkey' option not fully implemented
+  2966  8.0.0714  when a timer causes a command line redraw " goes missing
+  5735  8.0.0715  writing to wrong buffer if channel output buffer was closed
+ 15907  8.0.0716  not easy to start Vim cleanly
+  1883  8.0.0717  terminal feature precence unclear
+ 20877  8.0.0718  output of job in terminal is not displayed
+  3357  8.0.0719  build failure without +terminal feature
+  3069  8.0.0720  unfinished mapping not displayed when running timer
+  6506  8.0.0721  :argedit can only have one argument
+  1568  8.0.0722  screen is messed by timer up at inputlist() prompt
+  3001  8.0.0723  arglist test fails if file name case is ignored
+  4352  8.0.0724  the message for yanking doesn't indicate the register
+  9961  8.0.0725  a terminal window does not handle keyboard input
+  1859  8.0.0726  translations cleanup script is too conservative
+  1723  8.0.0727  message about what register to yank into is not translated
+  9162  8.0.0728  the terminal structure is never freed
+ 11121  8.0.0729  the help for the terminal configure option is wrong
+ 24213  8.0.0730  terminal feature only supports Unix-like systems
+  4642  8.0.0731  cannot build the terminal feature on MS-Windows
+  3542  8.0.0732  when updating a buffer modeless selection is lost
+ 24546  8.0.0733  can only add entries to one list in the quickfix stack
+  2442  8.0.0734  the script to check translations can be improved
+  3222  8.0.0735  no indication that the quickfix window/buffer changed
+ 19775  8.0.0736  OptionSet not triggered when entering diff mode
+ 11441  8.0.0737  crash when X11 selection is very big
+  6898  8.0.0738  cannot use the mouse to resize a terminal window
+  9238  8.0.0739  terminal resizing doesn't work well
+  3417  8.0.0740  cannot resize a terminal window by the command
+  1618  8.0.0741  cannot build with HPUX
+ 40677  8.0.0742  terminal feature does not work on MS-Windows
+  2173  8.0.0743  the 'termsize' option can be set to an invalid value
+ 15890  8.0.0744  terminal window does not use a pty
+  2476  8.0.0745  multi-byte characters in a terminal don't display well
+  3285  8.0.0746  when :term fails the job is not properly cleaned up
+  2538  8.0.0747  :terminal without an argument doesn't work
+  8829  8.0.0748  running Vim in terminal window doesn't use the right colors
+  1539  8.0.0749  some unicode digraphs are hard to remember
+  8318  8.0.0750  OpenPTY missing in non-GUI build
+  2988  8.0.0751  OpenPTY missing with some combination of features
+  1682  8.0.0752  build fails on MS-Windows
+  5881  8.0.0753  no size reports to a job running in a terminal
+  7329  8.0.0754  terminal window does not support colors
+ 13498  8.0.0755  terminal window does not have colors in the GUI
+  4736  8.0.0756  cannot build libvterm with MSVC
+  1459  8.0.0757  libvterm MSVC Makefile not included in the distribution
+  2574  8.0.0758  possible crash when using a terminal window
+  4207  8.0.0759  MS-Windows: terminal does not adjust size
+  3481  8.0.0760  terminal window colors wrong with 'termguicolors'
+ 21713  8.0.0761  options not set properly for a terminal buffer
+  3101  8.0.0762  ml_get error with :psearch in buffer without a name
+  7841  8.0.0763  libvterm can be improved
+  5583  8.0.0764  'termkey' does not work yet
+  2355  8.0.0765  build fails with tiny features
+  1619  8.0.0766  option test fails with +terminal feature
+  1751  8.0.0767  build failure with Athena and Motif
+ 11084  8.0.0768  terminal window status shows "[Scratch]"
+ 16219  8.0.0769  build problems with terminal on MS-Windows
+  1946  8.0.0770  compiler warning for missing field initializer
+  3692  8.0.0771  cursor in terminal window not always updated in GUI
+  6875  8.0.0772  other stdbool.h dependencies in libvterm
+ 20141  8.0.0773  mixing 32 and 64 bit libvterm builds fails
+  3642  8.0.0774  build failure without the multi-byte feature
+  5129  8.0.0775  in a terminal the cursor is updated too often
+  5759  8.0.0776  function prototypes missing without the quickfix feature
+  6297  8.0.0777  compiler warnings with 64 bit compiler
+  1886  8.0.0778  in a terminal the cursor may be hidden
+  1704  8.0.0779  :term without an argument uses empty buffer name
+  1957  8.0.0780  build failure on Travis
+  3031  8.0.0781  MS-Windows: memory leak when using :terminal
+  8575  8.0.0782  using freed memory in quickfix code
+  1939  8.0.0783  job of terminal may be freed too early
+  2430  8.0.0784  job of terminal may be garbage collected
+  5892  8.0.0785  wildcards are not expanded for :terminal
+  2711  8.0.0786  build failures on Travis
+  7117  8.0.0787  cannot send CTRL-W command to terminal job
+  2351  8.0.0788  MS-Windows: cannot build with terminal feature
+  2403  8.0.0789  splitting terminal window has resizing problems
+  2323  8.0.0790  MSVC compiler warning for strncpy in libvterm
+ 13198  8.0.0791  terminal colors depend on the system
+  2200  8.0.0792  spell test leaves files behind
+  1816  8.0.0793  using wrong terminal name for terminal window
+  6587  8.0.0794  checking translations fails with multiple NL
+  1604  8.0.0795  terminal feature does not build with older MSVC
+  2883  8.0.0796  no coverage on Travis with clang
+ 22981  8.0.0797  finished job in terminal window is not handled
+  7932  8.0.0798  no highlighting in a terminal window with a finished job
+  1396  8.0.0799  missing semicolon
+  3991  8.0.0800  terminal window scrollback contents is wrong
+  1724  8.0.0801  terminal window title says "running" after job exits
+  2027  8.0.0802  last line of terminal window has no color
+ 25373  8.0.0803  terminal window functions not yet implemented
+  2482  8.0.0804  running tests fails when stdin is /dev/null
+  2100  8.0.0805  GUI test fails with gnome2
+  1674  8.0.0806  tests may try to create XfakeHOME twice
+  8506  8.0.0807  terminal window can't handle mouse buttons
+  1740  8.0.0808  cannot build with terminal feature and DEBUG defined
+  2458  8.0.0809  MS-Windows: tests hang
+  1563  8.0.0810  MS-Windows: tests still hang
+  1991  8.0.0811  MS-Windows: test_expand_dllpath fails
+  1506  8.0.0812  terminal window colors shift when 'number' is set
+ 26034  8.0.0813  cannot use a terminal window while the job is running
+  1427  8.0.0814  file in Filelist does not exist
+  2353  8.0.0815  terminal window not correctly updated
+  2060  8.0.0816  crash when using invalid buffer number
+  8591  8.0.0817  cannot get the terminal line at the cursor
+  5904  8.0.0818  cannot get the cursor position of a terminal
+  2241  8.0.0819  cursor not positioned in terminal window
+  2945  8.0.0820  GUI: cursor in terminal window lags behind
+  6303  8.0.0821  cannot get the title and status of a terminal window
+  1466  8.0.0822  Test_with_partial_callback is a tiny bit flaky
+  4125  8.0.0823  cannot paste text into a terminal window
+  3438  8.0.0824  in Terminal mode the cursor and screen gets redrawn
+  9619  8.0.0825  not easy to see that a window is a terminal window
+  2001  8.0.0826  cannot use text objects in Terminal mode
+  1970  8.0.0827  Coverity: could leak pty file descriptor
+  1508  8.0.0828  Coverity: may dereference NULL pointer
+  2943  8.0.0829  job running in terminal can't communicate with Vim
+  3435  8.0.0830  translating messages is not ideal
+ 10657  8.0.0831  with 8 colors the bold attribute is not set properly
+  8556  8.0.0832  terminal function arguments are not consistent
+  1898  8.0.0833  terminal test fails
+  2492  8.0.0834  can't build without the client-server feature
+  1852  8.0.0835  translations check with msgfmt does not work
+  6453  8.0.0836  can abandon a terminal buffer after making a change
+  1983  8.0.0837  signs can be drawn on top of console messages
+  7879  8.0.0838  buffer hangs around whem terminal window is closed
+  5431  8.0.0839  cannot kill a job in a terminal with CTRL-C
+  4809  8.0.0840  MS-Windows: fopen() and open() prototypes are wrong
+  2307  8.0.0841  term_getline() may cause a crash
+  2572  8.0.0842  using slave pty after closing it
+  1963  8.0.0843  MS-Windows: compiler warning for signed/unsigned
+  2530  8.0.0844  wrong function prototype because of missing static
+  2659  8.0.0845  MS-Windows: missing semicolon in terminal code
+ 14366  8.0.0846  cannot get the name of the pty of a job
+  4988  8.0.0847  :argadd without argument can't handle space in file name
+ 25686  8.0.0848  using multiple ch_log functions is clumsy
+ 14360  8.0.0849  crash when job exit callback wipes the terminal
+  2600  8.0.0850  MS-Windows: error message while starting up may be broken
+  2538  8.0.0851  'smartindent' is used even when 'indentexpr' is set
+  2035  8.0.0852  MS-Windows: possible crash when giving a message on startup
+  1817  8.0.0853  crash when running terminal with unknown command
+ 15926  8.0.0854  no redraw after terminal was closed
+  3160  8.0.0855  MS-Windows: can't get tty name of terminal
+  1485  8.0.0856  MS-Windows: terminal job doesn't take options
+  1684  8.0.0857  terminal test fails on MS-Windows
+ 20118  8.0.0858  can exit while a terminal is still running a job
+  1718  8.0.0859  NULL pointer access when term_free_vterm called twice
+  7619  8.0.0860  side effects when channel appends to a buffer
+ 20776  8.0.0861  still many old style tests
+  2191  8.0.0862  file size test fails on MS-Windows
+  9303  8.0.0863  a remote command does not work in the terminal window
+  7596  8.0.0864  cannot specify the name of a terminal
+  1475  8.0.0865  cannot build with channel but without terminal feature
+  1636  8.0.0866  Solaris also doesn't have MIN and MAX
+  4623  8.0.0867  job and channel in a dict value not quoted
+  3737  8.0.0868  cannot specify the terminal size on the command line
+  5374  8.0.0869  job output is sometimes not displayed in a terminal
+  2018  8.0.0870  mouse escape codes sent to terminal unintentionally
+  1532  8.0.0871  status line for a terminal window always has "[+]".
+  4019  8.0.0872  no mouse scroll with a terminal window
+ 12467  8.0.0873  in terminal cannot use CTRL-\ CTRL-N to start Visual mode
+  1759  8.0.0874  can't build with terminal feature
+  1503  8.0.0875  crash with weird command sequence
+  2631  8.0.0876  backslashes and wildcards in backticks don't work
+ 16998  8.0.0877  using CTRL-\ CTRL-N in terminal is inconsistent
+  5436  8.0.0878  no completion for :mapclear
+  2061  8.0.0879  crash when shifting with huge number
+ 10190  8.0.0880  Travis uses an old Ubuntu version
+  3549  8.0.0881  win32.mak no longer included in Windows SDK
+ 11657  8.0.0882  term_scrape() and term_getline() require two arguments
+  2162  8.0.0883  invalid memory access with nonsensical script
+  5036  8.0.0884  can't specify the wait time for term_wait()
+ 20045  8.0.0885  terminal window scrollback is stored inefficiently
+  3030  8.0.0886  crash when using ":term ls"
+  1461  8.0.0887  can create a logfile in the sandbox
+  2809  8.0.0888  compiler warnings with 64 bit build
+  1613  8.0.0889  gcc gives warnings for uninitialized variables
+ 19426  8.0.0890  still many old style tests
+  1901  8.0.0891  uninitialized memory use with empty line in terminal
+  3168  8.0.0892  when opening a terminal the pty size doesn't always match
+  7133  8.0.0893  cannot get the scroll count of a terminal window
+ 35227  8.0.0894  there is no test for runtime filetype detection
+  8997  8.0.0895  filetype test fails on MS-Windows
+ 17336  8.0.0896  cannot close a terminal window when the job ends
+  1674  8.0.0897  wrong error message for invalid term_finish value
+ 16128  8.0.0898  can't use the alternate screen in a terminal window
+  5899  8.0.0899  function name mch_stop_job() is confusing
+  3940  8.0.0900  :tab options doesn't open a new tab page
+  1483  8.0.0901  asan suppress file missing from distribution
+ 29768  8.0.0902  cannot specify directory or environment for a job
+  1382  8.0.0903  early return from test function
+  9784  8.0.0904  cannot set a location list from text
+  4660  8.0.0905  MS-Windows: broken multi-byte characters in the console
+  2518  8.0.0906  don't recognize Couchbase files
+  1628  8.0.0907  with cp932 font names might be misinterpreted
+ 15834  8.0.0908  cannot set terminal size with options
+  1749  8.0.0909  channel test fails
+  9016  8.0.0910  cannot create a terminal in the current window
+  4099  8.0.0911  terminal test takes too long
+ 13319  8.0.0912  cannot run a job in a hidden terminal
+  3740  8.0.0913  MS-Windows: CTRL-C kills shell in terminal window
+  6513  8.0.0914  highlight attributes are always combined
+  1686  8.0.0915  wrong initialisation of global
+  7600  8.0.0916  cannot specify properties of window for terminal open
+  3559  8.0.0917  MS-Windows:CTRL-C handling in terminal window is wrong
+ 23026  8.0.0918  cannot get terminal window cursor shape or attributes
+  1619  8.0.0919  cursor color isn't set on startup
+  2112  8.0.0920  cursor wrong after switching altscreen in terminal
+ 10013  8.0.0921  terminal window cursor shape not supported in the GUI

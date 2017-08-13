@@ -1597,6 +1597,12 @@ gui_mch_get_color(char_u *name)
     return gui_get_color_cmn(name);
 }
 
+    guicolor_T
+gui_mch_get_rgb_color(int r, int g, int b)
+{
+    return gui_get_rgb_color_cmn(r, g, b);
+}
+
 /*
  * Return OK if the key with the termcap name "name" is supported.
  */
@@ -1834,6 +1840,7 @@ process_message(void)
 	{
 	    trash_input_buf();
 	    got_int = TRUE;
+	    ctrl_break_was_pressed = TRUE;
 	    string[0] = Ctrl_C;
 	    add_to_input_buf(string, 1);
 	}
