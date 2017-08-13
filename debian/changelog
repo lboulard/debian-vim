@@ -7,6 +7,7 @@ vim (2:8.0.0923-1) UNRELEASED; urgency=medium
   * 8.0.0693 et.al.: Implement a terminal emulator.
   * 8.0.0698: Fix a crash on exit when using a Python function from a timer.
     (Closes: #868767)
+  * 8.0.0737: Crash when X11 selection is very big  (Closes: #606957)
 
   [ James McCoy ]
   * vim-policy:
