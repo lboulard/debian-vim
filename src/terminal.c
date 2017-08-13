@@ -38,8 +38,6 @@
  * in tl_scrollback are no longer used.
  *
  * TODO:
- * - Make argument list work on MS-Windows. #1954
- * - MS-Windows: no redraw for 'updatetime'  #1915
  * - To set BS correctly, check get_stty(); Pass the fd of the pty.
  *   For the GUI fill termios with default values, perhaps like pangoterm:
  *   http://bazaar.launchpad.net/~leonerd/pangoterm/trunk/view/head:/main.c#L134
@@ -47,7 +45,6 @@
  * - do not store terminal window in viminfo.  Or prefix term:// ?
  * - add a character in :ls output
  * - add 't' to mode()
- * - set 'filetype' to "terminal"?
  * - use win_del_lines() to make scroll-up efficient.
  * - Make StatusLineTerm adjust UserN highlighting like StatusLineNC does, see
  *   use of hightlight_stlnc[].
@@ -166,7 +163,8 @@ static term_T *in_terminal_loop = NULL;
 /*
  * Functions with separate implementation for MS-Windows and Unix-like systems.
  */
-static int term_and_job_init(term_T *term, int rows, int cols, char_u *cmd, jobopt_T *opt);
+static int term_and_job_init(term_T *term, int rows, int cols,
+					      typval_T *argvar, jobopt_T *opt);
 static void term_report_winsize(term_T *term, int rows, int cols);
 static void term_free_vterm(term_T *term);
 
@@ -245,7 +243,7 @@ setup_job_options(jobopt_T *opt, int rows, int cols)
 }
 
     static void
-term_start(char_u *cmd, jobopt_T *opt, int forceit)
+term_start(typval_T *argvar, jobopt_T *opt, int forceit)
 {
     exarg_T	split_ea;
     win_T	*old_curwin = curwin;
@@ -341,16 +339,25 @@ term_start(char_u *cmd, jobopt_T *opt, int forceit)
     term->tl_next = first_term;
     first_term = term;
 
-    if (cmd == NULL || *cmd == NUL)
-	cmd = p_sh;
-
     if (opt->jo_term_name != NULL)
 	curbuf->b_ffname = vim_strsave(opt->jo_term_name);
     else
     {
 	int	i;
-	size_t	len = STRLEN(cmd) + 10;
-	char_u	*p = alloc((int)len);
+	size_t	len;
+	char_u	*cmd, *p;
+
+	if (argvar->v_type == VAR_STRING)
+	    cmd = argvar->vval.v_string;
+	else if (argvar->v_type != VAR_LIST
+		|| argvar->vval.v_list == NULL
+		|| argvar->vval.v_list->lv_len < 1)
+	    cmd = (char_u*)"";
+	else
+	    cmd = get_tv_string_chk(&argvar->vval.v_list->lv_first->li_tv);
+
+	len = STRLEN(cmd) + 10;
+	p = alloc((int)len);
 
 	for (i = 0; p != NULL; ++i)
 	{
@@ -387,7 +394,7 @@ term_start(char_u *cmd, jobopt_T *opt, int forceit)
     setup_job_options(opt, term->tl_rows, term->tl_cols);
 
     /* System dependent: setup the vterm and start the job in it. */
-    if (term_and_job_init(term, term->tl_rows, term->tl_cols, cmd, opt) == OK)
+    if (term_and_job_init(term, term->tl_rows, term->tl_cols, argvar, opt) == OK)
     {
 	/* Get and remember the size we ended up with.  Update the pty. */
 	vterm_get_size(term->tl_vterm, &term->tl_rows, &term->tl_cols);
@@ -426,6 +433,7 @@ term_start(char_u *cmd, jobopt_T *opt, int forceit)
     void
 ex_terminal(exarg_T *eap)
 {
+    typval_T	argvar;
     jobopt_T	opt;
     char_u	*cmd;
 
@@ -455,6 +463,8 @@ ex_terminal(exarg_T *eap)
 	}
 	cmd = skipwhite(p);
     }
+    if (cmd == NULL || *cmd == NUL)
+	cmd = p_sh;
 
     if (eap->addr_count == 2)
     {
@@ -469,7 +479,9 @@ ex_terminal(exarg_T *eap)
 	    opt.jo_term_rows = eap->line2;
     }
 
-    term_start(cmd, &opt, eap->forceit);
+    argvar.v_type = VAR_STRING;
+    argvar.vval.v_string = cmd;
+    term_start(&argvar, &opt, eap->forceit);
 }
 
 /*
@@ -568,9 +580,9 @@ update_cursor(term_T *term, int redraw)
     if (term->tl_normal_mode)
 	return;
     setcursor();
-    if (redraw && term->tl_buffer == curbuf)
+    if (redraw)
     {
-	if (term->tl_cursor_visible)
+	if (term->tl_buffer == curbuf && term->tl_cursor_visible)
 	    cursor_on();
 	out_flush();
 #ifdef FEAT_GUI
@@ -598,11 +610,19 @@ write_to_term(buf_T *buffer, char_u *msg, channel_T *channel)
     ch_log(channel, "writing %d bytes to terminal", (int)len);
     term_write_job_output(term, msg, len);
 
+    /* In Terminal-Normal mode we are displaying the buffer, not the terminal
+     * contents, thus no screen update is needed. */
     if (!term->tl_normal_mode)
     {
 	/* TODO: only update once in a while. */
-	update_screen(0);
-	update_cursor(term, TRUE);
+	ch_log(term->tl_job->jv_channel, "updating screen");
+	if (buffer == curbuf)
+	{
+	    update_screen(0);
+	    update_cursor(term, TRUE);
+	}
+	else
+	    redraw_after_callback();
     }
 }
 
@@ -919,6 +939,13 @@ move_terminal_to_buffer(term_T *term)
 	    wp->w_cursor.lnum = term->tl_buffer->b_ml.ml_line_count;
 	    wp->w_cursor.col = 0;
 	    wp->w_valid = 0;
+	    if (wp->w_cursor.lnum >= wp->w_height)
+	    {
+		linenr_T min_topline = wp->w_cursor.lnum - wp->w_height + 1;
+
+		if (wp->w_topline < min_topline)
+		    wp->w_topline = min_topline;
+	    }
 	    redraw_win_later(wp, NOT_VALID);
 	}
     }
@@ -1489,7 +1516,12 @@ handle_settermprop(
     {
 	case VTERM_PROP_TITLE:
 	    vim_free(term->tl_title);
-	    term->tl_title = vim_strsave((char_u *)value->string);
+	    /* a blank title isn't useful, make it empty, so that "running" is
+	     * displayed */
+	    if (*skipwhite((char_u *)value->string) == NUL)
+		term->tl_title = NULL;
+	    else
+		term->tl_title = vim_strsave((char_u *)value->string);
 	    vim_free(term->tl_status_text);
 	    term->tl_status_text = NULL;
 	    if (term == curbuf->b_term)
@@ -2558,14 +2590,6 @@ f_term_sendkeys(typval_T *argvars, typval_T *rettv)
 	send_keys_to_term(term, PTR2CHAR(msg), FALSE);
 	msg += MB_PTR2LEN(msg);
     }
-
-    if (!term->tl_normal_mode)
-    {
-	/* TODO: only update once in a while. */
-	update_screen(0);
-	if (buf == curbuf)
-	    update_cursor(term, TRUE);
-    }
 }
 
 /*
@@ -2574,11 +2598,8 @@ f_term_sendkeys(typval_T *argvars, typval_T *rettv)
     void
 f_term_start(typval_T *argvars, typval_T *rettv)
 {
-    char_u	*cmd = get_tv_string_chk(&argvars[0]);
     jobopt_T	opt;
 
-    if (cmd == NULL)
-	return;
     init_job_options(&opt);
     /* TODO: allow more job options */
     if (argvars[1].v_type != VAR_UNKNOWN
@@ -2592,7 +2613,7 @@ f_term_start(typval_T *argvars, typval_T *rettv)
 
     if (opt.jo_vertical)
 	cmdmod.split = WSP_VERT;
-    term_start(cmd, &opt, FALSE);
+    term_start(&argvars[0], &opt, FALSE);
 
     if (curbuf->b_term != NULL)
 	rettv->vval.v_number = curbuf->b_fnum;
@@ -2738,9 +2759,9 @@ dyn_winpty_init(void)
  * Return OK or FAIL.
  */
     static int
-term_and_job_init(term_T *term, int rows, int cols, char_u *cmd, jobopt_T *opt)
+term_and_job_init(term_T *term, int rows, int cols, typval_T *argvar, jobopt_T *opt)
 {
-    WCHAR	    *p;
+    WCHAR	    *p = NULL;
     channel_T	    *channel = NULL;
     job_T	    *job = NULL;
     DWORD	    error;
@@ -2748,9 +2769,21 @@ term_and_job_init(term_T *term, int rows, int cols, char_u *cmd, jobopt_T *opt)
     void	    *winpty_err;
     void	    *spawn_config = NULL;
     char	    buf[MAX_PATH];
+    garray_T	    ga;
+    char_u	    *cmd;
 
     if (!dyn_winpty_init())
 	return FAIL;
+
+    if (argvar->v_type == VAR_STRING)
+	cmd = argvar->vval.v_string;
+    else
+    {
+	ga_init2(&ga, (int)sizeof(char*), 20);
+	if (win32_build_cmd(argvar->vval.v_list, &ga) == FAIL)
+	    goto failed;
+	cmd = ga.ga_data;
+    }
 
     p = enc_to_utf16(cmd, NULL);
     if (p == NULL)
@@ -2844,9 +2877,12 @@ term_and_job_init(term_T *term, int rows, int cols, char_u *cmd, jobopt_T *opt)
     return OK;
 
 failed:
+    if (argvar->v_type == VAR_LIST)
+	vim_free(ga.ga_data);
+    if (p != NULL)
+	vim_free(p);
     if (spawn_config != NULL)
 	winpty_spawn_config_free(spawn_config);
-    vim_free(p);
     if (channel != NULL)
 	channel_clear(channel);
     if (job != NULL)
@@ -2913,17 +2949,12 @@ term_report_winsize(term_T *term, int rows, int cols)
  * Return OK or FAIL.
  */
     static int
-term_and_job_init(term_T *term, int rows, int cols, char_u *cmd, jobopt_T *opt)
+term_and_job_init(term_T *term, int rows, int cols, typval_T *argvar, jobopt_T *opt)
 {
-    typval_T	argvars[2];
-
     create_vterm(term, rows, cols);
 
     /* TODO: if the command is "NONE" only create a pty. */
-    argvars[0].v_type = VAR_STRING;
-    argvars[0].vval.v_string = cmd;
-
-    term->tl_job = job_start(argvars, opt);
+    term->tl_job = job_start(argvar, opt);
     if (term->tl_job != NULL)
 	++term->tl_job->jv_refcount;
 

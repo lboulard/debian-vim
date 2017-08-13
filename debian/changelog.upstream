@@ -947,3 +947,11 @@ Individual patches for Vim 8.0:
  10013  8.0.0921  terminal window cursor shape not supported in the GUI
  16130  8.0.0922  quickfix list always added after current one
   4452  8.0.0923  crash in GUI when terminal job exits
+  3552  8.0.0924  terminal window not updated after using term_sendkeys()
+  2470  8.0.0925  MS-Windows GUI: channel I/O not handled right away
+  1774  8.0.0926  when job in terminal window ends topline is wrong
+  1996  8.0.0927  if a terminal job sends a blank title "running" is not shown
+ 20753  8.0.0928  MS-Windows: passing arglist to job has escaping problems
+  2095  8.0.0929  :term without argument does not work
+  3456  8.0.0930  terminal buffers are stored in the viminfo file
+  2471  8.0.0931  getwininfo() does not indicate a terminal window
