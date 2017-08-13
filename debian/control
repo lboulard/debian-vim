@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
 Uploaders:
  James McCoy <jamessan@debian.org>,
-Standards-Version: 3.9.7
+Standards-Version: 4.0.1
 Build-Depends:
  autoconf,
  debhelper (>= 9.20160114),
