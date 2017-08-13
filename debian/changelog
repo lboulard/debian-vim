@@ -32,6 +32,8 @@ vim (2:8.0.0937-1) UNRELEASED; urgency=medium
   * Reference Python 3 instead of Python in long descriptions.  (Closes:
     #868020)
   * Bump debhelper compat to 10.
+  * debian/control:
+    + Remove version constraints that are satisifed in oldstable.
 
  -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
 

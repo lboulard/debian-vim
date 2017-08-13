@@ -28,8 +28,6 @@ Build-Depends:
  tcl-dev,
 Build-Conflicts:
  autoconf2.13,
- ruby1.8 (<< 1.8.7.358-8),
- ruby1.8-dev (<< 1.8.7.358-8),
 Build-Depends-Indep:
  docbook-utils,
  docbook-xml,
@@ -48,10 +46,6 @@ Depends:
  ${shlibs:Depends},
 Recommends:
  vim | vim-gtk | vim-gtk3 | vim-athena | vim-nox | vim-tiny,
-Breaks:
- vim-gui-common (<< 2:7.4.488-4~),
-Replaces:
- vim-gui-common (<< 2:7.4.488-4~),
 Description: Vi IMproved - Common files
  Vim is an almost compatible version of the UNIX editor Vi.
  .
