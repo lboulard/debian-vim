@@ -24,6 +24,8 @@ vim (2:8.0.0921-1) UNRELEASED; urgency=medium
     + Properly document xxd's license.  (Closes: #776191)
   * Mark vim-doc and xxd Multi-Arch: foreign.  Thanks to Helmut Grohne for the
     patch.  (Closes: #852722)
+  * Declare compliance with policy 4.0.1
+    + Change Priority: extra packages to optional
 
  -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
 
