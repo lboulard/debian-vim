@@ -1,4 +1,4 @@
-vim (2:8.0.0937-1) UNRELEASED; urgency=medium
+vim (2:8.0.0937-1) unstable; urgency=medium
 
   [ upstream ]
   * 8.0.0210 et.al.: Add support for bracketed paste.  (Closes: #504244)
@@ -35,7 +35,7 @@ vim (2:8.0.0937-1) UNRELEASED; urgency=medium
   * debian/control:
     + Remove version constraints that are satisifed in oldstable.
 
- -- James McCoy <jamessan@debian.org>  Sat, 17 Jun 2017 21:51:10 -0400
+ -- James McCoy <jamessan@debian.org>  Sun, 13 Aug 2017 16:06:37 -0400
 
 vim (2:8.0.0197-5) unstable; urgency=high
 
