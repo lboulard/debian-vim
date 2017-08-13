@@ -35,6 +35,7 @@ TINYFLAGS+=--disable-gpm
 TINYFLAGS+=--enable-nls
 TINYFLAGS+=--enable-multibyte
 TINYFLAGS+=--enable-acl
+TINYFLAGS+=--disable-terminal
 
 OPTFLAGS:=--enable-cscope
 ifeq ($(DEB_HOST_ARCH_OS),linux)
@@ -47,6 +48,7 @@ endif
 OPTFLAGS+=--with-features=huge
 OPTFLAGS+=--enable-multibyte
 OPTFLAGS+=--enable-acl
+OPTFLAGS+=--enable-terminal
 
 NOXFLAGS:=--without-x
 NOXFLAGS+=--enable-gui=no
