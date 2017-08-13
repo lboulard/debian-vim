@@ -180,7 +180,7 @@ Description: Vi IMproved - enhanced vi editor - with GTK2 GUI
  completion, block operations, folding, Unicode support, etc.
  .
  This package contains a version of vim compiled with a GTK2 GUI
- and support for scripting with Lua, Perl, Python, Ruby, and Tcl.
+ and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
 
 Package: vim-gtk3
 Priority: optional
@@ -214,7 +214,7 @@ Description: Vi IMproved - enhanced vi editor - with GTK3 GUI
  .
  This package contains a version of vim compiled with a GTK3 GUI
  and support for scripting with Lua,${vim:Perl-Desc}
- Python,${vim:Ruby-Desc} and Tcl.
+ Python 3,${vim:Ruby-Desc} and Tcl.
 
 Package: vim-nox
 Priority: optional
@@ -243,7 +243,7 @@ Description: Vi IMproved - enhanced vi editor - with scripting languages support
  completion, block operations, folding, Unicode support, etc.
  .
  This package contains a version of vim compiled with support for
- scripting with Lua, Perl, Python, Ruby, and Tcl but no GUI.
+ scripting with Lua, Perl, Python 3, Ruby, and Tcl but no GUI.
 
 Package: vim-athena
 Priority: optional
@@ -274,7 +274,7 @@ Description: Vi IMproved - enhanced vi editor - with Athena GUI
  completion, block operations, folding, Unicode support, etc.
  .
  This package contains a version of vim compiled with a Athena GUI
- and support for scripting with Lua, Perl, Python, Ruby, and Tcl.
+ and support for scripting with Lua, Perl, Python 3, Ruby, and Tcl.
 
 Package: vim-gnome
 Priority: optional
