@@ -955,3 +955,9 @@ Individual patches for Vim 8.0:
   2095  8.0.0929  :term without argument does not work
   3456  8.0.0930  terminal buffers are stored in the viminfo file
   2471  8.0.0931  getwininfo() does not indicate a terminal window
+ 10832  8.0.0932  terminal may not use right characters for BS and Enter
+  3178  8.0.0933  terminal test tries to start GUI when it's not possible
+  1923  8.0.0934  (after 8.0.0932) change to struts.h missing in patch
+  2852  8.0.0935  cannot recognize a terminal buffer in :ls output
+  2403  8.0.0936  mode() returns wrong value for a terminal window
+  9915  8.0.0937  user highlight groups not adjusted for terminal

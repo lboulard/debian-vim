@@ -1,4 +1,4 @@
-vim (2:8.0.0931-1) UNRELEASED; urgency=medium
+vim (2:8.0.0937-1) UNRELEASED; urgency=medium
 
   [ upstream ]
   * 8.0.0210 et.al.: Add support for bracketed paste.  (Closes: #504244)
