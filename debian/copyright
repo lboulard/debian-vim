@@ -186,15 +186,6 @@ License: Vim
       sources, parts of it or from a modified version.  You may use this
       license for previous Vim releases instead of the license that they came
       with, at your option.
-This is the Debian pre-packaged version of vim.  Vim is an almost compatible
-version of the UNIX editor Vi.  Many new features have been added: multi level
-undo, syntax highlighting, command line history, on-line help, filename
-completion, block operations, etc.
-
-This package was put together by Wichert Akkerman <wakkerma@debian.org> from
-sources obtained from: ftp://ftp.vim.org/pub/vim/unix/. The current maintainer
-is Debian VIM Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>.
-
 
 License: OPL-1+
  I. REQUIREMENTS ON BOTH UNMODIFIED AND MODIFIED VERSIONS
