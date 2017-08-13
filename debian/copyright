@@ -16,7 +16,7 @@ Copyright: 2001-2017 Bram Moolenaar <Bram@vim.org>
            2012 Hong Xu
            2001-2016 MURAOKA Taro <koron.kaoriya@gmail.com>
            2001 Bohdan Vlasyuk <bohdan@vstu.edu.ua>
-           2003-2012 Ernest Adrogué <eadrogue@gmx.net>
+           2003-2017 Ernest Adrogué <eadrogue@gmx.net>
            2005,2006,2008,2010 Kevin Patrick Scannell <kscanne@gmail.com>
            1997 Olaf Seibert
            1997 Heiko Erhardt
@@ -62,6 +62,10 @@ License: Apache or Expat
 Files: runtime/tools/efm_perl.pl
 Copyright: 2001 Joerg Ziefle <joerg.ziefle@gmx.de>
 License: GPL-1+ or Artitstic-1
+
+Files: src/libvterm/*
+Copyright: 2008 Paul Evans <leonerd@leonerd.org.uk>
+License: Expat
 
 Files: src/regexp.c
 Copyright: 1986 University of Toronto

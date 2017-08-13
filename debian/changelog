@@ -1,9 +1,12 @@
-vim (2:8.0.0691-1) UNRELEASED; urgency=medium
+vim (2:8.0.0921-1) UNRELEASED; urgency=medium
 
   [ upstream ]
   * 8.0.0210 et.al.: Add support for bracketed paste.  (Closes: #504244)
   * 8.0.0421: Fix display in diff mode when adding a line at the end of a
     buffer.  (Closes: #846993)
+  * 8.0.0693 et.al.: Implement a terminal emulator.
+  * 8.0.0698: Fix a crash on exit when using a Python function from a timer.
+    (Closes: #868767)
 
   [ James McCoy ]
   * vim-policy:
