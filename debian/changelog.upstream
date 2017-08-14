@@ -961,3 +961,12 @@ Individual patches for Vim 8.0:
   2852  8.0.0935  cannot recognize a terminal buffer in :ls output
   2403  8.0.0936  mode() returns wrong value for a terminal window
   9915  8.0.0937  user highlight groups not adjusted for terminal
+  2477  8.0.0938  scrolling in terminal window is inefficient
+  2256  8.0.0939  Test_terminal_env is flaky
+  3442  8.0.0940  Test_terminal_scrape_multibyte is flaky
+ 30777  8.0.0941  existing color schemes don't like StatusLineTerm
+  2748  8.0.0942  using freed memory with ":terminal"
+  2443  8.0.0943  MS-Windows: Test_terminal_scrape_multibyte may fail
+  2494  8.0.0944  test_profile is a little bit flaky
+  1770  8.0.0945  64-bit compiler warnings
+  2225  8.0.0946  using PATH_MAX does not work well on some systems

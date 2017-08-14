@@ -1,3 +1,13 @@
+vim (2:8.0.0946-1) UNRELEASED; urgency=medium
+
+  [ upstream ]
+  * 8.0.0939, 8.0.0940: Handle flakiness in terminal tests.  (Closes: #872164)
+  * 8.0.0944: test_profile: Accept a match when self and total time are the
+    same.
+  * 8.0.0946: Don't rely on PATH_MAX.  Fixes FTBFS on hurd.
+
+ -- James McCoy <jamessan@debian.org>  Mon, 14 Aug 2017 18:03:45 -0400
+
 vim (2:8.0.0937-1) unstable; urgency=medium
 
   [ upstream ]

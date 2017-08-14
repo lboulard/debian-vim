@@ -38,11 +38,6 @@
  * in tl_scrollback are no longer used.
  *
  * TODO:
- * - add a character in :ls output
- * - add 't' to mode()
- * - use win_del_lines() to make scroll-up efficient.
- * - Make StatusLineTerm adjust UserN highlighting like StatusLineNC does, see
- *   use of hightlight_stlnc[].
  * - implement term_setsize()
  * - add test for giving error for invalid 'termsize' value.
  * - support minimal size when 'termsize' is "rows*cols".
@@ -397,7 +392,8 @@ term_start(typval_T *argvar, jobopt_T *opt, int forceit)
     setup_job_options(opt, term->tl_rows, term->tl_cols);
 
     /* System dependent: setup the vterm and start the job in it. */
-    if (term_and_job_init(term, term->tl_rows, term->tl_cols, argvar, opt) == OK)
+    if (term_and_job_init(term, term->tl_rows, term->tl_cols, argvar, opt)
+									 == OK)
     {
 	/* Get and remember the size we ended up with.  Update the pty. */
 	vterm_get_size(term->tl_vterm, &term->tl_rows, &term->tl_cols);
@@ -439,6 +435,7 @@ ex_terminal(exarg_T *eap)
     typval_T	argvar;
     jobopt_T	opt;
     char_u	*cmd;
+    char_u	*tofree = NULL;
 
     init_job_options(&opt);
 
@@ -467,7 +464,8 @@ ex_terminal(exarg_T *eap)
 	cmd = skipwhite(p);
     }
     if (cmd == NULL || *cmd == NUL)
-	cmd = p_sh;
+	/* Make a copy, an autocommand may set 'shell'. */
+	tofree = cmd = vim_strsave(p_sh);
 
     if (eap->addr_count == 2)
     {
@@ -485,6 +483,7 @@ ex_terminal(exarg_T *eap)
     argvar.v_type = VAR_STRING;
     argvar.vval.v_string = cmd;
     term_start(&argvar, &opt, eap->forceit);
+    vim_free(tofree);
 }
 
 /*
@@ -1495,11 +1494,21 @@ handle_damage(VTermRect rect, void *user)
 }
 
     static int
-handle_moverect(VTermRect dest UNUSED, VTermRect src UNUSED, void *user)
+handle_moverect(VTermRect dest, VTermRect src, void *user)
 {
     term_T	*term = (term_T *)user;
+    win_T	*wp;
 
-    /* TODO */
+    if (dest.start_col == src.start_col
+	    && dest.end_col == src.end_col
+	    && dest.start_row < src.start_row)
+	FOR_ALL_WINDOWS(wp)
+	{
+	    if (wp->w_buffer == term->tl_buffer)
+		/* scrolling up is much more efficient when deleting lines */
+		win_del_lines(wp, dest.start_row,
+				 src.start_row - dest.start_row, FALSE, FALSE);
+	}
     redraw_buf_later(term->tl_buffer, NOT_VALID);
     return 1;
 }
