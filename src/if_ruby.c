@@ -984,7 +984,7 @@ static VALUE vim_message(VALUE self UNUSED, VALUE str)
     if (RSTRING_LEN(str) > 0)
     {
 	/* Only do this when the string isn't empty, alloc(0) causes trouble. */
-	buff = ALLOCA_N(char, RSTRING_LEN(str));
+	buff = ALLOCA_N(char, RSTRING_LEN(str) + 1);
 	strcpy(buff, RSTRING_PTR(str));
 	p = strchr(buff, '\n');
 	if (p) *p = '\0';
@@ -1424,16 +1424,12 @@ static VALUE current_line_number(void)
 
 static VALUE window_s_count(void)
 {
-#ifdef FEAT_WINDOWS
     win_T	*w;
     int n = 0;
 
     FOR_ALL_WINDOWS(w)
 	n++;
     return INT2NUM(n);
-#else
-    return INT2NUM(1);
-#endif
 }
 
 static VALUE window_s_aref(VALUE self UNUSED, VALUE num)
@@ -1441,11 +1437,7 @@ static VALUE window_s_aref(VALUE self UNUSED, VALUE num)
     win_T *w;
     int n = NUM2INT(num);
 
-#ifndef FEAT_WINDOWS
-    w = curwin;
-#else
     for (w = firstwin; w != NULL; w = w->w_next, --n)
-#endif
 	if (n == 0)
 	    return window_new(w);
     return Qnil;
@@ -1483,14 +1475,12 @@ static VALUE window_width(VALUE self UNUSED)
 
 static VALUE window_set_width(VALUE self UNUSED, VALUE width)
 {
-#ifdef FEAT_WINDOWS
     win_T *win = get_win(self);
     win_T *savewin = curwin;
 
     curwin = win;
     win_setwidth(NUM2INT(width));
     curwin = savewin;
-#endif
     return width;
 }
 

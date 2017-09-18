@@ -435,13 +435,8 @@ typedef off_t off_T;
  * The characters and attributes cached for the screen.
  */
 typedef char_u schar_T;
-#ifdef FEAT_SYN_HL
 typedef unsigned short sattr_T;
-# define MAX_TYPENR 65535
-#else
-typedef unsigned char sattr_T;
-# define MAX_TYPENR 255
-#endif
+#define MAX_TYPENR 65535
 
 /*
  * The u8char_T can hold one decoded UTF-8 character.
@@ -681,7 +676,8 @@ extern int (*dyn_libintl_putenv)(const char *envstring);
 #define HL_UNDERCURL		0x10
 #define HL_STANDOUT		0x20
 #define HL_NOCOMBINE		0x40
-#define HL_ALL			0x7f
+#define HL_STRIKETHROUGH	0x80
+#define HL_ALL			0xff
 
 /* special attribute addition: Put message in history */
 #define MSG_HIST		0x1000
@@ -720,9 +716,10 @@ extern int (*dyn_libintl_putenv)(const char *envstring);
 #define SHOWMATCH	(0x700 + INSERT) /* show matching paren */
 #define CONFIRM		0x800	/* ":confirm" prompt */
 #define SELECTMODE	0x1000	/* Select mode, only for mappings */
+#define TERMINAL        0x2000  /* Terminal mode */
 
-#define MAP_ALL_MODES	(0x3f | SELECTMODE)	/* all mode bits used for
-						 * mapping */
+/* all mode bits used for mapping */
+#define MAP_ALL_MODES	(0x3f | SELECTMODE | TERMINAL)
 
 /* directions */
 #define FORWARD			1
@@ -862,24 +859,12 @@ extern int (*dyn_libintl_putenv)(const char *envstring);
 #define FINDFILE_DIR	1	/* only directories */
 #define FINDFILE_BOTH	2	/* files and directories */
 
-#ifdef FEAT_WINDOWS
-# define W_WINCOL(wp)	(wp->w_wincol)
-# define W_WIDTH(wp)	(wp->w_width)
-# define W_ENDCOL(wp)	(wp->w_wincol + wp->w_width)
-# define W_VSEP_WIDTH(wp) (wp->w_vsep_width)
-#else
-# define W_WINCOL(wp)	0
-# define W_WIDTH(wp)	Columns
-# define W_ENDCOL(wp)	Columns
-# define W_VSEP_WIDTH(wp) 0
-#endif
-#ifdef FEAT_WINDOWS
-# define W_STATUS_HEIGHT(wp) (wp->w_status_height)
-# define W_WINROW(wp)	(wp->w_winrow)
-#else
-# define W_STATUS_HEIGHT(wp) 0
-# define W_WINROW(wp)	0
-#endif
+#define W_WINCOL(wp)	(wp->w_wincol)
+#define W_WIDTH(wp)	(wp->w_width)
+#define W_ENDCOL(wp)	(wp->w_wincol + wp->w_width)
+#define W_VSEP_WIDTH(wp) (wp->w_vsep_width)
+#define W_STATUS_HEIGHT(wp) (wp->w_status_height)
+#define W_WINROW(wp)	(wp->w_winrow)
 
 #ifdef NO_EXPANDPATH
 # define gen_expand_wildcards mch_expand_wildcards
@@ -2012,7 +1997,11 @@ typedef int sock_T;
 #define VV_TYPE_NONE	78
 #define VV_TYPE_JOB	79
 #define VV_TYPE_CHANNEL	80
-#define VV_LEN		81	/* number of v: vars */
+#define VV_TERMRGBRESP	81
+#define VV_TERMU7RESP	82
+#define VV_TERMSTYLERESP 83
+#define VV_TERMBLINKRESP 84
+#define VV_LEN		85	/* number of v: vars */
 
 /* used for v_number in VAR_SPECIAL */
 #define VVAL_FALSE	0L

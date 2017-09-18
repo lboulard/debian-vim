@@ -50,7 +50,6 @@ SCRIPTS_ALL = \
 	test70.out \
 	test73.out \
 	test79.out \
-	test80.out \
 	test88.out \
 	test94.out \
 	test95.out \
@@ -195,13 +194,16 @@ NEW_TESTS = test_arabic.res \
 	    test_system.res \
 	    test_tcl.res \
 	    test_terminal.res \
+	    test_terminal_fail.res \
 	    test_textobjects.res \
 	    test_undo.res \
 	    test_usercommands.res \
 	    test_viminfo.res \
 	    test_vimscript.res \
 	    test_visual.res \
+	    test_winbar.res \
 	    test_window_id.res \
+	    test_windows_home.res \
 	    test_writefile.res \
 	    test_alot_latin.res \
 	    test_alot_utf8.res \

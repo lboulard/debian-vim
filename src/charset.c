@@ -1092,10 +1092,7 @@ win_lbr_chartabsize(
 	    && VIM_ISBREAK(c)
 	    && !VIM_ISBREAK((int)s[1])
 	    && wp->w_p_wrap
-# ifdef FEAT_WINDOWS
-	    && wp->w_width != 0
-# endif
-       )
+	    && wp->w_width != 0)
     {
 	/*
 	 * Count all characters from first non-blank after a blank up to next
@@ -1249,10 +1246,8 @@ in_win_border(win_T *wp, colnr_T vcol)
     int		width1;		/* width of first line (after line number) */
     int		width2;		/* width of further lines */
 
-# ifdef FEAT_WINDOWS
     if (wp->w_width == 0)	/* there is no border */
 	return FALSE;
-# endif
     width1 = W_WIDTH(wp) - win_col_off(wp);
     if ((int)vcol < width1 - 1)
 	return FALSE;
@@ -1533,6 +1528,22 @@ skipwhite(char_u *q)
     while (VIM_ISWHITE(*p)) /* skip to next non-white */
 	++p;
     return p;
+}
+
+/*
+ * getwhitecols: return the number of whitespace
+ * columns (bytes) at the start of a given line
+ */
+    int
+getwhitecols_curline()
+{
+    return getwhitecols(ml_get_curline());
+}
+
+    int
+getwhitecols(char_u *p)
+{
+    return skipwhite(p) - p;
 }
 
 /*
@@ -2013,8 +2024,7 @@ hex2nr(int c)
     return c - '0';
 }
 
-#if defined(FEAT_TERMRESPONSE) \
-	|| (defined(FEAT_GUI_GTK) && defined(FEAT_WINDOWS)) || defined(PROTO)
+#if defined(FEAT_TERMRESPONSE) || defined(FEAT_GUI_GTK) || defined(PROTO)
 /*
  * Convert two hex characters to a byte.
  * Return -1 if one of the characters is not hex.
