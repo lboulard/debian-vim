@@ -15,10 +15,10 @@ Signed-off-by: James McCoy <jamessan@debian.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/runtime/doc/options.txt b/runtime/doc/options.txt
-index 73955f4..4ab969c 100644
+index 3072793..78e8679 100644
 --- a/runtime/doc/options.txt
 +++ b/runtime/doc/options.txt
-@@ -5221,7 +5221,7 @@ A jump table for the options with a short description can be found at |Q_op|.
+@@ -5244,7 +5244,7 @@ A jump table for the options with a short description can be found at |Q_op|.
  
  				   *'modeline'* *'ml'* *'nomodeline'* *'noml'*
  'modeline' 'ml'		boolean	(Vim default: on (off for root),

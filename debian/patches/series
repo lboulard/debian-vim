@@ -3,7 +3,3 @@ debian/Support-sourcing-a-vimrc.tiny-when-Vim-is-invoked-as-vi.patch
 debian/Detect-the-rst-filetype-using-the-contents-of-the-file.patch
 debian/Add-recognition-of-more-LaTeX-commands-for-tex-filetype-d.patch
 debian/Document-Debian-s-decision-to-disable-modelines-by-defaul.patch
-upstream/debcontrol.vim-Add-support-for-Build-Depends-Conflicts-Ar.patch
-upstream/debcontrol.vim-Fix-highlighting-of-javascript-in-debcontr.patch
-upstream/debcontrol.vim-Treat-tabs-as-valid-whitespace.patch
-upstream/debcontrol.vim-Add-support-for-Testsuite-field.patch

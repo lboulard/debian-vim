@@ -37,7 +37,7 @@ index fe68d49..7e6e504 100644
  #undef HAVE_ATTRIBUTE_UNUSED
  
 diff --git a/src/configure.ac b/src/configure.ac
-index ea4df8f..da97804 100644
+index 1183ab4..a55753a 100644
 --- a/src/configure.ac
 +++ b/src/configure.ac
 @@ -29,6 +29,16 @@ dnl in autoconf needs it, where it uses STDC_HEADERS.
@@ -58,7 +58,7 @@ index ea4df8f..da97804 100644
  
  AC_MSG_CHECKING(--enable-fail-if-missing argument)
 diff --git a/src/version.c b/src/version.c
-index f3e5a3a..977942e 100644
+index 8abd96e..f8ac32c 100644
 --- a/src/version.c
 +++ b/src/version.c
 @@ -44,11 +44,17 @@ make_version(void)

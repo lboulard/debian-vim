@@ -8,7 +8,7 @@ Closes: #382541
  1 file changed, 8 insertions(+)
 
 diff --git a/runtime/scripts.vim b/runtime/scripts.vim
-index 358d328..092889f 100644
+index 9107d6a..628ac01 100644
 --- a/runtime/scripts.vim
 +++ b/runtime/scripts.vim
 @@ -348,6 +348,14 @@ else

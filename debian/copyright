@@ -22,6 +22,7 @@ Copyright: 2001-2017 Bram Moolenaar <Bram@vim.org>
            1997 Heiko Erhardt
            2002 E. I. DuPont de Nemours and Company, Inc
            Pablo Ariel Kohan
+           2017 Eugene Ciurana
 License: Vim
 
 Files: runtime/doc/*
@@ -102,7 +103,7 @@ Copyright: 1993 Juergen Weigert (jnweiger@immd4.informatik.uni-erlangen.de)
 License: GPL-2+
 
 Files: src/iscygpty.*
-Copyright: 2015-2016 K.Takata
+Copyright: 2015-2017 K.Takata
 License: Expat or Vim
 
 Files: src/xpm/*
