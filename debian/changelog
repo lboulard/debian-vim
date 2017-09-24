@@ -13,6 +13,7 @@ vim (2:8.0.1144-1) UNRELEASED; urgency=medium
     + Treat tabs as valid whitespace  (Closes: #872557)
   * Declare compliance with Policy 4.1.0, no changes needed
   * Add basic autopkgtests
+  * Add missing postrm for symlink_to_dir maintscripts
 
  -- James McCoy <jamessan@debian.org>  Sun, 24 Sep 2017 13:44:14 -0400
 
