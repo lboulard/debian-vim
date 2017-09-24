@@ -1151,3 +1151,20 @@ Individual patches for Vim 8.0:
   3802  8.0.1125  wrong window height when splitting window with window toolbar
   2983  8.0.1126  endless resize when terminal showing in two buffers
   4670  8.0.1127  Test_peek_and_get_char fails on 32 bit system
+  4063  8.0.1128  old xterm sends CTRL-X in response to t_RS
+  1811  8.0.1129  window toolbar missing a part of the patch
+ 22681  8.0.1130  the qf_jump() function is still too long
+  3309  8.0.1131  not easy to trigger an autocommand for new terminal window
+  1659  8.0.1132  #if condition is not portable
+ 10373  8.0.1133  syntax timeout not used correctly
+  1374  8.0.1134  superfluous call to syn_get_final_id()
+ 19402  8.0.1135  W_WINCOL() is always the same
+ 58323  8.0.1136  W_WIDTH() is always the same
+  1522  8.0.1137  (after 8.0.1136) cannot build with Ruby
+  3567  8.0.1138  click in window toolbar starts Visual mode
+ 12380  8.0.1139  using window toolbar changes state
+ 31234  8.0.1140  still old style tests
+ 11341  8.0.1141  MS-Windows build dependencies are incomplete
+  1637  8.0.1142  window toolbar menu gets a tear-off item
+  5078  8.0.1143  macros always expand to the same thing
+  1823  8.0.1144  using wrong #ifdef for computing length

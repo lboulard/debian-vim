@@ -1,7 +1,11 @@
-vim (2:8.0.1127-1) UNRELEASED; urgency=medium
+vim (2:8.0.1144-1) UNRELEASED; urgency=medium
 
   [ upstream ]
   * Fix detection/enabling of cursor blink state.  (Closes: #872302)
+  * ftplugin/perl.vim: Set 'iskeyword' local to the buffer so it doesn't
+    affect subsequently opened buffers.  (Closes: #873755)
+  * syntax/mason.vim: Correctly highlight mason files again.  (Closes:
+    #700016)
 
   [ James McCoy ]
   * debcontrol.vim:
@@ -10,7 +14,7 @@ vim (2:8.0.1127-1) UNRELEASED; urgency=medium
   * Declare compliance with Policy 4.1.0, no changes needed
   * Add basic autopkgtests
 
- -- James McCoy <jamessan@debian.org>  Mon, 18 Sep 2017 20:16:12 -0400
+ -- James McCoy <jamessan@debian.org>  Sun, 24 Sep 2017 13:44:14 -0400
 
 vim (2:8.0.0946-1) unstable; urgency=medium
 
