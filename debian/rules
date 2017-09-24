@@ -234,7 +234,7 @@ build-stamp-xxd: build-stamp-vim-basic
 	$(MAKE) -C src/vim-basic xxd/xxd
 	touch $@
 
-autoconf-stamp:
+autoconf-stamp: src/auto/config.mk
 	dh_testdir
 	[ -f debian/configure.dist ] || cp src/auto/configure debian/configure.dist
 # The autoconf target generates a new configure, and touches some other
