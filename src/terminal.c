@@ -38,11 +38,14 @@
  * in tl_scrollback are no longer used.
  *
  * TODO:
+ * - in GUI vertical split causes problems.  Cursor is flickering. (Hirohito
+ *   Higashi, 2017 Sep 19)
  * - Shift-Tab does not work.
  * - click in Window toolbar of other window: save/restore Insert and Visual
  * - Redirecting output does not work on MS-Windows, Test_terminal_redir_file()
  *   is disabled.
  * - implement term_setsize()
+ * - MS-Windows GUI: still need to type a key after shell exits?  #1924
  * - add test for giving error for invalid 'termsize' value.
  * - support minimal size when 'termsize' is "rows*cols".
  * - support minimal size when 'termsize' is empty?
@@ -445,6 +448,12 @@ term_start(typval_T *argvar, jobopt_T *opt, int forceit)
 	 * a deadlock if the job is waiting for Vim to read. */
 	channel_set_nonblock(term->tl_job->jv_channel, PART_IN);
 
+#ifdef FEAT_AUTOCMD
+	++curbuf->b_locked;
+	apply_autocmds(EVENT_BUFWINENTER, NULL, NULL, FALSE, curbuf);
+	--curbuf->b_locked;
+#endif
+
 	if (old_curbuf != NULL)
 	{
 	    --curbuf->b_nwindows;
@@ -721,7 +730,7 @@ term_send_mouse(VTerm *vterm, int button, int pressed)
     VTermModifier   mod = VTERM_MOD_NONE;
 
     vterm_mouse_move(vterm, mouse_row - W_WINROW(curwin),
-					    mouse_col - W_WINCOL(curwin), mod);
+					    mouse_col - curwin->w_wincol, mod);
     vterm_mouse_button(vterm, button, pressed, mod);
     return TRUE;
 }
@@ -1299,7 +1308,7 @@ send_keys_to_term(term_T *term, int c, int typed)
 	case K_MOUSERIGHT:
 	    if (mouse_row < W_WINROW(curwin)
 		    || mouse_row >= (W_WINROW(curwin) + curwin->w_height)
-		    || mouse_col < W_WINCOL(curwin)
+		    || mouse_col < curwin->w_wincol
 		    || mouse_col >= W_ENDCOL(curwin)
 		    || dragging_outside)
 	    {
