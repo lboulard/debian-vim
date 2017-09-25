@@ -1,4 +1,4 @@
-vim (2:8.0.1144-1) UNRELEASED; urgency=medium
+vim (2:8.0.1144-1) unstable; urgency=medium
 
   [ upstream ]
   * Fix detection/enabling of cursor blink state.  (Closes: #872302)
@@ -15,7 +15,7 @@ vim (2:8.0.1144-1) UNRELEASED; urgency=medium
   * Add basic autopkgtests
   * Add missing postrm for symlink_to_dir maintscripts
 
- -- James McCoy <jamessan@debian.org>  Sun, 24 Sep 2017 13:44:14 -0400
+ -- James McCoy <jamessan@debian.org>  Sun, 24 Sep 2017 22:02:28 -0400
 
 vim (2:8.0.0946-1) unstable; urgency=medium
 
