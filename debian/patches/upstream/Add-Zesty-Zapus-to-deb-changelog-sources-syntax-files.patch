@@ -8,7 +8,7 @@ Subject: Add Zesty Zapus to deb{changelog,sources} syntax files
  2 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/runtime/syntax/debchangelog.vim b/runtime/syntax/debchangelog.vim
-index a10e4ad34..eb02aaf4a 100644
+index a10e4ad..eb02aaf 100644
 --- a/runtime/syntax/debchangelog.vim
 +++ b/runtime/syntax/debchangelog.vim
 @@ -3,7 +3,7 @@
@@ -30,7 +30,7 @@ index a10e4ad34..eb02aaf4a 100644
  syn match debchangelogCloses	contained "closes:\_s*\(bug\)\=#\=\_s\=\d\+\(,\_s*\(bug\)\=#\=\_s\=\d\+\)*"
  syn match debchangelogLP	contained "\clp:\s\+#\d\+\(,\s*#\d\+\)*"
 diff --git a/runtime/syntax/debsources.vim b/runtime/syntax/debsources.vim
-index 277794497..390c43035 100644
+index 2777944..390c430 100644
 --- a/runtime/syntax/debsources.vim
 +++ b/runtime/syntax/debsources.vim
 @@ -2,7 +2,7 @@
