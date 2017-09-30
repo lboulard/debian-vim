@@ -1,11 +1,11 @@
-vim (2:8.0.0197-4+deb9u1) UNRELEASED; urgency=medium
+vim (2:8.0.0197-4+deb9u1) stretch; urgency=medium
 
   * Backport upstream patches to fix CVE-2017-11109  (Closes: #867720)
     + 8.0.0703: Illegal memory access with empty :doau command
     + 8.0.0706: Crash when cancelling the cmdline window in Ex mode
     + 8.0.0707: Freeing wrong memory when manipulating buffers in autocommands
 
- -- James McCoy <jamessan@debian.org>  Sat, 30 Sep 2017 14:15:49 -0400
+ -- James McCoy <jamessan@debian.org>  Sat, 30 Sep 2017 14:21:38 -0400
 
 vim (2:8.0.0197-4) unstable; urgency=medium
 
