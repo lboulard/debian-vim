@@ -1168,3 +1168,84 @@ Individual patches for Vim 8.0:
   1637  8.0.1142  window toolbar menu gets a tear-off item
   5078  8.0.1143  macros always expand to the same thing
   1823  8.0.1144  using wrong #ifdef for computing length
+  1402  8.0.1145  warning when compiling with Perl
+  5626  8.0.1146  redraw when highlight is set with same names
+  2807  8.0.1147  fail to build with tiny features
+  6184  8.0.1148  gN doesn't work on last match with 'wrapscan' off
+  7330  8.0.1149  libvterm colors differ from xterm
+  6189  8.0.1150  MS-Windows GUI: dialog font size is incorrect
+  2494  8.0.1151  "vim -c startinsert!" doesn't append
+  6487  8.0.1152  encoding of error message wrong in Cygwin terminal
+  2997  8.0.1153  no tests for diff_hlID() and diff_filler()
+  2716  8.0.1154  'indentkeys' does not work properly
+  1651  8.0.1155  Ruby command triggers a warning
+  5135  8.0.1156  trouble from removing one -W argument from Perl CFLAGS
+  1957  8.0.1157  compiler warning on MS-Windows
+ 19930  8.0.1158  still old style tests
+  1422  8.0.1159  typo in #ifdef
+  4246  8.0.1160  getting tab-local variable fails after closing window
+ 15633  8.0.1161  popup menu drawing problem when resizing terminal
+  2424  8.0.1162  shared script for tests cannot be included twice
+  2326  8.0.1163  popup test is flaky
+  5362  8.0.1164  changing StatusLine highlight does not always work
+  2287  8.0.1165  popup test is still flaky
+  1843  8.0.1166  :terminal doesn't work on Mac High Sierra
+  3377  8.0.1167  Motif: typing in terminal window is slow
+ 18426  8.0.1168  wrong highlighting with combination of match and 'cursorline'
+  6918  8.0.1169  highlignting one char too many with 'list' and 'cul'
+  8572  8.0.1170  using termdebug results in 100% CPU time
+  1960  8.0.1171  popup test is still a bit flaky
+  2139  8.0.1172  when E734 is given option is still set
+  2122  8.0.1173  terminal window is not redrawn after CTRL-L
+  2549  8.0.1174  Mac Terminal.app has wrong color for white
+  1604  8.0.1175  build failure without +termresponse
+  3713  8.0.1176  job_start() does not handle quote and backslash correctly
+  3037  8.0.1177  in a terminal window the popup menu is not cleared
+ 13382  8.0.1178  using old compiler on MS-Windows
+  4730  8.0.1179  Test_popup_and_window_resize() does not always pass
+  3172  8.0.1180  MS-Windows testclean target deletes the color script
+  3492  8.0.1181  tests using Vim command fail on MS-Windows
+  6434  8.0.1182  cannot see or change mzscheme dll name
+ 21325  8.0.1183  MS-Windows build instructions are outdated
+  3027  8.0.1184  the :marks command is not tested
+  3657  8.0.1185  Ruby library includes minor version number
+ 59388  8.0.1186  still quite a few old style tests
+  2231  8.0.1187  building with lua fails for OSX on Travis
+  2201  8.0.1188  autocmd test fails on MS-Windows
+  2664  8.0.1189  E172 is not actually useful
+  3139  8.0.1190  unusable after opening new window in BufWritePre event
+ 48977  8.0.1191  MS-Windows: missing 32 and 64 bit files in installer
+  2725  8.0.1192  MS-Windows: terminal feature not enabled by default
+  2290  8.0.1193  crash when wiping out a buffer after using getbufinfo()
+ 18327  8.0.1194  actual fg and bg colors of terminal are unknown
+  3015  8.0.1195  can't build on MS-Windows
+  1390  8.0.1196  crash when t_RF is not set
+  3354  8.0.1197  MS-Windows build instructions are not up to date
+  3745  8.0.1198  older compilers don't know uint8_t
+  1736  8.0.1199  when 'clipboard' is "autoselectplus" star register is set
+ 13957  8.0.1200  tests switch the bell off twice
+  3421  8.0.1201  "yL" is affected by 'scrolloff'
+  2309  8.0.1202  :wall gives an errof for a terminal window
+  5562  8.0.1203  terminal window mistreats composing characters 
+  2955  8.0.1204  a QuitPre autocommand may get the wrong file name
+  2475  8.0.1205  it is possible to unload a changed buffer
+  7183  8.0.1206  no autocmd for entering or leaving the command line
+  8162  8.0.1207  profiling skips the first and last script line
+  5742  8.0.1208  'statusline' drops empty group with highlight change 
+ 23442  8.0.1209  still too many old style tests
+  3564  8.0.1210  CTRL-G and CTRL-T are ignored with typeahead
+  5464  8.0.1211  cannot reorder tab pages with drag & drop
+  4263  8.0.1212  MS-Windows: tear-off menu does not work on 64 bit
+  2684  8.0.1213  setting 'mzschemedll' has no effect
+  2320  8.0.1214  accessing freed memory when EXITFREE is set
+ 15385  8.0.1215  newer gcc warns for implicit fallthrough
+  1330  8.0.1216  tabline is not always updated for :file command
+  3979  8.0.1217  can't use remote eval to inspect vars in debug mode
+  5175  8.0.1218  writing to freed memory in autocmd
+  2505  8.0.1219  terminal test is flaky
+  2561  8.0.1220  skipping empty statusline groups is not correct
+ 48749  8.0.1221  still too many old style tests
+  3624  8.0.1222  test functions interfere with each other
+  4155  8.0.1223  crash when using autocomplete and tab pages
+ 10925  8.0.1224  still interference between test functions
+  2413  8.0.1225  no check for spell region being zero
