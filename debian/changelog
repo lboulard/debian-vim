@@ -3,6 +3,12 @@ vim (2:8.0.1225-1) UNRELEASED; urgency=medium
   [ upstream ]
   * 8.0.1154: Fix indentation when 'indentkeys' is in use.  (Closes: #877262)
 
+  [ James McCoy ]
+  * syntax/debcontrol.vim:
+    + Add support for all fields in deb-src-control(5).  (Closes: #878970)
+  * syntax/deb{sources,changelog}.vim:
+    + Add bionic release and mark yakkety & squeeze unsupported.
+
  -- James McCoy <jamessan@debian.org>  Thu, 26 Oct 2017 19:29:12 -0400
 
 vim (2:8.0.1144-1) unstable; urgency=medium
