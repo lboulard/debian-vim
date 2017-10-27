@@ -1,4 +1,4 @@
-vim (2:8.0.1226-1) UNRELEASED; urgency=medium
+vim (2:8.0.1226-1) unstable; urgency=medium
 
   [ upstream ]
   * 8.0.1154: Fix indentation when 'indentkeys' is in use.  (Closes: #877262)
@@ -9,7 +9,7 @@ vim (2:8.0.1226-1) UNRELEASED; urgency=medium
   * syntax/deb{sources,changelog}.vim:
     + Add bionic release and mark yakkety & squeeze unsupported.
 
- -- James McCoy <jamessan@debian.org>  Thu, 26 Oct 2017 19:29:12 -0400
+ -- James McCoy <jamessan@debian.org>  Fri, 27 Oct 2017 08:27:27 -0400
 
 vim (2:8.0.1144-1) unstable; urgency=medium
 
