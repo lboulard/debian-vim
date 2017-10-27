@@ -1249,3 +1249,4 @@ Individual patches for Vim 8.0:
   4155  8.0.1223  crash when using autocomplete and tab pages
  10925  8.0.1224  still interference between test functions
   2413  8.0.1225  no check for spell region being zero
+  3003  8.0.1226  edit and popup tests failing
