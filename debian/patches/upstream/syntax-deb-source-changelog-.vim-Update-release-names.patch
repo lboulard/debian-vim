@@ -1,5 +1,5 @@
 From: James McCoy <jamessan@debian.org>
-Date: Thu, 26 Oct 2017 23:00:48 -0400
+Date: Sat, 28 Oct 2017 23:07:40 -0400
 Subject: syntax/deb{source,changelog}.vim: Update release names
 
 Add new bionic release for Ubuntu.
@@ -34,7 +34,7 @@ index 6e6ed19..0d3f872 100644
  syn match debchangelogCloses	contained "closes:\_s*\(bug\)\=#\=\_s\=\d\+\(,\_s*\(bug\)\=#\=\_s\=\d\+\)*"
  syn match debchangelogLP	contained "\clp:\s\+#\d\+\(,\s*#\d\+\)*"
 diff --git a/runtime/syntax/debsources.vim b/runtime/syntax/debsources.vim
-index 4fa80de..3ce2287 100644
+index 4fa80de..6791ece 100644
 --- a/runtime/syntax/debsources.vim
 +++ b/runtime/syntax/debsources.vim
 @@ -2,7 +2,7 @@
@@ -42,7 +42,7 @@ index 4fa80de..3ce2287 100644
  " Maintainer:   Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
  " Former Maintainer: Matthijs Mohlmann <matthijs@cacholong.nl>
 -" Last Change: 2017 Apr 22
-+" Last Change: 2017 Oct 26
++" Last Change: 2017 Oct 28
  " URL: https://anonscm.debian.org/cgit/pkg-vim/vim.git/plain/runtime/syntax/debsources.vim
  
  " Standard syntax initialization
@@ -59,7 +59,7 @@ index 4fa80de..3ce2287 100644
  let s:unsupported = [
        \ 'buzz', 'rex', 'bo', 'hamm', 'slink', 'potato',
 -      \ 'woody', 'sarge', 'etch', 'lenny',
-+      \ 'woody', 'sarge', 'etch', 'lenny', 'squeeze'
++      \ 'woody', 'sarge', 'etch', 'lenny', 'squeeze',
        \
        \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
        \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
