@@ -1,4 +1,4 @@
-vim (2:8.0.1257-1) UNRELEASED; urgency=medium
+vim (2:8.0.1257-1) unstable; urgency=medium
 
   [ upstream ]
   * 8.0.1246: Fix flaky popup test, which should fix the various FTBFS from
@@ -10,7 +10,7 @@ vim (2:8.0.1257-1) UNRELEASED; urgency=medium
       Triplett.  (Closes: #879986)
   * Declare compliance with Policy 4.1.1, no changes needed.
 
- -- James McCoy <jamessan@debian.org>  Thu, 02 Nov 2017 20:38:04 -0400
+ -- James McCoy <jamessan@debian.org>  Thu, 02 Nov 2017 21:27:13 -0400
 
 vim (2:8.0.1226-1) unstable; urgency=medium
 
