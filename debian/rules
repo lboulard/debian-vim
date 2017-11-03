@@ -165,7 +165,7 @@ DOT_IN_DEPS += debian/runtime/debian.vim
 DOT_IN_DEPS_TINY := debian/tiny/vimrc.tiny
 
 # nothing to do per default
-all: 
+all:
 
 update-changelog:
 	dh_testdir
@@ -299,7 +299,7 @@ install-stamp-indep: build-stamp-vim-basic build-stamp-indep $(DOT_IN_DEPS)
 	dh_testdir
 	dh_testroot
 	dh_installdirs
-	
+
 	mkdir -p "$(DESTDIR)/usr/bin"
 	# installruntime requires a "vim" in /usr/bin
 	cp src/vim-basic/vim "$(DESTDIR)/usr/bin"
@@ -310,16 +310,16 @@ install-stamp-indep: build-stamp-vim-basic build-stamp-indep $(DOT_IN_DEPS)
 	    install-languages \
 	    install-icons
 	rm -f "$(DESTDIR)/usr/bin/vim"
-	
+
 	$(munge-man-directories)
-	
+
 	# rm stuff handled by alternatives or our own symlinks
 	find "$(DESTDIR)/usr/share/man" \( -name view.1 -o -name ex.1 -o -name rvim.1 -o -name rview.1 \) -delete
-	
+
 	# helpztags manpage
 	pod2man -c "User Commands" -s 1 -q none -r "vim $(VERSION)" \
 		-d "August 2010" debian/helpztags debian/helpztags.1
-	
+
 	# Generate language-specific sections of
 	# vim-{runtime,common,gui-common}.install files
 	for L in $(LANGS); do \
@@ -332,7 +332,7 @@ install-stamp-indep: build-stamp-vim-basic build-stamp-indep $(DOT_IN_DEPS)
 	  echo debian/tmp/usr/share/man/$$L/man1/evim.1  \
 	    usr/share/man/$$L/man1/ >>debian/vim-gui-common.install; \
 	done
-	
+
 	# Icons
 	for sz in 16 32 48; do \
 	  cp runtime/vim$${sz}x$${sz}.xpm debian/vim-common/usr/share/pixmaps/vim-$${sz}.xpm; \
@@ -344,7 +344,7 @@ install-stamp-indep: build-stamp-vim-basic build-stamp-indep $(DOT_IN_DEPS)
 	pdf2svg debian/tmplogo.pdf debian/vim-common/usr/share/pixmaps/gvim.svg
 	cp debian/vim-common/usr/share/pixmaps/gvim.svg \
 	   debian/vim-common/usr/share/icons/hicolor/scalable/apps/gvim.svg
-	
+
 	dh_install
 	# adjust things for vim-gui-common
 	cp debian/vim-common/usr/share/man/man1/vim.1 \
@@ -403,7 +403,7 @@ install-stamp-%: build-stamp-%
 	dh_testroot
 	@echo "*** DEBIAN *** INSTALLING VARIANT $*"
 	dh_installdirs
-	
+
 	cp src/$*/vim src/$*/$(subst -,.,$*)
 	# variant-related installations
 	for x in $(PER_VARIANT_FILES) ; do \
@@ -435,7 +435,7 @@ install-stamp-%: build-stamp-%
 	dh_install
 	dh_link
 	dh_bugfiles -A
-	
+
 	touch $@
 
 %: %.in
