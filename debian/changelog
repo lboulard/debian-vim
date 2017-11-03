@@ -8,6 +8,7 @@ vim (2:8.0.1257-1) UNRELEASED; urgency=medium
   * syntax/debsources.vim:
     + Fix syntax error in definition of unsupported releases.  Thanks to Josh
       Triplett.  (Closes: #879986)
+  * Declare compliance with Policy 4.1.1, no changes needed.
 
  -- James McCoy <jamessan@debian.org>  Thu, 02 Nov 2017 20:38:04 -0400
 
