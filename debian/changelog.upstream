@@ -1250,3 +1250,34 @@ Individual patches for Vim 8.0:
  10925  8.0.1224  still interference between test functions
   2413  8.0.1225  no check for spell region being zero
   3003  8.0.1226  edit and popup tests failing
+  2112  8.0.1227  undefined left shift in readfile() 
+  1941  8.0.1228  invalid memory access in GUI test
+  1740  8.0.1229  condition in vim_str2nr() is always true
+  2557  8.0.1230  CTRL-A in Visual mode uses character after selection
+  2864  8.0.1231  expanding file name drops dash
+ 10847  8.0.1232  MS-Windows users are confused about default mappings
+  1407  8.0.1233  typo in dos installer
+  7047  8.0.1234  MS-Windows: composing chars are not shown properly
+  4732  8.0.1235  cannot disable the terminal feature in a huge build
+ 98987  8.0.1236  Mac features are confusing
+  4259  8.0.1237  ":set scroll&" often gives an error
+ 17328  8.0.1238  incremental search only shows one match
+ 14313  8.0.1239  cannot use a lambda for the skip argument to searchpair()
+  8450  8.0.1240  MS-Windows: term_start() does not support environment
+  1812  8.0.1241  popup test is flaky
+  2983  8.0.1242  function argument with only dash is seen as number zero
+  2386  8.0.1243  no test for what 8.0.1227 fixes
+  2901  8.0.1244  search test does not work correctly on MS-Windows
+  8703  8.0.1245  when WaitFor() has a wrong expression it just waits a second
+  2066  8.0.1246  popup test has an arbitrary delay
+  1868  8.0.1247  not easy to find Debian build info
+  3096  8.0.1248  stray + in README file
+  2701  8.0.1249  no error when WaitFor() gets an invalid wrong expression
+  7444  8.0.1250  'hlsearch' highlighting not removed after incsearch
+  1938  8.0.1251  invalid expressin passed to WaitFor()
+  5796  8.0.1252  incomplete translations makefile for MinGW/Cygwin
+ 28392  8.0.1253  still too many old style tests
+  5746  8.0.1254  undefined left shift in gethexchrs()
+  2329  8.0.1255  duplicate badge README file
+  4110  8.0.1256  typo in configure variable vim_cv_tgent
+  1476  8.0.1257  no test for fix of undefined behavior
