@@ -1,0 +1,95 @@
+From: James McCoy <jamessan@debian.org>
+Date: Sat, 4 Nov 2017 00:02:06 -0400
+Subject: syntax/debcontrol.vim: Build syntax from lists and add golang
+
+Signed-off-by: James McCoy <jamessan@debian.org>
+---
+ runtime/syntax/debcontrol.vim | 52 ++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 39 insertions(+), 13 deletions(-)
+
+diff --git a/runtime/syntax/debcontrol.vim b/runtime/syntax/debcontrol.vim
+index 1b5d37d..b879074 100644
+--- a/runtime/syntax/debcontrol.vim
++++ b/runtime/syntax/debcontrol.vim
+@@ -3,7 +3,7 @@
+ " Maintainer:  Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
+ " Former Maintainers: Gerfried Fuchs <alfie@ist.org>
+ "                     Wichert Akkerman <wakkerma@debian.org>
+-" Last Change: 2017 Oct 26
++" Last Change: 2017 Nov 04
+ " URL: https://anonscm.debian.org/cgit/pkg-vim/vim.git/plain/runtime/syntax/debcontrol.vim
+ 
+ " Standard syntax initialization
+@@ -17,6 +17,8 @@ set cpo&vim
+ " Should match case except for the keys of each field
+ syn case match
+ 
++syn iskeyword @,48-57,-,/
++
+ " Everything that is not explicitly matched by the rules below
+ syn match debcontrolElse "^.*$"
+ 
+@@ -24,27 +26,51 @@ syn match debcontrolElse "^.*$"
+ syn match debControlComma ",[ \t]*"
+ syn match debControlSpace "[ \t]"
+ 
+-let s:kernels = '\%(linux\|hurd\|kfreebsd\|knetbsd\|kopensolaris\|netbsd\)'
+-let s:archs = '\%(alpha\|amd64\|armeb\|armel\|armhf\|arm64\|avr32\|hppa\|i386'
+-      \ . '\|ia64\|lpia\|m32r\|m68k\|mipsel\|mips64el\|mips\|powerpcspe\|powerpc\|ppc64el'
+-      \ . '\|ppc64\|s390x\|s390\|sh3eb\|sh3\|sh4eb\|sh4\|sh\|sparc64\|sparc\|x32\)'
+-let s:pairs = 'hurd-i386\|kfreebsd-i386\|kfreebsd-amd64\|knetbsd-i386\|kopensolaris-i386\|netbsd-alpha\|netbsd-i386'
++let s:kernels = ['linux', 'hurd', 'kfreebsd', 'knetbsd', 'kopensolaris', 'netbsd']
++let s:archs = [
++      \ 'alpha', 'amd64', 'armeb', 'armel', 'armhf', 'arm64', 'avr32', 'hppa'
++      \, 'i386', 'ia64', 'lpia', 'm32r', 'm68k', 'mipsel', 'mips64el', 'mips'
++      \, 'powerpcspe', 'powerpc', 'ppc64el', 'ppc64', 's390x', 's390', 'sh3eb'
++      \, 'sh3', 'sh4eb', 'sh4', 'sh', 'sparc64', 'sparc', 'x32'
++      \ ]
++let s:pairs = [
++      \ 'hurd-i386', 'kfreebsd-i386', 'kfreebsd-amd64', 'knetbsd-i386'
++      \, 'kopensolaris-i386', 'netbsd-alpha', 'netbsd-i386'
++      \ ]
+ 
+ " Define some common expressions we can use later on
+-exe 'syn match debcontrolArchitecture contained "\%(all\|'. s:kernels .'-any\|\%(any-\)\='. s:archs .'\|'. s:pairs .'\|any\)"'
++syn keyword debcontrolArchitecture contained all any
++exe 'syn keyword debcontrolArchitecture contained '. join(map(s:kernels, {k,v -> v .'-any'}))
++exe 'syn keyword debcontrolArchitecture contained '. join(map(s:archs, {k,v -> 'any-'.v}))
++exe 'syn keyword debcontrolArchitecture contained '. join(s:archs)
++exe 'syn keyword debcontrolArchitecture contained '. join(s:pairs)
+ 
+ unlet s:kernels s:archs s:pairs
+ 
+-syn match debcontrolMultiArch contained "\%(no\|foreign\|allowed\|same\)"
++let s:sections = [
++      \ 'admin', 'cli-mono', 'comm', 'database', 'debian-installer', 'debug'
++      \, 'devel', 'doc', 'editors', 'education', 'electronics', 'embedded'
++      \, 'fonts', 'games', 'gnome', 'gnustep', 'gnu-r', 'golang', 'graphics'
++      \, 'hamradio', 'haskell', 'httpd', 'interpreters', 'introspection'
++      \, 'java', 'javascript', 'kde', 'kernel', 'libs', 'libdevel', 'lisp'
++      \, 'localization', 'mail', 'math', 'metapackages', 'misc', 'net'
++      \, 'news', 'ocaml', 'oldlibs', 'otherosfs', 'perl', 'php', 'python'
++      \, 'ruby', 'rust', 'science', 'shells', 'sound', 'text', 'tex'
++      \, 'utils', 'vcs', 'video', 'web', 'x11', 'xfce', 'zope'
++      \ ]
++
++syn keyword debcontrolMultiArch contained no foreign allowed same
+ syn match debcontrolName contained "[a-z0-9][a-z0-9+.-]\+"
+-syn match debcontrolPriority contained "\(extra\|important\|optional\|required\|standard\)"
+-syn match debcontrolSection contained "\v((contrib|non-free|non-US/main|non-US/contrib|non-US/non-free|restricted|universe|multiverse)/)?(admin|cli-mono|comm|database|debian-installer|debug|devel|doc|editors|education|electronics|embedded|fonts|games|gnome|gnustep|gnu-r|graphics|hamradio|haskell|httpd|interpreters|introspection|java%(script)=|kde|kernel|libs|libdevel|lisp|localization|mail|math|metapackages|misc|net|news|ocaml|oldlibs|otherosfs|perl|php|python|ruby|rust|science|shells|sound|text|tex|utils|vcs|video|web|x11|xfce|zope)"
+-syn match debcontrolPackageType contained "u\?deb"
++syn keyword debcontrolPriority contained extra important optional required standard
++exe 'syn match debcontrolSection contained "\%(\%(contrib\|non-free\|non-US/main\|non-US/contrib\|non-US/non-free\|restricted\|universe\|multiverse\)/\)\=\%('.join(s:sections, '\|').'\)"'
++syn keyword debcontrolPackageType contained udeb deb
+ syn match debcontrolVariable contained "\${.\{-}}"
+-syn match debcontrolDmUpload contained "\cyes"
+-syn match debcontrolYesNo contained "\%(yes\|no\)"
++syn keyword debcontrolDmUpload contained yes
++syn keyword debcontrolYesNo contained yes no
+ syn match debcontrolR3 contained "\<\%(no\|binary-targets\|[[:graph:]]\+/[[:graph:]]\+\%( \+[[:graph:]]\+/[[:graph:]]\+\)*\)\>"
+ 
++unlet s:sections
++
+ " A URL (using the domain name definitions from RFC 1034 and 1738), right now
+ " only enforce protocol and some sanity on the server/path part;
+ syn match debcontrolHTTPUrl contained "\vhttps?://[[:alnum:]][-[:alnum:]]*[[:alnum:]]?(\.[[:alnum:]][-[:alnum:]]*[[:alnum:]]?)*\.[[:alpha:]][-[:alnum:]]*[[:alpha:]]?(:\d+)?(/[^[:space:]]*)?$"

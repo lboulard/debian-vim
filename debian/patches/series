@@ -6,3 +6,4 @@ debian/Document-Debian-s-decision-to-disable-modelines-by-defaul.patch
 upstream/syntax-debcontrol.vim-Sync-up-with-deb-src-control-5.patch
 upstream/syntax-deb-source-changelog-.vim-Update-release-names.patch
 upstream/test_search-WaitFor-g-lines-to-be-visible.patch
+upstream/syntax-debcontrol.vim-Build-syntax-from-lists-and-add-gol.patch
