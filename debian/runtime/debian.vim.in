@@ -26,12 +26,21 @@ if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
   set t_Sb=[4%dm
 endif
 
+function! <SID>MapExists(name, modes)
+  for mode in split(a:modes, '\zs')
+    if !empty(maparg(a:name, mode))
+      return 1
+    endif
+  endfor
+  return 0
+endfunction
+
 " Some Debian-specific things
 if has("autocmd")
   if has('gui')
     " Make shift-insert work like in Xterm
-    autocmd GUIEnter * if empty(maparg("<S-Insert>", "nvso")) | execute "map <S-Insert> <MiddleMouse>" | endif
-    autocmd GUIEnter * if empty(maparg("<S-Insert>", "ic")) | execute "map! <S-Insert> <MiddleMouse>" | endif
+    autocmd GUIEnter * if !<SID>MapExists("<S-Insert>", "nvso") | execute "map <S-Insert> <MiddleMouse>" | endif
+    autocmd GUIEnter * if !<SID>MapExists("<S-Insert>", "ic") | execute "map! <S-Insert> <MiddleMouse>" | endif
   endif
 endif
 

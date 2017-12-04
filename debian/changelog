@@ -1,3 +1,12 @@
+vim (2:8.0.1257-3) UNRELEASED; urgency=medium
+
+  * runtime/debian.vim:
+    + Fix mechanism used to check for <S-Insert> mappings, since maparg()
+      doesn't understand multiple modes in the {mode} argument.  Thanks to
+      Sergey Vlasov for the patch!  (Closes: #883422)
+
+ -- James McCoy <jamessan@debian.org>  Sun, 03 Dec 2017 19:25:24 -0500
+
 vim (2:8.0.1257-2) unstable; urgency=medium
 
   * Add patch to fix flakiness in test_search.vim
