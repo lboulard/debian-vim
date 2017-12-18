@@ -7,9 +7,8 @@ Move yakkety and squeeze to unsupported.
 
 Signed-off-by: James McCoy <jamessan@debian.org>
 ---
- runtime/syntax/debchangelog.vim |  4 ++--
- runtime/syntax/debsources.vim   | 10 +++++-----
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ runtime/syntax/debchangelog.vim | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/runtime/syntax/debchangelog.vim b/runtime/syntax/debchangelog.vim
 index 6e6ed19..0d3f872 100644
@@ -33,39 +32,3 @@ index 6e6ed19..0d3f872 100644
  syn match debchangelogVersion	contained "(.\{-})"
  syn match debchangelogCloses	contained "closes:\_s*\(bug\)\=#\=\_s\=\d\+\(,\_s*\(bug\)\=#\=\_s\=\d\+\)*"
  syn match debchangelogLP	contained "\clp:\s\+#\d\+\(,\s*#\d\+\)*"
-diff --git a/runtime/syntax/debsources.vim b/runtime/syntax/debsources.vim
-index 4fa80de..6791ece 100644
---- a/runtime/syntax/debsources.vim
-+++ b/runtime/syntax/debsources.vim
-@@ -2,7 +2,7 @@
- " Language:     Debian sources.list
- " Maintainer:   Debian Vim Maintainers <pkg-vim-maintainers@lists.alioth.debian.org>
- " Former Maintainer: Matthijs Mohlmann <matthijs@cacholong.nl>
--" Last Change: 2017 Apr 22
-+" Last Change: 2017 Oct 28
- " URL: https://anonscm.debian.org/cgit/pkg-vim/vim.git/plain/runtime/syntax/debsources.vim
- 
- " Standard syntax initialization
-@@ -23,18 +23,18 @@ let s:cpo = &cpo
- set cpo-=C
- let s:supported = [
-       \ 'oldstable', 'stable', 'testing', 'unstable', 'experimental',
--      \ 'squeeze', 'wheezy', 'jessie', 'stretch', 'sid', 'rc-buggy',
-+      \ 'wheezy', 'jessie', 'stretch', 'sid', 'rc-buggy',
-       \
--      \ 'trusty', 'xenial', 'yakkety', 'zesty', 'artful', 'devel'
-+      \ 'trusty', 'xenial', 'zesty', 'artful', 'bionic', 'devel'
-       \ ]
- let s:unsupported = [
-       \ 'buzz', 'rex', 'bo', 'hamm', 'slink', 'potato',
--      \ 'woody', 'sarge', 'etch', 'lenny',
-+      \ 'woody', 'sarge', 'etch', 'lenny', 'squeeze',
-       \
-       \ 'warty', 'hoary', 'breezy', 'dapper', 'edgy', 'feisty',
-       \ 'gutsy', 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid',
-       \ 'maverick', 'natty', 'oneiric', 'precise', 'quantal', 'raring', 'saucy',
--      \ 'utopic', 'vivid', 'wily'
-+      \ 'utopic', 'vivid', 'wily', 'yakkety'
-       \ ]
- let &cpo=s:cpo
- 

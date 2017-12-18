@@ -9,14 +9,14 @@ to LaTeX.
 Closes: #384479
 Signed-off-by: James McCoy <jamessan@debian.org>
 ---
- runtime/filetype.vim | 2 +-
+ runtime/autoload/dist/ft.vim | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/runtime/filetype.vim b/runtime/filetype.vim
-index 328f8da..517d00a 100644
---- a/runtime/filetype.vim
-+++ b/runtime/filetype.vim
-@@ -2286,7 +2286,7 @@ func! s:FTtex()
+diff --git a/runtime/autoload/dist/ft.vim b/runtime/autoload/dist/ft.vim
+index 81fdc9d..654a340 100644
+--- a/runtime/autoload/dist/ft.vim
++++ b/runtime/autoload/dist/ft.vim
+@@ -653,7 +653,7 @@ func dist#ft#FTtex()
      call cursor(1,1)
      let firstNC = search('^\s*[^[:space:]%]', 'c', 1000)
      if firstNC " Check the next thousand lines for a LaTeX or ConTeXt keyword.

@@ -1255,7 +1255,7 @@ Individual patches for Vim 8.0:
   1740  8.0.1229  condition in vim_str2nr() is always true
   2557  8.0.1230  CTRL-A in Visual mode uses character after selection
   2864  8.0.1231  expanding file name drops dash
- 10847  8.0.1232  MS-Windows users are confused about default mappings
+ 10847  8.0.1232  MS-Windows users are confused about default mapping
   1407  8.0.1233  typo in dos installer
   7047  8.0.1234  MS-Windows: composing chars are not shown properly
   4732  8.0.1235  cannot disable the terminal feature in a huge build
@@ -1281,3 +1281,147 @@ Individual patches for Vim 8.0:
   2329  8.0.1255  duplicate badge README file
   4110  8.0.1256  typo in configure variable vim_cv_tgent
   1476  8.0.1257  no test for fix of undefined behavior
+  2713  8.0.1258  'ttymouse' is set to "sgr" even though it's not supported
+ 10851  8.0.1259  search test can be flaky
+ 16530  8.0.1260  using global variables for WaitFor()
+  4615  8.0.1261  program in terminal window gets NL instead of CR
+  1419  8.0.1262  terminal redir test is flaky
+  7167  8.0.1263  others can read the swap file if a user is careless
+  4307  8.0.1264  terminal debugger gets stuck in small window
+  1553  8.0.1265  swap test not skipped when there is one group
+  4535  8.0.1266  Test_swap_directory was commented out
+  3448  8.0.1267  Test_swap_group may leave file behind
+ 11037  8.0.1268  PC install instructions are incomplete
+  5447  8.0.1269  effect of autocommands on marks is not tested
+  3332  8.0.1270  mismatching file name with Filelist
+ 47353  8.0.1271  still too many old style tests
+  1889  8.0.1272  warnings for unused variables in tiny build
+  1228  8.0.1273  old test file remaining
+  4009  8.0.1274  setbufline() fails when using folding
+  1831  8.0.1275  CmdlineLeave autocmd prevents fold from opening
+  2764  8.0.1276  key lost when window closed in exit callback
+  6078  8.0.1277  terminal window CR-NL conversions may cause problems
+  8002  8.0.1278  GUI window always resizes when adding scrollbar
+ 29546  8.0.1279  initializing menus can be slow
+ 49591  8.0.1280  Python None cannot be converted to a Vim type
+ 67887  8.0.1281  loading file type detection slows down startup
+  2523  8.0.1282  script-local variable defined in the wrong script
+  2002  8.0.1283  test 86 fails under ASAN
+  4867  8.0.1284  loading file type detection slows down startup
+ 69503  8.0.1285  distributed autoload files may clash with user files
+  1725  8.0.1286  occasional crash when using a channel
+  3275  8.0.1287  temp file used for viminfo may have wrong permissions
+  2356  8.0.1288  GUI: cannot drag the statusline of a terminal window
+  3670  8.0.1289  mkview always includes the local directory
+  5940  8.0.1290  seq_cur of undotree() wrong after undo
+  2584  8.0.1291  C indent wrong when * immediately follows comment
+  1806  8.0.1292  quick clicks in the WinBar start Visual mode
+ 22450  8.0.1293  setting a breakpoint in the terminal debugger sometimes fails
+  1428  8.0.1294  GUI: get stuck when splitting a terminal window
+ 10008  8.0.1295  cannot automatically get a server name in a terminal
+  1741  8.0.1296  checking the same condition twice
+  1786  8.0.1297  +autoservername does not show enabled on MS-Windows
+  1863  8.0.1298  missing test file
+  5460  8.0.1299  bracketed paste does not work well in terminal window
+ 12151  8.0.1300  file permissions may end up wrong when writing
+  1634  8.0.1301  generated license file for NSIS has a modeline
+ 39940  8.0.1302  still too many old style tests
+  3171  8.0.1303  'ttymouse' is not set to "sgr" for Terminal.app and Iterm2
+  4163  8.0.1304  CTRL-G/CTRL-T don't work with incsearch and empty pattern
+  4684  8.0.1305  writefile() never calls fsync()
+  2955  8.0.1306  ASAN error stack trace is not useful
+  1592  8.0.1307  compiler warning for ignoring return value
+  2137  8.0.1308  the "Reading from stdin" message may be undesired
+ 41138  8.0.1309  cannot use 'balloonexpr' in a terminal
+  1498  8.0.1310  cproto generates errors because of missing type
+  3248  8.0.1311  no test for strpart()
+150207  8.0.1312  balloon_show() only works in terminal when compiled with GUI
+ 52453  8.0.1313  missing dependencies cause parallel make to fail
+  3632  8.0.1314  build fails on Mac
+  1460  8.0.1315  build still fails on Mac
+  1284  8.0.1316  build still still fails on Mac
+  1518  8.0.1317  accessing freed memory in term_wait()
+ 17426  8.0.1318  terminal balloon only shows one line
+  3380  8.0.1319  can't build GUI on MS-Windows
+  1390  8.0.1320  popup test fails on GUI-only build
+  3125  8.0.1321  can't build huge version with Athena
+  1446  8.0.1322  textformat test isn't run
+  2657  8.0.1323  mouse events in a terminal window may cause endless loop
+  2304  8.0.1324  some xterm sends different mouse move codes
+  4279  8.0.1325  more tests are not run
+  3109  8.0.1326  largefile test fails on CI, glob test on MS-Windows
+  1339  8.0.1327  new proto file missing from distribution
+  4489  8.0.1328  trouble when using ":term ++close" with autocmd
+  2188  8.0.1329  when a flaky test fails it also often fails the second time
+  8995  8.0.1330  MS-Windows: job in terminal can't get back to Vim
+  2272  8.0.1331  possible crash when window can be zero lines high
+  4355  8.0.1332  highlighting in quickfix window could be better
+  4221  8.0.1333  some tests are run twice
+  5170  8.0.1334  splitting a window with a WinBar damages window layout
+  1824  8.0.1335  writefile() using fsync() may give an error.
+ 17090  8.0.1336  cannot use imactivatefunc() unless compiled with +xim
+  1625  8.0.1337  typo in #ifdef
+ 27986  8.0.1338  USE_IM_CONTROL is confusing and incomplete
+  1815  8.0.1339  no test for what 8.0.1335 fixes
+  1665  8.0.1340  MS-Windows: cannot build GUI without IME
+  2208  8.0.1341  'imactivatefunc' test fails on MS-Windows
+  1498  8.0.1342  cannot build with Motif and multi-byte
+ 40769  8.0.1343  MS-Windows: does not show colored emojis
+  6899  8.0.1344  using 'imactivatefunc' in the GUI does not work
+ 11827  8.0.1345  race condition between stat() and open() for viminfo
+  2123  8.0.1346  crash when passing 50 char string to balloon_split()
+  1525  8.0.1347  MS-Windows: build broken by misplaced curly
+  4065  8.0.1348  make testclean deletes script file on MS-Windows
+  4583  8.0.1349  options test fails when using Motif or GTK GUI
+  2396  8.0.1350  cannot build with +eval and -multi_byte
+  3610  8.0.1351  warning for unused variables building with MinGW
+  4371  8.0.1352  dead URLs in the help go unnoticed
+ 10562  8.0.1353  QuickFixCmdPost is not used consistently
+  1800  8.0.1354  Shift-Insert doesn't always work in MS-Windows console
+  2359  8.0.1355  cursor keys don't work in MS-Windows console
+  2804  8.0.1356  using simalt in a GUIEnter autocommand inserts characters
+  1792  8.0.1357  startup test fails on OpenBSD
+  2657  8.0.1358  undercurl is not used in the terminal
+ 13037  8.0.1359  libvterm ANSI colors can not always be recognized
+  1871  8.0.1360  the Terminal highlighting doesn't work in a terminal
+  4624  8.0.1361  some users don't want to diff with hidden buffers
+  6804  8.0.1362  terminal window colors wrong when using Terminal highlighting
+  2271  8.0.1363  recovering does not work when swap file ends in .stz
+  4536  8.0.1364  there is no easy way to get the window position
+  4346  8.0.1365  when one channel test fails others fail as well
+  1947  8.0.1366  balloon shows when cursor is in WinBar
+  2264  8.0.1367  terminal test hangs, executing abcde
+  2107  8.0.1368  cannot drag status or separator of new terminal window
+ 30841  8.0.1369  MS-Windows: drawing underline slow, mFallbackDC not updated
+  1400  8.0.1370  channel test for callback is flaky
+  1975  8.0.1371  Shift-Insert doesn't always work in MS-Windows console
+  3612  8.0.1372  profile log may be truncated halfway a character
+  1961  8.0.1373  no error when settting 'renderoptions' before starting GUI
+  2960  8.0.1374  CTRL-A does not work with an empty line
+  8016  8.0.1375  window size wrong after maximizing with WinBar
+  1356  8.0.1376  cursor in terminal not always updated
+  5816  8.0.1377  cannot call a dict function in autoloaded dict
+  3078  8.0.1378  autoload script sources itself when defining function
+  2683  8.0.1379  configure check for selinux does not check for header file
+  2485  8.0.1380  using "vim -r swapfile" the hit-enter prompt is misplaced.
+  7361  8.0.1381  ch_readraw() waits for NL if channel mode is NL
+  2864  8.0.1382  get "no write since last change" message if terminal is open
+  3592  8.0.1383  local additions in help skips some files
+ 21365  8.0.1384  not enough quickfix help; confusing winid
+ 12829  8.0.1385  Python 3.5 is getting old
+  3578  8.0.1386  cannot select modified buffers with getbufinfo()
+ 13514  8.0.1387  wordcount test is old style
+  2352  8.0.1388  char not overwritten with ambiguous width char
+ 18411  8.0.1389  getqflist() items are missing if not set
+ 15188  8.0.1390  DirectX scrolling can be slow, vertical positioning is off
+  2983  8.0.1391  encoding empty string to JSON sometimes gives "null"
+  2972  8.0.1392  build fails with --with-features=huge --disable-channel
+  2343  8.0.1393  too much highlighting with 'hlsearch' and 'incsearch' set
+ 14939  8.0.1394  cannot intercept a yank command
+  7496  8.0.1395  it is not easy to see if a colorscheme is well written
+  1759  8.0.1396  memory leak when CTRL-G in search command line fails
+  2664  8.0.1397  pattern with \& following nothing gives an error
+  3820  8.0.1398  :packadd does not load packages from the "start" directory
+  2091  8.0.1399  warnings and errors when building tiny version
+ 12045  8.0.1400  color scheme check script shows up as color scheme
+  1520  8.0.1401  cannot build with GTK but without XIM

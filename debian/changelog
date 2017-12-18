@@ -1,5 +1,13 @@
-vim (2:8.0.1257-3) UNRELEASED; urgency=medium
+vim (2:8.0.1401-1) UNRELEASED; urgency=medium
 
+  [ upstream ]
+  * syntax/sh.vim:
+    + Fix syntax highlighting of $() when the /bin/sh is detected as
+      POSIX-compliant.  (Closes: #848663)
+    + Correctly highlight escaped single-quotes inside test expressions.
+      (Closes: #761064)
+
+  [ James McCoy ]
   * runtime/debian.vim:
     + Fix mechanism used to check for <S-Insert> mappings, since maparg()
       doesn't understand multiple modes in the {mode} argument.  Thanks to

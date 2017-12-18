@@ -17,7 +17,7 @@ Signed-off-by: James Vega <jamessan@debian.org>
  3 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/src/main.c b/src/main.c
-index 97f1b03..ff5e05b 100644
+index e8006c3..27e5949 100644
 --- a/src/main.c
 +++ b/src/main.c
 @@ -1771,6 +1771,10 @@ parse_command_name(mparm_T *parmp)
@@ -70,10 +70,10 @@ index 695affa..b6e7e59 100644
  # define SYS_VIMRC_FILE "$VIM/vimrc"
  #endif
 diff --git a/src/structs.h b/src/structs.h
-index 774104c..6b49537 100644
+index 6aaccc5..cce8926 100644
 --- a/src/structs.h
 +++ b/src/structs.h
-@@ -3352,6 +3352,9 @@ typedef struct
+@@ -3348,6 +3348,9 @@ typedef struct
  #ifdef FEAT_DIFF
      int		diff_mode;		/* start with 'diff' set */
  #endif
