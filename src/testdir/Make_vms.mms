@@ -78,24 +78,10 @@ SCRIPT = test1.out test3.out \
        test29.out \
        test30.out test36.out test37.out test39.out \
        test42.out test44.out test48.out test49.out \
-       test55.out \
-       test64.out test68.out test69.out \
+       test64.out test69.out \
        test72.out test77a.out test88.out \
        test94.out test95.out test99.out test108.out \
-       test_autocmd_option.out \
-       test_breakindent.out \
-       test_changelist.out \
-       test_close_count.out \
-       test_erasebackword.out \
-       test_eval.out \
-       test_fixeol.out \
-       test_insertcount.out \
-       test_listchars.out \
-       test_listlbr.out \
-       test_listlbr_utf8.out \
-       test_search_mbyte.out \
-       test_utf8.out \
-       test_wordcount.out
+       test_eval.out
 
 # Known problems:
 # test17: ?
@@ -118,7 +104,7 @@ GUI_OPTION = -g
 .ENDIF
 
 .IFDEF WANT_UNIX
-SCRIPT_UNIX = test10.out test17.out test27.out test49.out test73.out
+SCRIPT_UNIX = test10.out test17.out test27.out test49.out
 .ENDIF
 
 .IFDEF WANT_WIN

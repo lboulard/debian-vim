@@ -433,8 +433,9 @@ if test "x$found_smack" = "x"; then
   if test "$enable_selinux" = "yes"; then
     AC_MSG_RESULT(no)
     AC_CHECK_LIB(selinux, is_selinux_enabled,
+	[AC_CHECK_HEADER(selinux/selinux.h,
 	    [LIBS="$LIBS -lselinux"
-	     AC_DEFINE(HAVE_SELINUX)])
+	    AC_DEFINE(HAVE_SELINUX)])])
   else
      AC_MSG_RESULT(yes)
   fi
@@ -2058,12 +2059,21 @@ else
     AC_MSG_RESULT(no)
   fi
 fi
-if test "$enable_terminal" = "yes"; then
+if test "$enable_terminal" = "yes" -a "$enable_channel" = "yes"; then
   AC_DEFINE(FEAT_TERMINAL)
   TERM_SRC="libvterm/src/encoding.c libvterm/src/keyboard.c libvterm/src/mouse.c libvterm/src/parser.c libvterm/src/pen.c libvterm/src/screen.c libvterm/src/state.c libvterm/src/unicode.c libvterm/src/vterm.c"
   AC_SUBST(TERM_SRC)
   TERM_OBJ="objects/term_encoding.o objects/term_keyboard.o objects/term_mouse.o objects/term_parser.o objects/term_pen.o objects/term_screen.o objects/term_state.o objects/term_unicode.o objects/term_vterm.o"
   AC_SUBST(TERM_OBJ)
+fi
+
+AC_MSG_CHECKING(--enable-autoservername argument)
+AC_ARG_ENABLE(autoservername,
+	[  --enable-autoservername Automatically define servername at vim startup.], ,
+	[enable_autoservername="no"])
+AC_MSG_RESULT($enable_autoservername)
+if test "$enable_autoservername" = "yes"; then
+  AC_DEFINE(FEAT_AUTOSERVERNAME)
 fi
 
 AC_MSG_CHECKING(--enable-multibyte argument)
@@ -3646,13 +3656,13 @@ fi
 
 dnl Check for functions in one big call, to reduce the size of configure.
 dnl Can only be used for functions that do not require any include.
-AC_CHECK_FUNCS(fchdir fchown fsync getcwd getpseudotty \
+AC_CHECK_FUNCS(fchdir fchown fchmod fsync getcwd getpseudotty \
 	getpwent getpwnam getpwuid getrlimit gettimeofday getwd lstat \
 	memset mkdtemp nanosleep opendir putenv qsort readlink select setenv \
 	getpgid setpgid setsid sigaltstack sigstack sigset sigsetjmp sigaction \
 	sigprocmask sigvec strcasecmp strerror strftime stricmp strncasecmp \
 	strnicmp strpbrk strtol tgetent towlower towupper iswupper \
-	usleep utime utimes mblen)
+	usleep utime utimes mblen ftruncate)
 AC_FUNC_FSEEKO
 
 dnl define _LARGE_FILES, _FILE_OFFSET_BITS and _LARGEFILE_SOURCE when
