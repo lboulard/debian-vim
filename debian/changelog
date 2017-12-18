@@ -1,4 +1,4 @@
-vim (2:8.0.1401-1) UNRELEASED; urgency=medium
+vim (2:8.0.1401-1) unstable; urgency=medium
 
   [ upstream ]
   * syntax/sh.vim:
@@ -15,7 +15,7 @@ vim (2:8.0.1401-1) UNRELEASED; urgency=medium
   * syntax/debcontrol.vim:
     + Fix highlighting of "Section: javascript" … again.  (Closes: #884495)
 
- -- James McCoy <jamessan@debian.org>  Sun, 03 Dec 2017 19:25:24 -0500
+ -- James McCoy <jamessan@debian.org>  Sun, 17 Dec 2017 22:32:25 -0500
 
 vim (2:8.0.1257-2) unstable; urgency=medium
 
