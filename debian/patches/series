@@ -4,3 +4,4 @@ debian/Detect-the-rst-filetype-using-the-contents-of-the-file.patch
 debian/Add-recognition-of-more-LaTeX-commands-for-tex-filetype-d.patch
 debian/Document-Debian-s-decision-to-disable-modelines-by-defaul.patch
 upstream/syntax-deb-source-changelog-.vim-Update-release-names.patch
+syntax-debcontrol.vim-Fix-highlighting-of-javascript-Sect.patch
