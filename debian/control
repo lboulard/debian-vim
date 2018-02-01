@@ -36,7 +36,7 @@ Build-Depends-Indep:
  pdf2svg,
 Vcs-Git: https://salsa.debian.org/vim-team/vim.git
 Vcs-Browser: https://salsa.debian.org/vim-team/vim
-Homepage: http://www.vim.org/
+Homepage: https://vim.sourceforge.io/
 
 Package: vim-common
 Priority: important
