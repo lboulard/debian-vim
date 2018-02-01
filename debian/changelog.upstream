@@ -1425,3 +1425,53 @@ Individual patches for Vim 8.0:
   2091  8.0.1399  warnings and errors when building tiny version
  12045  8.0.1400  color scheme check script shows up as color scheme
   1520  8.0.1401  cannot build with GTK but without XIM
+  3746  8.0.1402  crash with nasty autocommand
+  2939  8.0.1403  using freed buffer in grep command
+  2093  8.0.1404  invalid memory access on exit
+ 11521  8.0.1405  duplicated code for getting a typed character
+ 17294  8.0.1406  difficult to track changes to a quickfix list
+  2227  8.0.1407  GUI: CursorHold may trigger before 'updatetime'
+  3199  8.0.1408  crash in setqflist()
+  2146  8.0.1409  buffer overflow in :tags command
+  2785  8.0.1410  hang when using count() with an empty string
+  2506  8.0.1411  reading invalid memory with CTRL-W :
+  2575  8.0.1412  using free memory using setloclist()
+  2262  8.0.1413  accessing freed memory in :cbuffer
+  2315  8.0.1414  accessing freed memory in :lfile.
+  1481  8.0.1415  warning for unused function without timers feature
+  4484  8.0.1416  crash when searching for a sentence
+  3396  8.0.1417  test doesn't search for a sentence
+  5936  8.0.1418  no test for expanding backticks
+  2994  8.0.1419  cursor column is not updated after ]s
+  9934  8.0.1420  accessing freed memory in vimgrep
+  3662  8.0.1421  accessing invalid memory with overlong byte sequence
+  4092  8.0.1422  no fallback to underline when undercurl is not set 
+  3634  8.0.1423  error in return not caught by try/catch
+  1776  8.0.1424  the timer_pause test is flaky on Travis
+  2767  8.0.1425  execute() does not work in completion of user command
+  3999  8.0.1426  "gf" and <cfile> don't accept ? and & in URL
+  3206  8.0.1427  the :leftabove modifier doesn't work for :copen
+  1590  8.0.1428  compiler warning on 64 bit MS-Windows system
+  6014  8.0.1429  crash when calling term_start() with empty argument
+  1635  8.0.1430  crash when term_start() fails
+  1601  8.0.1431  MS-Windows: vimtutor fails if %TMP% has special chars
+  5107  8.0.1432  after ":copen" can't get the window-ID of the quickfix window
+  2540  8.0.1433  illegal memory access after undo
+  1804  8.0.1434  GTK: :promtfind does not put focus on text input
+  2662  8.0.1435  memory leak in test_arabic
+  3278  8.0.1436  not enough information about what Python version may work
+ 14277  8.0.1437  pkg-config doesn't work with cross compiling
+  1988  8.0.1438  filetype detection test not updated for change
+  2261  8.0.1439  if cscope fails a search Vim may hang
+  4962  8.0.1440  terminal window: some vterm responses are delayed
+  9546  8.0.1441  using ":undo 0" leaves undo in wrong state
+  1972  8.0.1442  (after 8.0.1439) using pointer before it is set
+  2186  8.0.1443  (after 8.0.1441) compiler gives uninitialized var warning
+  3307  8.0.1444  missing -D_FILE_OFFSET_BITS=64 may cause problems
+  4544  8.0.1445  cannot act on edits in the command line
+  2782  8.0.1446  acessing freed memory after window command in auto command
+ 45628  8.0.1447  still too many old style tests
+  3471  8.0.1448  segfault with exception inside :rubyfile command
+ 31628  8.0.1449  slow redrawing with DirectX
+ 13607  8.0.1450  GUI: endless loop when stopping cursor blinking
+ 11285  8.0.1451  difficult to set the python home directories properly
