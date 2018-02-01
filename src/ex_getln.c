@@ -180,7 +180,7 @@ abandon_cmdline(void)
     static int
 empty_pattern(char_u *p)
 {
-    int n = STRLEN(p);
+    size_t n = STRLEN(p);
 
     /* remove trailing \v and the like */
     while (n >= 2 && p[n - 2] == '\\'
@@ -1951,6 +1951,11 @@ cmdline_not_changed:
 #endif
 
 cmdline_changed:
+#ifdef FEAT_AUTOCMD
+	/* Trigger CmdlineChanged autocommands. */
+	trigger_cmd_autocmd(cmdline_type, EVENT_CMDLINECHANGED);
+#endif
+
 #ifdef FEAT_SEARCH_EXTRA
 	/*
 	 * 'incsearch' highlighting.

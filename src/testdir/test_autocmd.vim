@@ -812,6 +812,18 @@ func Test_QuitPre()
 endfunc
 
 func Test_Cmdline()
+  au! CmdlineChanged : let g:text = getcmdline()
+  let g:text = 0
+  call feedkeys(":echom 'hello'\<CR>", 'xt')
+  call assert_equal("echom 'hello'", g:text)
+  au! CmdlineChanged
+
+  au! CmdlineChanged : let g:entered = expand('<afile>')
+  let g:entered = 0
+  call feedkeys(":echom 'hello'\<CR>", 'xt')
+  call assert_equal(':', g:entered)
+  au! CmdlineChanged
+
   au! CmdlineEnter : let g:entered = expand('<afile>')
   au! CmdlineLeave : let g:left = expand('<afile>')
   let g:entered = 0
@@ -1162,4 +1174,19 @@ func Test_TextYankPost()
   au! TextYankPost
   unlet g:event
   bwipe!
+endfunc
+
+func Test_nocatch_wipe_all_buffers()
+  " Real nasty autocommand: wipe all buffers on any event.
+  au * * bwipe *
+  call assert_fails('next x', 'E93')
+  bwipe
+  au!
+endfunc
+
+func Test_nocatch_wipe_dummy_buffer()
+  " Nasty autocommand: wipe buffer on any event.
+  au * x bwipe
+  call assert_fails('lv½ /x', 'E480')
+  au!
 endfunc
