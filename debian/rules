@@ -143,7 +143,7 @@ NAME:=vim
 # Convert x.y.z to x.y
 VERSION:=$(basename $(DEB_VERSION_UPSTREAM))
 VIMCUR:=$(NAME)$(subst .,,$(VERSION))
-PER_VARIANT_FILES := install postinst prerm links lintian-overrides
+PER_VARIANT_FILES := install postinst prerm lintian-overrides maintscript
 LANGS := fr it pl ru ja
 
 DOT_IN_DEPS := debian/vim-common.install
@@ -402,13 +402,13 @@ install-stamp-%: build-stamp-%
 	for x in $(PER_VARIANT_FILES) ; do \
 	  case "$(PKG)" in \
 	    vim-nox|vim|vim-tiny) \
-	      sed -e "s:@PKG@:$(PKG):" -e "s:@VARIANT@:$(VARIANT):g" \
-	          -e "s:@COMMON@:vim-common:" \
+	      sed -e "s:@PKG@:$(PKG):g" -e "s:@VARIANT@:$(VARIANT):g" \
+	          -e "s:@COMMON@:vim-common:g" \
 	          debian/vim-variant.$$x > debian/$(PKG).$$x ;\
 	      ;; \
 	    *) \
-	      sed -e "s:@PKG@:$(PKG):" -e "s:@VARIANT@:$(VARIANT):g" \
-	          -e "s:@COMMON@:vim-gui-common:" \
+	      sed -e "s:@PKG@:$(PKG):g" -e "s:@VARIANT@:$(VARIANT):g" \
+	          -e "s:@COMMON@:vim-gui-common:g" \
 	          debian/vim-variant.$$x > debian/$(PKG).$$x ;\
 	      ;; \
 	  esac \
@@ -423,9 +423,10 @@ install-stamp-%: build-stamp-%
 	  $(MAKE) -f debian/rules $(DOT_IN_DEPS_TINY); \
 	  echo "debian/tiny/doc/	usr/share/vim/$(VIMCUR)" >> debian/vim-tiny.install; \
 	  echo "debian/tiny/vimrc.tiny	etc/vim" >> debian/vim-tiny.install; \
-	  echo "etc/vim/vimrc.tiny	usr/share/vim/vimrc.tiny" >> debian/vim-tiny.links; \
 	fi
 	dh_install
+	dh_installchangelogs debian/changelog.upstream
+	dh_installdocs
 	dh_link
 	dh_bugfiles -A
 
