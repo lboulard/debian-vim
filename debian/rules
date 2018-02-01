@@ -269,7 +269,7 @@ build-stamp-%: configure-stamp-%
 	@echo "*** DEBIAN *** BUILDING VARIANT $*"
 	$(MAKE) -C src/$(SHADOWDIR)
 	# Ensure $TERM is set to a sane value for testing
-	[ $(MAKETEST) != "yes" ] || flock debian env TERM=xterm $(MAKE) -j1 -C src/$(SHADOWDIR) test
+	[ $(MAKETEST) != "yes" ] || env TERM=xterm $(MAKE) -j1 -C src/$(SHADOWDIR) test
 	touch $@
 
 install: install-stamp-xxd $(foreach v,$(VARIANTS),install-stamp-$(v))
@@ -488,4 +488,5 @@ beginlog:
 endlog:
 	@echo "*** DEBIAN *** BUILD COMPLETED"
 
+.NOTPARALLEL:
 # vim: set foldmethod=marker:
