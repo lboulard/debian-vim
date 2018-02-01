@@ -33,8 +33,8 @@ Build-Depends-Indep:
  docbook-xml,
  ghostscript,
  pdf2svg,
-Vcs-Git: https://anonscm.debian.org/cgit/pkg-vim/vim.git/
-Vcs-Browser: https://anonscm.debian.org/cgit/pkg-vim/vim.git
+Vcs-Git: https://salsa.debian.org/vim-team/vim.git
+Vcs-Browser: https://salsa.debian.org/vim-team/vim
 Homepage: http://www.vim.org/
 
 Package: vim-common
