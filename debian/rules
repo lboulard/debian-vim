@@ -96,14 +96,7 @@ NOINTERPFLAGS+=--disable-tclinterp
 
 ALLINTERPFLAGS:=--enable-luainterp
 ALLINTERPFLAGS+=--disable-mzschemeinterp
-ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)
-  # Until #827319 is resolved
-  ALLINTERPFLAGS+=--disable-perlinterp
-  PERL_SUBSTVARS=
-else
-  ALLINTERPFLAGS+=--enable-perlinterp
-  PERL_SUBSTVARS=-Vvim:Perl-Provides=vim-perl -Vvim:Perl-Desc=" Perl,"
-endif
+ALLINTERPFLAGS+=--enable-perlinterp
 ALLINTERPFLAGS+=--enable-python3interp --with-python3-config-dir=$(shell python3-config --configdir)
 ALLINTERPFLAGS+=--disable-pythoninterp
 ALLINTERPFLAGS+=--enable-rubyinterp
@@ -466,7 +459,7 @@ binary-arch-%: install-stamp-%
 	dh_lintian
 	dh_installdeb
 	dh_shlibdeps
-	dh_gencontrol -- $(PERL_SUBSTVARS) $(RUBY_SUBSTVARS)
+	dh_gencontrol -- $(RUBY_SUBSTVARS)
 	dh_md5sums
 	dh_builddeb -- -Zxz
 
