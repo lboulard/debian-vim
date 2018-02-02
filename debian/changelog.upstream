@@ -1475,3 +1475,5 @@ Individual patches for Vim 8.0:
  31628  8.0.1449  slow redrawing with DirectX
  13607  8.0.1450  GUI: endless loop when stopping cursor blinking
  11285  8.0.1451  difficult to set the python home directories properly
+  2615  8.0.1452  terminal test fails on some systems
+  2322  8.0.1453  terminal test fails on some slow terminals
