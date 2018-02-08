@@ -76,7 +76,7 @@ Files: src/if_xcmdsrv.c
 Copyright: Copyright (c) 1989-1993 The Regents of the University of California.
 License: UC
 
-Files: src/tee.c
+Files: src/tee/tee.c
 Copyright: 1996, Paul Slootman
 License: public-domain
 
