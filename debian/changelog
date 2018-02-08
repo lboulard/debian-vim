@@ -1,3 +1,10 @@
+vim (2:8.0.1453-2) UNRELEASED; urgency=medium
+
+  [ David Rabel ]
+  * d/copyright: Fix path to tee.c
+
+ -- David Rabel <david.rabel@noresoft.com>  Fri, 09 Feb 2018 00:11:00 +0100
+
 vim (2:8.0.1453-1) unstable; urgency=medium
 
   [ upstream ]
