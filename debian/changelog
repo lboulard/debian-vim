@@ -1,9 +1,17 @@
-vim (2:8.0.1453-2) UNRELEASED; urgency=medium
+vim (2:8.0.1520-1) UNRELEASED; urgency=medium
 
   [ David Rabel ]
   * d/copyright: Fix path to tee.c
 
- -- David Rabel <david.rabel@noresoft.com>  Fri, 09 Feb 2018 00:11:00 +0100
+  [ upstream ]
+  * 8.0.1491: New 'pumwidth' option allows controlling the width of the popup
+    menu.  (Closes: #450481)
+  * syntax/config.vim: Fix highlighting matching paren for AC_MSG_* syntax
+    items.  (Closes: #881654)
+  * syntax/debcontrol.vim: Recognize Testsuite and Testsuite-Triggers fields.
+    (Closes: #886230)
+
+ -- James McCoy <jamessan@debian.org>  Thu, 15 Feb 2018 20:18:39 -0500
 
 vim (2:8.0.1453-1) unstable; urgency=medium
 

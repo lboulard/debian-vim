@@ -15,7 +15,7 @@ Signed-off-by: James McCoy <jamessan@debian.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/runtime/doc/options.txt b/runtime/doc/options.txt
-index 41f621b..a851dd7 100644
+index b260d7e..d8c5f81 100644
 --- a/runtime/doc/options.txt
 +++ b/runtime/doc/options.txt
 @@ -5286,7 +5286,7 @@ A jump table for the options with a short description can be found at |Q_op|.

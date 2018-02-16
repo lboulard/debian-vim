@@ -8,10 +8,10 @@ Closes: #382541
  1 file changed, 8 insertions(+)
 
 diff --git a/runtime/scripts.vim b/runtime/scripts.vim
-index 18263e2..d769c98 100644
+index e271db8..a51a704 100644
 --- a/runtime/scripts.vim
 +++ b/runtime/scripts.vim
-@@ -348,6 +348,14 @@ else
+@@ -360,6 +360,14 @@ else
    elseif s:line1 =~# 'exec\s\+\S*scheme' || s:line2 =~# 'exec\s\+\S*scheme'
      set ft=scheme
  

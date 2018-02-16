@@ -1477,3 +1477,70 @@ Individual patches for Vim 8.0:
  11285  8.0.1451  difficult to set the python home directories properly
   2615  8.0.1452  terminal test fails on some systems
   2322  8.0.1453  terminal test fails on some slow terminals
+  2035  8.0.1454  when in silent mode too much output is buffered
+  7224  8.0.1455  if $SHELL contains a space then 'shell' is incorrect
+  1748  8.0.1456  timer test on travis Mac is still flaky
+  2209  8.0.1457  clojure now supports a shebang line
+  2860  8.0.1458  filetype detection test does not check all scripts
+ 12936  8.0.1459  cannot handle change of directory
+  1883  8.0.1460  (after 8.0.1459) missing file in patch
+  2194  8.0.1461  (after 8.0.1459) missing another file in patch
+  2026  8.0.1462  (after 8.0.1459) missing yet another file in patch
+  1430  8.0.1463  (after 8.0.1459) test fails without 'autochdir' option
+  2539  8.0.1464  completing directory after :find does not add slash
+  2897  8.0.1465  python2 and python3 detection not tested
+  3431  8.0.1466  older GTK versions don't have gtk_entry_get_text_length()
+  2805  8.0.1467  libvterm doesn't handle illegal byte sequence correctly
+  3755  8.0.1468  illegal memory access in del_bytes()
+ 13514  8.0.1469  when package path is a symlink 'runtimepath' is wrong
+  4847  8.0.1470  integer overflow when using regexp pattern
+  1824  8.0.1471  on MS-Windows CursorIM highlighting no longer works
+  2264  8.0.1472  MS-Windows: nsis installer is a bit slow
+  1703  8.0.1473  MS-Windows: D&D fails between 32 and 64 bit apps
+  1960  8.0.1474  Visual C 2017 has multiple MSVCVER numbers
+  5965  8.0.1475  invalid memory access in read_redo()
+  1924  8.0.1476  screen isn't always updated right away
+  7925  8.0.1477  redraw flicker when moving mouse outside of terminal window
+  1889  8.0.1478  unnecessary condition
+ 20824  8.0.1479  insert mode completion state is confusing
+  1428  8.0.1480  (after 8.0.1479) patch missing change
+  5741  8.0.1481  clearing a pointer takes two lines
+  7077  8.0.1482  using feedkeys() does not work to test completion
+  1715  8.0.1483  searchpair() might return an invalid value on timeout
+  2376  8.0.1484  reduntant conditions
+  2381  8.0.1485  weird autocmd may cause arglist to be changed recursively
+  2343  8.0.1486  accessing invalid memory with "it"
+  1617  8.0.1487  (after 8.0.1486) test 14 fails
+  2750  8.0.1488  emacs tags no longer work
+  5662  8.0.1489  there is no easy way to get the global directory
+  5542  8.0.1490  number of spell regions is spread out through the code
+  7383  8.0.1491  the minimum width of the popup menu is hard coded
+  2175  8.0.1492  memory leak in balloon_split()
+  8925  8.0.1493  completion items cannot be annotated
+ 11487  8.0.1494  no autocmd triggered in Insert mode with visible popup menu
+  5808  8.0.1495  having 'pumwidth' default to zero has no merit
+ 85726  8.0.1496  clearing a pointer takes two lines
+ 11296  8.0.1497  getting the jump list requires parsing the output of :jumps
+  9584  8.0.1498  getjumplist() returns duplicate entries
+  1552  8.0.1499  out-of-memory situation not correctly handled
+  3041  8.0.1500  possible NULL pointer dereference
+  1479  8.0.1501  out-of-memory situation not correctly handled
+  2444  8.0.1502  in out-of-memory situation character is not restored
+  3183  8.0.1503  access memory beyond end of string
+  1954  8.0.1504  Win32: the screen may be cleared on startup
+ 31021  8.0.1505  debugger can't break on a condition
+  1565  8.0.1506  new version of HP NonStop (Tandem) doesn't like a header
+  1651  8.0.1507  timer test is a bit flaky
+  7496  8.0.1508  the :drop command is not always available
+  1774  8.0.1509  (after 8.0.1508) failing drag-n-drop command no longer fails
+  7815  8.0.1510  cannot test if a command causes a beep
+ 16317  8.0.1511  some code for the debugger watch expression is clumsy
+  1704  8.0.1512  warning for possibly using NULL pointer
+  5925  8.0.1513  the jumplist is not always properly cleaned up
+  8338  8.0.1514  getting the list of changes is not easy
+  1872  8.0.1515  BufWinEnter event fired when opening hidden terminal
+  8482  8.0.1516  errors for job options are not very specific
+  1946  8.0.1517  invalid memory acces with pattern using look-behind match
+  2520  8.0.1518  error messages suppressed after ":silent! try"
+  3239  8.0.1519  getchangelist() does not use argument as bufname()
+  2322  8.0.1520  cursor in wrong line when using a WinBar in Terminal window
