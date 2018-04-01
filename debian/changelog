@@ -1,4 +1,4 @@
-vim (2:8.0.1520-1) UNRELEASED; urgency=medium
+vim (2:8.0.1520-1~stretch~lboulard+1) stretch; urgency=medium
 
   [ David Rabel ]
   * d/copyright: Fix path to tee.c
@@ -11,7 +11,10 @@ vim (2:8.0.1520-1) UNRELEASED; urgency=medium
   * syntax/debcontrol.vim: Recognize Testsuite and Testsuite-Triggers fields.
     (Closes: #886230)
 
- -- James McCoy <jamessan@debian.org>  Thu, 15 Feb 2018 20:18:39 -0500
+  [ Laurent Boulard ]
+  * debian/stretch backport
+
+ -- Laurent Boulard <laurent.boulard@gmail.com>  Sun, 01 Apr 2018 11:47:54 +0200
 
 vim (2:8.0.1453-1) unstable; urgency=medium
 
